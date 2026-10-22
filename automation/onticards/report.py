@@ -320,6 +320,11 @@ def main():
             if args.command == "catch-up":
                 first = date.fromisoformat(args.day) - timedelta(days=args.lookback_days - 1)
                 days = [(first + timedelta(days=i)).isoformat() for i in range(args.lookback_days)]
+                # The lookback bounds unknown history, not durable failed windows.
+                pending = [row[0] for row in db.execute(
+                    "SELECT day FROM reports WHERE repository=? AND day<=? AND status IS NOT 'complete'",
+                    (REPOSITORY, args.day))]
+                days = sorted(set(days).union(pending))
                 days = [d for d in days if not db.execute("SELECT 1 FROM reports WHERE repository=? AND day=? AND status='complete'", (REPOSITORY, d)).fetchone()]
             for day in days:
                 start, end = window(day)

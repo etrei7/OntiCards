@@ -130,3 +130,39 @@ def test_kill_between_json_and_markdown_is_repaired_from_sqlite_without_recaptur
     saved = json.loads(db.execute('SELECT payload FROM reports').fetchone()[0])
     generated = datetime.fromisoformat(saved['generated_at']).timestamp()
     assert abs((directory / '2026-10-21.md').stat().st_mtime - generated) < 0.001
+
+
+def test_catch_up_recovers_known_partial_older_than_lookback_without_unknown_history(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    import sys
+    import onticards.report as module
+
+    db = database(tmp_path / 'repository.sqlite3')
+    incomplete = facts()
+    incomplete['errors'] = [{'section': 'issues', 'error_type': 'TimeoutError', 'http_status': None}]
+    save_report(db, tmp_path / 'reports', '2026-10-10', incomplete, 'old-failure')
+    save_report(db, tmp_path / 'reports', '2026-10-22', incomplete, 'future-failure')
+    for day in range(15, 22):
+        save_report(db, tmp_path / 'reports', f'2026-10-{day}', facts(), 'already-complete')
+    db.close()
+    collected = []
+    def collect(repo, start, end, excluded):
+        collected.append(start.astimezone(module.TZ).date().isoformat())
+        return facts()
+    class Client:
+        def __init__(self, **kwargs): pass
+        def get_repo(self, name):
+            assert name == module.REPOSITORY
+            return SimpleNamespace(stargazers_count=479, forks_count=8)
+        def close(self): pass
+    monkeypatch.setattr(module, 'Github', Client)
+    monkeypatch.setattr(module, 'collect', collect)
+    monkeypatch.setattr(sys, 'argv', ['report', 'catch-up', '--state', str(tmp_path), '--day', '2026-10-21'])
+    assert module.main() == 0
+    assert collected == ['2026-10-10']
+    db = database(tmp_path / 'repository.sqlite3')
+    assert db.execute("SELECT status FROM reports WHERE day='2026-10-10'").fetchone()[0] == 'complete'
+    assert db.execute("SELECT run_id,status FROM reports WHERE day='2026-10-22'").fetchone() == ('future-failure', 'partial')
+    assert db.execute("SELECT COUNT(*) FROM reports WHERE run_id='already-complete'").fetchone()[0] == 7
+    assert db.execute("SELECT COUNT(*) FROM reports").fetchone()[0] == 9
+    db.close()
