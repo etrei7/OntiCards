@@ -19,6 +19,7 @@ from github import Auth, Github
 UTC = timezone.utc
 TZ = ZoneInfo("Asia/Shanghai")
 REPOSITORY = "stepll2026/OntiCards"
+AI_BOT_USER_ID = 346235449  # Verified onticards-maintainer-stepll2026 App account.
 
 
 def stamp():
@@ -126,7 +127,8 @@ def collect(repo, start, end, excluded):
         def pr_data():
             pr = issue.as_pull_request()
             r = pr.raw_data
-            checks = list(pr.get_commits())[-1].get_combined_status() if pr.commits else None
+            # The PR commits endpoint is capped at 250 even with pagination.
+            checks = repo.get_commit(pr.head.sha).get_combined_status()
             return {k: r.get(k) for k in ("number", "html_url", "title", "state", "draft", "merged_at", "mergeable", "mergeable_state")} | {
                 "head_sha": pr.head.sha, "base_sha": pr.base.sha,
                 "head_repository": pr.head.repo.full_name if pr.head.repo else None,
@@ -136,12 +138,25 @@ def collect(repo, start, end, excluded):
         result = safe(errors, f"pr:{number}", pr_data)
         if result is not None:
             facts["pull_requests"].append(result)
-    comments = safe(errors, "comments", lambda: list(repo.get_issues_comments(since=start)))
-    facts["ai_comments"] = None if comments is None else [
-        {"id": c.id, "html_url": c.html_url, "created_at": c.created_at.isoformat()}
-        for c in comments if within(c.created_at, start, end)
-        and int(c.issue_url.rsplit("/", 1)[-1]) not in excluded
-        and "<!-- onticards-ai:" in c.body]
+    facts["ai_comment_identity"] = {"user_id": AI_BOT_USER_ID, "type": "Bot", "source": "GitHub comment.user"}
+    def ai_comments():
+        result = []
+        for comment in repo.get_issues_comments(since=start):
+            if not within(comment.created_at, start, end):
+                continue
+            number = int(comment.issue_url.rsplit("/", 1)[-1])
+            if number in excluded:
+                continue
+            author = comment.user
+            if author is None or author.id != AI_BOT_USER_ID or author.type != "Bot":
+                continue
+            result.append({"id": comment.id, "html_url": comment.html_url,
+                "created_at": comment.created_at.isoformat(), "issue_number": number,
+                "author": {"id": author.id, "type": author.type, "login": author.login},
+                "marker_present": "<!-- onticards-ai:" in (comment.body or "")})
+        return result
+    # Include lazy attribute requests in the same failure boundary as pagination.
+    facts["ai_comments"] = safe(errors, "comments", ai_comments)
     facts["commits"] = safe(errors, "commits", lambda: [
         {"sha": c.sha, "html_url": c.html_url, "message": c.commit.message.splitlines()[0],
          "committed_at": c.commit.committer.date.isoformat()}
@@ -216,9 +231,16 @@ def markdown(report):
              f'新增 {show(c["prs"]["new"])}；合并 {show(c["prs"]["merged"])}；未合并关闭事件 {show(c["prs"]["closed_unmerged_events"])}；重开事件 {show(c["prs"]["reopened_events"])}。', '']
     for p in f.get("pull_requests", []):
         lines.append(f'- [PR #{p["number"]} {p["title"]}]({p["html_url"]})：{p["state"]}；冲突状态 {p["mergeable_state"] or "未获取"}；commit status {p["commit_status"] or "未获取"}（{p["commit_status_count"]}项）；head `{p["head_sha"]}`；{p["verification"]}。')
-    lines += ['', '## D AI工作与代码 CI', '',
-              f'本系统标记的AI评论：{show(None if f["ai_comments"] is None else len(f["ai_comments"]))}；完整执行记录以对应底座run为准。',
-              f'默认分支提交：{show(None if f["commits"] is None else len(f["commits"]))}；窗口内Actions运行：{show(None if f["ci_runs"] is None else len(f["ci_runs"]))}。']
+    lines += ['', '## D AI工作与代码 CI', '']
+    if f.get('ai_comment_identity'):
+        lines.append(f'本系统App身份核实的讨论评论：{show(None if f["ai_comments"] is None else len(f["ai_comments"]))}；评论数量不代表执行成功，完整执行记录以对应底座run为准。')
+        for comment in f.get('ai_comments') or []:
+            author = comment['author']
+            lines.append(f'- [Issue/PR #{comment["issue_number"]} 评论 {comment["id"]}]({comment["html_url"]})：{comment["created_at"]}；作者 `{author["login"]}`（ID {author["id"]}，{author["type"]}）。')
+    else:
+        # Preserve historical marker-based payload rendering during file repair.
+        lines.append(f'本系统标记的AI评论：{show(None if f["ai_comments"] is None else len(f["ai_comments"]))}；完整执行记录以对应底座run为准。')
+    lines.append(f'默认分支提交：{show(None if f["commits"] is None else len(f["commits"]))}；窗口内Actions运行：{show(None if f["ci_runs"] is None else len(f["ci_runs"]))}。')
     for commit in f.get("commits") or []:
         lines.append(f'- [{commit["sha"][:8]}]({commit["html_url"]}) {commit["message"]}')
     for run in f.get("ci_runs") or []:
@@ -270,7 +292,7 @@ def repair_report_files(db, directory):
     Expired reports are left to the deployment's retention policy.
     """
     now = datetime.now(UTC)
-    for (payload,) in db.execute("SELECT payload FROM reports WHERE repository=?", (REPOSITORY,)):
+    for (payload,) in db.execute("SELECT payload FROM reports WHERE repository=? AND payload IS NOT NULL", (REPOSITORY,)):
         report = json.loads(payload)
         if datetime.fromisoformat(report['expires_at']) > now:
             write_report_files(directory, report)
@@ -311,10 +333,7 @@ def main():
     excluded = {int(x) for x in os.environ.get("REPORT_ISSUES", "").split(",") if x.strip()}
     client = Github(auth=Auth.Token(token) if token else None, per_page=100, timeout=30, retry=2)
     try:
-        repo = client.get_repo(REPOSITORY)
-        with db:
-            db.execute("INSERT INTO snapshots VALUES(?,?,?,?)", (REPOSITORY, stamp(), repo.stargazers_count, repo.forks_count))
-        status = "complete"
+        days = []
         if args.command != "snapshot":
             days = [args.day]
             if args.command == "catch-up":
@@ -326,11 +345,21 @@ def main():
                     (REPOSITORY, args.day))]
                 days = sorted(set(days).union(pending))
                 days = [d for d in days if not db.execute("SELECT 1 FROM reports WHERE repository=? AND day=? AND status='complete'", (REPOSITORY, d)).fetchone()]
-            for day in days:
-                start, end = window(day)
-                report = save_report(db, args.state / "reports", day, collect(repo, start, end, excluded), run_id)
-                if report["status"] != "complete":
-                    status = "partial"
+            # Commit intended windows before any HTTP. An API-entry failure or
+            # process termination must remain recoverable beyond the lookback.
+            # Reservation never downgrades an existing completed generation.
+            with db:
+                db.executemany("INSERT INTO reports VALUES(?,?,?,'pending',NULL,NULL) ON CONFLICT(repository,day) DO NOTHING",
+                               [(REPOSITORY, day, run_id) for day in days])
+        repo = client.get_repo(REPOSITORY)
+        with db:
+            db.execute("INSERT INTO snapshots VALUES(?,?,?,?)", (REPOSITORY, stamp(), repo.stargazers_count, repo.forks_count))
+        status = "complete"
+        for day in days:
+            start, end = window(day)
+            report = save_report(db, args.state / "reports", day, collect(repo, start, end, excluded), run_id)
+            if report["status"] != "complete":
+                status = "partial"
         with db:
             db.execute("UPDATE runs SET finished_at=?,status=? WHERE run_id=?", (stamp(), status, run_id))
         print(json.dumps({"run_id": run_id, "status": status, "command": args.command}))
