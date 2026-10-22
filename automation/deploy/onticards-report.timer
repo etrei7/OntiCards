@@ -1,0 +1,12 @@
+[Unit]
+Description=OntiCards daily report and incomplete-window recovery
+
+[Timer]
+OnCalendar=*-*-* 09:00:00 Asia/Shanghai
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=onticards-collector@catch-up.service
+
+[Install]
+WantedBy=timers.target

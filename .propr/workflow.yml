@@ -1,0 +1,13 @@
+# Schema and loader are provided by ProPR, pinned in docs/maintenance/reuse-matrix.md.
+# This base-branch policy becomes active only after a maintainer merges it.
+instructions: AGENTS.md
+auto_merge:
+  enabled: false
+limits:
+  max_parallel_tasks: 1
+network:
+  mode: restricted
+
+# Image builds and deployed browser checks belong to the trusted build/test
+# workflow. Hooks run inside the untrusted agent container and receive no SSH
+# credentials or Docker socket. Do not put deployment commands here.
