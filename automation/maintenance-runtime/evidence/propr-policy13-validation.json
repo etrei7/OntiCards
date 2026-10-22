@@ -1,0 +1,112 @@
+{
+  "verified_at": "2026-10-22T19:44:02.809654+00:00",
+  "build_host": "kol-stage2",
+  "model_calls": 0,
+  "external_repository_writes": 0,
+  "production_deployed": false,
+  "groups": {
+    "previous_regression": {
+      "tests": 467,
+      "pass": 467,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "4a3f17b8659ee310a95385f53f64cdd67dea807df7c1c4e316ef865294c88e05",
+      "log_path": "/opt/onticards-build/evidence/policy13/regression-tests.log"
+    },
+    "index_queue_redis": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "409d568126d13613eee79777a088991fa40099253f3f958ebad61513da7c366a",
+      "log_path": "/opt/onticards-build/evidence/policy13/redis-integration-tests.log"
+    },
+    "native_admission": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "bf0f3897bbb7003cfbc8d2e9a2c3773cea863f8d4b1ef2fbdf49f3c47611762c",
+      "log_path": "/opt/onticards-build/evidence/policy13/label-admission-tests.log"
+    },
+    "admission_related_regression": {
+      "tests": 192,
+      "pass": 192,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "541816781263aa2cea37ff37ea8b08c6acb6345740646eaa1f90a6316da3b504",
+      "log_path": "/opt/onticards-build/evidence/policy13/label-admission-regression-tests.log"
+    },
+    "readonly_authorization_redis_sqlite": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "f01d594ce08b9251d4361b74758318b7db349d041958a4aefd765be809a7923c",
+      "log_path": "/opt/onticards-build/evidence/policy13/readonly-integration-tests.log"
+    },
+    "review_handoff_cancel_mcp_regression": {
+      "tests": 265,
+      "pass": 265,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "bc889f3f7f8388fd633510d57a211600b1bcbf60d2e9dfb10d4ba6a3f191dd08",
+      "log_path": "/opt/onticards-build/evidence/policy13/review-boundary-regression-tests.log"
+    }
+  },
+  "source": {
+    "verified_at": "2026-10-22T19:37:54.263195+00:00",
+    "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+    "tree": "0af2178f1461819a893d6705a0e23dcad6330595",
+    "patch_sha256": "91c2d151fd95ff6fcd634fc73d553a6fcc84674f481b3a7ce7b48eb11ea0273b",
+    "delta_sha256": "299294be6c456cad34703d88c2b5ef44b13f9ccfd7eed9e07652d454142a2fb7",
+    "exact_delta_files": 10,
+    "status": "verified",
+    "worktree_wide_copy": false,
+    "private_archive_required": false
+  },
+  "repo_digests": [
+    "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879"
+  ],
+  "build_image_id": "sha256:b65e81b54d8a528085f589046b2c3bb21df692234bc00e3ab831ec3f704be333",
+  "build_started_at": "2026-10-22T19:37:54Z",
+  "build_completed_at": "2026-10-22T19:43:35Z",
+  "red": {
+    "readonly_policy12": {
+      "tests": 7,
+      "pass": 4,
+      "fail": 3,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "a86cc886e15ce00fd984f1611d1c550474a79afc52f3e15d9a1ac7818e8d9652",
+      "log_path": "/opt/onticards-build/evidence/policy13/readonly-red.log"
+    },
+    "revision_policy12": {
+      "tests": 14,
+      "pass": 8,
+      "fail": 6,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "f54786484abd7b16d5eaadde46433cdc34d9f87bee34d29b34b083b59ecd4c98",
+      "log_path": "/opt/onticards-build/evidence/policy13/revision-red.log"
+    }
+  },
+  "limits": [
+    "Native fixture tests use real Redis/SQLite and stub GitHub/provider responses; not a new live model review.",
+    "The total counts test executions across suites, not unique requirements or coverage percentage.",
+    "GitHub fresh GET then POST remains non-atomic; request-time base is not a locked execution base.",
+    "Maintenance-disabled behavior and internally-owned Ultrafix review retain upstream recovery behavior."
+  ],
+  "total_test_executions": 964,
+  "build_tests_sha256": "b5b3fa9fd768f0a336d1d4aac777d05144c8b5366beb85ff11a056eacd560057",
+  "build_production_sha256": "2dd603acd70fb84b5d2a187ac53d95d9971f8db3d9d2d49e1f8a5d56b425d80b",
+  "push_sha256": "dc64ae84dd96fd93e2752978ee304cfae966f89ae11c3366a3ab7c0636f6ff29",
+  "candidate1_build_tests_sha256": "da6d6bcee8362f4a062352ed57ef09afd929dbe3270af9fdd993cc0acc95ab62",
+  "candidate2_build_tests_sha256": "d015e80341c29e9776ce9aa17e993402b537b2f263b647d17921bcaeb63f1804"
+}

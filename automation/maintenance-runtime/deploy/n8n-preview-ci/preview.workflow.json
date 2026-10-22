@@ -1,0 +1,712 @@
+{
+  "id": "onticardsFixedPreviewV1",
+  "name": "OntiCards fixed rootless preview v1",
+  "active": false,
+  "nodes": [
+    {
+      "id": "3d5999a4-3eef-5ede-939d-fba02ac531d2",
+      "name": "Existing trusted PR intake",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "989b4b7e-1de7-594e-9a81-05542b39ee74",
+      "name": "Validate fixed input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const input=$input.first().json,p=input.body??input;\nif(!Number.isSafeInteger(p.pr)||p.pr<1||p.pr>9999999||!/^[a-f0-9]{40}$/.test(p.head??'')||!/^[a-f0-9]{40}$/.test(p.base??''))throw new Error('Invalid fixed PR identity');\nreturn [{json:{pr:p.pr,head:p.head,base:p.base,...(p.validation_only===true?{validation_only:true}:{}),receipt_key:`stepll2026/OntiCards#${p.pr}:${p.head}:${p.base}`}}];"
+      }
+    },
+    {
+      "id": "e38206f1-640a-55dd-a658-237a95efd0fd",
+      "name": "Read current PR",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsPreviewRevisionV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "6435cb84-08c2-5770-a27c-25ef38596cfc",
+      "name": "Reject forks or stale revision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r=$input.first().json,p=$('Validate fixed input').first().json;\nif(r.current!==true||r.token_revoked!==true||r.head!==p.head||r.base!==p.base)throw new Error('PR scope/revision rejected');\nreturn [{json:p}];"
+      }
+    },
+    {
+      "id": "32d6e121-e0ca-5d3d-8290-50a8480d879d",
+      "name": "Ensure native receipt table",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_ci_receipts_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "receipt_key",
+              "type": "string"
+            },
+            {
+              "name": "head",
+              "type": "string"
+            },
+            {
+              "name": "base",
+              "type": "string"
+            },
+            {
+              "name": "state",
+              "type": "string"
+            },
+            {
+              "name": "detail",
+              "type": "string"
+            },
+            {
+              "name": "pr",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "18d23adc-7a62-5b51-b859-58d385ebf38e",
+      "name": "Read native receipt",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_receipts_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "receipt_key",
+              "condition": "eq",
+              "keyValue": "={{ $('Reject forks or stale revision').first().json.receipt_key }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "7ac149de-754a-53e9-9170-f3ce2649bed7",
+      "name": "Stop previously consumed revision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const rows=$input.all().map(i=>i.json);if(rows.some(r=>r.receipt_key))return [];\nconst p=$('Reject forks or stale revision').first().json;return [{json:{...p,state:'running',detail:'native fixed preview; same head/base consumed before side effects'}}];"
+      }
+    },
+    {
+      "id": "7e30be5b-68f5-5a88-9e59-2301d23e2fb0",
+      "name": "Persist before native execution",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_receipts_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "receipt_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.receipt_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "835fdd7a-eefb-5024-ab63-df8dbc57c477",
+      "name": "Fixed OpenSSH build transfer test",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        0
+      ],
+      "parameters": {
+        "executeOnce": true,
+        "command": "=node /opt/onticards-preview-ci/bundle/dispatch.mjs {{ $('Reject forks or stale revision').first().json.pr }} {{ $('Reject forks or stale revision').first().json.head }} {{ $('Reject forks or stale revision').first().json.base }}"
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "8fea6cc1-fab1-59a4-be83-0f211850c6fa",
+      "name": "Capture bounded result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Reject forks or stale revision').first().json,r=$input.first().json;let result;\ntry{result=JSON.parse(r.stdout??'');}catch{result={state:'transport_or_execution_failed'};}\nreturn [{json:{...p,state:result.state??'failed',detail:JSON.stringify(result)}}];"
+      }
+    },
+    {
+      "id": "5d85b3e0-3b7c-54f8-ac96-2592c2094f25",
+      "name": "Read PR after tests",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2200,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsPreviewRevisionV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "61f94326-2fa4-5dbd-8c0b-e98ba0916dd4",
+      "name": "Mark stale or unavailable result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Final native outcome').first().json,r=$input.first().json;\nif(r.current!==true||r.token_revoked!==true||r.head!==p.head||r.base!==p.base)p.state='stale_or_remote_unverifiable';return [{json:p}];"
+      }
+    },
+    {
+      "id": "a2fa86cb-0292-595d-9443-fd603d1aaf7e",
+      "name": "Persist native outcome",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_receipts_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "receipt_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.receipt_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "abd02e8c-287b-5e01-b96f-8bf969239ef0",
+      "name": "Model after non-model success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2860,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "model-gate",
+              "leftValue": "={{ $json.state }}",
+              "rightValue": "tests_passed_partial_model_unverified",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "17b0657a-5c0b-5c12-a516-5c2f7037335d",
+      "name": "Read PR before model",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        3080,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsPreviewRevisionV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "d16ebbab-0b83-5f3e-b1f7-3d9a1c765658",
+      "name": "Require current model revision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3300,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r=$input.first().json,p=$('Capture bounded result').first().json;if(r.current!==true||r.token_revoked!==true||r.head!==p.head||r.base!==p.base)throw new Error('Model not started: revision unverified');return [{json:p}];"
+      }
+    },
+    {
+      "id": "89754233-2457-51a4-a1ff-954648b6e566",
+      "name": "Explicit bounded model phase",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        0
+      ],
+      "parameters": {
+        "executeOnce": true,
+        "command": "=node /opt/onticards-preview-ci/bundle/dispatch_model.mjs {{ $('Reject forks or stale revision').first().json.pr }} {{ $('Reject forks or stale revision').first().json.head }} {{ $('Reject forks or stale revision').first().json.base }}"
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "00f7387b-05ec-5c66-a529-1b2fca36a4cf",
+      "name": "Capture model outcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3740,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Capture bounded result').first().json,r=$input.first().json;let result;\ntry{result=JSON.parse(r.stdout??'');}catch{result={state:'model_phase_transport_or_execution_failed'};}\nreturn [{json:{...p,state:result.state??'failed',detail:JSON.stringify({non_model:JSON.parse(p.detail),model:result})}}];"
+      }
+    },
+    {
+      "id": "2138d5b2-dfe5-513d-80c4-31c2d37b2f22",
+      "name": "Final native outcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3960,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all();"
+      }
+    },
+    {
+      "id": "a38cb717-6ed1-5ab2-8b13-dfc64c10e976",
+      "name": "Trusted intake webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        4180,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-fixed-preview-v1",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "onticards-preview-trigger"
+        }
+      },
+      "webhookId": "onticards-fixed-preview-v1"
+    },
+    {
+      "id": "2eca06c7-6bd5-54cc-bee5-6c6c0d627d5b",
+      "name": "Validation only entry",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4400,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "validation-only",
+              "leftValue": "={{ $json.validation_only === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "e9e6bfcb-db31-578a-82a3-0130b2829e1b",
+      "name": "Return validation only proof",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4620,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;return [{json:{pr:p.pr,head:p.head,base:p.base,state:'dry_run_ci_entry_verified',validation_only:true,ssh_commands:0,model_calls:0,receipt_consumed:false}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Existing trusted PR intake": {
+      "main": [
+        [
+          {
+            "node": "Validate fixed input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate fixed input": {
+      "main": [
+        [
+          {
+            "node": "Read current PR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read current PR": {
+      "main": [
+        [
+          {
+            "node": "Reject forks or stale revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reject forks or stale revision": {
+      "main": [
+        [
+          {
+            "node": "Validation only entry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure native receipt table": {
+      "main": [
+        [
+          {
+            "node": "Read native receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read native receipt": {
+      "main": [
+        [
+          {
+            "node": "Stop previously consumed revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stop previously consumed revision": {
+      "main": [
+        [
+          {
+            "node": "Persist before native execution",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist before native execution": {
+      "main": [
+        [
+          {
+            "node": "Fixed OpenSSH build transfer test",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fixed OpenSSH build transfer test": {
+      "main": [
+        [
+          {
+            "node": "Capture bounded result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture bounded result": {
+      "main": [
+        [
+          {
+            "node": "Model after non-model success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PR after tests": {
+      "main": [
+        [
+          {
+            "node": "Mark stale or unavailable result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark stale or unavailable result": {
+      "main": [
+        [
+          {
+            "node": "Persist native outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Model after non-model success": {
+      "main": [
+        [
+          {
+            "node": "Read PR before model",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Final native outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PR before model": {
+      "main": [
+        [
+          {
+            "node": "Require current model revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Require current model revision": {
+      "main": [
+        [
+          {
+            "node": "Explicit bounded model phase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Explicit bounded model phase": {
+      "main": [
+        [
+          {
+            "node": "Capture model outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture model outcome": {
+      "main": [
+        [
+          {
+            "node": "Final native outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final native outcome": {
+      "main": [
+        [
+          {
+            "node": "Read PR after tests",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trusted intake webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate fixed input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation only entry": {
+      "main": [
+        [
+          {
+            "node": "Return validation only proof",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ensure native receipt table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 7200,
+    "saveExecutionProgress": true
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "readiness": "fixed SSH/rootless/trusted test image verified; native PR acceptance and intake wiring pending"
+  }
+}

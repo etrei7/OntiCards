@@ -1,0 +1,38 @@
+{
+  "captured_at": "2026-10-22T17:31:55.822371+00:00",
+  "human_comment_id": "6346376385",
+  "human_comment_url": "https://github.com/stepll2026/OntiCards/issues/29#issuecomment-6346376385",
+  "event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+  "source_hash": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+  "actual_source_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "draft_status": "awaiting_semantic_review",
+  "draft_usage": {
+    "completion_tokens": 1037,
+    "prompt_tokens": 18158,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "text_tokens": 18158
+    },
+    "total_tokens": 19195
+  },
+  "review_status": "needs_human_review",
+  "review_usage": {
+    "completion_tokens": 1686,
+    "prompt_tokens": 17632,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "text_tokens": 17632
+    },
+    "total_tokens": 19318
+  },
+  "review_gate_errors": [
+    "independent semantic approval absent",
+    "claim quote or source provenance mismatch"
+  ],
+  "model_calls_total": 4.0,
+  "reply_count_total": 2.0,
+  "this_round_model_calls": 2,
+  "this_round_github_posts": 0,
+  "result": "rejected_by_native_independent_review_gate",
+  "limits": "No model retry, ledger reset, or manually corrected reply. Independent review did not catch every issue; separate SHA transcription mismatch was observed by operator."
+}

@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-22T19:40:12.399521+00:00",
+  "final_layout": "checkout/automation/maintenance-runtime/{deploy,research,evidence}",
+  "source_files": 122,
+  "stage": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\rootless-runtime\\ci-final-layout-w0qe2r_c",
+  "generators": 5,
+  "byte_identical_workflows": 8,
+  "all_inactive": true,
+  "results": [
+    {
+      "generator": "build_workflow.py",
+      "exit": 0,
+      "safe_stdout": "{\"nodes\": 22, \"active\": false, \"github_mutations\": 0, \"new_scheduler\": false}\n"
+    },
+    {
+      "generator": "build_revision_guard.py",
+      "exit": 0,
+      "safe_stdout": "{\"nodes\": 12, \"permissions\": [\"pull_requests:read\", \"metadata:read\"], \"execution_bodies_saved\": false}\n"
+    },
+    {
+      "generator": "build_check_watch.py",
+      "exit": 0,
+      "safe_stdout": "{\"observe_nodes\": 18, \"register_nodes\": 8, \"watch_nodes\": 8, \"native_schedule_minutes\": 5, \"model_or_test_runs\": 0, \"registration_starts_tests\": false}\n"
+    },
+    {
+      "generator": "build_intake_admission.py",
+      "exit": 0,
+      "safe_stdout": "{\"admission_nodes\": 26, \"receiver_nodes\": 10, \"new_schedule_triggers\": 0, \"new_github_list_clients\": 0, \"model_calls_in_generation\": 0}\n"
+    },
+    {
+      "generator": "build_review_admission.py",
+      "exit": 0,
+      "safe_stdout": "{\"nodes\": 19, \"schedule_triggers\": 0, \"mode\": \"dry_run\", \"active\": false}\n"
+    },
+    {
+      "test": "test_check_watch.mjs",
+      "exit": 0,
+      "safe_stdout": "{\"passed\":20,\"failed\":0,\"source\":\"actual native workflow Code nodes\",\"github_requests\":0,\"model_requests\":0,\"synthetic\":true}\n"
+    },
+    {
+      "test": "test_intake_admission.mjs",
+      "exit": 0,
+      "safe_stdout": "{\"passed\":52,\"failed\":0,\"source\":\"actual generated native Code/connection graphs\",\"network_calls\":0,\"provider_calls\":0,\"synthetic\":true}\n"
+    },
+    {
+      "test": "test_review_admission.mjs",
+      "exit": 0,
+      "safe_stdout": "{\"passed\":22,\"total\":22,\"model_calls\":0,\"native_expressions\":true}\n"
+    }
+  ],
+  "workflow_sha256": {
+    "check-observe.workflow.json": "40e0e5f5086337b18bcb6935dfd6c01cc4455504aa4f37a27e697c51a19b1115",
+    "check-register.workflow.json": "b8c9de81cb4a804e3021fbb5db45e4e46e3b9374fa09e261202e902cd80d4c4f",
+    "check-watch.workflow.json": "f494d742f89233f33c41367d52e60a95866706bf768fa57e79cb421e2d12a8df",
+    "intake-admission.workflow.json": "ef7b82124abf3a2073c74293eca8923695153e172d4871924fa6408c8c139f78",
+    "intake-receiver.workflow.json": "2fe34fcc1c2a7692ffdbaedfb2c1ca5a9d9cd216ad4f56895b7e5ddb271b9177",
+    "preview.workflow.json": "e0da47c89bab3217bcbc718835b1f4b9dd0b8348f6ae237bf0be571f73b37289",
+    "review-admission.workflow.json": "c643597c4f26394e1060cf1c5a0217c9bfb3e8a075266d5996caf45c3a613f99",
+    "revision-guard.workflow.json": "a44b27726542b0dab7a16232e897ba76fafde7773ce0abbafaf0526a4ee47050"
+  },
+  "network_calls": 0,
+  "models": 0,
+  "passed": true
+}

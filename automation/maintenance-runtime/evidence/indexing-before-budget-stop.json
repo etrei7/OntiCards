@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-22T16:55:11.713Z",
+  "settings": {
+    "enabled": true,
+    "agent_alias": "onticards-qwen:opencode-bailian/qwen3.8-max-0902",
+    "fallback_agent_alias": "",
+    "custom_prompt": "用中文按当前文件内容概括职责、接口及依赖。不要把历史知识、注释或未运行测试写成已验证事实；无法确定时明确写未知。只做知识摘要，不修改代码或外部系统。"
+  },
+  "repos": [
+    {
+      "id": "48175d72-edcf-46ba-977f-c468356e4db2",
+      "name": "stepll2026/OntiCards",
+      "enabled": true,
+      "contextRepositories": "none",
+      "autoFollowupOnFailedCi": false,
+      "cancelCiDuringFollowup": false,
+      "cancelCiDuringFollowupWorkflows": [],
+      "nonBlockingChecks": [],
+      "notificationsEnabled": true,
+      "githubPrTemplateFallback": true,
+      "visualPreview": {
+        "enabled": false,
+        "types": [
+          "image"
+        ]
+      },
+      "autoAssignPullRequests": false,
+      "autoAssignDefaultAssignee": null,
+      "autoAssignRequestReview": false,
+      "autoResolveMergeConflicts": true
+    }
+  ],
+  "jobs": [
+    {
+      "id": "index-stepll2026-OntiCards-main-ba05240c-009e-432e-9228-46909580816d",
+      "data": {
+        "repository": "stepll2026/OntiCards",
+        "repoPath": "/opt/onticards-maintenance/propr/git/clones/stepll2026/OntiCards",
+        "correlationId": "ba05240c-009e-432e-9228-46909580816d",
+        "priority": "high",
+        "fullReindex": false,
+        "baseBranch": "main",
+        "ignoreCooldown": false
+      },
+      "opts": {
+        "attempts": 3,
+        "priority": 1,
+        "removeOnFail": {
+          "age": 1209600
+        },
+        "jobId": "index-stepll2026-OntiCards-main-ba05240c-009e-432e-9228-46909580816d",
+        "removeOnComplete": {
+          "age": 604800,
+          "count": 500
+        },
+        "backoff": {
+          "delay": 30000,
+          "type": "exponential"
+        }
+      },
+      "state": "active",
+      "attemptsMade": 1,
+      "failedReason": "Indexing run allowance exhausted; successful summaries are retained. Manual indexing resume is required.",
+      "processedOn": 1792688041992
+    },
+    {
+      "id": "index-stepll2026-OntiCards-HEAD-1792687627359",
+      "data": {
+        "repository": "stepll2026/OntiCards",
+        "repoPath": "/opt/onticards-maintenance/propr/git/clones/stepll2026/OntiCards",
+        "correlationId": "9f24287e-8933-453d-aad3-e5c4bae763fd",
+        "priority": "normal",
+        "baseBranch": "HEAD"
+      },
+      "opts": {
+        "attempts": 3,
+        "priority": 5,
+        "removeOnFail": {
+          "age": 1209600
+        },
+        "jobId": "index-stepll2026-OntiCards-HEAD-1792687627359",
+        "removeOnComplete": {
+          "age": 604800,
+          "count": 500
+        },
+        "backoff": {
+          "delay": 30000,
+          "type": "exponential"
+        }
+      },
+      "state": "completed",
+      "attemptsMade": 1,
+      "processedOn": 1792687860224,
+      "finishedOn": 1792688041992
+    }
+  ]
+}

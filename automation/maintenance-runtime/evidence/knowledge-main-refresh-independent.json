@@ -1,0 +1,476 @@
+{
+  "reviewed_at": "2026-10-22T17:39:02.670703+00:00",
+  "all_checks_passed": true,
+  "checks": {
+    "three_runs": true,
+    "native_complete": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2_tree": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2_required_present": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/extensions/ext_migrate.py": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/models/__init__.py": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:README.md": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:docker-compose.yaml": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/app.py": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/requirements.txt": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/Dockerfile": true,
+    "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Web/package.json": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7_tree": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7_required_present": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/extensions/ext_migrate.py": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/deploy_check.py": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/上线迁移SOP.md": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/models/__init__.py": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:README.md": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:docker-compose.yaml": true,
+    "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/app.py": true,
+    "main_tree": true,
+    "main_required_present": true,
+    "main:OntiCards_Api/extensions/ext_migrate.py": true,
+    "main:OntiCards_Api/migrations/deploy_check.py": true,
+    "main:OntiCards_Api/migrations/上线迁移SOP.md": true,
+    "main:OntiCards_Api/models/__init__.py": true,
+    "main:README.md": true,
+    "main:docker-compose.yaml": true,
+    "main:OntiCards_Api/app.py": true,
+    "workflow_unchanged_during_probe": true,
+    "data_table_user_5de9k0LyVKg90XPo_unique_keys": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/Dockerfile": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/app.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/config.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/__init__.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/agents/__init__.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/extensions/ext_migrate.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/models/__init__.py": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/requirements.txt": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Web/package.json": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:README.md": true,
+    "cache:8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:docker-compose.yaml": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/Dockerfile": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/app.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/config.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/__init__.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/__init__.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest_stream.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/__init__.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/governance/libreoffice_exporter.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/extensions/ext_migrate.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/deploy_check.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/上线迁移SOP.md": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/models/__init__.py": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/requirements.txt": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Web/package.json": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:README.md": true,
+    "cache:c8e3dfee68d398a37842fc332f73af40a56f02a7:docker-compose.yaml": true,
+    "main_fresh_resolution_matches_current": true,
+    "old_and_current_different": true,
+    "changed:OntiCards_Api/extensions/ext_migrate.py": true,
+    "changed:OntiCards_Api/models/__init__.py": true,
+    "added:OntiCards_Api/migrations/deploy_check.py": true,
+    "added:OntiCards_Api/migrations/上线迁移SOP.md": true,
+    "natural_event_source_hash": true,
+    "natural_event_exact_source": true
+  },
+  "native_evidence_sha256": "404a838b2f0077dd665d1008232d9e000c4dfdb7355f8d1f17fb9c2265cb8c58",
+  "returned_file_verifications": [
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Api/extensions/ext_migrate.py",
+      "blob_sha": "e7b278fc382fa770081902270f53055f4923f436",
+      "excerpt_sha256": "3255af82bcf23acbc13835db8e0732005b9e495bf9f2f31774af9654b11c86ae",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Api/models/__init__.py",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "excerpt_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "empty": true,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "README.md",
+      "blob_sha": "058432a77076f7a8d369d9088fdafd622738f91f",
+      "excerpt_sha256": "9c327243e701930d12db6064ec846bd1c9b0b3d1d75e22d0c4f8b62159944df6",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "docker-compose.yaml",
+      "blob_sha": "d5b92e77e871710b45cea38609536f8c26e40dab",
+      "excerpt_sha256": "b9de7e35255323d01768b4a1e484b499634c2c2c99efd0c0c4f30eedcfd44208",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Api/app.py",
+      "blob_sha": "55c512e809d9c052c71430870ae9a53118175024",
+      "excerpt_sha256": "43dc922440de3283b9fe04fb3aa8c7ecde989dc9d93be28cdf0da0a4a4f6a068",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Api/requirements.txt",
+      "blob_sha": "aa39a33ce14b5d5ef06169ca50c53d2fb357872c",
+      "excerpt_sha256": "387191343398622541c7918e64d0ae7e3ff83726f1a7c57f104260818c1bffbc",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Api/Dockerfile",
+      "blob_sha": "999c2bd4ffe5c1f5e8faead04c7f7a7182793ebe",
+      "excerpt_sha256": "62197c2c62ea026b4326ac6a25fc00f4119e760b5a6aa34b926d6e75b0bd11e4",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "commit_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+      "path": "OntiCards_Web/package.json",
+      "blob_sha": "9a83ad415a0442c7416e534d15a92e17165e2a61",
+      "excerpt_sha256": "04bd48d14b5c95de7a619219c89d56c5fd771c82e2bcc59b724d796689f45c51",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/extensions/ext_migrate.py",
+      "blob_sha": "9cd608fa754c50d24e566b5e002c7c3f00b6c7ab",
+      "excerpt_sha256": "9af07ce4fce1d76afed14c1a008893e3d8dd5471be3dfe73a1880a02fba8d994",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/migrations/deploy_check.py",
+      "blob_sha": "e2f61ff1a10170d96e913118d0105074988e356f",
+      "excerpt_sha256": "3fe6d525dfbbd5bee02f8b44b622d0a0b61190f1b4a6b93dbcdadbeabe12e1f7",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/migrations/上线迁移SOP.md",
+      "blob_sha": "8ccc7f3685b3b2513f2722a9bba169a9f03abb1c",
+      "excerpt_sha256": "46f13297152a0a8631af0882faedc510fdb9d2d04464fc9f024291c3921579e5",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/models/__init__.py",
+      "blob_sha": "b55a88d3070d1b9e060c054a727af425f579fa07",
+      "excerpt_sha256": "b3e3d4bf3104567306d1bf957444ab29b1359d98840e4ec497d049df3b65c119",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "README.md",
+      "blob_sha": "058432a77076f7a8d369d9088fdafd622738f91f",
+      "excerpt_sha256": "9c327243e701930d12db6064ec846bd1c9b0b3d1d75e22d0c4f8b62159944df6",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "docker-compose.yaml",
+      "blob_sha": "d5b92e77e871710b45cea38609536f8c26e40dab",
+      "excerpt_sha256": "b9de7e35255323d01768b4a1e484b499634c2c2c99efd0c0c4f30eedcfd44208",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/app.py",
+      "blob_sha": "55c512e809d9c052c71430870ae9a53118175024",
+      "excerpt_sha256": "6baa083d10052c40a14460272e4bcd1c91ef5a5b3cf4982ac75dc95a9b7e4545",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/extensions/ext_migrate.py",
+      "blob_sha": "9cd608fa754c50d24e566b5e002c7c3f00b6c7ab",
+      "excerpt_sha256": "9af07ce4fce1d76afed14c1a008893e3d8dd5471be3dfe73a1880a02fba8d994",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/migrations/deploy_check.py",
+      "blob_sha": "e2f61ff1a10170d96e913118d0105074988e356f",
+      "excerpt_sha256": "3fe6d525dfbbd5bee02f8b44b622d0a0b61190f1b4a6b93dbcdadbeabe12e1f7",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/migrations/上线迁移SOP.md",
+      "blob_sha": "8ccc7f3685b3b2513f2722a9bba169a9f03abb1c",
+      "excerpt_sha256": "46f13297152a0a8631af0882faedc510fdb9d2d04464fc9f024291c3921579e5",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/models/__init__.py",
+      "blob_sha": "b55a88d3070d1b9e060c054a727af425f579fa07",
+      "excerpt_sha256": "b3e3d4bf3104567306d1bf957444ab29b1359d98840e4ec497d049df3b65c119",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "README.md",
+      "blob_sha": "058432a77076f7a8d369d9088fdafd622738f91f",
+      "excerpt_sha256": "9c327243e701930d12db6064ec846bd1c9b0b3d1d75e22d0c4f8b62159944df6",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "docker-compose.yaml",
+      "blob_sha": "d5b92e77e871710b45cea38609536f8c26e40dab",
+      "excerpt_sha256": "b9de7e35255323d01768b4a1e484b499634c2c2c99efd0c0c4f30eedcfd44208",
+      "empty": false,
+      "verified": true
+    },
+    {
+      "ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/app.py",
+      "blob_sha": "55c512e809d9c052c71430870ae9a53118175024",
+      "excerpt_sha256": "6baa083d10052c40a14460272e4bcd1c91ef5a5b3cf4982ac75dc95a9b7e4545",
+      "empty": false,
+      "verified": true
+    }
+  ],
+  "cache_verifications": [
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/Dockerfile",
+      "blob_sha": "999c2bd4ffe5c1f5e8faead04c7f7a7182793ebe",
+      "observed_at": "2026-10-23T01:37:45.009+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/app.py",
+      "blob_sha": "55c512e809d9c052c71430870ae9a53118175024",
+      "observed_at": "2026-10-23T01:37:45.007+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/config.py",
+      "blob_sha": "6c7fc0044150b3f220100256d9e11ece8a874a87",
+      "observed_at": "2026-10-23T01:25:31.588+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/__init__.py",
+      "blob_sha": "6d900b6924e03524546113bb1491e494cb916efd",
+      "observed_at": "2026-10-23T01:25:31.591+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/agents/__init__.py",
+      "blob_sha": "ff97f8e2de5b0bed3f2ba478a702b7dd19a0e659",
+      "observed_at": "2026-10-23T01:25:31.593+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest.py",
+      "blob_sha": "9b84c96b9f14daae75abc10514bfc41ca0f38046",
+      "observed_at": "2026-10-23T01:25:31.594+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/extensions/ext_migrate.py",
+      "blob_sha": "e7b278fc382fa770081902270f53055f4923f436",
+      "observed_at": "2026-10-23T01:37:45.001+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/models/__init__.py",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observed_at": "2026-10-23T01:37:45.003+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Api/requirements.txt",
+      "blob_sha": "aa39a33ce14b5d5ef06169ca50c53d2fb357872c",
+      "observed_at": "2026-10-23T01:37:45.008+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:OntiCards_Web/package.json",
+      "blob_sha": "9a83ad415a0442c7416e534d15a92e17165e2a61",
+      "observed_at": "2026-10-23T01:37:45.010+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:README.md",
+      "blob_sha": "058432a77076f7a8d369d9088fdafd622738f91f",
+      "observed_at": "2026-10-23T01:37:45.004+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2:docker-compose.yaml",
+      "blob_sha": "d5b92e77e871710b45cea38609536f8c26e40dab",
+      "observed_at": "2026-10-23T01:37:45.006+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/Dockerfile",
+      "blob_sha": "999c2bd4ffe5c1f5e8faead04c7f7a7182793ebe",
+      "observed_at": "2026-10-23T01:38:11.902+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/app.py",
+      "blob_sha": "55c512e809d9c052c71430870ae9a53118175024",
+      "observed_at": "2026-10-23T01:38:11.899+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/config.py",
+      "blob_sha": "6c7fc0044150b3f220100256d9e11ece8a874a87",
+      "observed_at": "2026-10-23T01:30:09.418+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/__init__.py",
+      "blob_sha": "6d900b6924e03524546113bb1491e494cb916efd",
+      "observed_at": "2026-10-23T01:30:09.419+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/__init__.py",
+      "blob_sha": "ff97f8e2de5b0bed3f2ba478a702b7dd19a0e659",
+      "observed_at": "2026-10-23T01:30:09.420+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest.py",
+      "blob_sha": "9b84c96b9f14daae75abc10514bfc41ca0f38046",
+      "observed_at": "2026-10-23T01:30:09.422+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/QwenMaxLatest_stream.py",
+      "blob_sha": "fcb650e799eadaf2fb158743965becea2481a06a",
+      "observed_at": "2026-10-23T01:30:09.424+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/agents/qwen/__init__.py",
+      "blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observed_at": "2026-10-22T23:52:19.617+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/controllers/governance/libreoffice_exporter.py",
+      "blob_sha": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d",
+      "observed_at": "2026-10-23T01:30:09.416+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/extensions/ext_migrate.py",
+      "blob_sha": "9cd608fa754c50d24e566b5e002c7c3f00b6c7ab",
+      "observed_at": "2026-10-23T01:38:11.890+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/deploy_check.py",
+      "blob_sha": "e2f61ff1a10170d96e913118d0105074988e356f",
+      "observed_at": "2026-10-23T01:38:11.892+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/migrations/上线迁移SOP.md",
+      "blob_sha": "8ccc7f3685b3b2513f2722a9bba169a9f03abb1c",
+      "observed_at": "2026-10-23T01:38:11.894+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/models/__init__.py",
+      "blob_sha": "b55a88d3070d1b9e060c054a727af425f579fa07",
+      "observed_at": "2026-10-23T01:38:11.895+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Api/requirements.txt",
+      "blob_sha": "aa39a33ce14b5d5ef06169ca50c53d2fb357872c",
+      "observed_at": "2026-10-23T01:38:11.901+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:OntiCards_Web/package.json",
+      "blob_sha": "9a83ad415a0442c7416e534d15a92e17165e2a61",
+      "observed_at": "2026-10-23T01:38:11.903+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:README.md",
+      "blob_sha": "058432a77076f7a8d369d9088fdafd622738f91f",
+      "observed_at": "2026-10-23T01:38:11.897+08:00",
+      "verified": true
+    },
+    {
+      "source_key": "c8e3dfee68d398a37842fc332f73af40a56f02a7:docker-compose.yaml",
+      "blob_sha": "d5b92e77e871710b45cea38609536f8c26e40dab",
+      "observed_at": "2026-10-23T01:38:11.898+08:00",
+      "verified": true
+    }
+  ],
+  "natural_event": {
+    "event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+    "source_hash": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+    "source_commit": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "source_requested_ref": "main",
+    "source_paths": [
+      "README.md",
+      "docker-compose.yaml",
+      "OntiCards_Api/app.py",
+      "OntiCards_Api/requirements.txt",
+      "OntiCards_Api/Dockerfile",
+      "OntiCards_Web/package.json"
+    ],
+    "quality_result": "needs_human_review; no GitHub reply was posted; this historical run predates relevance/empty-file source fixes"
+  },
+  "model_calls_by_this_probe": 0,
+  "repository_writes": 0,
+  "limits": [
+    "Live main was resolved to c8e; a later main change requires a new lookup, not reuse of this acceptance result.",
+    "Only selected bounded source excerpts are verified, not full-repository semantic understanding.",
+    "Source DataTable keys are immutable commit:path; observed_at is the latest read/upsert time, not proof of a separate network fetch per cached file.",
+    "Existing event workflow resolves main/PR head on eligible events; this probe does not add a new no-event polling scheduler.",
+    "The natural event proves source binding, not successful answer quality."
+  ]
+}

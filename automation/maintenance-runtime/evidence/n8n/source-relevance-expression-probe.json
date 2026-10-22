@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-22T17:44:54.731Z",
+  "kind": "actual native Set expressions with frozen inputs",
+  "assertions": {
+    "old_real_expression_omits_explicit_targets": true,
+    "explicit_targets_precede_optional_core": true,
+    "requested_excerpts_present": true,
+    "optional_core_truncation_allowed": true,
+    "brand_does_not_select_cards": true,
+    "pdf_topic_is_first": true,
+    "selected_file_and_excerpt_caps": true,
+    "unsupported_explicit_target_rejected": true,
+    "explicit_file_limit_rejected": true,
+    "explicit_excerpt_limit_rejected": true,
+    "verified_empty_file_remains_present": true,
+    "existing_pdf_method_excerpt_starts_at_actual_definition": true,
+    "pdf_helper_and_entry_in_same_bounded_excerpt": true
+  },
+  "passed": true,
+  "checks": 13,
+  "model_requests": 0,
+  "github_requests": 0,
+  "limitations": "This checks selection/projection, not live GitHub transport; independent native three-ref validation is separate."
+}

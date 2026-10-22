@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-22T13:04:11.067689+00:00",
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "patch_sha256": "750690b89497cd8e66ac52226cdece9d62dac64c5c5e6ad6328c04338fb643c0",
+  "applied_tree": "efa47fa828a5032ebcc6c67e7e3f75276ad34048",
+  "build_host": "kol-stage2",
+  "test_host": "10.66.66.5",
+  "build_completed_at": "2026-10-22T12:53:10Z",
+  "typescript_compile_passed": true,
+  "tests": [
+    {
+      "log": "policy6/auth-and-review-tests.log",
+      "tests": 109,
+      "pass": 109,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "total_tests_passed": 109,
+  "test_scope": "78 auth plus31 review affected suites; previous policy5 287 results retained separately, not added as this run tests.",
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+  "deployed": true,
+  "browser_auth_contract": {
+    "displayName": "stepll2026",
+    "role": "admin",
+    "verified_at": "2026-10-22T13:04:11.067689+00:00"
+  },
+  "live_review": "in progress; do not infer accepted output from transport success"
+}

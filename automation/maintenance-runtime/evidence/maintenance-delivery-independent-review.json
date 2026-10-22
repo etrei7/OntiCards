@@ -1,0 +1,65 @@
+{
+  "reviewed_at": "2026-10-22T19:45:39.290578+00:00",
+  "method": "independent read-only source review; packaging and publication not executed",
+  "files": [
+    {
+      "path": "deploy/maintenance-publication/stage-current-delivery.py",
+      "sha256": "630dc63c5ed368677400d0f4fb20bc473a2dc7190c552f0a061a94049e89c21e"
+    },
+    {
+      "path": "deploy/maintenance-publication/package-current-delivery.py",
+      "sha256": "adfadc161ef3cf5c153c1316518947626a61fae873e0551fe7f807a6f6338718"
+    },
+    {
+      "path": "deploy/maintenance-publication/export-git-data.py",
+      "sha256": "bcde363d8e8276671925fb511da0a56c33145168def7230a562987ef2485b5be"
+    }
+  ],
+  "blocking_findings": [],
+  "specific_suggestion": {
+    "finding": "Original wording claimed ZIP members equal manifest, but generated index/manifest/scan were absent from files and outer SAFETY was created later.",
+    "resolved_in_source": true,
+    "observed_fix": [
+      "generated_members and archive_members explicitly distinguish envelope members",
+      "ZipFile.namelist equality before publication",
+      "testzip CRC check",
+      "each reviewed member SHA256 checked from archive",
+      "inner_archive_members_verified recorded"
+    ],
+    "not_claimed": "No fresh package or Nginx publication was performed by this reviewer."
+  },
+  "verified_source_preconditions": [
+    "three explicit component allowlists + fixed repository document list",
+    "source hashes pinned and UTF-8-only text stage",
+    "published Git exact head blob equality",
+    "previous public artifact SHA256 equality",
+    "Gitleaks zero findings and no exclusions required",
+    "publication passed/main unchanged/token revoked/no force prerequisite"
+  ],
+  "model_calls": 0,
+  "github_writes": 0,
+  "previous_reviewed_at": "2026-10-22T19:20:53.517087+00:00",
+  "incremental_review": {
+    "scope": "Read-only one-line static discoverability delta: package index links the already fixed-listed post-commit evidence/mcp-review-activation.json receipt. No stage/package/publication execution.",
+    "findings": [],
+    "checks": [
+      "The added href is a fixed internal runtime path already included through add(); it accepts no input or new external URL and introduces no member or permission.",
+      "The underlying receipt remains subject to existing fixed add(), SHA256, secret-shape, Gitleaks and ZIP exact-member checks.",
+      "The link exposes the actual post-publication runtime receipt instead of treating source-commit dry_run documentation as the final activation status.",
+      "Previously reviewed stage fixed allowlists, exact Git source blobs, old public artifact hashes, archive CRC/member hashes and publication prerequisites are unchanged."
+    ],
+    "residual": "Final package must still validate the actual activation receipt, current allowlists and exact published commit. This independent source review does not claim activation, packaging or publication has run."
+  },
+  "review_history": [
+    {
+      "reviewed_at": "2026-10-22T18:50:22.704375+00:00",
+      "scope": "Read-only delta: six exact-listed publication/envelope scripts and existing review receipt added to stage; additional propr_mcp token-shape refusal in stage/package/export. No package or publication execution.",
+      "blocking_findings": []
+    },
+    {
+      "reviewed_at": "2026-10-22T19:20:53.517087+00:00",
+      "scope": "Read-only final delta: package adds fixed post-commit evidence/mcp-review-activation.json; stage includes its three input allowlist manifests. No execution of stage/package/GitHub/Nginx.",
+      "blocking_findings": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Policy6 review publication validity gate",
+  "modelCalls": 0,
+  "githubWrites": 0,
+  "productionFiles": [
+    "src/jobs/prReviewRunner.ts"
+  ],
+  "red": {
+    "exitCode": 1,
+    "tests": 4,
+    "passed": 2,
+    "failed": 2,
+    "fixture": "test/fixtures/pr26-invalid-review.json",
+    "responseSha256": "2899d141d365de7983d73167928ba8a88617c449eb4998526de332b53dd633c9"
+  },
+  "green": {
+    "exitCode": 0,
+    "tests": 31,
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "prReviewValidation.test.ts",
+      "prReviewRunnerBudget.test.ts",
+      "prCommentReviewFollowupScope.test.ts",
+      "reviewResultMetrics.test.ts",
+      "reviewCommentFormatter.test.ts"
+    ],
+    "durationMs": 7523.314012
+  },
+  "modelOutputImprovement": "Prepared native settings.pr_review_prompt supplement, preserving DEFAULT_REVIEW_GUIDANCE and mandatory schema. Not applied to production; no new model validation.",
+  "limitations": [
+    "No next paid review triggered.",
+    "Parser syntax acceptance does not establish semantic validity of model findings.",
+    "UI history/session projection investigation is separate."
+  ]
+}

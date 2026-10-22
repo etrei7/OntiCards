@@ -1,0 +1,75 @@
+{
+  "verified_at": "2026-10-22T18:30:47.339582+00:00",
+  "build_host": "kol-stage2",
+  "model_calls": 0,
+  "external_repository_writes": 0,
+  "production_deployed": false,
+  "groups": {
+    "policy11_regression": {
+      "tests": 467,
+      "pass": 467,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "900f6ad84d390a2a7aa4185f064a443a622c375dbd72c4b9a3643b65a70476fe",
+      "log_path": "/opt/onticards-build/evidence/policy12/regression-tests.log"
+    },
+    "index_queue_redis": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "1bd969566c3dbf1ce0444aa1e1727b687133f9e942abafc00e49636551439d4a",
+      "log_path": "/opt/onticards-build/evidence/policy12/redis-integration-tests.log"
+    },
+    "native_admission": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "efe72ffa6c83c88389fb2880c25126baca7072c2bd598c0e9fdf4735cf375521",
+      "log_path": "/opt/onticards-build/evidence/policy12/label-admission-tests.log"
+    },
+    "admission_related_regression": {
+      "tests": 192,
+      "pass": 192,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log_sha256": "19bef0cbbbf6b338d472d83a6d3cb9e7234d539e5860202e63dfeed187526973",
+      "log_path": "/opt/onticards-build/evidence/policy12/label-admission-regression-tests.log"
+    }
+  },
+  "red": {
+    "baseline": "policy11",
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "name": "parent failure before any child is durable and does not restart on a fresh poll",
+    "log_sha256": "6b67a73468a04905049552ae34223422114de3fe6fb376435109217623da6061",
+    "log_path": "/opt/onticards-build/evidence/policy12-admission/red.log"
+  },
+  "total_tests": 679,
+  "source": {
+    "verified_at": "2026-10-22T18:26:27.824896+00:00",
+    "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+    "tree": "b3dd9a914e431b15b41febbf97211d736e6428fd",
+    "patch_sha256": "6faa1328f318ceff10c018271222a5f3a7828c022f30417167246b9f111ca2a7",
+    "delta_sha256": "f88f80785914b0a0eae688c5634ced18e9a86f44d18616b55f344dfe6c7675ca",
+    "exact_delta_files": 4,
+    "status": "verified",
+    "worktree_wide_copy": false,
+    "private_archive_required": false
+  },
+  "repo_digests": [
+    "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa"
+  ],
+  "build_image_id": "sha256:5a27a5fc7058f852b52cf297179299c7ba37beac59ff206d7bcc84870f193265",
+  "build_started_at": "2026-10-22T18:26:34Z",
+  "build_completed_at": "2026-10-22T18:29:23Z",
+  "build_tests_sha256": "9cb561c5f9c353b53946bdd0018488592d8bd456987f541ed9f1bfdc74eac427",
+  "build_production_sha256": "8d04f273989badc936fbe19491d1553a6e0dd2e649472ff21e4698b11fd2d60f",
+  "push_sha256": "498094fe0002f4f624b3c6415683471d6dd9e96d1c4ee923b476e2478f3a13af"
+}

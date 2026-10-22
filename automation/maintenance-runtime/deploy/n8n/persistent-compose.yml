@@ -1,0 +1,46 @@
+name: onticards-maintenance-triage
+services:
+  triage:
+    image: registry-intl.cn-hongkong.aliyuncs.com/shallopcr/n8n@sha256:b5b32a81eba912458faf4638b54641d249c959567519a2030a803711d7639663
+    pull_policy: never
+    container_name: onticards-maintenance-triage
+    restart: unless-stopped
+    network_mode: host
+    user: "1000:1000"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    cpus: 1.0
+    volumes:
+      - ./state:/home/node/.n8n
+    env_file: ./secrets/runtime.env
+    environment:
+      N8N_PORT: "18128"
+      N8N_LISTEN_ADDRESS: "127.0.0.1"
+      N8N_EDITOR_BASE_URL: "http://127.0.0.1:18128"
+      N8N_SECURE_COOKIE: "false"
+      N8N_CONCURRENCY_PRODUCTION_LIMIT: "1"
+      N8N_RUNNERS_BROKER_PORT: "18129"
+      N8N_RUNNERS_BROKER_LISTEN_ADDRESS: "127.0.0.1"
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+      N8N_TEMPLATES_ENABLED: "false"
+      N8N_PERSONALIZATION_ENABLED: "false"
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: "true"
+      N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES: "true"
+      EXECUTIONS_DATA_SAVE_ON_SUCCESS: none
+      EXECUTIONS_DATA_SAVE_ON_ERROR: none
+      EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS: "false"
+      EXECUTIONS_DATA_SAVE_ON_PROGRESS: "false"
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: "720"
+      HTTP_PROXY: "http://127.0.0.1:17891"
+      HTTPS_PROXY: "http://127.0.0.1:17891"
+      NO_PROXY: "127.0.0.1,localhost"
+      GENERIC_TIMEZONE: Asia/Shanghai
+      TZ: Asia/Shanghai
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

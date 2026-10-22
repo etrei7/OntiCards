@@ -1,0 +1,15 @@
+{
+  "classification": "咨询",
+  "summary": "我是OntiCards维护者授权的AI咨询分类助手，仅生成待人类审阅草稿。以下依据当前受信源码逐项回答本次咨询：\n\n1. **`_export_to_pdf` 是否存在**：当前 main（commit c8e3dfee68d598a37842fc332f73af40a56f02a7）的 `libreoffice_exporter.py` 中不存在名为 `_export_to_pdf` 的方法；实际导出 PDF 的入口是 `_export_pdf`，它直接调用 `_build_and_convert_html(..., 'pdf', ...)` [repo_OntiCards_Api_controllers_governance_libreoffice_exporter_py]。\n\n2. **是否有纯 Python 的 PDF 备用路径**：没有。当 `target_fmt == 'pdf'` 时，Tier 1（soffice）失败或未找到后，代码直接进入 `raise RuntimeError(\"PDF 导出失败（soffice 不可用），当前版本暂不支持 PDF 格式。\")`，没有任何 weasyprint 或其他纯 Python 降级实现；尽管 `_export_pdf` 的 docstring 写着“weasyprint 降级”，但方法体并未实现该逻辑 [repo_OntiCards_Api_controllers_governance_libreoffice_exporter_py]。作为对比，`docx` 有 `python-docx` 降级，`xlsx` 有 `openpyxl` 降级 [repo_OntiCards_Api_controllers_governance_libreoffice_exporter_py]。\n\n3. **“soffice 不可用”能否单独证明程序未安装**：不能。源码中 soffice 未找到（`_get_local_soffice_path()` 返回空）与 soffice 转换抛异常（`except Exception as e`）最终都会落入同一个兜底报错文本“PDF 导出失败（soffice 不可用）” [repo_OntiCards_Api_controllers_governance_libreoffice_exporter_py]。因此历史统一报错无法区分“未找到程序”与“转换子进程失败”。\n\n4. **候选 3105 的区别**：候选 commit 3105b7b61469c6b2945357f2eefa8fcb2e3aaee5 重写了 `_export_pdf`，改为先用 `_build_docx_with_python` 生成 DOCX，再调用 `_convert_via_local_soffice` 转 PDF，并在前置检查 `_check_soffice_available()` 失败时抛出不同文案“PDF 导出需要 LibreOffice Writer，请安装 libreoffice-writer。” [candidate_pdf_path]。但这属于 PR #26 的候选变更，不是当前 main 的行为，也不代表历史镜像已包含该修复 [candidate_verification_scope]。\n\n5. **尚未核实项**：因未提供当前运行容器的观测材料，历史镜像 `sha256:17fb7286f7459988bd6975b62fefa2a7217144df647c60b90a5271e689a3e065` 内 soffice 的实际可用性、转换子进程的退出码及具体错误原因均尚未核实。",
+  "next_step": "若要继续区分“未找到 soffice”与“soffice 转换失败”，最少还需一项脱敏观测：在对应运行容器内执行 `command -v soffice` 的结果（或等效的 soffice 子进程退出码/脱敏 stderr 摘要）。不重复索取部署方式、历史镜像标识或通用错误文案。",
+  "missing_evidence": [
+    "source_version"
+  ],
+  "source_ids": [
+    "repo_OntiCards_Api_controllers_governance_libreoffice_exporter_py",
+    "baseline_pdf_path",
+    "candidate_pdf_path",
+    "candidate_verification_scope"
+  ],
+  "observed_fields": []
+}

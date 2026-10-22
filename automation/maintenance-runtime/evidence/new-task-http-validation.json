@@ -1,0 +1,75 @@
+{
+  "recorded_at": "2026-10-22T13:36:49.829175+00:00",
+  "scope": "UI-only HTTP UUID compatibility; no deployment, real task, model or GitHub mutation",
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:policy6-http-ui",
+  "registry_digest": "sha256:758a1db30bcaafd4901b0ea8f68f4705001e85628f1fd840b2432b8f2356eb72",
+  "buildhost_image_id": "sha256:a4441bd11b4a4bd383857e77c76b65598f4a5bf2384feb825d7dfc998779855a",
+  "build_machine": "kol-stage2",
+  "dockerfile": "propr-ui/Dockerfile (unchanged)",
+  "dependency": {
+    "name": "uuid",
+    "version": "14.0.1",
+    "license": "MIT",
+    "already_root_locked": true,
+    "ui_declared_direct": true
+  },
+  "patch_sha256": "6e578fcc8ab923ecc53b463cdabe63fe96436cdf50a957a8002e1cbeed4ec236",
+  "source_sha256": {
+    "propr-ui/src/pages/NewTaskPage.tsx": "856db2769119a691f74b5a50dd3e6b64465d87e49850d3d9daee63c5a57dbbe6",
+    "propr-ui/src/pages/NewTaskPage.test.tsx": "c856bf6f121b0e2cfbacc7776d627073c77d83b27f341d8aae02645b0f5bfff3",
+    "propr-ui/package.json": "2659d5453cb3b30c329cfa159afa456d41ece5134e7d4e0b0f9b290327e72f1d",
+    "package-lock.json": "e566d992e7f766e277af02197bb68967b97e6b10b4d9baf6bcc040c7a2939e7f"
+  },
+  "verification": {
+    "unit_old_implementation": {
+      "passed": 20,
+      "failed": 2,
+      "unhandled_errors": 2
+    },
+    "unit_fixed": {
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "runner": "Playwright 1.64.1; isolated Microsoft Edge profile",
+      "origin": "http://onticards-http.test:18417",
+      "isSecureContext": false,
+      "crypto_randomUUID": "undefined",
+      "crypto_getRandomValues": "function",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "api": "existing upstream fixture plus exact retry stub; no real backend",
+      "native_idempotency_storage": "real browser IndexedDB and sessionStorage",
+      "cases": [
+        "one creation POST with valid strong UUID v4, native retry path keeps same key",
+        "random source failure produces visible error, no submission request, form restored and deliberate retry succeeds"
+      ]
+    },
+    "typecheck": {
+      "passed": false,
+      "reason": "UI Docker builder omits desktop source/electron required by repository-wide UI tsc; baseline and fixed diagnostics byte-identical (78 lines)",
+      "new_diagnostics": 0
+    },
+    "build": {
+      "passed": true,
+      "app_image_changed": false
+    },
+    "independent_review": "env_inventory: no new blocker in current/snapshot/finally/unknown POST semantics"
+  },
+  "evidence": [
+    "new-task-http-unit-red.log",
+    "new-task-http-unit-green.log",
+    "new-task-http-browser.json",
+    "new-task-http-success.png",
+    "new-task-http-exception-recovery.png",
+    "new-task-http-typecheck.log"
+  ],
+  "harness_notes": [
+    "First browser run: native fallback and failure recovery worked; original upstream fixture assumed retry POST carried FormData. Narrow retry stub added; production image unchanged.",
+    "A test-only import.meta/CommonJS mismatch was corrected to __dirname before final run."
+  ],
+  "deployed": false
+}

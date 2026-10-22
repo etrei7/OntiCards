@@ -1,0 +1,152 @@
+{
+  "id": "onticardsBoundedGetV1",
+  "name": "OntiCards bounded single-repository GET",
+  "active": false,
+  "nodes": [
+    {
+      "id": "598957d4-aab3-58fb-8b3a-87ed81e08f50",
+      "name": "Native single GET input",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "a811c358-063e-5908-ae42-02487c7b6fb3",
+      "name": "Validate bounded fixed repository GET",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        190,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const u=String($json.url),deadline=Number($json.deadline);if(!u.startsWith(\"https://api.github.com/repos/stepll2026/OntiCards/\")||u.includes(\"#\"))throw new Error(\"GET outside fixed repository\");if(!Number.isFinite(deadline)||Date.now()>=deadline||deadline>Date.now()+240000)throw new Error(\"GET poll deadline expired\");return {url:u,deadline,token:$json.token};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "325591a1-62e2-5862-9aed-b0f5600c683d",
+      "name": "One native GET attempt",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        380,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            }
+          ]
+        },
+        "options": {
+          "proxy": "http://127.0.0.1:17891",
+          "timeout": "={{ Math.max(1,Math.min(20000,$json.deadline-Date.now())) }}",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ (()=>{const u=($response.headers.link||'').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1]||'';if(u&&!u.startsWith('https://api.github.com/repos/stepll2026/OntiCards/'))throw new Error('Pagination left fixed repository');return u;})() }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link||\"\").includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 50,
+              "requestInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "stopWorkflow"
+    },
+    {
+      "id": "e8331c74-739a-5a47-a500-9ba9f4640f78",
+      "name": "Require complete array pages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        570,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const pages=$input.all().map(i=>i.json);if(!pages.length||pages.some(p=>p.statusCode!==200||!Array.isArray(p.body))||String(pages.at(-1).headers?.link||\"\").includes('rel=\"next\"'))throw new Error(\"GET response incomplete or non-array\");return {pages,complete:true};})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    }
+  ],
+  "connections": {
+    "Native single GET input": {
+      "main": [
+        [
+          {
+            "node": "Validate bounded fixed repository GET",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate bounded fixed repository GET": {
+      "main": [
+        [
+          {
+            "node": "One native GET attempt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One native GET attempt": {
+      "main": [
+        [
+          {
+            "node": "Require complete array pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 35
+  },
+  "pinData": {},
+  "tags": []
+}

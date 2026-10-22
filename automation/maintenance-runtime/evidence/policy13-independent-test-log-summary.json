@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-22T19:35:37.032117+00:00",
+  "source": "existing kol-stage2 actual native test logs; independently read safe hash/count projection only",
+  "logs": [
+    {
+      "path": "/opt/onticards-build/evidence/policy13/readonly-red.log",
+      "sha256": "a86cc886e15ce00fd984f1611d1c550474a79afc52f3e15d9a1ac7818e8d9652",
+      "bytes": 6769,
+      "tap_counts": {
+        "tests": 7,
+        "suites": 0,
+        "pass": 4,
+        "fail": 3,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    },
+    {
+      "path": "/opt/onticards-build/evidence/policy13/readonly-green-final.log",
+      "sha256": "bda42a0dba852b37a92c47ab7d6a8beda138e8c3501c70caf28dd8a6506a2548",
+      "bytes": 3367,
+      "tap_counts": {
+        "tests": 15,
+        "suites": 0,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    },
+    {
+      "path": "/opt/onticards-build/evidence/policy13/revision-red.log",
+      "sha256": "f54786484abd7b16d5eaadde46433cdc34d9f87bee34d29b34b083b59ecd4c98",
+      "bytes": 6946,
+      "tap_counts": {
+        "tests": 14,
+        "suites": 2,
+        "pass": 8,
+        "fail": 6,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    },
+    {
+      "path": "/opt/onticards-build/evidence/policy13/revision-green.log",
+      "sha256": "9a79c3bb0c17b2f85c74e8e131408a65c6cafa909de849d512e53b7fe61b7d82",
+      "bytes": 4651,
+      "tap_counts": {
+        "tests": 16,
+        "suites": 3,
+        "pass": 16,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    },
+    {
+      "path": "/opt/onticards-build/evidence/policy13/stale-task-projection.log",
+      "sha256": "7bc9eb7a252b3ba94d28c0543396549897ff188cb0d6d930a6265414974fc26f",
+      "bytes": 1275,
+      "tap_counts": {
+        "tests": 4,
+        "suites": 0,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    },
+    {
+      "path": "/opt/onticards-build/evidence/policy13/readonly-native-command-final.log",
+      "sha256": "ef56e2f507c8b0acffe372007104760ffbba6033f43f6f1f85f216c26d0fdc66",
+      "bytes": 4462,
+      "tap_counts": {
+        "tests": 20,
+        "suites": 0,
+        "pass": 20,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "complete_summary": true
+    }
+  ],
+  "new_tests_executed_by_reviewer": 0,
+  "models_called": 0,
+  "github_writes": 0
+}

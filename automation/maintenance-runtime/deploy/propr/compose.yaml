@@ -1,0 +1,94 @@
+name: onticards-propr
+
+x-app: &app
+  image: registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy13@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879
+  pull_policy: never
+  environment:
+    ONTICARDS_DAILY_DEFINITION_ID: e6a4ce1d-0068-4c3a-832c-ff911c791a1c
+  restart: unless-stopped
+  network_mode: host
+  env_file:
+    - path: runtime.env
+    - path: github.env
+      required: false
+  volumes:
+    - ./gitconfig:/etc/gitconfig:ro
+    - ./data:/usr/src/app/data
+    - ./logs:/usr/src/app/logs
+    - ./secrets:/run/propr-secrets:ro
+    - /opt/onticards-maintenance/propr/git:/opt/onticards-maintenance/propr/git
+    - /opt/onticards-maintenance/propr/opencode:/opt/onticards-maintenance/propr/opencode
+    - /opt/onticards-maintenance/propr/egress:/opt/onticards-maintenance/propr/egress
+  logging:
+    driver: json-file
+    options: {max-size: 10m, max-file: "3"}
+
+services:
+  redis:
+    image: redis:7-alpine@sha256:e7723ff73d963f5cc6d9c4643ea3d989527a402a319239054e9472a7fb9219a2
+    restart: unless-stopped
+    network_mode: host
+    command: [redis-server, --bind, "127.0.0.1", --port, "18124", --appendonly, "yes"]
+    volumes: [redis_state:/data]
+  api:
+    <<: *app
+    container_name: onticards-propr-api
+    env_file:
+      - path: runtime.env
+      - path: github.env
+        required: false
+      - path: oauth.env
+        required: false
+      - path: mcp.env
+        required: false
+    command: [node, --use-env-proxy, dist/packages/api/server.js]
+    volumes:
+      - ./gitconfig:/etc/gitconfig:ro
+      - ./data:/usr/src/app/data
+      - /opt/onticards-maintenance/propr/git:/opt/onticards-maintenance/propr/git
+      - ./logs:/usr/src/app/logs
+      - ./secrets:/run/propr-secrets:ro
+      - ./review-service:/run/propr-review:ro
+      - /srv/apps/voicebox/certs/voicebox-ca.crt:/run/propr-tls/ca.crt:ro
+      - /opt/onticards-maintenance/propr/opencode:/opt/onticards-maintenance/propr/opencode:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+  daemon:
+    <<: *app
+    container_name: onticards-propr-daemon
+    command: [node, --use-env-proxy, dist/src/daemon.js]
+  worker:
+    <<: *app
+    container_name: onticards-propr-worker
+    command: [node, --use-env-proxy, dist/src/worker.js]
+    volumes:
+      - ./gitconfig:/etc/gitconfig:ro
+      - ./data:/usr/src/app/data
+      - ./logs:/usr/src/app/logs
+      - ./secrets:/run/propr-secrets:ro
+      - /opt/onticards-maintenance/propr/git:/opt/onticards-maintenance/propr/git
+      - /opt/onticards-maintenance/propr/opencode:/opt/onticards-maintenance/propr/opencode
+      - /opt/onticards-maintenance/propr/egress:/opt/onticards-maintenance/propr/egress
+      - /var/run/docker.sock:/var/run/docker.sock
+  ui:
+    image: registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:policy6-http-ui@sha256:758a1db30bcaafd4901b0ea8f68f4705001e85628f1fd840b2432b8f2356eb72
+    pull_policy: never
+    container_name: onticards-propr-ui
+    restart: unless-stopped
+    network_mode: host
+    command: [serve, -s, dist, -l, "tcp://127.0.0.1:18125", -c, ../serve.json]
+    environment:
+      PROPR_UI_PUBLIC_API_URL: ""
+  web:
+    image: nginx:1.27-alpine@sha256:91fc9c3924b93f76adc9cd36a0bb93e53885ff8e97df10233caa45bb432789a5
+    pull_policy: never
+    container_name: onticards-propr-web
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./mcp-tls.conf:/etc/nginx/conf.d/onticards-mcp.conf:ro
+      - /srv/apps/voicebox/certs/voicebox-server.crt:/run/propr-tls/server.crt:ro
+      - /srv/apps/voicebox/certs/voicebox-server.key:/run/propr-tls/server.key:ro
+      - /var/lib/onticards-report/reports:/usr/share/nginx/onticards-reports:ro
+volumes:
+  redis_state:

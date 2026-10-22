@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-22T17:57:14.498069+00:00",
+  "read_only": true,
+  "models_invoked": 0,
+  "table": "data_table_user_LoiXQoIL8iOeMShx",
+  "event": {
+    "event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+    "thread_key": "stepll2026/OntiCards#29",
+    "status": "awaiting_semantic_review",
+    "source_hash": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+    "observed_at": "2026-10-23T01:56:36.023+08:00",
+    "computed_source_hash": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+    "source_hash_matches": true,
+    "source": {
+      "requested_ref": "main",
+      "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "tree_sha": "99f6c09c69ae8553c62fe223d3eaf6ed650e1955",
+      "complete": true,
+      "token_revoked": true
+    },
+    "returned_paths": [
+      "README.md",
+      "docker-compose.yaml",
+      "OntiCards_Api/app.py",
+      "OntiCards_Api/requirements.txt",
+      "OntiCards_Api/Dockerfile",
+      "OntiCards_Web/package.json"
+    ]
+  },
+  "discovery_note": "Exact existing table read independently after prior broad inspector returned no rows; no absence claim inferred from that bounded query."
+}

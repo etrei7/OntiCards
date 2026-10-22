@@ -1,0 +1,61 @@
+{
+  "started_at": "2026-10-22T17:32:57.328459+00:00",
+  "fixture": true,
+  "product_tests_passed": false,
+  "check_id": 119966580036,
+  "initial_conclusion": "neutral",
+  "synthetic_base": "0000000000000000000000000000000000000000",
+  "native": {
+    "registration_key": "pr26:check119966580036",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "0000000000000000000000000000000000000000",
+    "check_id": "119966580036",
+    "check_name": "OntiCards invalidation acceptance fixture (not tests)",
+    "external_id": "synthetic-base-invalidation-pr26-v1",
+    "state": "invalidated",
+    "detail": "{\"checked_at\":\"2026-10-22T17:28:55.854Z\",\"revision\":{\"current\":false,\"observed_head\":\"3105b7b61469c6b2945357f2eefa8fcb2e3aaee5\",\"observed_base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"reason\":\"stale_or_remote_unverifiable\",\"checked_at\":\"2026-10-22T17:28:40.262Z\"},\"bound\":true,\"observed_conclusion\":\"neutral\",\"update_result\":\"action_required_verified\",\"update_http_status\":200,\"update_error_category\":null,\"update_error_fields\":[],\"readback_http_status\":200,\"token_revoked\":true,\"checks_write_only_in_this_action\":true,\"model_calls\":0,\"test_runs\":0}",
+    "id": 2,
+    "createdAt": "2026-10-22T17:04:56.134Z",
+    "updatedAt": "2026-10-22T17:28:55.942Z"
+  },
+  "ref_writes": 0,
+  "model_calls": 0,
+  "tokens": [
+    {
+      "permissions": {
+        "checks": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    },
+    {
+      "permissions": {
+        "pull_requests": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    }
+  ],
+  "independent_readback": {
+    "id": 119966580036,
+    "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "name": "OntiCards invalidation acceptance fixture (not tests)",
+    "external_id": "synthetic-base-invalidation-pr26-v1",
+    "conclusion": "action_required",
+    "status": "completed",
+    "html_url": "https://github.com/stepll2026/OntiCards/runs/119966580036"
+  },
+  "after": {
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "draft": true
+  },
+  "before": {
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "draft": true
+  },
+  "passed": true,
+  "completed_at": "2026-10-22T17:33:10.093862+00:00"
+}

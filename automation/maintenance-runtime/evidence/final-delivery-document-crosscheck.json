@@ -1,0 +1,174 @@
+{
+  "reviewed_at": "2026-10-22T19:53:24.195155+00:00",
+  "status": "passed_no_blocking_document_or_deployment_path_discrepancy_at_source_freeze",
+  "scope": "Independent read-only crosscheck of final source documents, exact evidence, deployment input mapping and selected dependencies. No source edits, installation, model call or publication.",
+  "files": [
+    {
+      "path": "reuse-matrix.md",
+      "sha256": "30aba5e3047d44216ebd5cc1581a708ed0a9339c2b3b155c4a70d68542636535"
+    },
+    {
+      "path": "research/reuse-matrix.md",
+      "sha256": "30aba5e3047d44216ebd5cc1581a708ed0a9339c2b3b155c4a70d68542636535"
+    },
+    {
+      "path": "research/acceptance-gap-audit.md",
+      "sha256": "80e9a4c793dbdb53ed099d7f17f8a8c5582d3bac6c57c696259be41a8b733de5"
+    },
+    {
+      "path": "repo/docs/maintenance/reuse-matrix.md",
+      "sha256": "30aba5e3047d44216ebd5cc1581a708ed0a9339c2b3b155c4a70d68542636535"
+    },
+    {
+      "path": "repo/docs/maintenance/acceptance-gap-audit.md",
+      "sha256": "80e9a4c793dbdb53ed099d7f17f8a8c5582d3bac6c57c696259be41a8b733de5"
+    },
+    {
+      "path": "repo/docs/maintenance/github-app.md",
+      "sha256": "9778e8ae2a90bb0cabb861dcfb9b7461d98d871d8495106c1f8a44675c7fe9ed"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "d430519a2311fa0ce1fcb4a45f230dc71b02ab093f51c5b7f5238f7739e15867"
+    },
+    {
+      "path": "deploy/testing-report.md",
+      "sha256": "e2d5775a0f768f6af43c671831c05c682b66631057153bc6379b41e07fb86ccc"
+    },
+    {
+      "path": "deploy/propr/DEPLOY-CURRENT.md",
+      "sha256": "2ace1cceda864e923e5feacc216ef9e70dc4c120702177ca0f85fba76b1ea42e"
+    },
+    {
+      "path": "deploy/propr/RUNBOOK.md",
+      "sha256": "d1ab8088515b133a261f61aec31bf7b1a9745669bcfc8895935a0753db6e9c88"
+    },
+    {
+      "path": "deploy/propr/manifest.json",
+      "sha256": "69f2ffd19141f1af1d81acf46bf847b060b1527bc3215e896345329338bc7cc2"
+    },
+    {
+      "path": "research/component-versions.json",
+      "sha256": "23f705f3b99117e73a4fab56b766372c9301de9a491f4f4846b3253c525e67a3"
+    },
+    {
+      "path": "deploy/n8n/RUNBOOK-current.md",
+      "sha256": "6fafbffa2a1aa93da4716bf62ff3446eea40ead64931c83e8e56a467ffd83e48"
+    },
+    {
+      "path": "deploy/n8n-preview-ci/README.md",
+      "sha256": "e9efa7b5c91d0817c737ac4facd605699fab0656d6e73970467536015330c7ed"
+    },
+    {
+      "path": "research/final-delivery-reuse.md",
+      "sha256": "47839395d1be42fe88fd33171a93a8bab376e5a67e14dfe38e4609536dfc69a2"
+    }
+  ],
+  "evidence_basis": [
+    {
+      "path": "evidence/propr-policy13-validation.json",
+      "sha256": "dee1da873244e322802fce9f40f5e62772f97d6af32fae705ec4015ea0685768"
+    },
+    {
+      "path": "evidence/propr-policy13-deployment.json",
+      "sha256": "517e37c46f24a9ae98b85f3148775e40761af7a0829c11c2211d8d0dc8587d84"
+    },
+    {
+      "path": "evidence/policy13-independent-review.json",
+      "sha256": "d620d5f39d87e82da00c88c1cf0d8650c378de20439604bfa898b5d96a1c2ce1"
+    },
+    {
+      "path": "evidence/mcp-review-current-runtime.json",
+      "sha256": "0fb67bdf73db70e527cb3ec204d45a099953bf6644d150cdfeb0f27840abb6a8"
+    },
+    {
+      "path": "evidence/mcp-review-policy13-service-probe.json",
+      "sha256": "5f7ffa8bbba17532477b3749b690d2d88cd5f76f8d3f3020cb71a088f72c61d1"
+    },
+    {
+      "path": "evidence/rootless-runtime/batch-budget-natural-poll.json",
+      "sha256": "d947e106855bd35433978cb16ad6a6fedc56830711c3b3cc582dc9c7585c016a"
+    },
+    {
+      "path": "evidence/ac11-prequeue-stop-native.json",
+      "sha256": "078919481f811d1e2ac392b26904d4da0194bba137f0dfba929a9e8efc969c21"
+    },
+    {
+      "path": "evidence/n8n/issue29-final-recovery-sealed.json",
+      "sha256": "bd12cce168287d8d2cbaa20e7ecc45b125fcec4ddc86144382715ef8a9dcf2d2"
+    },
+    {
+      "path": "evidence/knowledge-main-refresh-independent.json",
+      "sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41"
+    },
+    {
+      "path": "evidence/knowledge-pdf-source-independent.json",
+      "sha256": "270adeb49f7a1d79c51ed42124c0078483d014ceb3c3c67b6e3b99bb797d549a"
+    }
+  ],
+  "blocking_findings": [],
+  "checked_conclusions": [
+    "Current ProPR source/manifest/runbooks/matrices/audit/testing report bind policy13, final tree0af2178, patch91c2 and immutable digest3bef with964 passing test executions. Historical policy11 indexing and policy12 initial-admission provenance are retained as history, not current image claims.",
+    "Natural CI03:11 is connected: one receiver/six PR children; old success/manual/insufficient-budget states persist. The original429 unknown evidence and one approved reconciliation are retained; no claim that new PR model tests ran.",
+    "Issue29 final5model calls/2existing replies and29/31manual handoff are explicit. Earlier pending recovery/source-gate records are timestamped history with a final sealed state; model quality is not inferred from switches or fixtures.",
+    "Native initial Task admission fix is described as implemented; pending no-job Stop25, native Git preparation cancellation and continuation49+semantic-negative1 are distinguished from host reboot/all-task recovery.",
+    "Knowledge69 and relevant PDF source7 are validated; semantic index remains partial/stopped. SQL three rejected attempts and unfixed R18 are retained.",
+    "MCP policy13 service probe12 is read-only and0model. Source-commit state is dry_run/disabled pending finalPR30 baseline; post-commit activation receipt is a separate downloadable runtime member, not a source-commit claim.",
+    "Future09:00/09:05 scheduling,30-day continuous retention, external fork/semantic conflict/full recovery and fresh installation are not represented as completed acceptance."
+  ],
+  "mapping": {
+    "repo_prefix": "Remove repo/ and map to repository root.",
+    "other_sources": "Preserve relative path below automation/maintenance-runtime/{deploy,research,evidence}.",
+    "build_inputs": [
+      {
+        "source": "deploy/propr-maintenance-policy13.patch",
+        "build_host_target": "/opt/onticards-build/propr-policy13.patch"
+      },
+      {
+        "source": "evidence/propr-policy13-patch-validation.json",
+        "build_host_target": "/opt/onticards-build/propr-policy13-patch-validation.json"
+      },
+      {
+        "source": "deploy/Dockerfile.propr-policy-tests",
+        "build_host_target": "/opt/onticards-build/Dockerfile.propr-policy-tests"
+      }
+    ],
+    "reconstruction": "Fixed upstream Git objects in buildroot/propr-src; native temporary index reconstructs a new absent propr-policy13-src and verifies exacttree. No stacking full policy patches or private tar dependency.",
+    "documented_dependencies_checked": 20,
+    "all_present_and_selected": true,
+    "list_paths": [
+      "evidence/propr-knowledge-collector-allowlist.json",
+      "evidence/preview-ci-source-allowlist.json",
+      "deploy/n8n/PR30_ALLOWLIST.json"
+    ],
+    "deployment_sequence": "Build onlykol; testhost pulls immutable image/no-build, preserves secret/DB/queue. MCP service TLS/SSH setup precedes native child wiring; finalPR30 complete snapshot baseline precedes enabled state; failure stays disabled."
+  },
+  "mirror_checks": {
+    "three_reuse_matrix_copies_equal": true,
+    "two_acceptance_audit_copies_equal": true
+  },
+  "independent_runtime_read": {
+    "at": "2026-10-22T19:50:48.066212+00:00",
+    "api_worker_daemon": "all running exact policy13 digest3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+    "http_at": "2026-10-22T19:51:03.322420+00:00",
+    "api_health_url": "http://127.0.0.1:18122/health",
+    "api_health_status": 200,
+    "ui_url": "http://10.66.66.5:18123/",
+    "ui_status": 200,
+    "initial_probe_correction": "Initial assumed /api/health was401 and loopback UI was unbound; checked existing routing and used actual /health and configured10.66.66.5 UI. No service changes."
+  },
+  "limitations": [
+    "This freezes document/evidence consistency, not full requirement completion.",
+    "Final source commit, activation, ZIP scans and static portal publication remain root-owned later operations.",
+    "No fresh installation, host reboot, broad suite rerun or paid model acceptance was performed by this reviewer."
+  ],
+  "model_calls": 0,
+  "github_writes": 0,
+  "production_mutations": 0,
+  "document_edits": 0,
+  "final_incremental_checks": [
+    "Final SSH wrapper fallback count6 is consistent in testing report, matrices, audit and CI README.",
+    "RUNBOOK license paragraph distinguishes n8n Sustainable Use and Redis7.4 RSALv2/SSPLv1 rather than calling every reused runtime OSI open source.",
+    "Current docs retain policy12 first-admission and policy11 indexing as inherited historical provenance, while all current image/manifest paths point to policy13."
+  ]
+}

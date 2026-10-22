@@ -1,0 +1,14 @@
+{
+  "queued_body_differs_live": true,
+  "native_helper_replaced_validated_body": true,
+  "validated_body_comparison_would_accept": true,
+  "original_queued_body_comparison_would_reject": true,
+  "queue_object_preserved": true,
+  "native_helper_path": "dist/src/jobs/prCommentJobHelpers.js",
+  "at": "2026-10-22T19:32:20.329201+00:00",
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "network": "none",
+  "model_calls": 0,
+  "github_requests": 0,
+  "credentials_mounted": false
+}

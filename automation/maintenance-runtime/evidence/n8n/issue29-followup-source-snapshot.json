@@ -1,0 +1,135 @@
+{
+  "repository": "stepll2026/OntiCards",
+  "number": 29,
+  "kind": "issue_comment",
+  "id": 5978440670,
+  "title": "[AI维护系统验收 AC04] PDF 导出咨询与补充资料续办",
+  "body": "这是 Codex 代表维护者提交的明确测试材料，用于验证普通咨询、只追问必要缺失信息，以及人类补充后在同一 Issue 继续处理。以下引用已保留的历史失败，不宣称当前预览站点再次故障；本 Issue 不授权重新实现导出、触发修复 Agent、构建部署、合并或关闭 Issue。\n\n历史合成数据测试中，调用治理报告 PDF 导出，收到：\n\n```json\n{\"code\":500,\"msg\":\"文档生成失败: PDF 导出失败（soffice 不可用），当前版本暂不支持 PDF 格式。\",\"data\":null}\n```\n\n请依据本仓库的现有实现，解释这条错误需要核实哪个已有转换能力和运行依赖，并给出最少的只读检查方法。部署方式和当时实际 API 镜像标识尚未在本测试材料中给出；若需要它们，请明确询问，已有仓库、错误信息和下列源码版本不要重复索取。不要要求密钥、完整环境变量或未脱敏日志。\n\n源码核对范围固定为：\n\n- 当前基线 `c8e3dfee68d398a37842fc332f73af40a56f02a7`。\n- 既有 PDF 候选 `3105b7b61469c6b2945357f2eefa8fcb2e3aaee5`，关联 Draft PR #26。\n- 重点查看 `OntiCards_Api/Dockerfile` 与 `OntiCards_Api/controllers/governance/libreoffice_exporter.py`。候选与基线必须分开，不能因为候选已有验证就声称历史镜像包含修复。\n\nAI 回复应标注身份、引用对应版本源码并保留待核实状态。后续由人类账号在本 Issue 补充实际历史部署材料；请据此继续，不重复询问已给信息、不创建第二个同目的 Issue。最终合并由维护者操作。",
+  "updated_at": "2026-10-22T11:54:11Z",
+  "author": "stepll2026",
+  "author_type": "User",
+  "comments": [
+    {
+      "id": 6339994362,
+      "updated_at": "2026-10-22T11:48:36Z",
+      "author": "onticards-maintainer-stepll2026[bot]",
+      "author_id": 346235449,
+      "author_type": "Bot",
+      "body": "【AI辅助｜维护验收咨询】\n\n基线 [c8e] 的 PDF 导出依赖本地 soffice 将 HTML 转为 PDF，但 Dockerfile 未安装 libreoffice-writer；候选 [3105] 已改为先用 python-docx 生成 DOCX 再转 PDF 并在 Dockerfile 中补充了该依赖。历史镜像是否包含这些修复未知，需人类补充部署方式和实际 API 镜像标识后才能继续核实。\n\n下一步：请在本 Issue 补充当时的部署方式（如容器、裸机等）以及实际运行的 API 镜像名称或不可变 ID，以便使用只读检查确认运行环境中的 soffice 状态。\n\n最少只读检查（确认部署方式后，在对应API运行环境内查询，不在本流程执行）：`command -v soffice`；`soffice --version`。\n\n版本来源：[baseline_pdf_path](https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L884)、[baseline_dependency](https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/Dockerfile#L38)、[candidate_pdf_path](https://github.com/stepll2026/OntiCards/blob/3105b7b61469c6b2945357f2eefa8fcb2e3aaee5/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L991)、[candidate_dependency](https://github.com/stepll2026/OntiCards/blob/3105b7b61469c6b2945357f2eefa8fcb2e3aaee5/OntiCards_Api/Dockerfile#L61)。\n\n本条为受控测试咨询，不启动修复、构建或部署，不合并或关闭Issue。最终合并由维护者操作。\n<!-- onticards-triage:issue29-one-model-v1 -->"
+    },
+    {
+      "id": 6340096900,
+      "updated_at": "2026-10-22T11:54:11Z",
+      "author": "stepll2026",
+      "author_id": 318866723,
+      "author_type": "User",
+      "body": "Codex 代表维护者补充本次 AC04 验收所用的真实历史材料。此条是人类侧测试输入，不是 AI 对自身评论的续答：\n\n- 部署方式：Docker Compose，独立合成测试项目 `onticards-maintenance-preview`。\n- 失败时 API 镜像：`onticards-maintenance-api:baseline-8abe9e20`；image ID `sha256:17fb7286f7459988bd6975b62fefa2a7217144df647c60b90a5271e689a3e065`；实际源码为 `8abe9e20d58df2605b8a66c3a4296d3dcfe325a2`。\n- 原始观测：治理 PDF 导出返回前述业务 code500/soffice不可用；DOCX和XLSX正常。对应运行清单采集于2026-10-22T07:03:22Z，导出失败记录已保留；没有提供秘密或完整环境变量。\n- 已核实历史8abe与本 Issue用于查阅的c8e基线，其 `libreoffice_exporter.py` blob均为 `d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d`；这只说明该文件相同，不声称全部仓库相同。\n\n请结合这些补充材料继续解释最小处理方向，优先复用项目既有转换方法及PR #26的固定候选；指出仍未验证的边界。不要重复索取部署方式、镜像版本、错误信息或把历史失败冒称当前预览故障。本次仍仅咨询，不授权改代码、部署、触发修复、合并或关闭 Issue。\n"
+    }
+  ],
+  "app_comment_count": 1,
+  "comments_complete": true,
+  "human_event": {
+    "id": 6340096900,
+    "author": "stepll2026",
+    "author_type": "User",
+    "body": "Codex 代表维护者补充本次 AC04 验收所用的真实历史材料。此条是人类侧测试输入，不是 AI 对自身评论的续答：\n\n- 部署方式：Docker Compose，独立合成测试项目 `onticards-maintenance-preview`。\n- 失败时 API 镜像：`onticards-maintenance-api:baseline-8abe9e20`；image ID `sha256:17fb7286f7459988bd6975b62fefa2a7217144df647c60b90a5271e689a3e065`；实际源码为 `8abe9e20d58df2605b8a66c3a4296d3dcfe325a2`。\n- 原始观测：治理 PDF 导出返回前述业务 code500/soffice不可用；DOCX和XLSX正常。对应运行清单采集于2026-10-22T07:03:22Z，导出失败记录已保留；没有提供秘密或完整环境变量。\n- 已核实历史8abe与本 Issue用于查阅的c8e基线，其 `libreoffice_exporter.py` blob均为 `d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d`；这只说明该文件相同，不声称全部仓库相同。\n\n请结合这些补充材料继续解释最小处理方向，优先复用项目既有转换方法及PR #26的固定候选；指出仍未验证的边界。不要重复索取部署方式、镜像版本、错误信息或把历史失败冒称当前预览故障。本次仍仅咨询，不授权改代码、部署、触发修复、合并或关闭 Issue。\n",
+    "updated_at": "2026-10-22T11:54:11Z"
+  },
+  "initial_published_comment_id": "6339994362",
+  "known_fields": {
+    "deployment_method": "Docker Compose",
+    "api_image_identity": "sha256:17fb7286f7459988bd6975b62fefa2a7217144df647c60b90a5271e689a3e065"
+  },
+  "previously_asked_fields": [
+    "deployment_method",
+    "api_image_identity"
+  ],
+  "trusted_facts": {
+    "baseline_pdf_path": {
+      "revision": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/controllers/governance/libreoffice_exporter.py",
+      "blob": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d",
+      "content_sha256": "1c64a39642a85975fd31bff52a8e509cd7fc0666cad5db9c539ff2b2b4475de3",
+      "lines": [
+        884,
+        970
+      ],
+      "excerpt": "            custom_file_name: 自定义文件名（不含扩展名）\n        \"\"\"\n        print(f\"\\n[LibreOffice-Exporter] 构建 HTML 报告内容...\")\n        file_name = self._make_filename(report, target_fmt, custom_file_name=custom_file_name)\n\n        # 生成临时 HTML 文件\n        tmp_dir = tempfile.mkdtemp(prefix='onticards_html_')\n        tmp_html = os.path.join(tmp_dir, 'report.html')\n        with open(tmp_html, 'w', encoding='utf-8') as f:\n            f.write(_build_report_html(report, results))\n\n        print(f\"[LibreOffice-Exporter] 临时 HTML 文件生成完成: {tmp_html}\")\n\n        last_err = None\n\n        # ===== Tier 1: 本地 soffice（优先） =====\n        local_soffice_path = _get_local_soffice_path()\n        if local_soffice_path:\n            print(f\"[LibreOffice-Exporter] [Tier 1] 本地 soffice 可用 ({local_soffice_path})，开始转换 {target_fmt}...\")\n            try:\n                result = self._convert_via_local_soffice(tmp_html, target_fmt, file_name)\n                if result:\n                    print(f\"[LibreOffice-Exporter] [Tier 1] ✅ soffice 转换成功 | mode={result['mode']}\")\n                    self._cleanup_tmp_dir(tmp_dir)\n                    return result\n            except Exception as e:\n                last_err = e\n                print(f\"[LibreOffice-Exporter] [Tier 1] ❌ soffice 转换失败，降级: {e}\")\n        else:\n            print(f\"[LibreOffice-Exporter] [Tier 1] soffice 未找到，跳过\")\n\n        # ===== Tier 2: 纯 Python 降级 =====\n        print(f\"[LibreOffice-Exporter] [Tier 2] 进入纯 Python 降级方案...\")\n        if target_fmt == 'docx':\n            file_path = os.path.join(self.export_path, file_name).replace('\\\\', '/')\n            print(f\"[LibreOffice-Exporter] [Tier 2] 使用 python-docx 生成 docx | path={file_path}\")\n            _build_docx_with_python(report, results, file_path)\n            self._cleanup_tmp_dir(tmp_dir)\n            return {\n                'file_path': file_path,\n                'file_name': file_name,\n                'file_size': os.path.getsize(file_path),\n                'format': 'docx',\n                'mode': 'python-docx',\n            }\n        elif target_fmt == 'pdf':\n            # soffice Tier 1 已在上面失败，不再有降级方案\n            # 直接抛出错误（PDF 格式暂时不支持）\n            self._cleanup_tmp_dir(tmp_dir)\n            raise RuntimeError(\n                f\"PDF 导出失败（soffice 不可用），当前版本暂不支持 PDF 格式。\"\n            )\n        else:\n            # 其他格式兜底\n            self._cleanup_tmp_dir(tmp_dir)\n            raise RuntimeError(\n                f\"不支持的目标格式: {target_fmt}，可选值: docx, pdf, xlsx\"\n            )\n\n        self._cleanup_tmp_dir(tmp_dir)\n        raise RuntimeError(\n            f\"文档生成失败（已尝试：soffice），last_error={last_err}\"\n        )\n\n    def _export_docx(self,\n                     report: GovernanceReport,\n                     results: List[RuleExecutionResult],\n                     custom_file_name: str = None) -> Dict[str, Any]:\n        \"\"\"导出 Word 文档（soffice 优先，python-docx 降级）\"\"\"\n        return self._build_and_convert_html(report, results, 'docx', custom_file_name=custom_file_name)\n\n    def _export_pdf(self,\n                    report: GovernanceReport,\n                    results: List[RuleExecutionResult],\n                    custom_file_name: str = None) -> Dict[str, Any]:\n        \"\"\"导出 PDF 文档（soffice 优先，weasyprint 降级）\"\"\"\n        return self._build_and_convert_html(report, results, 'pdf', custom_file_name=custom_file_name)\n\n    def _export_xlsx(self,\n                     report: GovernanceReport,\n                     results: List[RuleExecutionResult],\n                     custom_file_name: str = None) -> Dict[str, Any]:\n        \"\"\"导出 Excel 文档\n\n        生成优先级：\n        1. 本地 soffice（subprocess）— 效果最好，优先使用\n        2. openpyxl（纯 Python 降级）",
+      "fact": "基线PDF生成HTML后尝试本地soffice。soffice未找到、转换返回无结果或异常后均可能进入同一PDF兜底报错；仅凭错误文本不能区分缺程序与转换失败。DOCX有python-docx兜底，PDF没有等效纯Python兜底。",
+      "url": "https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L884"
+    },
+    "baseline_dependency": {
+      "revision": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "path": "OntiCards_Api/Dockerfile",
+      "blob": "999c2bd4ffe5c1f5e8faead04c7f7a7182793ebe",
+      "content_sha256": "1e6e5a2464b4ff1fa52c3c09f7486cecd3d1a616914307dd35c515bf4e546405",
+      "lines": [
+        38,
+        80
+      ],
+      "excerpt": "FROM base AS production\n\n# ----- 环境变量 -----\nENV FLASK_APP=app.py \\\n    DEPLOY_ENV=PRODUCTION \\\n    TZ=Asia/Shanghai\n\nEXPOSE 9103\n\nWORKDIR /onticards_api\n\n# ----- 阶段四：系统依赖（运行时） -----\nRUN apt-get update \\\n    && apt-get install -y --no-install-recommends \\\n        # 基础工具\n        curl \\\n        wget \\\n        unzip \\\n        gnupg2 \\\n        apt-transport-https \\\n        ca-certificates \\\n        # 通用动态库\n        libaio1 \\\n        libssl-dev \\\n        libcrypt-dev \\\n        openssl \\\n        unixodbc \\\n        unixodbc-dev \\\n        # 字体支持\n        fonts-noto \\\n        fonts-noto-cjk \\\n        fonts-dejavu \\\n        fonts-wqy-zenhei \\\n        fonts-wqy-microhei \\\n    && apt-get clean \\\n    && rm -rf /var/lib/apt/lists/*\n\n# ----- 阶段五：数据库客户端 -----\n# Microsoft ODBC Driver 17（SQL Server）\nRUN curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \\\n        | gpg --dearmor > /usr/share/keyrings/microsoft-prod.gpg \\\n    && echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/debian/12/prod bookworm main\" \\\n        > /etc/apt/sources.list.d/microsoft-prod.list \\",
+      "fact": "基线最终镜像系统依赖列表没有安装libreoffice-writer。这是源码事实，不是对尚未给出标识的历史运行镜像的检查结论。",
+      "url": "https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/Dockerfile#L38"
+    },
+    "candidate_pdf_path": {
+      "revision": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+      "path": "OntiCards_Api/controllers/governance/libreoffice_exporter.py",
+      "blob": "00d8cb55ee11cf266c32a1d2af089327878edacc",
+      "content_sha256": "27f02145fba16d49ab614acb048c5967ad6c55f80ae8a932dc54456274337693",
+      "lines": [
+        991,
+        1006
+      ],
+      "excerpt": "    def _export_pdf(self,\n                    report: GovernanceReport,\n                    results: List[RuleExecutionResult],\n                    custom_file_name: str = None) -> Dict[str, Any]:\n        \"\"\"复用原生 DOCX 报告，再由 LibreOffice 保留分页和表格布局转为 PDF。\"\"\"\n        if not self._check_soffice_available():\n            raise RuntimeError(\"PDF 导出需要 LibreOffice Writer，请安装 libreoffice-writer。\")\n        file_name = self._make_filename(report, 'pdf', custom_file_name=custom_file_name)\n        with tempfile.TemporaryDirectory(prefix='onticards_pdf_') as tmp_dir:\n            source_path = os.path.join(tmp_dir, 'report.docx')\n            _build_docx_with_python(report, results, source_path)\n            converted = self._convert_via_local_soffice(source_path, 'pdf', file_name)\n            if converted:\n                return converted\n        raise RuntimeError(\"PDF 导出失败：LibreOffice 未生成 PDF 文件。\")\n",
+      "fact": "候选PDF复用已有_build_docx_with_python生成DOCX，再调用既有_convert_via_local_soffice。没有新建报告生成器，也不表示历史镜像已有该修复。",
+      "url": "https://github.com/stepll2026/OntiCards/blob/3105b7b61469c6b2945357f2eefa8fcb2e3aaee5/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L991"
+    },
+    "candidate_dependency": {
+      "revision": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+      "path": "OntiCards_Api/Dockerfile",
+      "blob": "cdc4ffe3f3743f0ee143176abf6523694e9ad362",
+      "content_sha256": "a5d8899c285d37740ea22171953d6c1f0f5cf9ddf904b5f02bda198eee42ee11",
+      "lines": [
+        61,
+        80
+      ],
+      "excerpt": "        libssl-dev \\\n        libcrypt-dev \\\n        openssl \\\n        unixodbc \\\n        unixodbc-dev \\\n        # 字体支持\n        fonts-noto \\\n        fonts-noto-cjk \\\n        fonts-dejavu \\\n        fonts-wqy-zenhei \\\n        fonts-wqy-microhei \\\n        # Existing governance PDF exporter uses the LibreOffice Writer CLI.\n        libreoffice-writer \\\n    && apt-get clean \\\n    && rm -rf /var/lib/apt/lists/*\n\n# ----- 阶段五：数据库客户端 -----\n# Microsoft ODBC Driver 17（SQL Server）\nRUN curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \\\n        | gpg --dearmor > /usr/share/keyrings/microsoft-prod.gpg \\",
+      "fact": "候选Dockerfile增加libreoffice-writer；候选关联Draft PR26。最终合并由维护者操作，本Issue不授权安装、构建或部署。",
+      "url": "https://github.com/stepll2026/OntiCards/blob/3105b7b61469c6b2945357f2eefa8fcb2e3aaee5/OntiCards_Api/Dockerfile#L61"
+    },
+    "safe_readonly_checks": {
+      "fact": "command -v soffice与soffice --version是已有转换器的只读查询。本轮仅咨询、不执行命令。已提供部署方式和镜像标识，不再索取这些字段。",
+      "check_ids": [
+        "converter_path",
+        "converter_version"
+      ],
+      "commands": {
+        "converter_path": "command -v soffice",
+        "converter_version": "soffice --version"
+      }
+    },
+    "historical_runtime": {
+      "fact": "这是2026-10-22早先独立合成测试的真实历史快照，不是当前运行状态。实际Docker Compose项目、API镜像与源码如下；与真实人类续办评论核对后使用。",
+      "captured_at": "2026-10-22T07:03:22.597256+00:00",
+      "project": "onticards-maintenance-preview",
+      "image_reference": "onticards-maintenance-api:baseline-8abe9e20",
+      "image_id": "sha256:17fb7286f7459988bd6975b62fefa2a7217144df647c60b90a5271e689a3e065",
+      "source_sha": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2"
+    },
+    "historical_exporter_identity": {
+      "fact": "历史8abe与参考基线c8e的libreoffice_exporter.py实际Git blob相同，只说明此文件相同，不推断整个仓库相同。",
+      "blobs": {
+        "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d",
+        "c8e3dfee68d398a37842fc332f73af40a56f02a7": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d"
+      },
+      "url": "https://github.com/stepll2026/OntiCards/blob/8abe9e20d58df2605b8a66c3a4296d3dcfe325a2/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L884"
+    },
+    "candidate_verification_scope": {
+      "fact": "3105/c8e候选在独立预览实测：LibreOffice回归3、API7、Playwright3通过，迁移5通过1跳过（缺three_way_check.py）。这些是独立产品验证，不是Issue29执行的测试，不证明历史镜像已修复，不证明全部环境或并发导出。Draft PR26仅供维护者审核复用；本Issue仍不授权修改、构建、部署、合并或关闭。",
+      "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "url": "https://github.com/stepll2026/OntiCards/pull/26"
+    }
+  },
+  "scope": "one real human followup in same Issue29; no new issue, task, execution, deployment, merge or close"
+}

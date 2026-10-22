@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-22T17:57:41.386488+00:00",
+  "approval_id": "onticards-root-review-issue29-final-pair-20261023-v1",
+  "workflow_id": "onticardsIssue29FinalRecoveryV1",
+  "recovery_key": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+  "original_event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+  "workflow_version": "300e1c13-c0cf-4fc0-b74c-73fa65c16581",
+  "workflow_checksum": "faaa23061403cb48d863321ff702ac2150c0aa9f10973081e13e1b0d1f47d62d",
+  "template_sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35",
+  "native_fixture_passed": true,
+  "global_concurrency": 1,
+  "status": "native_webhook_accepted",
+  "webhook_post_attempts": 1,
+  "direct_model_requests": 0,
+  "direct_github_requests": 0,
+  "http_status": 200,
+  "completed_at": "2026-10-22T17:57:44.482534+00:00"
+}

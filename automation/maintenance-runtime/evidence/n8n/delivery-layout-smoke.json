@@ -1,0 +1,136 @@
+{
+  "at": "2026-10-22T19:21:49.941956+00:00",
+  "layout": "automation/maintenance-runtime/{deploy,research,evidence}",
+  "isolated_path": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\validation\\n8n-layout-20261022T192147Z",
+  "symlinks_created": 0,
+  "model_calls": 0,
+  "github_requests": 0,
+  "results": [
+    {
+      "script": "build_persistent_polling.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 39, \"model_nodes\": 0, \"repository_write_nodes\": 0, \"schedule_minutes\": 5, \"active_in_export\": false}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_bounded_get.py",
+      "exit_code": 0,
+      "stdout": "{\"child_nodes\": 4, \"serial_parent_nodes\": 59, \"per_get_max_attempts\": 2, \"poll_get_deadline_seconds\": 240, \"whole_execution_seconds\": 300, \"model_nodes\": 0, \"repository_write_nodes\": 0, \"deployed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_intake_ci_handoff.py",
+      "exit_code": 0,
+      "stdout": "{\"child_nodes\": 9, \"parent_nodes\": 60, \"schedule_nodes_added\": 0, \"mode\": \"dry_run\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_repository_context.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 42, \"model_calls\": 0, \"repository_write_nodes\": 0, \"maximum_files\": 12, \"maximum_excerpt_characters\": 24000}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_persistent_drafts.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 45, \"model_enabled\": false, \"github_write_nodes\": 0, \"seed_model_calls\": 2, \"seed_publication_ids\": [\"6339994362\", \"6340579230\"]}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_semantic_review.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 37, \"review_enabled\": false, \"max_thread_model_calls\": 6, \"repository_write_nodes\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_persistent_publication.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 48, \"enabled\": false, \"github_comment_post_nodes\": 1, \"model_nodes\": 0, \"approval_present\": false}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_conversation_budget_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 29, \"model_requests\": 0, \"github_requests\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_semantic_native_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 46, \"cases\": 10, \"http_nodes\": 0, \"model_calls\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_publication_native_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"workflows\": 2, \"publisher_nodes\": 54, \"transport_nodes\": 15, \"github_requests\": 0, \"model_nodes\": 0, \"credentials\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_policy_boundary_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"workflows\": 2, \"http_nodes\": 0, \"model_calls\": 0, \"cases\": 9}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_bounded_get_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"workflows\": 3, \"fixture_cases\": 4, \"production_credentials\": 0, \"github_requests\": 0, \"model_requests\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_serial_loop_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 63, \"github_requests\": 0, \"model_requests\": 0, \"fixture_threads\": 2}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_source_cache_loop_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"workflows\": 2, \"external_http_nodes\": 0, \"models\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_issue29_final_recovery.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 41, \"manual_enabled\": false, \"schedule_nodes\": 0, \"recovery_key\": \"e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185\", \"approval_id\": \"onticards-root-review-issue29-final-pair-20261023-v1\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "build_issue29_recovery_guard_probe.py",
+      "exit_code": 0,
+      "stdout": "{\"nodes\": 17, \"model_nodes\": 0, \"external_http\": 0, \"ledger_writes\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "validate_persistent_expressions.mjs",
+      "exit_code": 0,
+      "stdout": "{\"syntax_expressions\":262,\"next_page_whitespace\":true,\"foreign_next_url_rejected\":true,\"github_requests\":0,\"model_requests\":0}\n",
+      "stderr": ""
+    },
+    {
+      "script": "validate_source_relevance.mjs",
+      "exit_code": 0,
+      "stdout": "{\"at\":\"2026-10-22T19:21:49.783Z\",\"kind\":\"actual native Set expressions with frozen inputs\",\"assertions\":{\"old_real_expression_omits_explicit_targets\":true,\"explicit_targets_precede_optional_core\":true,\"requested_excerpts_present\":true,\"optional_core_truncation_allowed\":true,\"brand_does_not_select_cards\":true,\"pdf_topic_is_first\":true,\"selected_file_and_excerpt_caps\":true,\"unsupported_explicit_target_rejected\":true,\"explicit_file_limit_rejected\":true,\"explicit_excerpt_limit_rejected\":true,\"verified_empty_file_remains_present\":true,\"existing_pdf_method_excerpt_starts_at_actual_definition\":true,\"pdf_helper_and_entry_in_same_bounded_excerpt\":true},\"passed\":true,\"checks\":13,\"model_requests\":0,\"github_requests\":0,\"limitations\":\"This checks selection/projection, not live GitHub transport; independent native three-ref validation is separate.\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "validate_source_identity.mjs",
+      "exit_code": 0,
+      "stdout": "{\"at\":\"2026-10-22T19:21:49.873Z\",\"kind\":\"actual draft native Set expression frozen response replay\",\"assertions\":{\"actual_original_sha_typo_rejected\":true,\"corrected_frozen_sha_only_structure_passes\":true,\"exact_commit_and_url_rendered_by_set\":true,\"untrusted_source_excerpt_cannot_whitelist_sha\":true,\"verified_historical_metadata_allowed\":true,\"case_insensitive_known_sha_allowed\":true},\"passed\":true,\"checks\":6,\"model_calls\":0,\"github_posts\":0,\"original_record_changed\":false,\"limitations\":\"Corrected text is a synthetic fixture only, not a new model response or publishable approval. Semantic review and exact quote checks remain required.\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "validate_metadata_quotes.mjs",
+      "exit_code": 0,
+      "stdout": "{\"at\":\"2026-10-22T19:21:49.933Z\",\"kind\":\"actual review native Set expression frozen response replay\",\"assertions\":{\"actual_original_still_rejected\":true,\"exact_bound_canonical_metadata_accepted\":true,\"original_questions_failure_retained\":true,\"approximate_metadata_quote_rejected\":true,\"body_injection_not_a_metadata_surface\":true,\"same_quote_wrong_source_id_rejected\":true,\"original_wrong_sha_rejected_even_if_review_approves\":true},\"passed\":true,\"checks\":7,\"model_calls\":0,\"github_posts\":0,\"original_records_changed\":false,\"limitations\":\"The isolated all-true review and corrected SHA are synthetic gate fixtures, not new model judgments or approved publication.\"}\n",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "compile_time_dependencies": [
+    "deploy/n8n-preview-ci/intake-admission.workflow.json",
+    "deploy/n8n-preview-ci/intake-receiver.workflow.json",
+    "evidence/n8n/native-mcp-slash-body-fixture.json"
+  ]
+}

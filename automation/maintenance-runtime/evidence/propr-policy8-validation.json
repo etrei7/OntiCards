@@ -1,0 +1,86 @@
+{
+  "build_host": "kol-stage2",
+  "test_host": "10.66.66.5",
+  "build_started_at": "2026-10-22T15:51:36Z",
+  "build_completed_at": "2026-10-22T15:53:45Z",
+  "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "tree": "7d3af65f3e0fc702ed89103291e2dcc7101f4fdd",
+  "patch_sha256": "7d585dd8ffd379cb3908f65e7f34dc909e03aecfd74adb10645fe89ab36b2fa5",
+  "patch_files": 79,
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy8@sha256:c28942769fa9b39435e6ba9f7b95b50a30b447e1087d6c44b4e440b6a16470fe",
+  "typescript_build": "passed",
+  "tests": {
+    "passed": 393,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "gap_adaptations": [
+    "draft PR and unknown-cost publication",
+    "native daily missing-fact failure state",
+    "exact SHA knowledge indexing snapshot",
+    "ambiguous merge conflicts sent to human"
+  ],
+  "native_runtime_validation": {
+    "at": "2026-10-22T15:58:58.280Z",
+    "state": "verified",
+    "compiled_native_modules": true,
+    "human_merge_only": true,
+    "daily_contract_enabled": true,
+    "existing_real_daily_accepted": true,
+    "missing_facts_report_rejected": true,
+    "incomplete_report_rejected": true,
+    "source_documents_versioned": true,
+    "repository": "stepll2026/OntiCards",
+    "repository_enabled": true,
+    "daily": {
+      "id": "e6a4ce1d-0068-4c3a-832c-ff911c791a1c",
+      "revision": 10,
+      "nextRunAt": 1792717500000,
+      "scheduleEnabled": true
+    },
+    "model_calls": 0,
+    "github_writes": 0,
+    "task_created": false
+  },
+  "daemon_resume": {
+    "at": "2026-10-22T15:59:41.261389+00:00",
+    "pending_recovery": {
+      "pr_continuations": 0,
+      "pr_ci_suspensions": 0,
+      "pr_ci_suspension_leases": 0,
+      "pr_followup_handoffs": 0,
+      "goals": 0,
+      "plan_issues": 0,
+      "issue_retry_request_states": 0,
+      "task_drafts": 0,
+      "nonterminal_agent_runs": 0,
+      "replacement_requests": 0,
+      "undispatched_submissions": 0
+    },
+    "daily": {
+      "id": "e6a4ce1d-0068-4c3a-832c-ff911c791a1c",
+      "revision": 10,
+      "schedule_enabled": 1,
+      "next_run_at": 1792717500000,
+      "pending_schedule_slot": null
+    },
+    "state": "running",
+    "dispatched_submission_note": "Issue32 prior submission is queued receipt, dispatch_complete=1, not an unprocessed job.",
+    "repository_monitoring_enabled": true,
+    "configuration_changed": false,
+    "started_at": "2026-10-22T15:59:41.366771686Z",
+    "queue_after": {
+      "wait": 0,
+      "active": 0,
+      "paused": 0,
+      "delayed": 0,
+      "prioritized": 0,
+      "waiting-children": 0
+    },
+    "heartbeat_present": true
+  },
+  "model_calls_in_validation": 0,
+  "github_writes_in_validation": 0,
+  "scope": "Relevant maintenance regressions; not a claim of complete product acceptance"
+}

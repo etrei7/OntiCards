@@ -1,0 +1,7 @@
+{
+  "settings": {
+    "pr_review_context_enabled": false,
+    "pr_review_max_context_tokens": 16000,
+    "pr_review_context_budget_percent": 100
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "captured_at": "2026-10-22T19:31:36.072981+00:00",
+  "correction_to": "mcp-review-natural-intake.json",
+  "original_19_21_receipts_preserved": true,
+  "original_19_21_execution_metadata_unavailable_after_native_prune": true,
+  "query": "ORDER BY CAST(id AS INTEGER), includes soft-deleted rows",
+  "native_save_data": "none; deletedAt is n8n prune eligibility timestamp, not successful completion time; running status on soft-deleted rows is not an active job",
+  "scope": "next natural 19:25 scheduled intake and 19:26\u201319:27 downstream receipt observation; no manual webhook replay",
+  "source_execution_metadata": [
+    {
+      "id": 1808,
+      "workflowId": "onticardsIntakeCiHandoffV1",
+      "startedAt": "2026-10-22 19:26:29.573",
+      "status": "running",
+      "deletedAt": "2026-10-22 18:26:29.827"
+    },
+    {
+      "id": 1782,
+      "workflowId": "onticardsPersistentReadOnlyV1",
+      "startedAt": "2026-10-22 19:25:05.046",
+      "status": "running",
+      "deletedAt": "2026-10-22 18:26:29.845"
+    }
+  ],
+  "receiver_and_review_execution_metadata": [
+    {
+      "id": 425,
+      "workflowId": "onticardsPreviewIntakeV1",
+      "startedAt": "2026-10-22 19:26:29.743",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:27:39.147"
+    },
+    {
+      "id": 432,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:26:33.216",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:26:44.037"
+    },
+    {
+      "id": 433,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:26:44.073",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:26:55.323"
+    },
+    {
+      "id": 434,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:26:55.371",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:27:06.461"
+    },
+    {
+      "id": 435,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:27:06.506",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:27:17.927"
+    },
+    {
+      "id": 436,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:27:17.977",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:27:28.557"
+    },
+    {
+      "id": 437,
+      "workflowId": "onticardsReviewAdmissionV1",
+      "startedAt": "2026-10-22 19:27:28.599",
+      "stoppedAt": null,
+      "status": "running",
+      "deletedAt": "2026-10-22 18:27:39.109"
+    }
+  ],
+  "receipts": [
+    {
+      "pr": 30.0,
+      "head": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:26:37.133Z",
+      "observed_at": "2026-10-22T19:26:43.922Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    },
+    {
+      "pr": 26.0,
+      "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:26:48.608Z",
+      "observed_at": "2026-10-22T19:26:55.244Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    },
+    {
+      "pr": 28.0,
+      "head": "4ad21f17e97668d13ea52f44197749534092e74d",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:26:59.274Z",
+      "observed_at": "2026-10-22T19:27:06.372Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    },
+    {
+      "pr": 27.0,
+      "head": "7f98741eb20f5a17665c949b0babb42b6b1d338d",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:27:10.332Z",
+      "observed_at": "2026-10-22T19:27:17.635Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    },
+    {
+      "pr": 22.0,
+      "head": "e8a55db0a6104905cc629f97ac8750e1392e4f44",
+      "base": "b961c50758ac69f54f051a614fc2dc46b6900a30",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:27:21.731Z",
+      "observed_at": "2026-10-22T19:27:28.471Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    },
+    {
+      "pr": 33.0,
+      "head": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+      "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "state": "native_review_entry_verified_no_dispatch",
+      "checked_at": "2026-10-22T19:27:32.451Z",
+      "observed_at": "2026-10-22T19:27:39.027Z",
+      "model_started": false,
+      "grant_revocation": "revoked_verified"
+    }
+  ],
+  "paid_model_calls": 0,
+  "real_review_admissions": 0,
+  "matched_source_run": {
+    "poll_id": "1782",
+    "status": "complete_readonly_dry_run",
+    "started_at": "2026-10-23T03:25:05.085+08:00",
+    "finished_at": "2026-10-23T03:26:29.462+08:00",
+    "watermark": "2026-10-23T03:25:05.085+08:00",
+    "token_revoked": true
+  },
+  "later_current_watermark_at_capture": {
+    "repository": "stepll2026/OntiCards",
+    "watermark": "2026-10-23T03:30:05.085+08:00",
+    "poll_id": "1810",
+    "thread_count": 29.0
+  },
+  "source_correlation": "Native scheduled run1782 -> handoff1808 -> receiver425 -> six review executions432\u2013437; serial temporal correspondence and existing fixed workflow graph, with payload execution storage disabled."
+}

@@ -1,0 +1,12 @@
+{
+  "attempt_key": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185:5",
+  "event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+  "ordinal": 5.0,
+  "origin": "explicit_same_human_event_final_recovery",
+  "status": "needs_structure_review",
+  "approval_id": "onticards-root-review-issue29-final-pair-20261023-v1",
+  "reserved_at": "2026-10-23T01:57:54.585+08:00",
+  "execution_id": "1220",
+  "source_hash": "7897dfa32cf1c8cdf45fa18e0e69f2cdf1f964ff787231449dc21190ebd54eb8",
+  "payload_sha256": "607fec3cc357e8827591ac7bd346149247c1dfbba31a07be592cef1c21da3a21"
+}

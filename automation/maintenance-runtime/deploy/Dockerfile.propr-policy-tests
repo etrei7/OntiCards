@@ -1,0 +1,62 @@
+# Multi-stage prod build for the Propr application image.
+# Single image runs daemon, worker, indexing-worker, or api
+# depending on the command passed at runtime.
+#
+# Build from the monorepo root:
+#   docker build -f docker/Dockerfile.app.prod -t propr/app .
+
+# --- Stage 1: builder ---------------------------------------------------------
+FROM node:22-alpine AS builder
+
+WORKDIR /build
+
+ARG GIT_SHA
+
+RUN apk add --no-cache python3 make g++ git
+
+# Copy workspace manifests first so npm ci layer caches when source changes.
+COPY package*.json ./
+COPY packages/shared/package*.json ./packages/shared/
+COPY packages/local-setup/package*.json ./packages/local-setup/
+COPY packages/core/package*.json ./packages/core/
+COPY packages/api/package*.json ./packages/api/
+# Vendored braces tarball referenced by the root package.json overrides
+COPY vendor ./vendor
+
+# Install all deps (incl. dev) so we can compile TypeScript. Postinstall
+# scripts must run — better-sqlite3 rebuilds its native binding here.
+RUN npm ci --include=dev
+
+# Copy everything needed to build.
+COPY tsconfig.json ./
+COPY src ./src
+COPY config ./config
+COPY scripts ./scripts
+COPY docs/docs ./docs/docs
+COPY docs/sidebars.ts docs/mcp.md docs/mcp-coverage.md docs/mcp-operator-surface.md ./docs/
+COPY knexfile.ts ./
+COPY packages/shared ./packages/shared
+COPY packages/local-setup ./packages/local-setup
+COPY packages/core ./packages/core
+COPY packages/api ./packages/api
+# Compile-time input only: scripts/check-client-contract.ts imports the client's
+# operation table. The client is not installed or shipped as a workspace here.
+COPY packages/client/src ./packages/client/src
+# Compile-time input only: scripts/preview-cli-workflow.mjs imports the CLI
+# preview packager. The CLI is not installed or shipped as a workspace here.
+COPY packages/cli/scripts/preview-package.mjs ./packages/cli/scripts/
+
+# Record the exact release and source revision alongside the Markdown that is
+# shipped. sidebars.ts is parsed as text and is never executed by this step.
+RUN GIT_SHA="$GIT_SHA" node scripts/build-docs-manifest.mjs
+
+# Build workspace packages in dependency order, then root.
+RUN cd packages/shared && npm run build \
+    && cd ../local-setup && npm run build \
+    && cd ../core && npm run build \
+    && cd ../.. && npm run build
+
+
+COPY test ./test
+COPY propr-ui/src/components/TaskDetails/liveDetailsMerge.ts ./propr-ui/src/components/TaskDetails/liveDetailsMerge.ts
+ENV NODE_ENV=test

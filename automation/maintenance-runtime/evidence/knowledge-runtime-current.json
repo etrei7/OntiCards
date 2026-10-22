@@ -1,0 +1,54 @@
+{
+  "observed_at": "2026-10-22T17:35:21.847876+00:00",
+  "summarization": {
+    "enabled": false,
+    "agent_alias": "onticards-qwen:opencode-bailian/qwen3.8-max-0902",
+    "fallback_agent_alias": ""
+  },
+  "repositories": [
+    {
+      "name": "stepll2026/OntiCards",
+      "enabled": true,
+      "baseBranch": "main",
+      "contextRepositories": "none",
+      "autoResolveMergeConflicts": true
+    }
+  ],
+  "instructions": [
+    "/home/node/.config/opencode/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/*.md"
+  ],
+  "instruction_source_commit": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+  "instruction_files": [
+    {
+      "name": "AGENTS.md",
+      "exists": true,
+      "sha256": "d4c46a442032728570fbaab9ea9dd1bd03491cc9d3b85fb9f8225a575828c38d"
+    },
+    {
+      "name": "repository-context.md",
+      "exists": true,
+      "sha256": "cd57d9aa8422aee14ad3eb0d761159d5ce2f76c992a8d45a6ff705160a0de1d0"
+    },
+    {
+      "name": "response-policy.md",
+      "exists": true,
+      "sha256": "73627ab4b7665081385b5ace156d0e6147a6553062c44c56af7cca3b6304aca8"
+    }
+  ],
+  "indexed_repositories": [
+    {
+      "full_name": "stepll2026/OntiCards",
+      "branch": "main",
+      "indexing_status": "failed",
+      "last_indexed_hash": null
+    },
+    {
+      "full_name": "stepll2026/OntiCards",
+      "branch": "HEAD",
+      "indexing_status": "failed",
+      "last_indexed_hash": null
+    }
+  ],
+  "read_only": true,
+  "models_invoked": 0
+}

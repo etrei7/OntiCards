@@ -1,0 +1,738 @@
+{
+  "id": "onticardsCheckObserveV1",
+  "name": "OntiCards Check revision observation and invalidation",
+  "active": false,
+  "nodes": [
+    {
+      "id": "00c2d2f0-ced3-5b81-be91-fa15b434cbcf",
+      "name": "Native Check request",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "5f1bb743-2380-5121-bcd9-4088bd226d86",
+      "name": "Validate Check identity",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;\nif(!['register','watch'].includes(p.mode)||!Number.isSafeInteger(p.pr)||p.pr<1||p.pr>9999999||!/^[a-f0-9]{40}$/.test(p.head??'')||!/^[a-f0-9]{40}$/.test(p.base??'')||!/^[1-9][0-9]{0,17}$/.test(String(p.check_id??''))||typeof p.check_name!=='string'||p.check_name.length<1||p.check_name.length>128||typeof p.external_id!=='string'||p.external_id.length<1||p.external_id.length>256)throw new Error('Invalid Check registration');\nreturn [{json:{mode:p.mode,pr:p.pr,head:p.head,base:p.base,check_id:String(p.check_id),check_name:p.check_name,external_id:p.external_id,registration_key:'pr'+p.pr+':check'+p.check_id}}];"
+      }
+    },
+    {
+      "id": "15a5e3b5-a37e-58eb-ba63-39c98305f504",
+      "name": "Fresh native read-only revision",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsPreviewRevisionV1",
+          "mode": "id"
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "b2a879dc-263d-5114-a0b3-f020f79fe2f7",
+      "name": "Preserve revision proof",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r=$input.first().json,p=$('Validate Check identity').first().json;\nreturn [{json:{...p,revision:{current:r.current===true&&r.token_revoked===true&&r.head===p.head&&r.base===p.base,observed_head:r.observed_head??null,observed_base:r.observed_base??null,reason:r.reason??'revision_unavailable',checked_at:r.checked_at??new Date().toISOString()}}}];"
+      }
+    },
+    {
+      "id": "ef0ec624-8246-5644-9ef4-61d58c9d8d2d",
+      "name": "Sign Check action App JWT",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "operation": "sign",
+        "useJson": true,
+        "claimsJson": "={{ JSON.stringify({iat:Math.floor(Date.now()/1000)-60,exp:Math.floor(Date.now()/1000)+540,iss:\"5422414\"}) }}",
+        "headerClaims": "{}",
+        "options": {
+          "algorithm": "RS256"
+        }
+      },
+      "credentials": {
+        "jwtAuth": {
+          "id": "onticardsPreviewAppJwt",
+          "name": "OntiCards preview revision App"
+        }
+      }
+    },
+    {
+      "id": "00d037ce-ae2e-592c-acf6-af63e6d7aaf6",
+      "name": "Mint Check action token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/app/installations/174029282/access_tokens",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Sign Check action App JWT\").first().json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"repositories\": [\"OntiCards\"], \"permissions\": {\"checks\": \"write\", \"metadata\": \"read\"}}"
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "45386c6d-a6e6-5eac-b1c5-9f623535038e",
+      "name": "Verify Check action scope",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/installation/repositories?per_page=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint Check action token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "f58c5aec-bf8f-55b7-8061-668b5a064479",
+      "name": "Exact Check action scope",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Exact Check action scope",
+              "leftValue": "={{ (()=>{const m=$(\"Mint Check action token\").first().json,p=m.body?.permissions||{},r=$json;return m.statusCode===201&&Object.keys(p).length===2&&p.checks===\"write\"&&p.metadata===\"read\"&&r.statusCode===200&&r.body?.total_count===1&&r.body.repositories?.[0]?.full_name===\"stepll2026/OntiCards\";})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "659d7ecb-8e58-5745-abb8-2d0a56396198",
+      "name": "Read exact owned Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1760,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/repos/stepll2026/OntiCards/check-runs/{{ $(\"Validate Check identity\").first().json.check_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint Check action token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "00afddf8-c38a-5480-a495-86219cac0792",
+      "name": "Determine Check action",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Preserve revision proof').first().json,r=$input.first().json,c=r.body;\nconst bound=r.statusCode===200&&String(c?.id)===p.check_id&&c.head_sha===p.head&&c.name===p.check_name&&c.external_id===p.external_id&&c.app?.id===5422414;\nconst already=bound&&c.status==='completed'&&c.conclusion==='action_required';\nconst check_update={status:'completed',conclusion:'action_required',completed_at:new Date().toISOString(),output:{title:'Current PR revision requires verification',summary:'This Check binds head '+p.head+' against base '+p.base+'. Current head/base changed or could not be verified. Original evidence is retained. No automatic test rerun or merge was performed.'}};\nreturn [{json:{...p,check_update,bound,needs_update:bound&&!p.revision.current&&!already,state:!bound?'unverified':already?'invalidated':'watching',observed_conclusion:bound?c.conclusion:null}}];"
+      }
+    },
+    {
+      "id": "e8f397a6-4735-540a-a8fb-994d0d6524a8",
+      "name": "Invalidate changed or unverifiable revision",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2200,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Invalidate changed or unverifiable revision",
+              "leftValue": "={{ $json.needs_update===true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "4e90ee55-bebc-544f-bad7-e3f9f8fd5958",
+      "name": "Mark exact Check awaiting verification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2420,
+        0
+      ],
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.github.com/repos/stepll2026/OntiCards/check-runs/{{ $(\"Validate Check identity\").first().json.check_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint Check action token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.check_update) }}"
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "c532b5c0-6165-5988-9e36-de13f3c0421d",
+      "name": "Read back invalidated Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2640,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/repos/stepll2026/OntiCards/check-runs/{{ $(\"Validate Check identity\").first().json.check_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint Check action token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "b7a79ed8-f45e-530c-910d-92020ef233b5",
+      "name": "Verify invalidation readback",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2860,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Determine Check action').first().json,r=$input.first().json,c=r.body,patch=$('Mark exact Check awaiting verification').first().json??{};\nconst confirmed=r.statusCode===200&&String(c?.id)===p.check_id&&c.head_sha===p.head&&c.name===p.check_name&&c.external_id===p.external_id&&c.app?.id===5422414&&c.status==='completed'&&c.conclusion==='action_required';\nreturn [{json:{...p,state:confirmed?'invalidated':'watching',update_result:confirmed?'action_required_verified':'update_outcome_unknown',update_http_status:patch.statusCode??null,update_error_category:['JSON','syntax','Referenced node','item','timeout','timed out','certificate','URL','not executed','expression'].find(x=>String(patch.error?.message??patch.error??'').toLowerCase().includes(x.toLowerCase()))??(patch.error?'other_node_error':null),update_error_fields:Array.isArray(patch.body?.errors)?patch.body.errors.filter(x=>x&&typeof x==='object').map(x=>({resource:x.resource??null,field:x.field??null,code:x.code??null})):[],readback_http_status:r.statusCode??null}}];"
+      }
+    },
+    {
+      "id": "db9d19d3-ca0d-55cf-8f2e-f6b1617fb3a6",
+      "name": "Check scope unverified",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$('Preserve revision proof').first().json,state:'unverified',bound:false,update_result:'scope_unverified'}}];"
+      }
+    },
+    {
+      "id": "02994cd5-82bd-5802-a58e-1ed947736a8e",
+      "name": "Preserve public Check result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3300,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map(x=>({json:x.json}));"
+      }
+    },
+    {
+      "id": "d5c01112-d3b1-5b28-9814-e2cc1146f81b",
+      "name": "Revoke Check action token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3520,
+        0
+      ],
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.github.com/installation/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint Check action token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "21d50b78-69ec-5050-aae1-d684c3368330",
+      "name": "Return public Check registration",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3740,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Preserve public Check result').first().json,revoked=$input.first().json.statusCode===204;\nreturn [{json:{registration_key:p.registration_key,pr:p.pr,head:p.head,base:p.base,check_id:p.check_id,check_name:p.check_name,external_id:p.external_id,state:p.bound&&revoked?p.state:'unverified',detail:JSON.stringify({checked_at:new Date().toISOString(),revision:p.revision,bound:p.bound===true,observed_conclusion:p.observed_conclusion??null,update_result:p.update_result??'not_required',update_http_status:p.update_http_status??null,update_error_category:p.update_error_category??null,update_error_fields:p.update_error_fields??[],readback_http_status:p.readback_http_status??null,token_revoked:revoked,checks_write_only_in_this_action:true,model_calls:0,test_runs:0})}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Native Check request": {
+      "main": [
+        [
+          {
+            "node": "Validate Check identity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Check identity": {
+      "main": [
+        [
+          {
+            "node": "Fresh native read-only revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fresh native read-only revision": {
+      "main": [
+        [
+          {
+            "node": "Preserve revision proof",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve revision proof": {
+      "main": [
+        [
+          {
+            "node": "Sign Check action App JWT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign Check action App JWT": {
+      "main": [
+        [
+          {
+            "node": "Mint Check action token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mint Check action token": {
+      "main": [
+        [
+          {
+            "node": "Verify Check action scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Check action scope": {
+      "main": [
+        [
+          {
+            "node": "Exact Check action scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exact Check action scope": {
+      "main": [
+        [
+          {
+            "node": "Read exact owned Check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check scope unverified",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read exact owned Check": {
+      "main": [
+        [
+          {
+            "node": "Determine Check action",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Determine Check action": {
+      "main": [
+        [
+          {
+            "node": "Invalidate changed or unverifiable revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Invalidate changed or unverifiable revision": {
+      "main": [
+        [
+          {
+            "node": "Mark exact Check awaiting verification",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Preserve public Check result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark exact Check awaiting verification": {
+      "main": [
+        [
+          {
+            "node": "Read back invalidated Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read back invalidated Check": {
+      "main": [
+        [
+          {
+            "node": "Verify invalidation readback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify invalidation readback": {
+      "main": [
+        [
+          {
+            "node": "Preserve public Check result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve public Check result": {
+      "main": [
+        [
+          {
+            "node": "Revoke Check action token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke Check action token": {
+      "main": [
+        [
+          {
+            "node": "Return public Check registration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check scope unverified": {
+      "main": [
+        [
+          {
+            "node": "Preserve public Check result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 240
+  },
+  "pinData": {}
+}

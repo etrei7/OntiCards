@@ -1,0 +1,104 @@
+{
+  "started_at": "2026-10-22T17:19:15.457572+00:00",
+  "model_requests": 0,
+  "github_requests": 0,
+  "cases": {
+    "red_mixed": {
+      "complete": false,
+      "count": 1,
+      "expected": 2,
+      "diagnostics": [
+        {
+          "path": "OntiCards_Api/b.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        }
+      ],
+      "model_requests": 0,
+      "github_requests": 0
+    },
+    "green_cached": {
+      "complete": true,
+      "count": 1,
+      "expected": 1,
+      "diagnostics": [
+        {
+          "path": "OntiCards_Api/a.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        }
+      ],
+      "model_requests": 0,
+      "github_requests": 0
+    },
+    "green_fresh": {
+      "complete": true,
+      "count": 1,
+      "expected": 1,
+      "diagnostics": [
+        {
+          "path": "OntiCards_Api/b.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        }
+      ],
+      "model_requests": 0,
+      "github_requests": 0
+    },
+    "green_mixed": {
+      "complete": true,
+      "count": 2,
+      "expected": 2,
+      "diagnostics": [
+        {
+          "path": "OntiCards_Api/a.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        },
+        {
+          "path": "OntiCards_Api/b.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        }
+      ],
+      "model_requests": 0,
+      "github_requests": 0
+    },
+    "green_bad_hash": {
+      "complete": false,
+      "count": 2,
+      "expected": 2,
+      "diagnostics": [
+        {
+          "path": "OntiCards_Api/a.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": true
+        },
+        {
+          "path": "OntiCards_Api/b.py",
+          "status": 200,
+          "complete": true,
+          "blob_match": false
+        }
+      ],
+      "model_requests": 0,
+      "github_requests": 0
+    }
+  },
+  "assertions": {
+    "original_mixed_branch_reproduces_incomplete": true,
+    "all_cache_verified": true,
+    "all_fresh_verified": true,
+    "mixed_cache_collected_once": true,
+    "bad_hash_still_rejected": true
+  },
+  "passed": true,
+  "probe_stopped": true,
+  "completed_at": "2026-10-22T17:20:50.670036+00:00"
+}

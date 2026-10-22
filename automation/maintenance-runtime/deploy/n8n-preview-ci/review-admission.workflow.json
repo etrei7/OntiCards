@@ -1,0 +1,654 @@
+{
+  "id": "onticardsReviewAdmissionV1",
+  "name": "OntiCards native automatic semantic review admission",
+  "active": false,
+  "nodes": [
+    {
+      "id": "d03c61fc-5a5f-5332-869b-562a341c4853",
+      "name": "Existing complete intake candidate",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "8182f20b-75fe-55e3-b50f-569c6dbaa021",
+      "name": "Validate fixed review candidate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;\nif(!Number.isSafeInteger(p.pr)||p.pr<1||p.pr>9999999||!/^[a-f0-9]{40}$/.test(p.head??'')||!/^[a-f0-9]{40}$/.test(p.base??''))throw new Error('Invalid review version');\n// This literal is operator configuration; webhook/PR input cannot choose it.\nconst trusted_mode='dry_run';\nreturn [{json:{repository:'stepll2026/OntiCards',pr:p.pr,head:p.head,base:p.base,mode:trusted_mode,observed_at:p.observed_at??null}}];"
+      }
+    },
+    {
+      "id": "fea48c03-f555-571e-8ca2-7c81b18add97",
+      "name": "Native exact review identity hash",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ JSON.stringify([$json.repository,$json.pr,$json.head,$json.base]) }}",
+        "dataPropertyName": "version_hash",
+        "encoding": "hex"
+      }
+    },
+    {
+      "id": "3de64378-aa2b-5694-9e4b-03f109dc3035",
+      "name": "Set fixed native key",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;if(!/^[a-f0-9]{64}$/.test(p.version_hash??''))throw new Error('Invalid version hash');return [{json:{...p,review_key:'review-'+p.version_hash}}];"
+      }
+    },
+    {
+      "id": "bbfdfc4f-9f36-5336-a2bc-ff4040915615",
+      "name": "Ensure native permanent review receipts",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_pr_reviews_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "review_key",
+              "type": "string"
+            },
+            {
+              "name": "pr",
+              "type": "number"
+            },
+            {
+              "name": "head",
+              "type": "string"
+            },
+            {
+              "name": "base",
+              "type": "string"
+            },
+            {
+              "name": "state",
+              "type": "string"
+            },
+            {
+              "name": "detail",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "881ad8a9-4993-5634-9abe-59fb7923d578",
+      "name": "Read native version admission",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_pr_reviews_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "review_key",
+              "condition": "eq",
+              "keyValue": "={{ $('Set fixed native key').first().json.review_key }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "2d876a47-100c-5333-ab7a-2abd1205790d",
+      "name": "Preserve every consumed outcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Set fixed native key').first().json;const rows=$input.all().map(x=>x.json).filter(x=>x.review_key===p.review_key);return [{json:{...p,consumed:rows.length>0,prior_states:rows.map(r=>r.state)}}];"
+      }
+    },
+    {
+      "id": "3a7b5652-542a-52e3-b726-6a8edeb6ba07",
+      "name": "Unseen or dry verification",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Unseen or dry verification",
+              "leftValue": "={{ $json.mode === 'dry_run' || $json.consumed === false }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3d596b83-eb8d-5be3-a565-da59c9710c95",
+      "name": "Return permanent prior outcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;return [{json:{pr:p.pr,head:p.head,base:p.base,state:'already_consumed',prior_states:p.prior_states,automatic_retry:false,model_started:p.prior_states.every(s=>s==='baseline')?false:null,new_submission:false}}];"
+      }
+    },
+    {
+      "id": "35665d2a-c9fc-5947-bcbc-46d1e1bc7a3d",
+      "name": "Persist only real admission",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Persist only real admission",
+              "leftValue": "={{ $json.mode !== 'dry_run' }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "5ac761fd-c81e-5eba-96e4-8c278fed6408",
+      "name": "Prepare permanent admission before SSH",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;return [{json:{review_key:p.review_key,pr:p.pr,head:p.head,base:p.base,state:p.mode==='baseline'?'baseline':'admitted',detail:JSON.stringify({at:new Date().toISOString(),source:'onticards_intake_threads_v1',observed_at:p.observed_at,automatic_retry:false,model_started:p.mode==='baseline'?false:null})}}];"
+      }
+    },
+    {
+      "id": "e6df5cd6-bd6f-5f38-bf67-836de36fd9a2",
+      "name": "Persist admitted before any mutation",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2420,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_pr_reviews_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "review_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.review_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "110cb76a-cf7a-5024-aec1-ef859cef5954",
+      "name": "Baseline never invokes SSH",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2640,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Baseline never invokes SSH",
+              "leftValue": "={{ $('Set fixed native key').first().json.mode === 'review' }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "6d331cc3-a7b5-5825-89f7-faad40ea6c7b",
+      "name": "Native fixed SSH review capability",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        0
+      ],
+      "parameters": {
+        "executeOnce": true,
+        "command": "=node /opt/onticards-preview-ci/bundle/dispatch_review.mjs {{ $('Set fixed native key').first().json.pr }} {{ $('Set fixed native key').first().json.head }} {{ $('Set fixed native key').first().json.base }} {{ $('Set fixed native key').first().json.mode }}"
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "b328b751-57e8-587b-9a78-4ac855f0857a",
+      "name": "Project actual fixed capability receipt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Set fixed native key').first().json;let r;\ntry{r=JSON.parse($input.first().json.stdout??'');}catch{r=null;}\nconst match=r&&r.repository===p.repository&&r.pr===p.pr&&r.head===p.head&&r.base===p.base&&r.idempotency_key===p.review_key&&r.mode===p.mode;\nconst result=match?r:{state:'submission_outcome_unknown',model_started:p.mode==='review'?null:false,automatic_retry:false};\nreturn [{json:{review_key:p.review_key,pr:p.pr,head:p.head,base:p.base,state:typeof result.state==='string'?result.state:'submission_outcome_unknown',detail:JSON.stringify({...result,observed_at:new Date().toISOString(),automatic_retry:false})}}];"
+      }
+    },
+    {
+      "id": "e394a014-1cf9-5835-b1a5-d82c1d440964",
+      "name": "Store only real terminal observation",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3300,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Store only real terminal observation",
+              "leftValue": "={{ $('Set fixed native key').first().json.mode === 'review' }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c8c6dedc-e968-5ecc-9649-b4f700971fd6",
+      "name": "Dry probe cannot consume real admission",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3520,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;return [{json:{...p,review_key:'probe:'+p.review_key}}];"
+      }
+    },
+    {
+      "id": "281b2226-79ab-5a1e-82f9-1ed027ed1ba0",
+      "name": "Persist actual outcome without retries",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3740,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_pr_reviews_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "review_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.review_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "44093b21-3be7-5efa-9ad4-d8a06fa39253",
+      "name": "Safe review receipt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3960,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map(x=>({json:x.json}));"
+      }
+    }
+  ],
+  "connections": {
+    "Existing complete intake candidate": {
+      "main": [
+        [
+          {
+            "node": "Validate fixed review candidate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate fixed review candidate": {
+      "main": [
+        [
+          {
+            "node": "Native exact review identity hash",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Native exact review identity hash": {
+      "main": [
+        [
+          {
+            "node": "Set fixed native key",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set fixed native key": {
+      "main": [
+        [
+          {
+            "node": "Ensure native permanent review receipts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure native permanent review receipts": {
+      "main": [
+        [
+          {
+            "node": "Read native version admission",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read native version admission": {
+      "main": [
+        [
+          {
+            "node": "Preserve every consumed outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve every consumed outcome": {
+      "main": [
+        [
+          {
+            "node": "Unseen or dry verification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unseen or dry verification": {
+      "main": [
+        [
+          {
+            "node": "Persist only real admission",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Return permanent prior outcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist only real admission": {
+      "main": [
+        [
+          {
+            "node": "Prepare permanent admission before SSH",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Native fixed SSH review capability",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare permanent admission before SSH": {
+      "main": [
+        [
+          {
+            "node": "Persist admitted before any mutation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist admitted before any mutation": {
+      "main": [
+        [
+          {
+            "node": "Baseline never invokes SSH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baseline never invokes SSH": {
+      "main": [
+        [
+          {
+            "node": "Native fixed SSH review capability",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Safe review receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Native fixed SSH review capability": {
+      "main": [
+        [
+          {
+            "node": "Project actual fixed capability receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project actual fixed capability receipt": {
+      "main": [
+        [
+          {
+            "node": "Store only real terminal observation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store only real terminal observation": {
+      "main": [
+        [
+          {
+            "node": "Persist actual outcome without retries",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dry probe cannot consume real admission",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist actual outcome without retries": {
+      "main": [
+        [
+          {
+            "node": "Safe review receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dry probe cannot consume real admission": {
+      "main": [
+        [
+          {
+            "node": "Persist actual outcome without retries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 300,
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false
+  },
+  "pinData": {}
+}

@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {projectReceipt,projectFailure,requireRevocation} from './receipt.mjs';
+const p={repository:'stepll2026/OntiCards',pr:26,head:'a'.repeat(40)};
+const row=()=>({operationId:'12345678-abcd-abcd-abcd-123456789abc',tool:'review_pull_request',state:'posted',lifecycle:{state:'accepted'},result:{state:'posted',repository:p.repository,pullRequest:p.pr,resolvedHead:p.head,commentId:123,url:'https://github.com/stepll2026/OntiCards/pull/26#issuecomment-123'}});
+const wrap=r=>({structuredContent:{summary:'untrusted prose',links:[],data:r}});
+test('native posted receipt remains posted and uses nested result',()=>{const x=projectReceipt(wrap(row()),p);assert.equal(x.state,'native_posted');assert.equal(x.native_lifecycle,'accepted');assert.equal(x.comment_id,123);assert.equal(x.model_started,null);});
+for(const state of ['failed','unknown','accepted','running','completed','cancelled'])test(state+' remains distinct and never authorizes retry',()=>{const r=row();r.state=state;r.lifecycle.state=state;r.result={error:{code:'OUTCOME_UNKNOWN',message:'secret must not escape'}};const x=projectReceipt(wrap(r),p);assert.equal(x.state,'native_'+state);assert.equal(x.automatic_retry,false);assert.equal(JSON.stringify(x).includes('secret'),false);assert.equal(x.comment_id,undefined);});
+test('malformed and confused posted identities fail closed',()=>{for(const change of [r=>r.tool='fix_review_findings',r=>r.operationId='bad',r=>r.lifecycle={},r=>r.result.commentId=-1,r=>r.result.resolvedHead='b'.repeat(40),r=>r.result.url='https://example.com/',r=>r.result.pullRequest=30,r=>r.result.state='unknown']){const r=row();change(r);assert.throws(()=>projectReceipt(wrap(r),p),/NATIVE_RECEIPT_INVALID/);}});
+test('top-level result fallback is refused',()=>assert.throws(()=>projectReceipt({structuredContent:row()},p),/NATIVE_RECEIPT_INVALID/));
+test('MCP isError cannot project posted as success',()=>assert.throws(()=>projectReceipt({...wrap(row()),isError:true},p),/NATIVE_RECEIPT_INVALID/));
+test('transport or malformed response after mutation is unknown, never no model',()=>{for(const e of [new Error('network secret'),{safeCode:'NATIVE_RECEIPT_INVALID'}]){const x=projectFailure(e,true);assert.equal(x.state,'submission_outcome_unknown');assert.equal(x.model_started,null);assert.equal(x.automatic_retry,false);}});
+test('precondition error proves no invocation',()=>{const x=projectFailure({},false);assert.equal(x.state,'review_admission_failed');assert.equal(x.model_started,false);});
+test('unknown revoke requires credential cleanup even after posted',()=>{const x=requireRevocation({state:'native_posted',native_state:'posted',grant_revocation:'unknown'});assert.equal(x.state,'credential_cleanup_unknown');assert.equal(x.native_state,'posted');assert.equal(x.credential_cleanup_required,true);});

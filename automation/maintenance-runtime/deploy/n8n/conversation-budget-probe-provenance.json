@@ -1,0 +1,10 @@
+{
+  "exact_production_expression_sha256": {
+    "Project deterministic routing observations": "3329bb65649613dd54118e12b3708542d8ec41cbdda7f5908bed46f7e06fc3d8",
+    "Reserve thread model budget": "d5934d071580739bbc5a7e8083b4e07cbe70225a2cb474e01684f2d3fca68588",
+    "Reserve review in original thread budget": "833bc8f5cffaf6b37e08af339b51597d37b710f52f4782cc57882aad41010b83",
+    "Apply reviewed conversation increment": "fe0c794e9ba43815caabed8240fc5b5c8beb858767dac45ddb198d59b3b6a0fd"
+  },
+  "transports": "frozen approvals and confirmations; zero model or GitHub calls",
+  "state": "native DataTable seeded only if absent"
+}

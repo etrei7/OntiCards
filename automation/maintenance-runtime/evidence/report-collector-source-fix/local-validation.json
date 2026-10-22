@@ -1,0 +1,7 @@
+{
+  "old_source_sha256": "fe83e8a8f1c746de305065f20d5ae9344cbab23b622fafb2a0db8624bbf0625b",
+  "new_source_sha256": "f123a5860298c2396d3024b2ce4cda4852f890b42b68fcc2079d4fc606214c40",
+  "baseline_failed": 2,
+  "candidate_passed": 24,
+  "candidate_skipped": 0
+}

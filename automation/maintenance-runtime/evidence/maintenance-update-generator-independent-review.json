@@ -1,0 +1,35 @@
+{
+  "reviewed_at": "2026-10-22T17:46:46.510919+00:00",
+  "all_passed": true,
+  "checks": {
+    "readonly_get": true,
+    "readonly_no_post": true,
+    "readonly_no_patch": true,
+    "exact_nonforce_pr30_patch": true,
+    "no_main_patch": true,
+    "no_other_branch_patch": true,
+    "no_force": true,
+    "no_other_head": true,
+    "no_delete": true,
+    "no_put": true,
+    "no_extra_payload": true,
+    "exact_parent_pin": true,
+    "one_commit_only": true,
+    "main_is_readonly_and_pinned": true,
+    "branch_before_and_immediate_guard": true,
+    "branch_create_call_removed": true,
+    "only_expected_mutation_calls": true,
+    "token_revoke_preserved": true
+  },
+  "generator_sha256": "4be2c279ac1852174380424d003a8b0d62ba72890ac31f55fa9ffef92c533840",
+  "tests": 18,
+  "network_requests": 0,
+  "github_writes": 0,
+  "credentials_loaded": false,
+  "result": "No current blocking path found in the exact generator and original publisher reviewed.",
+  "limits": [
+    "Offline fake payload/head only; parent must regenerate and review the exact final exporter audit/head/object digest before apply.",
+    "GitHub non-force semantics and before/after reads remain the live protection; this test does not publish a branch.",
+    "String replacement depends on this frozen publisher shape; future upstream edits require replacement-count/assertion review."
+  ]
+}

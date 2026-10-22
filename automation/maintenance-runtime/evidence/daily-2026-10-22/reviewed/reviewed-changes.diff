@@ -1,0 +1,32 @@
+--- native-report.md
++++ 2026-10-22-reviewed.md
+@@ -1,4 +1,6 @@
+ # 【AI辅助】OntiCards 中文维护日报（2026-10-22）
++
++> 独立复核修正版，由执行助手修订；不是原生模型原文。仅修正4处成功获取空Checks的措辞，并移除不属于本次事实输入的历史SQL待办。原始报告质量未通过，原文、用量和逐条复核记录均保留。统计窗口、事实run_id、源SHA及其余内容不变。
+ 
+ 统计日期：2026-10-22（Asia/Shanghai）；窗口起点（含）：2026-10-22T00:00:00+08:00；窗口终点（不含）：2026-10-23T00:00:00+08:00；采集时间：2026-10-22T17:10:18.449946+00:00；事实 run_id：5da38704-a3ef-49b3-9c18-2bf3a88d28b1；本次 Agent Run ID：f879dedc-7a00-464f-8e94-6b0b7d234353。
+ 
+@@ -26,10 +28,10 @@
+ 
+ 1. [#33 修复 LibreOffice 并发转换的用户配置目录冲突](https://github.com/stepll2026/OntiCards/pull/33)（draft）— head `fdd3f291e8d4a51c31610f13d87670ab3288a6e9` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 1 项：`OntiCards LibreOffice concurrency evidence` conclusion=success ([run](https://github.com/stepll2026/OntiCards/runs/119950685976), [details](http://10.66.66.5:18123/onticards-reports/acceptance/pr33-fdd3/))。Check 成功仅支持该 Check 报告的范围；本采集器不运行测试。
+ 2. [#26 修复治理 PDF 导出与宽表分页](https://github.com/stepll2026/OntiCards/pull/26)（draft）— head `3105b7b61469c6b2945357f2eefa8fcb2e3aaee5` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 2 项：`OntiCards invalidation acceptance fixture (not tests)` conclusion=neutral ([run](https://github.com/stepll2026/OntiCards/runs/119966580036))；`OntiCards isolated PDF evidence (partial validation)` conclusion=neutral ([run](https://github.com/stepll2026/OntiCards/runs/119778059245), [details](http://10.66.66.5:18123/onticards-reports/acceptance/pdf-3105/))。neutral 不等于通过；需查证据包确认验收范围。
+-3. [#30 Add repository maintenance knowledge and recoverable daily reporting](https://github.com/stepll2026/OntiCards/pull/30)（draft）— head `10c6862d4c7325c85618f86455aacf9d10c088b5` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 未获取（空数组）。
+-4. [#28 feat(api): identify OntiCards to Weaviate via integration header](https://github.com/stepll2026/OntiCards/pull/28) — 来自 fork `dudanogueira/OntiCards`；head `4ad21f17e97668d13ea52f44197749534092e74d` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 未获取。
+-5. [#27 chore(deploy): bump Weaviate to 1.39.13 (CVE-2026-111943)](https://github.com/stepll2026/OntiCards/pull/27) — 来自 fork `dudanogueira/OntiCards`；head `7f98741eb20f5a17665c949b0babb42b6b1d338d` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 未获取。安全相关升级，需核实 CVE 适用范围与兼容性。
+-6. [#22 feat: add first-class MariaDB data source support](https://github.com/stepll2026/OntiCards/pull/22) — 来自 fork `mkstory/OntiCards`；head `e8a55db0a6104905cc629f97ac8750e1392e4f44` / base `b961c50758ac69f54f051a614fc2dc46b6900a30`（注意 base 非当前 main HEAD）；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 未获取。
++3. [#30 Add repository maintenance knowledge and recoverable daily reporting](https://github.com/stepll2026/OntiCards/pull/30)（draft）— head `10c6862d4c7325c85618f86455aacf9d10c088b5` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 0 项（接口成功返回空数组）。
++4. [#28 feat(api): identify OntiCards to Weaviate via integration header](https://github.com/stepll2026/OntiCards/pull/28) — 来自 fork `dudanogueira/OntiCards`；head `4ad21f17e97668d13ea52f44197749534092e74d` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 0 项（接口成功返回空数组）。
++5. [#27 chore(deploy): bump Weaviate to 1.39.13 (CVE-2026-111943)](https://github.com/stepll2026/OntiCards/pull/27) — 来自 fork `dudanogueira/OntiCards`；head `7f98741eb20f5a17665c949b0babb42b6b1d338d` / base `c8e3dfee68d398a37842fc332f73af40a56f02a7`；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 0 项（接口成功返回空数组）。安全相关升级，需核实 CVE 适用范围与兼容性。
++6. [#22 feat: add first-class MariaDB data source support](https://github.com/stepll2026/OntiCards/pull/22) — 来自 fork `mkstory/OntiCards`；head `e8a55db0a6104905cc629f97ac8750e1392e4f44` / base `b961c50758ac69f54f051a614fc2dc46b6900a30`（注意 base 非当前 main HEAD）；mergeable=true, mergeable_state=clean；传统提交状态条数 0；Checks 0 项（接口成功返回空数组）。
+ 
+ ## D AI/提交/CI
+ 
+@@ -55,7 +57,6 @@
+ 6. Issue #20 + PR #22：评审 MariaDB 一等数据源实现，确认测试覆盖与文档完整性；注意 PR base 落后于当前 main，可能需要 rebase。
+ 7. PR #30：审阅维护知识库与日报恢复机制变更，确认是否合入。
+ 8. PR #28、#27（外部 fork）：核实 Weaviate integration header 与 CVE-2026-111943 升级的必要性与兼容性；最终合并由维护者操作。
+-9. SQL R18 仍未解决（全局知识记录）：禁止继续采用全局方括号/双引号屏蔽建议；后续须先明确 dialect 接口并保持真实表不漏报。
+ 
+ ## F 数据质量
+ 

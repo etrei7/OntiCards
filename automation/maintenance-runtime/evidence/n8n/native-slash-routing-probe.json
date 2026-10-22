@@ -1,0 +1,287 @@
+{
+  "started_at": "2026-10-22T19:14:59.339092+00:00",
+  "model_requests": 0,
+  "github_posts": 0,
+  "requests": [
+    {
+      "case": "native_mcp",
+      "round": 2,
+      "response": {
+        "route": "native_slash_command_context_only",
+        "conversation": {
+          "thread_key": "fixture-budget6:90300",
+          "model_calls": 0,
+          "reply_count": 0,
+          "pending_event": "",
+          "pending_state": "",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 11,
+          "createdAt": "2026-10-22T19:16:23.598Z",
+          "updatedAt": "2026-10-22T19:16:23.598Z"
+        },
+        "execution_id": "538",
+        "entered_at": "2026-10-23T03:16:23.202+08:00",
+        "completed_at": "2026-10-23T03:16:24.407+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "native_fix",
+      "round": 2,
+      "response": {
+        "route": "native_slash_command_context_only",
+        "conversation": {
+          "thread_key": "fixture-budget6:90301",
+          "model_calls": 0,
+          "reply_count": 0,
+          "pending_event": "",
+          "pending_state": "",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 12,
+          "createdAt": "2026-10-22T19:16:24.779Z",
+          "updatedAt": "2026-10-22T19:16:24.779Z"
+        },
+        "execution_id": "539",
+        "entered_at": "2026-10-23T03:16:24.563+08:00",
+        "completed_at": "2026-10-23T03:16:24.918+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "native_ultrafix",
+      "round": 2,
+      "response": {
+        "route": "native_slash_command_context_only",
+        "conversation": {
+          "thread_key": "fixture-budget6:90302",
+          "model_calls": 0,
+          "reply_count": 0,
+          "pending_event": "",
+          "pending_state": "",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 13,
+          "createdAt": "2026-10-22T19:16:25.200Z",
+          "updatedAt": "2026-10-22T19:16:25.200Z"
+        },
+        "execution_id": "540",
+        "entered_at": "2026-10-23T03:16:25.056+08:00",
+        "completed_at": "2026-10-23T03:16:25.383+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "near_command",
+      "round": 2,
+      "response": {
+        "route": "eligible_draft_disabled",
+        "conversation": {
+          "thread_key": "fixture-budget6:90303",
+          "model_calls": 2,
+          "reply_count": 1,
+          "pending_event": "",
+          "pending_state": "published_verified",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[\"human-2\"]",
+          "publication_ids": "[\"fixture-published-2\"]",
+          "id": 14,
+          "createdAt": "2026-10-22T19:16:25.678Z",
+          "updatedAt": "2026-10-22T19:16:26.328Z"
+        },
+        "execution_id": "541",
+        "entered_at": "2026-10-23T03:16:25.531+08:00",
+        "completed_at": "2026-10-23T03:16:26.369+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "marker_only",
+      "round": 2,
+      "response": {
+        "route": "eligible_draft_disabled",
+        "conversation": {
+          "thread_key": "fixture-budget6:90304",
+          "model_calls": 2,
+          "reply_count": 1,
+          "pending_event": "",
+          "pending_state": "published_verified",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[\"human-2\"]",
+          "publication_ids": "[\"fixture-published-2\"]",
+          "id": 15,
+          "createdAt": "2026-10-22T19:16:26.761Z",
+          "updatedAt": "2026-10-22T19:16:27.191Z"
+        },
+        "execution_id": "542",
+        "entered_at": "2026-10-23T03:16:26.506+08:00",
+        "completed_at": "2026-10-23T03:16:27.219+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "leading_blank",
+      "round": 2,
+      "response": {
+        "route": "eligible_draft_disabled",
+        "conversation": {
+          "thread_key": "fixture-budget6:90305",
+          "model_calls": 2,
+          "reply_count": 1,
+          "pending_event": "",
+          "pending_state": "published_verified",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[\"human-2\"]",
+          "publication_ids": "[\"fixture-published-2\"]",
+          "id": 16,
+          "createdAt": "2026-10-22T19:16:27.481Z",
+          "updatedAt": "2026-10-22T19:16:27.908Z"
+        },
+        "execution_id": "543",
+        "entered_at": "2026-10-23T03:16:27.324+08:00",
+        "completed_at": "2026-10-23T03:16:27.935+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "normal_followup",
+      "round": 2,
+      "response": {
+        "route": "eligible_draft_disabled",
+        "conversation": {
+          "thread_key": "fixture-budget6:90306",
+          "model_calls": 2,
+          "reply_count": 1,
+          "pending_event": "",
+          "pending_state": "published_verified",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[\"human-2\"]",
+          "publication_ids": "[\"fixture-published-2\"]",
+          "id": 17,
+          "createdAt": "2026-10-22T19:16:28.258Z",
+          "updatedAt": "2026-10-22T19:16:29.672Z"
+        },
+        "execution_id": "544",
+        "entered_at": "2026-10-23T03:16:28.069+08:00",
+        "completed_at": "2026-10-23T03:16:29.772+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "native_pending",
+      "round": 2,
+      "response": {
+        "route": "model_request_started",
+        "conversation": {
+          "thread_key": "fixture-budget6:90307",
+          "model_calls": 2,
+          "reply_count": 0,
+          "pending_event": "existing-failed-event",
+          "pending_state": "model_request_started",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 18,
+          "createdAt": "2026-10-22T19:16:30.066Z",
+          "updatedAt": "2026-10-22T19:16:30.066Z"
+        },
+        "execution_id": "545",
+        "entered_at": "2026-10-23T03:16:29.930+08:00",
+        "completed_at": "2026-10-23T03:16:30.193+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "manual29",
+      "round": 2,
+      "response": {
+        "route": "explicit_manual_handoff",
+        "conversation": {
+          "thread_key": "fixture-budget6:29",
+          "model_calls": 5,
+          "reply_count": 2,
+          "pending_event": "existing-failed-event",
+          "pending_state": "model_request_started",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 19,
+          "createdAt": "2026-10-22T19:16:30.398Z",
+          "updatedAt": "2026-10-22T19:16:30.398Z"
+        },
+        "execution_id": "546",
+        "entered_at": "2026-10-23T03:16:30.287+08:00",
+        "completed_at": "2026-10-23T03:16:30.569+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "manual31",
+      "round": 2,
+      "response": {
+        "route": "explicit_manual_handoff",
+        "conversation": {
+          "thread_key": "fixture-budget6:31",
+          "model_calls": 3,
+          "reply_count": 0,
+          "pending_event": "existing-failed-event",
+          "pending_state": "model_request_started",
+          "known_fields": "{}",
+          "asked_fields": "[]",
+          "answered_human_ids": "[]",
+          "publication_ids": "[]",
+          "id": 2,
+          "createdAt": "2026-10-22T16:42:34.599Z",
+          "updatedAt": "2026-10-22T16:42:34.599Z"
+        },
+        "execution_id": "547",
+        "entered_at": "2026-10-23T03:16:30.664+08:00",
+        "completed_at": "2026-10-23T03:16:30.884+08:00",
+        "external_model_calls": 0,
+        "github_posts": 0
+      }
+    }
+  ],
+  "native_published_version": {
+    "version_id": "207a0ab8-ffe3-436d-a3e4-cd0638bbcb2c",
+    "nodes": 29,
+    "file_sha256": "291c4c8c3bba2cd1e20e9c56674b7fe4d966681a0469a8a72eae342ece569434",
+    "definition_exact": true
+  },
+  "assertions": {
+    "native_mcp_formatter_body_context_only": true,
+    "fix_ultrafix_native_commands_context_only": true,
+    "near_command_not_overfiltered": true,
+    "marker_alone_never_native_authorization": true,
+    "leading_blank_matches_native_noncommand": true,
+    "normal_human_followup_remains_eligible": true,
+    "pending_reservation_preserved": true,
+    "issue29_sealed_unchanged": true,
+    "issue31_sealed_unchanged": true
+  },
+  "passed": true,
+  "probe_stopped": true,
+  "completed_at": "2026-10-22T19:16:31.809467+00:00"
+}

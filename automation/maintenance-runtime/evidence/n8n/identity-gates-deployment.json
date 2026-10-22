@@ -1,0 +1,30 @@
+{
+  "started_at": "2026-10-22T17:42:55.877825+00:00",
+  "manual_triggers": 0,
+  "model_requests": 0,
+  "github_requests": 0,
+  "ledger_writes": 0,
+  "actions": [
+    {
+      "id": "onticardsPersistentDraftsV1",
+      "nodes": 45,
+      "active": true,
+      "configuration_preserved": true,
+      "version_id": "22c49085-a94f-4c02-ae23-4f2f3a23cb62",
+      "checksum": "beefef4422a938c1225675225bed428b92e96e8d9426aa2afbfa47d6e4cad75a",
+      "template_sha256": "98b6c83f012a38aa8e7619b93231306d9940dc5d19f0e458992e6d89240c1ad1",
+      "prior_backup": "/opt/onticards-maintenance/n8n/evidence/identity-before-onticardsPersistentDraftsV1-174255.json"
+    },
+    {
+      "id": "onticardsPersistentSemanticReviewV1",
+      "nodes": 37,
+      "active": true,
+      "configuration_preserved": true,
+      "version_id": "8adf84d0-7c0f-42d0-8564-4e79cfade94e",
+      "checksum": "2d17a6d9f717677c8e39ee8e434b144ebc778d630c9012dc4f3ee6410addd2ba",
+      "template_sha256": "593dff17c1fe0c10607cfdf8bb268c9d427d0461759571d1b863990b9047f7cc",
+      "prior_backup": "/opt/onticards-maintenance/n8n/evidence/identity-before-onticardsPersistentSemanticReviewV1-174256.json"
+    }
+  ],
+  "completed_at": "2026-10-22T17:42:57.201893+00:00"
+}

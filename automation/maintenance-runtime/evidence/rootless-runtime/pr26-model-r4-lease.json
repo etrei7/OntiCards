@@ -1,0 +1,33 @@
+{
+  "identity": {
+    "repository": "stepll2026/OntiCards",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "contract": "preview-v1",
+    "run_id": "19aa3bbf395b323dc3869bd6"
+  },
+  "name": "oc-preview-19aa3bbf395b323dc3869bd6-r4",
+  "state": "disabled_verified",
+  "started_at": "2026-10-22T17:30:38.454Z",
+  "expires_at": 1792691138,
+  "quota": 45000,
+  "quota_unit": "Native test accounting units; supplier USD unknown",
+  "model": "onticards-preview-qwen3.8-max-0902",
+  "embedding_model": "onticards-preview-qwen3.7-text-embedding-flash",
+  "group": "onticards-preview",
+  "account_remaining_before": 55851,
+  "account_used_before": 44149,
+  "account_quota_reset": false,
+  "allow_ips": "10.66.66.5",
+  "automatic_reissue": false,
+  "operator_recovery": {
+    "recovery_id": "preconsume-budget-r4",
+    "previous_token_id": 11
+  },
+  "token_id": 12,
+  "revoked_at": "2026-10-22T17:35:02.296Z",
+  "used_quota": 40406,
+  "remain_quota": 4594,
+  "provider_cost_usd": null
+}

@@ -1,0 +1,148 @@
+{
+  "kind": "no-model input-contract validation",
+  "model_calls": 0,
+  "github_calls": 0,
+  "checks": [
+    {
+      "name": "calendar 2026-10-22T01:05:00Z",
+      "passed": true,
+      "target_day": "2026-10-21",
+      "window_start": "2026-10-21T00:00:00+08:00",
+      "window_end": "2026-10-22T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-11-01T01:05:00Z",
+      "passed": true,
+      "target_day": "2026-10-31",
+      "window_start": "2026-10-31T00:00:00+08:00",
+      "window_end": "2026-11-01T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2027-01-01T01:05:00Z",
+      "passed": true,
+      "target_day": "2026-12-31",
+      "window_start": "2026-12-31T00:00:00+08:00",
+      "window_end": "2027-01-01T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2024-03-01T01:05:00Z",
+      "passed": true,
+      "target_day": "2024-02-29",
+      "window_start": "2024-02-29T00:00:00+08:00",
+      "window_end": "2024-03-01T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-03-01T01:05:00Z",
+      "passed": true,
+      "target_day": "2026-02-28",
+      "window_start": "2026-02-28T00:00:00+08:00",
+      "window_end": "2026-03-01T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-10-21T15:59:59Z",
+      "passed": true,
+      "target_day": "2026-10-20",
+      "window_start": "2026-10-20T00:00:00+08:00",
+      "window_end": "2026-10-21T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-10-21T16:00:00Z",
+      "passed": true,
+      "target_day": "2026-10-21",
+      "window_start": "2026-10-21T00:00:00+08:00",
+      "window_end": "2026-10-22T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-10-22T01:04:59Z",
+      "passed": true,
+      "target_day": "2026-10-21",
+      "window_start": "2026-10-21T00:00:00+08:00",
+      "window_end": "2026-10-22T00:00:00+08:00"
+    },
+    {
+      "name": "calendar 2026-10-22T01:05:01Z",
+      "passed": true,
+      "target_day": "2026-10-21",
+      "window_start": "2026-10-21T00:00:00+08:00",
+      "window_end": "2026-10-22T00:00:00+08:00"
+    },
+    {
+      "name": "reject invalid/naive time not-an-ISO-timestamp",
+      "passed": true
+    },
+    {
+      "name": "reject invalid/naive time 2026-10-22T09:05:00",
+      "passed": true
+    },
+    {
+      "name": "missing target waits",
+      "passed": true
+    },
+    {
+      "name": "older available file is not a fallback",
+      "passed": true
+    },
+    {
+      "name": "selected complete pair accepted",
+      "passed": true
+    },
+    {
+      "name": "explicit open Issue facts survive long Markdown",
+      "passed": true
+    },
+    {
+      "name": "tool output excludes duplicated long Markdown",
+      "passed": true
+    },
+    {
+      "name": "reject invalid day 2026-10-30",
+      "passed": true
+    },
+    {
+      "name": "reject invalid repository someone/else",
+      "passed": true
+    },
+    {
+      "name": "reject invalid window_end 2026-10-31T00:00:00+08:00",
+      "passed": true
+    },
+    {
+      "name": "reject invalid status partial",
+      "passed": true
+    },
+    {
+      "name": "reject invalid generated_at 2026-11-01T01:06:00+00:00",
+      "passed": true
+    },
+    {
+      "name": "reject invalid generated_at 2026-10-30T23:59:00+08:00",
+      "passed": true
+    },
+    {
+      "name": "reject invalid expires_at 2026-11-01T01:05:00+00:00",
+      "passed": true
+    },
+    {
+      "name": "API errors rejected",
+      "passed": true
+    },
+    {
+      "name": "mismatched JSON/MD runs rejected",
+      "passed": true
+    },
+    {
+      "name": "malformed JSON rejected",
+      "passed": true
+    },
+    {
+      "name": "initial native model/timeout/thinking options",
+      "passed": true
+    },
+    {
+      "name": "production prompt has no frozen acceptance date/run",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limits": "Tests execute deterministic input selection, not LLM compliance with the production prompt or a native scheduled run."
+}

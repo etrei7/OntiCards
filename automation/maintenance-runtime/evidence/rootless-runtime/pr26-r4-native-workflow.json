@@ -1,0 +1,1148 @@
+{
+  "observed_at": "2026-10-22T17:54:00.453762+00:00",
+  "executions": [
+    {
+      "id": 70,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 17:30:07.612",
+      "stoppedAt": "2026-10-22 17:35:11.938",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 1,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 9693,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 9,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 38,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 54,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 9167,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 10834,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 9,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 265539,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 8184,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 59,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:30:14.367Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:30:36.138Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:35:09.923Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "tests_passed_model_business",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 17:18:18.569",
+      "stoppedAt": "2026-10-22 17:23:34.653",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 1,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 9032,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 9,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 38,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 9,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 50,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 10264,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 11748,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 272605,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 11279,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 230,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:18:24.949Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:18:47.581Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:23:29.884Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "tests_failed",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 17:07:04.241",
+      "stoppedAt": "2026-10-22 17:10:44.222",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 1,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 12025,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 9,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 7,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 34,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 54,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 12291,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 13830,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 168731,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 12114,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 57,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:07:14.671Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:07:38.897Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T17:10:41.841Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "tests_failed",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 16:48:54.015",
+      "stoppedAt": "2026-10-22 16:51:36.405",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 1,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 15,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 8199,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 8,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 43,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 52,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 14913,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 10,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 9861,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 118930,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 9487,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 66,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:49:00.614Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:49:25.747Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:51:34.276Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "tests_failed",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 16:44:31.545",
+      "stoppedAt": "2026-10-22 16:45:25.579",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 1,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 13401,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 71,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 113,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 14,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 69,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 14226,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 12966,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 602,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 11624,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 70,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:44:41.685Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:45:08.467Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:45:21.713Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "model_phase_transport_or_execution_failed",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "success",
+      "startedAt": "2026-10-22 16:27:49.715",
+      "stoppedAt": "2026-10-22 16:30:34.138",
+      "last_node": "Persist native outcome",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 117,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 15905,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "success",
+          "duration_ms": 20,
+          "error_type": null
+        },
+        {
+          "name": "Ensure native receipt table",
+          "status": "success",
+          "duration_ms": 69,
+          "error_type": null
+        },
+        {
+          "name": "Read native receipt",
+          "status": "success",
+          "duration_ms": 68,
+          "error_type": null
+        },
+        {
+          "name": "Stop previously consumed revision",
+          "status": "success",
+          "duration_ms": 15,
+          "error_type": null
+        },
+        {
+          "name": "Persist before native execution",
+          "status": "success",
+          "duration_ms": 87,
+          "error_type": null
+        },
+        {
+          "name": "Fixed OpenSSH build transfer test",
+          "status": "success",
+          "duration_ms": 13992,
+          "error_type": null
+        },
+        {
+          "name": "Capture bounded result",
+          "status": "success",
+          "duration_ms": 22,
+          "error_type": null
+        },
+        {
+          "name": "Model after non-model success",
+          "status": "success",
+          "duration_ms": 12,
+          "error_type": null
+        },
+        {
+          "name": "Read PR before model",
+          "status": "success",
+          "duration_ms": 8419,
+          "error_type": null
+        },
+        {
+          "name": "Require current model revision",
+          "status": "success",
+          "duration_ms": 15,
+          "error_type": null
+        },
+        {
+          "name": "Explicit bounded model phase",
+          "status": "success",
+          "duration_ms": 115724,
+          "error_type": null
+        },
+        {
+          "name": "Capture model outcome",
+          "status": "success",
+          "duration_ms": 15,
+          "error_type": null
+        },
+        {
+          "name": "Final native outcome",
+          "status": "success",
+          "duration_ms": 11,
+          "error_type": null
+        },
+        {
+          "name": "Read PR after tests",
+          "status": "success",
+          "duration_ms": 9095,
+          "error_type": null
+        },
+        {
+          "name": "Mark stale or unavailable result",
+          "status": "success",
+          "duration_ms": 13,
+          "error_type": null
+        },
+        {
+          "name": "Persist native outcome",
+          "status": "success",
+          "duration_ms": 74,
+          "error_type": null
+        }
+      ],
+      "public_results": {
+        "Read current PR": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:28:03.493Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR before model": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:28:27.026Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Read PR after tests": {
+          "current": true,
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "reason": "exact_current_revision",
+          "checked_at": "2026-10-22T16:30:31.751Z",
+          "token_issued": true,
+          "token_revoked": true
+        },
+        "Persist native outcome": {
+          "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+          "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+          "pr": 26,
+          "state": "tests_failed",
+          "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "error",
+      "startedAt": "2026-10-22 16:24:54.146",
+      "stoppedAt": "2026-10-22 16:24:54.761",
+      "last_node": "Reject forks or stale revision",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 187,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "success",
+          "duration_ms": 24,
+          "error_type": null
+        },
+        {
+          "name": "Reject forks or stale revision",
+          "status": "error",
+          "duration_ms": 60,
+          "error_type": "WrappedExecutionError"
+        }
+      ],
+      "public_results": {
+        "Read current PR": {}
+      }
+    },
+    {
+      "id": 1,
+      "workflowId": "onticardsFixedPreviewV1",
+      "status": "error",
+      "startedAt": "2026-10-22 16:16:04.379",
+      "stoppedAt": "2026-10-22 16:16:08.771",
+      "last_node": "Read current PR",
+      "nodes": [
+        {
+          "name": "Trusted intake webhook",
+          "status": "success",
+          "duration_ms": 4,
+          "error_type": null
+        },
+        {
+          "name": "Validate fixed input",
+          "status": "success",
+          "duration_ms": 196,
+          "error_type": null
+        },
+        {
+          "name": "Read current PR",
+          "status": "error",
+          "duration_ms": 3892,
+          "error_type": "NodeApiError"
+        }
+      ]
+    }
+  ],
+  "model_lease": {
+    "state": "disabled_verified",
+    "token_id": 12,
+    "expires_at": 1792691138,
+    "revoked_at": "2026-10-22T17:35:02.296Z"
+  },
+  "model-phase-status.json": {
+    "state": "tests_passed_model_business",
+    "model_state": "tests_passed_model_business",
+    "lease": "disabled_verified",
+    "evidence_status": "downloaded_hash_verified",
+    "tests_started": null,
+    "test_exit": null,
+    "failed_stage": null,
+    "failure_kind": null,
+    "cleanup": null
+  },
+  "model-test-receipt.json": {
+    "state": "tests_passed_model_business",
+    "model_state": null,
+    "lease": null,
+    "evidence_status": null,
+    "tests_started": true,
+    "test_exit": 0,
+    "failed_stage": null,
+    "failure_kind": null,
+    "cleanup": {
+      "attempts": [
+        {
+          "compose_down_exit": 0,
+          "container_probe_exit": 0,
+          "volume_probe_exit": 0,
+          "remaining_project_containers": [],
+          "remaining_project_volumes": []
+        }
+      ],
+      "shared_root_docker_touched": false
+    }
+  },
+  "check_watch": {
+    "rows": [
+      {
+        "registration_key": "pr33:check119950685976",
+        "pr": 33.0,
+        "head": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "check_id": "119950685976",
+        "check_name": "OntiCards LibreOffice concurrency evidence",
+        "external_id": "pr33-fdd3-final-concurrency",
+        "state": "watching",
+        "detail": "{\"checked_at\":\"2026-10-22T17:50:36.675Z\",\"revision\":{\"current\":true,\"observed_head\":\"fdd3f291e8d4a51c31610f13d87670ab3288a6e9\",\"observed_base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"reason\":\"exact_current_revision\",\"checked_at\":\"2026-10-22T17:50:27.363Z\"},\"bound\":true,\"observed_conclusion\":\"success\",\"update_result\":\"not_required\",\"update_http_status\":null,\"update_error_category\":null,\"update_error_fields\":[],\"readback_http_status\":null,\"token_revoked\":true,\"checks_write_only_in_this_action\":true,\"model_calls\":0,\"test_runs\":0}",
+        "createdAt": "2026-10-22 16:52:05.125",
+        "updatedAt": "2026-10-22 17:50:52.630"
+      },
+      {
+        "registration_key": "pr26:check119966580036",
+        "pr": 26.0,
+        "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+        "base": "0000000000000000000000000000000000000000",
+        "check_id": "119966580036",
+        "check_name": "OntiCards invalidation acceptance fixture (not tests)",
+        "external_id": "synthetic-base-invalidation-pr26-v1",
+        "state": "invalidated",
+        "detail": "{\"checked_at\":\"2026-10-22T17:28:55.854Z\",\"revision\":{\"current\":false,\"observed_head\":\"3105b7b61469c6b2945357f2eefa8fcb2e3aaee5\",\"observed_base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"reason\":\"stale_or_remote_unverifiable\",\"checked_at\":\"2026-10-22T17:28:40.262Z\"},\"bound\":true,\"observed_conclusion\":\"neutral\",\"update_result\":\"action_required_verified\",\"update_http_status\":200,\"update_error_category\":null,\"update_error_fields\":[],\"readback_http_status\":200,\"token_revoked\":true,\"checks_write_only_in_this_action\":true,\"model_calls\":0,\"test_runs\":0}",
+        "createdAt": "2026-10-22 17:04:56.134",
+        "updatedAt": "2026-10-22 17:28:55.942"
+      },
+      {
+        "registration_key": "pr26:check119988255661",
+        "pr": 26.0,
+        "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "check_id": "119988255661",
+        "check_name": "OntiCards rootless product acceptance",
+        "external_id": "pr26-3105-rootless-r4-19aa3bbf395b323dc3869bd6",
+        "state": "watching",
+        "detail": "{\"checked_at\":\"2026-10-22T17:50:52.556Z\",\"revision\":{\"current\":true,\"observed_head\":\"3105b7b61469c6b2945357f2eefa8fcb2e3aaee5\",\"observed_base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"reason\":\"exact_current_revision\",\"checked_at\":\"2026-10-22T17:50:43.052Z\"},\"bound\":true,\"observed_conclusion\":\"success\",\"update_result\":\"not_required\",\"update_http_status\":null,\"update_error_category\":null,\"update_error_fields\":[],\"readback_http_status\":null,\"token_revoked\":true,\"checks_write_only_in_this_action\":true,\"model_calls\":0,\"test_runs\":0}",
+        "createdAt": "2026-10-22 17:47:28.857",
+        "updatedAt": "2026-10-22 17:50:52.687"
+      }
+    ],
+    "schedule_executions": [
+      {
+        "id": 89,
+        "workflowId": "onticardsCheckWatchV1",
+        "status": "running",
+        "mode": "trigger",
+        "startedAt": "2026-10-22 17:50:17.056",
+        "stoppedAt": null
+      },
+      {
+        "id": 83,
+        "workflowId": "onticardsCheckWatchV1",
+        "status": "running",
+        "mode": "trigger",
+        "startedAt": "2026-10-22 17:45:17.043",
+        "stoppedAt": null
+      }
+    ]
+  }
+}

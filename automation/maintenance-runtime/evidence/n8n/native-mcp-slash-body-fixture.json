@@ -1,0 +1,16 @@
+{
+  "body": "/review onticards-qwen:opencode-bailian/qwen3.8-max-0902\n\n由 OntiCards AI 维护流程自动触发。仅审查 stepll2026/OntiCards PR #90001，head aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa，base bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb。这是一项自动审查请求，不代表新的人工修复或合并授权。保持原生严格审查格式；版本变化时停止，不修改代码、不自动修复、不合并。\n\n<!-- propr-mcp:offline-fixture-only; head:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->",
+  "native_command": "review",
+  "formatter_transport": "in-memory stub only; not a GitHub post",
+  "compiled_files": {
+    "dist/packages/api/mcp/reviewModels.js": "da2f045c06991cd51ba73fbdd8b521a4df1b43e6f6e379dd88bb7bb84409c458",
+    "packages/core/dist/webhook/slashCommandParser.js": "53d247747f1b68a8e7f98c25eacfa905aca639da24ae8395f74b8e0a74e8dc4f"
+  },
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "at": "2026-10-22T19:11:34.884327+00:00",
+  "github_posts": 0,
+  "model_calls": 0,
+  "credentials_mounted": false,
+  "network": "none",
+  "source_sha256": "d444abff5fe123a63bb1bdb71ab79a87963c85466ff772406ad7665711a5e467"
+}

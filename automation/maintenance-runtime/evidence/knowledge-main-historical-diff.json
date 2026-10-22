@@ -1,0 +1,52 @@
+{
+  "repository": "stepll2026/OntiCards",
+  "old_commit": "8abe9e20d58df2605b8a66c3a4296d3dcfe325a2",
+  "current_commit": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "old_tree": "696e08b3526a0aae36bfee8813ebdcc3415d1174",
+  "current_tree": "99f6c09c69ae8553c62fe223d3eaf6ed650e1955",
+  "changed_paths": [
+    {
+      "path": "OntiCards_Api/core/metadata_scope.py",
+      "change": "A",
+      "old_blob": null,
+      "current_blob": "b186d24dd017ac2314d868369e42cfe3a9121281"
+    },
+    {
+      "path": "OntiCards_Api/docker/entrypoint.sh",
+      "change": "M",
+      "old_blob": "2a3d874261188cb367517a3859633ca4514a9afe",
+      "current_blob": "f27e3fa00d0124c7e3f25944048bd8e065c92a0d"
+    },
+    {
+      "path": "OntiCards_Api/extensions/ext_migrate.py",
+      "change": "M",
+      "old_blob": "e7b278fc382fa770081902270f53055f4923f436",
+      "current_blob": "9cd608fa754c50d24e566b5e002c7c3f00b6c7ab"
+    },
+    {
+      "path": "OntiCards_Api/migrations/deploy_check.py",
+      "change": "A",
+      "old_blob": null,
+      "current_blob": "e2f61ff1a10170d96e913118d0105074988e356f"
+    },
+    {
+      "path": "OntiCards_Api/migrations/versions/0001_baseline.py",
+      "change": "A",
+      "old_blob": null,
+      "current_blob": "7573fbce7e96c3cb3a8b17405825695f758739c8"
+    },
+    {
+      "path": "OntiCards_Api/migrations/上线迁移SOP.md",
+      "change": "A",
+      "old_blob": null,
+      "current_blob": "8ccc7f3685b3b2513f2722a9bba169a9f03abb1c"
+    },
+    {
+      "path": "OntiCards_Api/models/__init__.py",
+      "change": "M",
+      "old_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "current_blob": "b55a88d3070d1b9e060c054a727af425f579fa07"
+    }
+  ],
+  "source": "existing local exact Git objects; no network/model/repository mutation"
+}

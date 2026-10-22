@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-10-22T17:29:39.320912+00:00",
+  "manual_new_day_acceptance": true,
+  "run_id": "f879dedc-7a00-464f-8e94-6b0b7d234353",
+  "task_id": "agent-run-f879dedc-7a00-464f-8e94-6b0b7d234353-report",
+  "state": "completed",
+  "facts_run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "facts_day": "2026-10-22",
+  "usage": [
+    {
+      "log_id": 21,
+      "model_name": "opencode-bailian/qwen3.8-max-0902",
+      "input_tokens": 10243,
+      "output_tokens": 4329,
+      "cache_read_input_tokens": 22912,
+      "cost_usd": null,
+      "duration_ms": 63803,
+      "success": 1
+    }
+  ],
+  "provider_cost_usd": null,
+  "billing_note": "Native zero/null is not a verified provider bill",
+  "schedule_changed": false
+}

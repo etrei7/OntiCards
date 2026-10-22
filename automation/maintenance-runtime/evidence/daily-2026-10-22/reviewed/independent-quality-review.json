@@ -1,0 +1,27 @@
+{
+  "reviewed_at": "2026-10-22T17:44:38.570302+00:00",
+  "checks": {
+    "exactly_reviewed_changes_only": true,
+    "four_successful_empty_checks_corrected": true,
+    "unsupported_historical_item_absent": true,
+    "explicit_edited_copy_annotation": true,
+    "original_native_quality_still_false": true,
+    "all_original_structured_checks_passed": true,
+    "original_hash_unchanged": true,
+    "reviewed_hash_matches_receipt": true,
+    "fact_hash_unchanged": true,
+    "zero_new_native_calls": true
+  },
+  "quality_passed": true,
+  "native_quality_passed": false,
+  "artifact_kind": "Explicit assistant-edited reviewed copy, not native model output",
+  "fact_run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "native_run_id": "f879dedc-7a00-464f-8e94-6b0b7d234353",
+  "source_sha256": "bffe18118e3f08728e38bb257ece0503e74eee830a1ea97750776ada23ace047",
+  "reviewed_sha256": "1a58f5a3bba7e48ebb02b571418a27081e14b41748db4d4abf288be9c9b1f094",
+  "limits": [
+    "No additional model run; no claim that the future isolated daily alias has passed a model acceptance.",
+    "The prior independent A-F review applies to unchanged facts, and this review verifies only the two explicit semantic corrections plus provenance annotation.",
+    "No product validation or deployment was performed by this review."
+  ]
+}

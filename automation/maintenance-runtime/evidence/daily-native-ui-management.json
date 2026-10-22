@@ -1,0 +1,50 @@
+{
+  "capturedAt": "2026-10-22T10:57:14.506Z",
+  "definitionId": "e6a4ce1d-0068-4c3a-832c-ff911c791a1c",
+  "revision": 10,
+  "scheduleEnabled": true,
+  "scheduleCron": "5 1 * * *",
+  "nextRunAt": "2026-10-23T01:05:00.000Z",
+  "pendingScheduleSlot": null,
+  "agentAlias": "onticards-qwen",
+  "modelName": "opencode-bailian/qwen3.8-max-0902",
+  "capabilities": [],
+  "repositories": [],
+  "autonomyMode": "dry_run",
+  "includePreviousReports": false,
+  "repositoryIntake": [
+    {
+      "name": "stepll2026/OntiCards",
+      "enabled": false
+    }
+  ],
+  "runs": [
+    {
+      "id": "031a6b51-3976-4ece-af76-f18360ef8b43",
+      "state": "completed"
+    },
+    {
+      "id": "816da413-0f23-48d4-bd47-66573f1f3d3d",
+      "state": "failed"
+    },
+    {
+      "id": "2957780b-64f9-4a13-a21b-a03ba5d609dc",
+      "state": "completed"
+    }
+  ],
+  "queueCounts": {
+    "waiting": 0,
+    "active": 0,
+    "delayed": 0,
+    "paused": 0,
+    "prioritized": 0,
+    "waiting-children": 0
+  },
+  "daemonHeartbeatPresent": true,
+  "uiPauseAndResumeVerified": true,
+  "proof": [
+    "daily-native-ui-paused.png",
+    "daily-native-ui-resumed.png"
+  ],
+  "passed": true
+}

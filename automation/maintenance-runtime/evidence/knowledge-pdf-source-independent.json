@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-22T17:47:35.131280+00:00",
+  "checks": {
+    "blob": true,
+    "excerpt": true,
+    "helper": true,
+    "pdf_no_fallback": true,
+    "entry_call": true,
+    "complete_and_revoked": true,
+    "no_model_write": true
+  },
+  "all_passed": true,
+  "source_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "source_blob": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d",
+  "lines": [
+    871,
+    1012
+  ],
+  "scope": "Bounded actual main helper plus PDF entry; no deployment or answer quality claim",
+  "prior_locator_insufficient_preserved": "knowledge-pdf-source-native.json"
+}

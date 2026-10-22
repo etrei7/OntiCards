@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-22T17:36:27.655Z",
+  "kind": "actual draft native Set expression frozen response replay",
+  "assertions": {
+    "actual_original_sha_typo_rejected": true,
+    "corrected_frozen_sha_only_structure_passes": true,
+    "exact_commit_and_url_rendered_by_set": true,
+    "untrusted_source_excerpt_cannot_whitelist_sha": true,
+    "verified_historical_metadata_allowed": true,
+    "case_insensitive_known_sha_allowed": true
+  },
+  "passed": true,
+  "checks": 6,
+  "model_calls": 0,
+  "github_posts": 0,
+  "original_record_changed": false,
+  "limitations": "Corrected text is a synthetic fixture only, not a new model response or publishable approval. Semantic review and exact quote checks remain required."
+}

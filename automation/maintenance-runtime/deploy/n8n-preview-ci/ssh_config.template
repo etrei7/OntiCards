@@ -1,0 +1,28 @@
+Host preview-build-transfer preview-test-transfer
+  User onticards-preview-transfer
+  IdentityFile /opt/onticards-preview-ci/secrets/preview-transfer
+Host preview-build preview-test
+  User onticards-preview
+  IdentityFile /opt/onticards-preview-ci/secrets/preview-command
+Host preview-publish preview-fetch
+  User onticards-artifact
+  IdentityFile /opt/onticards-preview-ci/secrets/preview-command
+Host *
+  BatchMode yes
+  IdentitiesOnly yes
+  StrictHostKeyChecking yes
+  UserKnownHostsFile /opt/onticards-preview-ci/ssh/known_hosts
+  GlobalKnownHostsFile /dev/null
+  ForwardAgent no
+  ClearAllForwardings yes
+  RequestTTY no
+  ConnectTimeout 15
+  ServerAliveInterval 15
+  ServerAliveCountMax 3
+
+Host preview-build preview-build-transfer preview-publish
+  HostName 101.47.177.55
+  Port 22
+Host preview-test preview-test-transfer preview-fetch
+  HostName 10.66.66.5
+  Port 9922

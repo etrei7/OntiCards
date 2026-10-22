@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-22T17:07:48.902182+00:00",
+  "old_source_sha256": "4aaa76ff2c0927f8a1b58e2a1dd7621b109795f7ca106f4095b4922eba42d900",
+  "new_source_sha256": "a4f5e5e94242b24c262e0c3fc593836d33939ff1de3cbf1ce6345129abae495a",
+  "tests_passed": 36,
+  "tests_skipped": 0,
+  "existing_schedule_unchanged": true,
+  "new_read_access": "trusted root ExecStartPre selects existing ProPR task metadata; low-privilege collector receives only filtered JSON",
+  "passed": true
+}

@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-10-22T17:44:46.850820+00:00",
+  "identity": {
+    "repository": "stepll2026/OntiCards",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "contract": "preview-v1",
+    "run_id": "19aa3bbf395b323dc3869bd6"
+  },
+  "source_tree": "263544a19538467daf6ee79b10680b4ff7bd8d09",
+  "build_manifest_sha256": "f0b9e9b644b7aaa425f5076425e9663e5c9f51ea9060e34a141cd62543fa812a",
+  "state": "tests_passed_model_business",
+  "scope": [
+    "API 7 assertions",
+    "Playwright 3 tests / 9 native PNGs",
+    "Real schema extraction and card creation/edit",
+    "Real chat query over synthetic SQLite yields total_amount=250",
+    "Basic null governance on one table / three columns",
+    "Real XLSX, DOCX, Markdown and PDF exports"
+  ],
+  "not_claimed": [
+    "Frontend lint/TypeScript baseline cleanup",
+    "Full migration acceptance (earlier 5 pass / 1 skip retained)",
+    "PR33 concurrent LibreOffice fix",
+    "All arbitrary repository PRs automatically discovered and dispatched",
+    "Full semantic knowledge indexing",
+    "Real customer data"
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots/login-success-path.png",
+      "sha256": "e22bf6fc9c48f352ce3bda79f08d0946971cb4c3333eb3d53fc3c42e6c19cfdd",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/generated-data-card.png",
+      "sha256": "f5800680b820fc72efbfa4a4e5ad29bceafb457f142a04c02a0f27571355aea5",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/real-query-total-250.png",
+      "sha256": "38871d2e79bbc1d58837e9fdc48c6898b52767a92c42197fef26be99032ef4d8",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/governance-real-report.png",
+      "sha256": "720e0fa8e0bc80bc0fdb9ed21a03ddcd63bcf06cde646eef502d69b12cd6c1c0",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/overview-after-login.png",
+      "sha256": "3493ff89f8101a0e4e01401f29f4a5b85d69eab8362f017dd9a4a904e4bd7981",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/workspaces-success-path.png",
+      "sha256": "4fffc527bf0e721ffd675825dc04c0f18683681fc0db5d616ee3ec7007106973",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/query-history.png",
+      "sha256": "8d594044669bfd31fd6703c5355e6cd9a438765fccfe9dab6b48b26021257060",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/governance.png",
+      "sha256": "df51984f42e2024564336f2bb9e44ba39ef27428dca622c309621c8a1a9d1bd0",
+      "source": "native Playwright results.json attachment body"
+    },
+    {
+      "path": "screenshots/governance-reports.png",
+      "sha256": "84516a8b73ec22e8160c6756e8090e54371045f6a3a0429066ce8dbc7db01652",
+      "source": "native Playwright results.json attachment body"
+    }
+  ],
+  "native_result_sha256": "aede18647cae15cfd344002d5ad8dcf59bbd0d29ccd60295cc766a9de58f68dd",
+  "flow_timestamp_note": "flow-summary.started_at was emitted at completion by the existing probe; use result command timestamps and receipt for actual phases.",
+  "build_host": "kol-stage2 only",
+  "test_host": "10.66.66.5 rootless runtime",
+  "retention_days": 30,
+  "final_merge": "human maintainers only"
+}

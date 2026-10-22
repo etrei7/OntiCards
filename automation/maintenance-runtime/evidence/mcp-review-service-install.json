@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-22T19:08:53.460464+00:00",
+  "backup": "/opt/onticards-maintenance/propr/recovery/mcp-service-20261022T190846Z",
+  "mcp_settings": {
+    "before": {
+      "enabled": false,
+      "scopeCeiling": [
+        "read",
+        "plan",
+        "review"
+      ],
+      "connectEnabled": true
+    },
+    "after": {
+      "enabled": true,
+      "scopeCeiling": [
+        "read",
+        "review"
+      ],
+      "connectEnabled": false
+    }
+  },
+  "review_enabled": false,
+  "models_started": false,
+  "shared_443_changed": false,
+  "ssh_source": "127.0.0.1",
+  "key_options": [
+    "restrict",
+    "no-user-rc",
+    "no-port-forwarding",
+    "no-agent-forwarding",
+    "no-X11-forwarding",
+    "no-pty",
+    "fixed command"
+  ],
+  "compose_sha256": "691bf7d8dafa264205fd5cbb16c655e31c51b6d79671a04ec620169b960dfc44",
+  "nginx_sha256": "ee2421f102a464759ea9be2ce6ae0f985b4e105cb871db33b7896953188b5496"
+}

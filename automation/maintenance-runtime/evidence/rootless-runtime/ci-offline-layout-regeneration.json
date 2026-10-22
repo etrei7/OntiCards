@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-22T17:55:12.036271+00:00",
+  "layout": "automation/maintenance-runtime/{deploy,research,evidence}",
+  "fresh_directory": true,
+  "checkout_root_not_required_for_generators": true,
+  "network_or_server_access": false,
+  "generators": [
+    {
+      "generator": "build_workflow.py",
+      "exit_code": 0
+    },
+    {
+      "generator": "build_revision_guard.py",
+      "exit_code": 0
+    },
+    {
+      "generator": "build_check_watch.py",
+      "exit_code": 0
+    }
+  ],
+  "outputs": [
+    {
+      "path": "check-observe.workflow.json",
+      "sha256": "40e0e5f5086337b18bcb6935dfd6c01cc4455504aa4f37a27e697c51a19b1115",
+      "identical": true
+    },
+    {
+      "path": "check-register.workflow.json",
+      "sha256": "b8c9de81cb4a804e3021fbb5db45e4e46e3b9374fa09e261202e902cd80d4c4f",
+      "identical": true
+    },
+    {
+      "path": "check-watch.workflow.json",
+      "sha256": "f494d742f89233f33c41367d52e60a95866706bf768fa57e79cb421e2d12a8df",
+      "identical": true
+    },
+    {
+      "path": "preview.workflow.json",
+      "sha256": "5f7991de337167ecf503e8b771e91958bcdb6aa628b87f7dcc31aa0e438ea015",
+      "identical": true
+    },
+    {
+      "path": "revision-guard.workflow.json",
+      "sha256": "a44b27726542b0dab7a16232e897ba76fafde7773ce0abbafaf0526a4ee47050",
+      "identical": true
+    }
+  ],
+  "python_files_parse": true,
+  "passed": true
+}

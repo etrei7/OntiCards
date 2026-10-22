@@ -1,0 +1,43 @@
+{
+  "status": "built-and-pushed-not-deployed-by-this-agent",
+  "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "source_tree": "555f1a7d4c24192e108503be371ec0c05faf2ec6",
+  "base_policy8_tree": "7d3af65f3e0fc702ed89103291e2dcc7101f4fdd",
+  "patch_sha256": "eb62d0af8a1240f7bf75a94a1f526edaf696eea3890fd70481fe878a33b52ff8",
+  "delta_sha256": "6d9238e8f7d4ba7d9c4b952742140c58f1460c98882367936ad7752c85192aee",
+  "total_patch_files": 84,
+  "delta_files": 11,
+  "production_delta_files": 6,
+  "test_delta_files": 5,
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy9@sha256:60ad76755bb04c593e82a0debe02becb8ba99f66e355f0271dd671c9b9bb444b",
+  "build_config_id": "sha256:afed0f6d05339bae0d2576ef35f3491079adea07e88282c4fcfa41b6539f488b",
+  "build_completed_at": "2026-10-22T16:21:21Z",
+  "compile": true,
+  "regression": {
+    "tests": 460,
+    "passed": 460,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 24
+  },
+  "model_calls": 0,
+  "github_writes": false,
+  "policy8_patch_unchanged": true,
+  "files": {
+    "build-completed-at.txt": "7d8f236bdc81f0e0c34ad7b675ac2fcd48ebea095dc094da6440651a24224fdc",
+    "build-production.log": "f161496e41298a53550f64a45f0485139712b82002b9cfee2b4fab97ef2c1129",
+    "build-started-at.txt": "afcfe6285da9cee9fe58eab6afc0e5c2271db5cbb1aa067d46df967a11384c68",
+    "build-tests.log": "bf12332834e0c5ce8056afa15e1aefee27bd59ba241ccf157ebe9fb60dc757cc",
+    "image-id.txt": "99f983c069622a008cf6fd8f8bbe7c7c1ff0999725437e32424e112af9744db5",
+    "push.log": "eb1b4c33eb4c8f719fba2ed0bfc7109f165092487a053552052e802b7593adfc",
+    "regression-tests.log": "727516bb7ad2c6b2803dc23d786775018978df10fee3a3fbe11e60809050afa7",
+    "repo-digests.json": "493247afe829d778c602ed3f313fcc51565960c9a5a4cae9b8e9afbd8bed5f5b",
+    "source-verified.json": "48457f62395310a1cae7831180c5f0daa97034b527dd56459aac0a95fd9ae72f"
+  },
+  "limitations": [
+    "No live model index in this build validation",
+    "6 counts native analysis calls, not provider internal HTTP retries",
+    "600s analysis window excludes Git preparation and final cleanup",
+    "Active indexing cancellation uses existing timeout; cancellation flag checked before analyses"
+  ]
+}

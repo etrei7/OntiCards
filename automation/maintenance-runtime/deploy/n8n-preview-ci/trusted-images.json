@@ -1,0 +1,81 @@
+{
+  "db": {
+    "tag": "postgres:15-alpine",
+    "identity": {
+      "config_sha256": "6df127302c018e3e49213a05659b37a68fc54b5299f54ef4027443ce48179c84",
+      "layers": [
+        "sha256:34884abbe92863fce933ed7c39c0e045631af0ed86d5cc0dfbdf9fdca426ce3c",
+        "sha256:b0efa1a0f321b1ea76da290fc0185c6b5d68f6f7f9e6ab7a0a69795714997cf4",
+        "sha256:833feec0ede441f55add4ae344c08ccbfb5248f4b56fb582a3f9e02052ad9854",
+        "sha256:c41d1d45ccb75e4bde31c6a3109641648bebb205b8a1e6a456a89fb7ba4385f2",
+        "sha256:9d3658055220915acd5a1b918f53d1b70ff8676591e97b6a2ed6bc0c50af4dbb",
+        "sha256:91eb824a5d909b0a36981ad6e85401475e0fb39f432af5bf2603323bf4ccfa3d",
+        "sha256:82bc56987a72badeb2ca0ef77c3c6711a74d19b83f24e42696b2570f3f93823e",
+        "sha256:999fd63473838a145fcaef8922569b04bd573dc69d8cce5568a7743644b1ecfa",
+        "sha256:0541266ddd3c56cd879d5287844f14697c0828a50f590e05270bdf43ea4da184",
+        "sha256:4b65f32dfa5d2571aed7ac3c66946e31e77b1ce06e129bd6f0b88ccbdb04e1f4",
+        "sha256:8eb96f33b199851327db6a67faafacf3efb9aae69f56799e68124ee7acb34bbe"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  },
+  "nginx": {
+    "tag": "nginx:1.27-alpine",
+    "identity": {
+      "config_sha256": "f0e27aeba3a34dc192ad1eb230b0e035926fd9d0a89678940c87bb121c3a3235",
+      "layers": [
+        "sha256:08000c18d16dadf9553d747a58cf44023423a9ab010aab96cf263d2216b8b350",
+        "sha256:d71eae0084c1aa823dd8fb2ecf8604d5c0f4911226c042bb1f8297e819f4b192",
+        "sha256:c56f134d380585340a68d0db2f2c170641a1c0ff72ccf2438cf2f693df756a85",
+        "sha256:e244aa659f612a80c40dd8645812301e3def6b15ec67b9e486ed2201172b51d1",
+        "sha256:b8d7d1d2263425d6044e059b2810017d062d659b9b755241f3747eda77726250",
+        "sha256:811a4dbbf4a5309e4390cf655c12db92e1a4304fb9d9731f83e7b02e95a617c6",
+        "sha256:947e805a4ac71f68e6703550c0b36c2aa2e554c4fa670ca2da6a25c6d7dccb66",
+        "sha256:0d853d50b128aa460b47e7121849463a14b18d4fd976caf5014744aae24d28aa"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  },
+  "weaviate": {
+    "tag": "onticards-maintenance-weaviate:1.36.0-amd64",
+    "identity": {
+      "config_sha256": "3fffc99c7d4dec72cf51845679b40f948f991e52905fd51f09779c4f0f90496e",
+      "layers": [
+        "sha256:cce92674e98722970ab3fdce76a2566f54db535beeb24f0b4397f070ab5f6987",
+        "sha256:6f829e4feabd1f4ea1170afad53f928c4727f29807884b30f09e3a4fab23fce2",
+        "sha256:2f6b9a06beefbff0c3e326c7c628e9e952ff713ee7529ddab094bc3486272763",
+        "sha256:b94afcc9a27d09db38d2537cdc5e551b4413439290c94fde9b3894e76d8a6933"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  },
+  "tests": {
+    "tag": "onticards-ci-trusted-tests:pw1.64.1-api7-browser2-v1",
+    "identity": {
+      "config_sha256": "8d954d411fe100e4b29b90f95473ad38896d6c7be15c0f3181d8873ff629c2a8",
+      "layers": [
+        "sha256:d81fb2a7c6ee3be05fdefaa7fd223be219c1ab172083ec1b994c3ecda33ac0a8",
+        "sha256:306d16b7ef00a369bbae5609231523ea2b5a7566e36bca6152a26ad99887f250",
+        "sha256:d95cb21089bf7455714be0f02df8c266ed28b7b37febe686cf679d5a33b38a83",
+        "sha256:da9efcb990ddb4e8ddd58920f4c46e148b5421d8b8b71c45f8bb2fbf9fcc1b8a",
+        "sha256:7d2311d36739c1534533fc9f84e0f92d4378ca7159a660fb1c509a7adaaa303e",
+        "sha256:3211470ce5e817b70c8a90833baa64c2b2d462bd68449c1d071f91b9dda08e3d",
+        "sha256:ac355f86d43c3ef2f97114dfd6f89edff16f35375b5ab190f9ebd5455fcd7d68",
+        "sha256:3e78b4f93882666baaafc23fb6c3703922e127694b8e8b5516073b61b4cb3677",
+        "sha256:d5847c53ccae0bdd44e50b0dbfd70e30a0c6b62ef07a16863fab2c1098174eb2",
+        "sha256:5d77b39c1534533364dadbf9bf1a2edd0411f4dc4cea6a5106c8df77fd736aee",
+        "sha256:a3872277474cf601b63fde6a879c6099b7591fd43db8af40a563f035b690d8d2",
+        "sha256:1101bc96a228c7ea9c532b50fcab85d94971a4a7bfd130338a86e43a12faa10d",
+        "sha256:a3d50142baf8bc9248dde005c0efb1f529479f646b39d05c0c0d5d10e4768978",
+        "sha256:b2c264b45b285bd3c6f2283f81f1dc9ceb8217bef1d923b28d2f2a6ebd94eca4",
+        "sha256:f97cefa814079ac296d049e80f32f749e9ea9322c47550d49aca8398c90d6331",
+        "sha256:afde8f534ca84861b95d6446a4b727e14eef95a0784e05a8a0643597b1b87fd8"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "id": "onticardsIntakeCiHandoffV1",
+  "name": "OntiCards complete intake to existing trusted CI",
+  "active": false,
+  "nodes": [
+    {
+      "id": "5504e988-9c85-5c22-adf8-ad76c94766f8",
+      "name": "Native complete intake handoff",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "e506a011-bc54-51ef-a570-00c9eb9dc7d3",
+      "name": "Trusted CI handoff configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        190,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\"mode\": \"dry_run\", \"max_open_prs\": 20, \"freshness_seconds\": 600}",
+        "options": {}
+      }
+    },
+    {
+      "id": "c1e9a3a3-868d-5bd9-ac6f-6b06fcdbcc58",
+      "name": "Read committed intake watermark",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_watermark_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "4a13e9bd-c538-5bb8-a166-33f301dac81b",
+      "name": "Read current intake threads for CI",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        570,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_threads_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "0bfda148-e249-570a-9a56-7c5c7c655984",
+      "name": "Project complete public PR revisions",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{\n const input=$('Native complete intake handoff').first().json,cfg=$('Trusted CI handoff configuration').first().json;\n let details;try{details=JSON.parse(input.details||'{}');}catch{return {eligible:false,reason:'invalid_poll_details'};}\n const mark=$('Read committed intake watermark').all().map(x=>x.json).find(x=>x.repository==='stepll2026/OntiCards');\n if(input.status!=='complete_readonly_dry_run'||details.token_revoked!==true||!mark||mark.poll_id!==input.poll_id||mark.watermark!==details.watermark)return {eligible:false,reason:'incomplete_or_unrevoked_poll'};\n const age=Date.now()-Date.parse(mark.watermark);if(!Number.isFinite(age)||age<0||age>cfg.freshness_seconds*1000)return {eligible:false,reason:'stale_watermark'};\n const current=$('Read current intake threads for CI').all().map(x=>x.json).filter(x=>x.observed_at===input.started_at);\n if(current.length!==mark.thread_count)return {eligible:false,reason:'thread_count_mismatch'};\n const threads=[];for(const row of current){if(row.kind!=='pull_request')continue;let s;try{s=JSON.parse(row.snapshot);}catch{return {eligible:false,reason:'invalid_thread_snapshot'};}\n  if(s.state!=='open')continue;\n  if(!Number.isSafeInteger(row.number)||row.number<1||row.thread_key!=='stepll2026/OntiCards#'+row.number||s.number!==row.number||s.kind!=='pull_request'||!(/^[a-f0-9]{40}$/).test(s.head||'')||!(/^[a-f0-9]{40}$/).test(s.base||''))return {eligible:false,reason:'invalid_pr_revision'};\n  threads.push({pr:row.number,head:s.head,base:s.base,state:s.state});\n }\n if(threads.length>cfg.max_open_prs||new Set(threads.map(p=>p.pr)).size!==threads.length)return {eligible:false,reason:'open_pr_bound_or_duplicate'};\n if(!['dry_run','dispatch'].includes(cfg.mode))return {eligible:false,reason:'invalid_trusted_mode'};\n return {eligible:true,payload:{source:'onticards_intake_threads_v1',watermark:mark.watermark,observed_at:input.finished_at,complete:true,token_revoked:true,mode:cfg.mode,threads} };\n})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "12eb0efc-e932-5057-9220-1c90992986db",
+      "name": "Complete revoked bounded snapshot only",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        950,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Complete revoked bounded snapshot only",
+              "leftValue": "={{ $json.eligible === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3e2db3d0-802d-5efb-96ae-7a9600f5bbc6",
+      "name": "Send snapshot to existing trusted CI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1140,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:18132/webhook/onticards-preview-intake-v1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.payload }}",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "onticardsPreviewIntakeHeader",
+          "name": "OntiCards existing trusted CI intake only"
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "4b42d988-2829-5d8e-b601-23c18d9bb02f",
+      "name": "Safe CI handoff observation",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1330,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {watermark:$(\"Project complete public PR revisions\").first().json.payload.watermark,mode:$(\"Project complete public PR revisions\").first().json.payload.mode,pr_count:$(\"Project complete public PR revisions\").first().json.payload.threads.length,transport_status:$json.statusCode||null,acknowledged:Number($json.statusCode)>=200&&Number($json.statusCode)<300,unknown:!$json.statusCode,model_calls:0,github_writes:0} }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "287feeb5-7ffe-5207-8078-271469d6954e",
+      "name": "CI handoff refused",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1520,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {eligible:false,reason:$json.reason,model_calls:0,github_writes:0} }}",
+        "options": {}
+      },
+      "executeOnce": true
+    }
+  ],
+  "connections": {
+    "Native complete intake handoff": {
+      "main": [
+        [
+          {
+            "node": "Trusted CI handoff configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trusted CI handoff configuration": {
+      "main": [
+        [
+          {
+            "node": "Read committed intake watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read committed intake watermark": {
+      "main": [
+        [
+          {
+            "node": "Read current intake threads for CI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read current intake threads for CI": {
+      "main": [
+        [
+          {
+            "node": "Project complete public PR revisions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project complete public PR revisions": {
+      "main": [
+        [
+          {
+            "node": "Complete revoked bounded snapshot only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Complete revoked bounded snapshot only": {
+      "main": [
+        [
+          {
+            "node": "Send snapshot to existing trusted CI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CI handoff refused",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send snapshot to existing trusted CI": {
+      "main": [
+        [
+          {
+            "node": "Safe CI handoff observation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 90
+  },
+  "pinData": {},
+  "tags": []
+}

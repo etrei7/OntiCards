@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-10-22T17:31:03.468971+00:00",
+  "manual_triggers": 0,
+  "model_requests": 0,
+  "github_requests": 0,
+  "ledger_writes": 0,
+  "completed_at": "2026-10-22T17:31:05.008569+00:00",
+  "active": true,
+  "nodes": 42,
+  "version_id": "806a1a17-8a0e-4354-862d-675af85535c3",
+  "checksum": "3be15473ea3295772f6f7c592a24623ae83be61222c533aa0caf91bd5c026bdb",
+  "source_sha256": "3325b1547e1cb9dc5558b9b017f94a42471cf0f5bfc4a155eea8bc7de1de6d14",
+  "prior_backup": "/opt/onticards-maintenance/n8n/evidence/source-before-loop-173104.json"
+}

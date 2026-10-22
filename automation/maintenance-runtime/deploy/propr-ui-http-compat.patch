@@ -1,0 +1,125 @@
+diff --git a/package-lock.json b/package-lock.json
+index 173e2d7..c9045f5 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -16012,7 +16012,8 @@
+         "react-textarea-autosize": "^8.5.9",
+         "recharts": "^3.6.0",
+         "remark-breaks": "^4.0.0",
+-        "remark-gfm": "^4.0.0"
++        "remark-gfm": "^4.0.0",
++        "uuid": "14.0.1"
+       },
+       "devDependencies": {
+         "@eslint/js": "^9.30.1",
+diff --git a/propr-ui/package.json b/propr-ui/package.json
+index 727d862..00a16a9 100644
+--- a/propr-ui/package.json
++++ b/propr-ui/package.json
+@@ -37,7 +37,8 @@
+     "react-textarea-autosize": "^8.5.9",
+     "recharts": "^3.6.0",
+     "remark-breaks": "^4.0.0",
+-    "remark-gfm": "^4.0.0"
++    "remark-gfm": "^4.0.0",
++    "uuid": "14.0.1"
+   },
+   "devDependencies": {
+     "@eslint/js": "^9.30.1",
+diff --git a/propr-ui/src/pages/NewTaskPage.test.tsx b/propr-ui/src/pages/NewTaskPage.test.tsx
+index d7064a2..f6f0a8c 100644
+--- a/propr-ui/src/pages/NewTaskPage.test.tsx
++++ b/propr-ui/src/pages/NewTaskPage.test.tsx
+@@ -19,6 +19,61 @@ const renderPage = () => render(<MemoryRouter initialEntries={[{ pathname: '/tas
+ 
+ beforeEach(() => { vi.clearAllMocks(); localStorage.clear(); sessionStorage.clear(); vi.mocked(submissions.taskSnapshotStorage).mockResolvedValue(undefined); vi.mocked(submissions.listTaskSnapshots).mockResolvedValue([]); });
+ describe('New Task issue launcher', () => {
++  it('uses strong random bytes without native randomUUID and retains the same key on retry', async () => {
++    const descriptor = Object.getOwnPropertyDescriptor(crypto, 'randomUUID');
++    Object.defineProperty(crypto, 'randomUUID', { configurable: true, value: undefined });
++    const randomBytes = vi.spyOn(crypto, 'getRandomValues');
++    try {
++      vi.mocked(submissions.submitTask).mockResolvedValue(pending);
++      vi.mocked(submissions.retryTaskSubmission).mockResolvedValue(pending);
++      renderPage();
++      const run = await screen.findByRole('button', { name: 'Run task' });
++      await waitFor(() => expect(run).toBeEnabled());
++      fireEvent.click(run);
++      await screen.findByText('Issue #42 created, but agent failed to queue');
++      const [key, payload, files] = vi.mocked(submissions.submitTask).mock.calls[0];
++      expect(key).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
++      expect(randomBytes).toHaveBeenCalledTimes(1);
++      expect(submissions.taskSnapshotStorage).toHaveBeenCalledWith(`${API_BASE_URL}:alice`, key, { key, payload, files });
++      fireEvent.click(screen.getByRole('button', { name: 'Retry agent' }));
++      await waitFor(() => expect(submissions.retryTaskSubmission).toHaveBeenCalledWith(key));
++      expect(submissions.submitTask).toHaveBeenCalledTimes(1);
++      expect(randomBytes).toHaveBeenCalledTimes(1);
++    } finally {
++      randomBytes.mockRestore();
++      if (descriptor) Object.defineProperty(crypto, 'randomUUID', descriptor);
++      else Reflect.deleteProperty(crypto, 'randomUUID');
++    }
++  });
++
++  it('restores the form after random source failure before any submission and allows a later attempt', async () => {
++    const descriptor = Object.getOwnPropertyDescriptor(crypto, 'randomUUID');
++    Object.defineProperty(crypto, 'randomUUID', { configurable: true, value: undefined });
++    const randomBytes = vi.spyOn(crypto, 'getRandomValues').mockImplementationOnce(() => { throw new Error('Secure random source unavailable'); });
++    try {
++      renderPage();
++      const run = await screen.findByRole('button', { name: 'Run task' });
++      await waitFor(() => expect(run).toBeEnabled());
++      fireEvent.click(run);
++      expect(await screen.findByRole('alert')).toHaveTextContent('Secure random source unavailable');
++      expect(run).toBeEnabled();
++      expect(screen.getByLabelText('Prompt')).toBeEnabled();
++      expect(screen.getByLabelText('Prompt')).toHaveValue('Fix invoice dates');
++      expect(submissions.submitTask).not.toHaveBeenCalled();
++      expect(submissions.getTaskSubmission).not.toHaveBeenCalled();
++      expect(submissions.taskSnapshotStorage).not.toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.anything());
++      expect(sessionStorage.getItem(`task-active-submission:${API_BASE_URL}:alice`)).toBeNull();
++      vi.mocked(submissions.submitTask).mockResolvedValue(pending);
++      fireEvent.click(run);
++      await screen.findByText('Issue #42 created, but agent failed to queue');
++      expect(submissions.submitTask).toHaveBeenCalledTimes(1);
++    } finally {
++      randomBytes.mockRestore();
++      if (descriptor) Object.defineProperty(crypto, 'randomUUID', descriptor);
++      else Reflect.deleteProperty(crypto, 'randomUUID');
++    }
++  });
++
+   it('opens a modal with collapsed settings and no promotional cards', async () => {
+     renderPage();
+     expect(screen.getByRole('dialog', { name: 'New task' })).toBeInTheDocument();
+diff --git a/propr-ui/src/pages/NewTaskPage.tsx b/propr-ui/src/pages/NewTaskPage.tsx
+index e0c0715..51bf73d 100644
+--- a/propr-ui/src/pages/NewTaskPage.tsx
++++ b/propr-ui/src/pages/NewTaskPage.tsx
+@@ -4,6 +4,7 @@ import { resolvePlanIssueDefaultSelection } from '../components/TaskPlanner/plan
+ import TextareaAutosize from 'react-textarea-autosize';
+ import { useEffect, useMemo, useRef, useState } from 'react';
+ import { useLocation, useNavigate } from 'react-router-dom';
++import { v4 as uuidv4 } from 'uuid';
+ import { AlertCircle, AlertTriangle, ExternalLink, Loader2, ScrollText, Zap } from 'lucide-react';
+ import { getInstanceCatalog } from '../api/proprApi';
+ import type { InstanceCatalogResponse } from '../api/proprTypes';
+@@ -118,8 +119,9 @@ function useNewTaskLauncher(scope: string) {
+   const run = async () => {
+     if (submitting.current || processingFiles || isDemoMode) return;
+     submitting.current = true; setBusy(true); setError(null);
+-    const current = snapshot || { key: crypto.randomUUID(), payload: { repository, instruction, ...(extensionProfile ? { extensionProfile, extensionAllowWrite } : {}), ...(agentAlias ? { agentAlias } : {}), ...(routedModel ? { model: routedModel } : {}), todoIds }, files };
++    let current = snapshot;
+     try {
++      current ??= { key: uuidv4(), payload: { repository, instruction, ...(extensionProfile ? { extensionProfile, extensionAllowWrite } : {}), ...(agentAlias ? { agentAlias } : {}), ...(routedModel ? { model: routedModel } : {}), todoIds }, files };
+       // Persist before the network mutation. A reload can safely repeat this exact request.
+       const storageError = await persistForRetry(scope, current);
+       // Nothing was sent; the request and its files stay in the form for another attempt.
+@@ -131,6 +133,7 @@ function useNewTaskLauncher(scope: string) {
+       if (next.state !== 'prepared' && next.state !== 'failed') rememberRouting(scope, current.payload);
+     } catch (error) {
+       setError(errorMessage(error));
++      if (!current) return; // ID creation failed before any persistence or network mutation.
+       const status = (error as { status?: number } | null)?.status;
+       if (!snapshot && status && [400, 401, 403, 404].includes(status)) {
+         try { await taskSnapshotStorage(scope, current.key, null); } catch { /* The rejected request is discarded either way. */ }

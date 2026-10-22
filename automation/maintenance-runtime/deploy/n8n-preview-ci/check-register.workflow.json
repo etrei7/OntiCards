@@ -1,0 +1,314 @@
+{
+  "id": "onticardsCheckRegisterV1",
+  "name": "OntiCards register exact verified Check",
+  "active": false,
+  "nodes": [
+    {
+      "id": "cd5886e6-38b0-5bda-8db8-c579228121f7",
+      "name": "Trusted Check registration",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-check-register-v1",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "onticardsPreviewTrigger",
+          "name": "onticards-preview-trigger"
+        }
+      },
+      "webhookId": "onticards-check-register-v1"
+    },
+    {
+      "id": "8a4477fd-0f98-55e4-8adf-222a65f31828",
+      "name": "Fixed Check registration input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$input.first().json.body,mode:'register'}}];"
+      }
+    },
+    {
+      "id": "4379eb7d-6a71-5187-9fae-33d81a656e84",
+      "name": "Ensure native Check registrations",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_ci_checks_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "registration_key",
+              "type": "string"
+            },
+            {
+              "name": "pr",
+              "type": "number"
+            },
+            {
+              "name": "head",
+              "type": "string"
+            },
+            {
+              "name": "base",
+              "type": "string"
+            },
+            {
+              "name": "check_id",
+              "type": "string"
+            },
+            {
+              "name": "check_name",
+              "type": "string"
+            },
+            {
+              "name": "external_id",
+              "type": "string"
+            },
+            {
+              "name": "state",
+              "type": "string"
+            },
+            {
+              "name": "detail",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "791b0968-26f6-5ab9-af4d-4fc97e64b974",
+      "name": "Restore Check registration input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $('Fixed Check registration input').all();"
+      }
+    },
+    {
+      "id": "43b50300-69b9-58c3-9ca2-1947f0fd44f7",
+      "name": "Verify exact owned Check",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsCheckObserveV1",
+          "mode": "id"
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "04ace1a3-c99a-5eae-9c82-6d4b3aa7865f",
+      "name": "Verified registration result",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "Verified registration result",
+              "leftValue": "={{ [\"watching\",\"invalidated\"].includes($json.state) && !!$json.registration_key }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "ded2b1ac-948e-5990-8684-974a99c6ec68",
+      "name": "Persist exact Check registration",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_checks_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "registration_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.registration_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      },
+      "alwaysOutputData": false
+    },
+    {
+      "id": "72d00bc1-4a19-5b27-9926-2ae5200b2896",
+      "name": "Return Check registration",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Trusted Check registration": {
+      "main": [
+        [
+          {
+            "node": "Fixed Check registration input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fixed Check registration input": {
+      "main": [
+        [
+          {
+            "node": "Ensure native Check registrations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure native Check registrations": {
+      "main": [
+        [
+          {
+            "node": "Restore Check registration input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore Check registration input": {
+      "main": [
+        [
+          {
+            "node": "Verify exact owned Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify exact owned Check": {
+      "main": [
+        [
+          {
+            "node": "Verified registration result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verified registration result": {
+      "main": [
+        [
+          {
+            "node": "Persist exact Check registration",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Return Check registration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist exact Check registration": {
+      "main": [
+        [
+          {
+            "node": "Return Check registration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 300
+  },
+  "pinData": {}
+}

@@ -1,0 +1,33 @@
+{
+  "attempt": 2,
+  "purpose": "manual acceptance rerun of the same canonical daily report",
+  "model": "opencode-bailian/qwen3.8-max-0902",
+  "schedule_enabled": false,
+  "external_publication": false,
+  "canonical_day": "2026-10-21",
+  "canonical_fact_run_id": "8cd49268-5bd1-41c3-b63c-8a014d428539",
+  "window_start": "2026-10-21T00:00:00+08:00",
+  "window_end": "2026-10-22T00:00:00+08:00",
+  "generated_at": "2026-10-22T06:59:33.314478+00:00",
+  "required_sections": ["A", "B", "C", "D", "E", "F"],
+  "required_issue_numbers": [19, 20, 21],
+  "required_pr_numbers": [22],
+  "required_stars": 479,
+  "required_forks": 8,
+  "net_changes": "unknown; null is not zero",
+  "required_commit_count": 4,
+  "issue_and_pr_window_event_counts": "all zero as in the canonical JSON",
+  "requires_independent_review": [
+    "No narrative before final report, including intermediate user-visible text events",
+    "Issue titles and links exactly match canonical inputs; PR 22 is never called an Issue",
+    "Each Issue explicitly needs body and code verification; no forced four-way classification",
+    "PR 22 clean/mergeable metadata is distinct from business or CI verification",
+    "No inferred resolution or relation between Issue 20 and PR 22",
+    "No claims of tests passed, automatic fix completed, merge readiness, or free model usage",
+    "Fact run ID and native Agent Run ID remain distinct",
+    "All four commit links present; all counts, timestamps and head/base hashes match facts",
+    "Data limitations and human final merge are explicit"
+  ],
+  "failure_policy": "preserve actual output and run trace; do not retry again or enable the schedule automatically",
+  "first_native_attempt": "031a6b51-3976-4ece-af76-f18360ef8b43"
+}

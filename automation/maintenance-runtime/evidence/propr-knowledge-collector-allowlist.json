@@ -1,0 +1,1480 @@
+{
+  "prepared_at": "2026-10-22T19:59:48.761757+00:00",
+  "candidate": false,
+  "frozen": true,
+  "scope": "ProPR policy13, UI HTTP compatibility, native daily/knowledge configuration, deterministic collector only",
+  "base_directory": "outputs/onticards",
+  "paths": [
+    "deploy/propr-maintenance-policy13.patch",
+    "deploy/propr-ui-http-compat.patch",
+    "deploy/Dockerfile.propr-policy-tests",
+    "deploy/upstream/propr-42931b1/Dockerfile.app.prod",
+    "deploy/build-propr-policy13.sh",
+    "deploy/prepare-propr-policy13-source.py",
+    "deploy/propr/deploy_policy13.py",
+    "deploy/propr/fixtures/maintenanceSemanticConflictFixture.test.ts",
+    "deploy/probe-prequeue-stop.py",
+    "deploy/propr/compose.yaml",
+    "deploy/propr/nginx.conf",
+    "deploy/propr/mcp-tls.conf",
+    "deploy/propr/mcp.env.template",
+    "deploy/propr/gitconfig",
+    "deploy/propr/runtime.env.example",
+    "deploy/propr/init_runtime.py",
+    "deploy/propr/seed_config.mjs",
+    "deploy/propr/RUNBOOK.md",
+    "deploy/propr/DAILY-PRODUCTION.md",
+    "deploy/propr/DEPLOY-CURRENT.md",
+    "deploy/propr/manifest.json",
+    "deploy/propr/review-prompt-zh-supplement.txt",
+    "deploy/propr/review-context-candidate.json",
+    "deploy/propr/daily_input_contract.py",
+    "deploy/propr/daily-production-prompt.txt",
+    "deploy/propr/daily-quality-rules.json",
+    "deploy/propr/verify_daily_input_contract.py",
+    "deploy/propr/verify_daily_native_schedule.mjs",
+    "deploy/propr/run-daily-contract-tests.sh",
+    "deploy/propr/install_report_mount.py",
+    "deploy/propr/configure_daily_isolated_alias.mjs",
+    "deploy/propr/deploy_daily_isolated_alias.py",
+    "deploy/propr/refresh_daily_alias_registry.py",
+    "deploy/propr/KNOWLEDGE-CURRENT.md",
+    "deploy/propr/knowledge-current-sources.json",
+    "deploy/propr/knowledge-current-pr30/knowledge-runtime.md",
+    "deploy/propr/knowledge-current-pr30/knowledge-source-manifest.json",
+    "deploy/propr/package_knowledge_snapshot.py",
+    "deploy/propr/deploy_knowledge_snapshot.py",
+    "deploy/propr/knowledge-runtime-readonly.py",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/AGENTS.md",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/repository-context.md",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/response-policy.md",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/manifest.json",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/00-snapshot-source.md",
+    "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/opencode-instructions.fragment.json",
+    "repo/automation/.gitignore",
+    "repo/automation/README.md",
+    "repo/automation/requirements.txt",
+    "repo/automation/onticards/__init__.py",
+    "repo/automation/onticards/report.py",
+    "repo/automation/onticards/native_activity.py",
+    "repo/automation/tests/test_report.py",
+    "repo/automation/tests/test_collector_sources.py",
+    "repo/automation/tests/test_daily_native_facts.py",
+    "repo/automation/deploy/install-reporting.sh",
+    "repo/automation/deploy/onticards-collector@.service",
+    "repo/automation/deploy/onticards-report.timer",
+    "repo/automation/deploy/onticards-snapshot.timer",
+    "repo/automation/deploy/onticards-report.tmpfiles.conf",
+    "repo/automation/deploy/reporting.env.example",
+    "repo/automation/deploy/requirements.lock.txt",
+    "repo/automation/deploy/collector-app.conf",
+    "repo/automation/deploy/native-activity.conf",
+    "deploy/licenses/propr/LICENSE",
+    "deploy/licenses/propr/NOTICE",
+    "deploy/licenses/propr/THIRD_PARTY_LICENSES.md",
+    "research/orchestration.md",
+    "research/propr-patch-map.md",
+    "research/propr-patch-map.json",
+    "research/component-versions.json",
+    "research/propr-intranet-http-reuse.md",
+    "research/propr-intranet-new-task-reuse.md",
+    "research/propr-followup-reuse.md",
+    "research/pr26-policy6-review-quality.md",
+    "research/native-semantic-review-reuse.md",
+    "research/github-display-name-reuse.md",
+    "research/cross-poll-retry-reuse.md",
+    "research/pure-label-admission-reuse.md",
+    "research/conflict-fork-validation-boundaries.md",
+    "research/prequeue-stop-reuse.md",
+    "research/mcp-review-machine-auth-reuse.md",
+    "research/issue32-git-preparation-gap.md",
+    "research/pr26-policy5-review-validation-gap.md",
+    "research/pr26-review-context-budget.md",
+    "research/pr33-publication-reuse-gap.md",
+    "research/daily-production-reuse.md",
+    "research/daily-result-state-reuse-gap.md",
+    "research/daily-context-isolation-reuse.md",
+    "research/daily-checks-activity-reuse.md",
+    "research/report-recovery-acl-reuse.md",
+    "research/knowledge-native-refresh.md",
+    "research/knowledge-primary-coverage.md",
+    "evidence/propr-policy12-admission-validation.json",
+    "evidence/propr-policy4-validation.json",
+    "evidence/propr-policy5-validation.json",
+    "evidence/propr-policy6-validation.json",
+    "evidence/propr-policy7-validation.json",
+    "evidence/propr-policy8-validation.json",
+    "evidence/propr-policy9-build-validation.json",
+    "evidence/policy5-pure-label-validation.json",
+    "evidence/pr26-policy6-review-validation-tests.json",
+    "evidence/issue32-operator-git-cleanup.json",
+    "evidence/conflict-human-gate-candidate-files.json",
+    "evidence/propr-publication-fix-validation.json",
+    "evidence/pr33-publication-correction.json",
+    "evidence/indexing-before-budget-stop.json",
+    "evidence/indexing-outcome-events.json",
+    "evidence/propr-policy12-patch-validation.json",
+    "evidence/propr-policy12-deployment.json",
+    "evidence/propr-policy13-patch-validation.json",
+    "evidence/propr-policy13-validation.json",
+    "evidence/propr-policy13-deployment.json",
+    "evidence/policy13-independent-review.json",
+    "evidence/policy13-independent-test-log-summary.json",
+    "evidence/policy13-author-filter-independent.json",
+    "evidence/policy13-queued-body-independent.json",
+    "evidence/propr-conflict-fork-semantic-validation.json",
+    "evidence/unused-canvas-candidate-stopped.json",
+    "evidence/maintenance-delivery-independent-review.json",
+    "evidence/final-delivery-document-crosscheck.json",
+    "evidence/maintenance-propr-gitleaks-independent-triage.json",
+    "evidence/ac11-prequeue-stop-native.json",
+    "evidence/new-task-http-validation.json",
+    "evidence/new-task-http-browser.json",
+    "evidence/propr-http-ui-deployment.json",
+    "evidence/daily-input-contract-validation.json",
+    "evidence/daily-native-schedule-validation.json",
+    "evidence/daily-native-ui-management.json",
+    "evidence/daily-isolated-alias.json",
+    "evidence/daily-alias-registry-refresh.json",
+    "evidence/daily-native-facts-20261023/deployment.json",
+    "evidence/daily-result-state-validation.json",
+    "evidence/report-collector-source-fix/local-validation.json",
+    "evidence/report-collector-source-fix/native-facts-deployment.json",
+    "evidence/report-collector-source-fix/full-list-deployment.json",
+    "evidence/report-collector-source-fix/auth-recovery-deployment.json",
+    "evidence/knowledge-main-historical-diff.json",
+    "evidence/knowledge-main-refresh-native-red.json",
+    "evidence/knowledge-main-refresh-empty-file-red.json",
+    "evidence/knowledge-main-refresh-native-green-v2.json",
+    "evidence/knowledge-main-refresh-independent.json",
+    "evidence/knowledge-source-pipeline-readonly.json",
+    "evidence/knowledge-source-binding-exact.json",
+    "evidence/knowledge-runtime-current.json",
+    "evidence/knowledge-pdf-source-native.json",
+    "evidence/knowledge-pdf-source-native-v2.json",
+    "evidence/knowledge-pdf-source-independent.json",
+    "evidence/versioned-knowledge-deployment.json",
+    "evidence/indexing-settle-after.json",
+    "evidence/daily-2026-10-22/2026-10-22.json",
+    "evidence/daily-2026-10-22/2026-10-22.md",
+    "evidence/daily-2026-10-22/complete-input-review.json",
+    "evidence/daily-2026-10-22/native-attempt3/native-report.md",
+    "evidence/daily-2026-10-22/native-attempt3/native-execution.json",
+    "evidence/daily-2026-10-22/native-attempt3/independent-quality-review.json",
+    "evidence/daily-2026-10-22/reviewed/2026-10-22-reviewed.md",
+    "evidence/daily-2026-10-22/reviewed/reviewed-changes.diff",
+    "evidence/daily-2026-10-22/reviewed/revision.json",
+    "evidence/daily-2026-10-22/reviewed/independent-quality-review.json"
+  ],
+  "files": [
+    {
+      "path": "deploy/propr-maintenance-policy13.patch",
+      "sha256": "91c2d151fd95ff6fcd634fc73d553a6fcc84674f481b3a7ce7b48eb11ea0273b",
+      "bytes": 318388,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr-ui-http-compat.patch",
+      "sha256": "6e578fcc8ab923ecc53b463cdabe63fe96436cdf50a957a8002e1cbeed4ec236",
+      "bytes": 7331,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/Dockerfile.propr-policy-tests",
+      "sha256": "564ec96816903998f96f9fa245d12402e05618d5fda90ee3c38a0c793e2d913a",
+      "bytes": 2516,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/upstream/propr-42931b1/Dockerfile.app.prod",
+      "sha256": "1062c5abee86e5527e47d4a9e0d77f730a726eb02b85db4bb2d2ae91e52cf3a4",
+      "bytes": 7783,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/build-propr-policy13.sh",
+      "sha256": "38f69c56da3c839df47ac8a846be17f409b60d9cf50b603c06a503ec7e0afa1a",
+      "bytes": 5968,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/prepare-propr-policy13-source.py",
+      "sha256": "2f9431f6d72a93ebd02514518e157d5318a3575a52d56fa565bf21d0e52d523e",
+      "bytes": 1942,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/deploy_policy13.py",
+      "sha256": "8ca3ad0552defe17d0524e55b07345603b1c5a6c17d953f4158d543fb891044f",
+      "bytes": 4346,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/fixtures/maintenanceSemanticConflictFixture.test.ts",
+      "sha256": "b65d5fb85004e62bda5bc64dc8c05e895384fcafea83b75482c22d901d9887f2",
+      "bytes": 3519,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/probe-prequeue-stop.py",
+      "sha256": "97148fc768e3ff4dd825873eafaf1747cc0642752c8ad0348c95f6c7f0528ffc",
+      "bytes": 9506,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/compose.yaml",
+      "sha256": "dbc80f2e633307eb01df357181e8709957346bd93ec8d013ccda3c2b5ce6ab58",
+      "bytes": 3762,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/nginx.conf",
+      "sha256": "ee9559234e9c93d8f4db8225a69e014e4c62d93f3d93744d3a624c28936c0fc4",
+      "bytes": 6706,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/mcp-tls.conf",
+      "sha256": "9ee51926777be5a36753c412b9f69d9badbabf263d2d8680e066aacb1c9feaf4",
+      "bytes": 987,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/mcp.env.template",
+      "sha256": "19a5050717f50e5c322f08b1efc81321121d5452d244410da8f14cb12634f47c",
+      "bytes": 120,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/gitconfig",
+      "sha256": "ad0f117b6dfc3fadd29cf96850a24f4010b78cd1cd4ba0c14e7c46117d535a1e",
+      "bytes": 30,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/runtime.env.example",
+      "sha256": "370bfcc98d095cb27264c2b057f3ffaddd9203f4b9c4ca9c8f0f9fd87e63ac89",
+      "bytes": 1879,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/init_runtime.py",
+      "sha256": "8ea3ea9b170ac45849765e199516b8abc778e317e98d68f84a1aeb6cd71b967d",
+      "bytes": 5053,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/seed_config.mjs",
+      "sha256": "eb6055fc564f8c7cb61394584a33eb17867c1e839c001ee149cdc3c71038168b",
+      "bytes": 4607,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/RUNBOOK.md",
+      "sha256": "d1ab8088515b133a261f61aec31bf7b1a9745669bcfc8895935a0753db6e9c88",
+      "bytes": 11085,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/DAILY-PRODUCTION.md",
+      "sha256": "7d1d16e29e01434c6ae3ac2dc926147f2e3279681a43960a9f525ed70533b3ab",
+      "bytes": 4819,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/DEPLOY-CURRENT.md",
+      "sha256": "2ace1cceda864e923e5feacc216ef9e70dc4c120702177ca0f85fba76b1ea42e",
+      "bytes": 6842,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/manifest.json",
+      "sha256": "69f2ffd19141f1af1d81acf46bf847b060b1527bc3215e896345329338bc7cc2",
+      "bytes": 14114,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/review-prompt-zh-supplement.txt",
+      "sha256": "48b33f4ee6b3a73c18708d2985c9fcc6f27e82f6f74506d19d5d2aa530bc5b8f",
+      "bytes": 2374,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/review-context-candidate.json",
+      "sha256": "7dd75adaea99782ffcf24e6c2124a33575b733518964437d59816bf74ec28cd5",
+      "bytes": 151,
+      "group": "current_runtime",
+      "purpose": "Current pinned ProPR/UI deployment and operator configuration; secrets supplied separately",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/daily_input_contract.py",
+      "sha256": "089bc43de74b9f87eefaade453ce4890a5922cbe5e699992d651d12cf2b0c5c5",
+      "bytes": 4542,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/daily-production-prompt.txt",
+      "sha256": "db25848108aa60ee2628688e15388e844ed8bcdfb8daea24d3433fadfc7dfe1f",
+      "bytes": 4937,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/daily-quality-rules.json",
+      "sha256": "ee85947a7f4072fd482509d144bac953b310998dbb625101845d6457caf331ef",
+      "bytes": 1738,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/verify_daily_input_contract.py",
+      "sha256": "650c07faf87b9f79e8a415ed5739af439d0507b3e2085a21436e107ece0b5b30",
+      "bytes": 6426,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/verify_daily_native_schedule.mjs",
+      "sha256": "bf7014712d0c8c2a015fdd9b29eefccbe41907411d4a608de464681f0e7eb70d",
+      "bytes": 2112,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/run-daily-contract-tests.sh",
+      "sha256": "d2e73af48ef218c8953f5c5a77b436fd964f0e954e86703bc720a0dbb67c30af",
+      "bytes": 1107,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/install_report_mount.py",
+      "sha256": "0efb4da48574a31ca758b5a96cce345e79bac5a38eb017fa38eb62ccc77b8490",
+      "bytes": 1060,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/configure_daily_isolated_alias.mjs",
+      "sha256": "a83a1294daa243b211527da97207984428bb9a1509e76510a80e87bbe35b4a1e",
+      "bytes": 2261,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/deploy_daily_isolated_alias.py",
+      "sha256": "5dc0e10869176c63ce65c6434f2b98fb9295d80a0a2c7d795881784bcc572bb1",
+      "bytes": 3645,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/refresh_daily_alias_registry.py",
+      "sha256": "163e4d9205ab6ea8ca8237e981517fea103f8fa8c975f883828c80bba8a4cac7",
+      "bytes": 777,
+      "group": "daily_native_configuration",
+      "purpose": "Native daily alias, readonly facts mount, compact input/prompt and meaningful date/input tests; revision-bound deployment scripts are historical recipes, not replay commands",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/KNOWLEDGE-CURRENT.md",
+      "sha256": "ae496fc1660b62868c1442880ff313b178444d1391ef4a05bdcb8559c162a640",
+      "bytes": 5456,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge-current-sources.json",
+      "sha256": "db02e27951257a3881d867c032b7f7e1e60ae96ca25bb0463c72eb6e639731d9",
+      "bytes": 4545,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge-current-pr30/knowledge-runtime.md",
+      "sha256": "3fd959750cb64afcfd472dc7c2fffd1b68abe3352e9f7ba15b7f723b1772752c",
+      "bytes": 5514,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge-current-pr30/knowledge-source-manifest.json",
+      "sha256": "db02e27951257a3881d867c032b7f7e1e60ae96ca25bb0463c72eb6e639731d9",
+      "bytes": 4545,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/package_knowledge_snapshot.py",
+      "sha256": "322ff492e79132027ae912e22f9c2a22eb7e19b6926d03bea5bbb92c550e1c5e",
+      "bytes": 2558,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/deploy_knowledge_snapshot.py",
+      "sha256": "c37a72759eb684dc313d2e23096f41fd4b4de51b250c41bf94dbdbae46c10125",
+      "bytes": 3732,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge-runtime-readonly.py",
+      "sha256": "ed72cb1c980be83351c7a8ca45e2ea349a4399aecd0613ed69650ef43d4c77e1",
+      "bytes": 1803,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/AGENTS.md",
+      "sha256": "d4c46a442032728570fbaab9ea9dd1bd03491cc9d3b85fb9f8225a575828c38d",
+      "bytes": 3529,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/repository-context.md",
+      "sha256": "cd57d9aa8422aee14ad3eb0d761159d5ce2f76c992a8d45a6ff705160a0de1d0",
+      "bytes": 6830,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/response-policy.md",
+      "sha256": "73627ab4b7665081385b5ace156d0e6147a6553062c44c56af7cca3b6304aca8",
+      "bytes": 2196,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/manifest.json",
+      "sha256": "5f1ad3d2406034ec578c2e2782c43c5e9ab4a6aa51093a7127051d9196c3ad97",
+      "bytes": 1016,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/00-snapshot-source.md",
+      "sha256": "a1a21a76512068c962a03d38fef5470ffa8fa4f6c8f3ead71dcb874d9334e01b",
+      "bytes": 451,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/propr/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/opencode-instructions.fragment.json",
+      "sha256": "9eb0b3288ee7b0d2dac33f7677f5fc62505d9615449d238b279ca77f505486f7",
+      "bytes": 123,
+      "group": "versioned_knowledge",
+      "purpose": "Frozen PR30 supplementary instructions plus current source/version notes; full semantic index remains optional/partial/off",
+      "repository_target": null
+    },
+    {
+      "path": "repo/automation/.gitignore",
+      "sha256": "60a8360949aee7d655ebf17a6a73fb9926dbd501526e3f39f433ec4bc0831829",
+      "bytes": 77,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/.gitignore"
+    },
+    {
+      "path": "repo/automation/README.md",
+      "sha256": "9aff10f5bef755782448e77f6373a8fe7e04f4c489314e254866cd245386cbcb",
+      "bytes": 8457,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/README.md"
+    },
+    {
+      "path": "repo/automation/requirements.txt",
+      "sha256": "4c250bf75e733841713c13ab6450201fef88d76671e7753cfce91f8340972365",
+      "bytes": 32,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/requirements.txt"
+    },
+    {
+      "path": "repo/automation/onticards/__init__.py",
+      "sha256": "47b98a03d2f16f20b2f0738597c37be3a41c6aea2a5a34cbef2fe54892d1c5d1",
+      "bytes": 89,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/onticards/__init__.py"
+    },
+    {
+      "path": "repo/automation/onticards/report.py",
+      "sha256": "a4f5e5e94242b24c262e0c3fc593836d33939ff1de3cbf1ce6345129abae495a",
+      "bytes": 25073,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/onticards/report.py"
+    },
+    {
+      "path": "repo/automation/onticards/native_activity.py",
+      "sha256": "48b14a06fb96bb8c4f7776720eab55061fb91c35312424bf37f4b966e2c3173c",
+      "bytes": 4421,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/onticards/native_activity.py"
+    },
+    {
+      "path": "repo/automation/tests/test_report.py",
+      "sha256": "f5724e0132582e589577d2c5fe097d2ebfbe123db993c7218a99ccf58d342ab8",
+      "bytes": 21413,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/tests/test_report.py"
+    },
+    {
+      "path": "repo/automation/tests/test_collector_sources.py",
+      "sha256": "af56250145e3b4ebaecc606bfb35dc431f7a38dc2994d0f7c51bdcf866125296",
+      "bytes": 5060,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/tests/test_collector_sources.py"
+    },
+    {
+      "path": "repo/automation/tests/test_daily_native_facts.py",
+      "sha256": "c2f58c11837540d9dec2867b4bbf2dd3a50f15717ba74eee2c4d8ce00e33e85f",
+      "bytes": 5148,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/tests/test_daily_native_facts.py"
+    },
+    {
+      "path": "repo/automation/deploy/install-reporting.sh",
+      "sha256": "821d30a465d7b6b33a4efed06af3423a55c82ce1604e8b36a7d91714e103c318",
+      "bytes": 1974,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/install-reporting.sh"
+    },
+    {
+      "path": "repo/automation/deploy/onticards-collector@.service",
+      "sha256": "a35c2f779fa8dae297a0daf5de72da043c2e084042d370939f10fab30a05dd13",
+      "bytes": 1252,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/onticards-collector@.service"
+    },
+    {
+      "path": "repo/automation/deploy/onticards-report.timer",
+      "sha256": "4969a9d9550bed5be2b33886f76d965d9ba3a15ba959120fb9cbe798f9ccf203",
+      "bytes": 262,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/onticards-report.timer"
+    },
+    {
+      "path": "repo/automation/deploy/onticards-snapshot.timer",
+      "sha256": "32a5945e93380b1c02666377b8d09abe10a388c8d617e6788281c9786a72db6d",
+      "bytes": 260,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/onticards-snapshot.timer"
+    },
+    {
+      "path": "repo/automation/deploy/onticards-report.tmpfiles.conf",
+      "sha256": "acfbd3dfd99d0cb30361dd7a4a8b75f19ae68f9bed8187fd7e2797291c469ffc",
+      "bytes": 676,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/onticards-report.tmpfiles.conf"
+    },
+    {
+      "path": "repo/automation/deploy/reporting.env.example",
+      "sha256": "3e47d053da0540e87db47c667f8ecf4aed83141d05f8f8d0b21ec900e3596cec",
+      "bytes": 180,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/reporting.env.example"
+    },
+    {
+      "path": "repo/automation/deploy/requirements.lock.txt",
+      "sha256": "6823626fbe87b0676f939d5ac32243bb362249bbc60ff949b01f0eb3f5f12953",
+      "bytes": 224,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/requirements.lock.txt"
+    },
+    {
+      "path": "repo/automation/deploy/collector-app.conf",
+      "sha256": "6cee87f988bc2951fc7a31efbbf6284d80ca6c994e09ec20e6da0fc9dc4a1303",
+      "bytes": 189,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/collector-app.conf"
+    },
+    {
+      "path": "repo/automation/deploy/native-activity.conf",
+      "sha256": "55654fb86ab7e3f7d7ac92b31b7537a1259165a36a99788b9ce2708a0d8756de",
+      "bytes": 402,
+      "group": "collector",
+      "purpose": "Current deterministic reporting source, native systemd/App-readonly configuration and real source/failure tests; intended repo paths strip only repo/",
+      "repository_target": "automation/deploy/native-activity.conf"
+    },
+    {
+      "path": "deploy/licenses/propr/LICENSE",
+      "sha256": "5e233ee6760f9515806a4dfef75b721b7c5af19819e32cfb9c5e8447be19a89f",
+      "bytes": 11574,
+      "group": "upstream_licenses",
+      "purpose": "Pinned upstream ProPR attribution and bundled third-party license notice; no dependency source tree",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/licenses/propr/NOTICE",
+      "sha256": "f514354f323574f23318573f4c3235ceaac82cddb26a5200f2691254bd918c03",
+      "bytes": 4328,
+      "group": "upstream_licenses",
+      "purpose": "Pinned upstream ProPR attribution and bundled third-party license notice; no dependency source tree",
+      "repository_target": null
+    },
+    {
+      "path": "deploy/licenses/propr/THIRD_PARTY_LICENSES.md",
+      "sha256": "cb84aedd922aed84393e7f12bd689f7454948c3bf8a9df281a152eb4587f9d2b",
+      "bytes": 34336,
+      "group": "upstream_licenses",
+      "purpose": "Pinned upstream ProPR attribution and bundled third-party license notice; no dependency source tree",
+      "repository_target": null
+    },
+    {
+      "path": "research/orchestration.md",
+      "sha256": "63f62a115f51884b6494baa9068656a20b799c3e9a27499f9a4e9607d38de9dd",
+      "bytes": 19085,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/propr-patch-map.md",
+      "sha256": "56d74b07b0fae67c3f9e544b49becf8815b901d3820c79087e23bafb0195ac6a",
+      "bytes": 21970,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/propr-patch-map.json",
+      "sha256": "103e408f73a812b6644f00ef5f0efd6e763c2ba581ef22b001831c097ba128fd",
+      "bytes": 30189,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/component-versions.json",
+      "sha256": "23f705f3b99117e73a4fab56b766372c9301de9a491f4f4846b3253c525e67a3",
+      "bytes": 2766,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/propr-intranet-http-reuse.md",
+      "sha256": "879319065f8448bb25ce328d1b145019de382b84f8231b4baa42e740cab86ec2",
+      "bytes": 5651,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/propr-intranet-new-task-reuse.md",
+      "sha256": "5393dfd2517130d996d191d493c2c0474dd7b9fd6aea52fbe2b3aafb9129b49a",
+      "bytes": 4850,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/propr-followup-reuse.md",
+      "sha256": "251738323e5a882f704e8dedfd4ba18a5be3b853bfc313069d91da94dca6397c",
+      "bytes": 11957,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/pr26-policy6-review-quality.md",
+      "sha256": "bdeead11b6bc38d412f26758468aa51bc5ece4d2ce637dc9fc509dd23a3faab5",
+      "bytes": 4352,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/native-semantic-review-reuse.md",
+      "sha256": "d144f50db6882c1cd06ee16b7339a8431f70d6285857b715c148ed8074df01b4",
+      "bytes": 11610,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/github-display-name-reuse.md",
+      "sha256": "997ee240fd6c68497ef484b2e52a2f748b1dd2adbc74216d91fecd0377d6d469",
+      "bytes": 2768,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/cross-poll-retry-reuse.md",
+      "sha256": "78d1eb383ea6561802c6b66b42004448ef0518a8582148658ab8ade68a801b6e",
+      "bytes": 16430,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/pure-label-admission-reuse.md",
+      "sha256": "e46d1d1760e13346be5bed9300e623b196922b99a1e814bc82d4365c71834c8d",
+      "bytes": 5047,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/conflict-fork-validation-boundaries.md",
+      "sha256": "93f434e893309ed1935f53b19fba45d59e9845f5ba1f71398b39d68dadd7243f",
+      "bytes": 1969,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/prequeue-stop-reuse.md",
+      "sha256": "cf2ef9f4e9db9371ede167bd48f5096c0c850aa43eec49e82b02ec70b7be6060",
+      "bytes": 3741,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/mcp-review-machine-auth-reuse.md",
+      "sha256": "2a62773bc27ba383da6596c853c2c89ebb862ff4f1bd1153ae472ffd6d057522",
+      "bytes": 12342,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/issue32-git-preparation-gap.md",
+      "sha256": "b7c9b1b0b4ef9e807ba796b0be50651666d88aee7b3fcc9c63b85d5279d01269",
+      "bytes": 7843,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/pr26-policy5-review-validation-gap.md",
+      "sha256": "2f2d6b295fb92272b5ecf9f0b79f6a5b64825b76ee0b1c8016a9c428d102e1db",
+      "bytes": 5707,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/pr26-review-context-budget.md",
+      "sha256": "4732cbf448fbbe1ac9c59e2670b5c0b0d5a69391116dde001c432ad5f5e7eb08",
+      "bytes": 5208,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/pr33-publication-reuse-gap.md",
+      "sha256": "8ae3133d9ae7e0fce82f357821a6a34cc1eca76d8bf72f3737a02f22c063e12c",
+      "bytes": 1810,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/daily-production-reuse.md",
+      "sha256": "61494366e974e0c2f28867038ac2478c5f09d3ba7771009c0680cafb2bd7f12f",
+      "bytes": 6841,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/daily-result-state-reuse-gap.md",
+      "sha256": "7d4b7a200f1241fe0221959569e88a2df2180b8b64e59c07b3659dbdd6809767",
+      "bytes": 1455,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/daily-context-isolation-reuse.md",
+      "sha256": "f361981dd0a13f9cf90356b3198e5adca4ba4eea8070621377212baab3d2d66d",
+      "bytes": 1849,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/daily-checks-activity-reuse.md",
+      "sha256": "6b0c1ed5a7e28a4cf14ba77cd8b21109512d9071ed352b5cbd885eb861320480",
+      "bytes": 1813,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/report-recovery-acl-reuse.md",
+      "sha256": "d4a0086cf7af10e377c9d6df980e594e608888dfb461d5cdb541a1dd07d760ea",
+      "bytes": 10842,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/knowledge-native-refresh.md",
+      "sha256": "543a962691115ba0cb72d30a3e2bf249ac51d3bfb9ae5804c3b0ec52de19aa28",
+      "bytes": 21651,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "research/knowledge-primary-coverage.md",
+      "sha256": "de06ffe483bf6a9995b5fa0ccf69212e99bb58419c25879f126f60a2e814963b",
+      "bytes": 4564,
+      "group": "reuse_and_patch_reasons",
+      "purpose": "Requirement-first reuse evidence, exact gaps and grouped rationale for every source/test modification",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy12-admission-validation.json",
+      "sha256": "ed0a34d1e4a9dec7c6c170cf2430b78674e518052430be199d67ecdb0e6ea364",
+      "bytes": 2984,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy4-validation.json",
+      "sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "bytes": 2701,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy5-validation.json",
+      "sha256": "17cc0fe5561ed62fef8fb7c1b026f92936a59c47f29a0638b73e90d2fc0f1529",
+      "bytes": 1021,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy6-validation.json",
+      "sha256": "69aa5cfb63d9d8088a1675ba5610ff35e64ea4069df2cc557b9a7472607f4071",
+      "bytes": 1181,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy7-validation.json",
+      "sha256": "765cecd8b91acc00af749f1ac0a627dbe6afaf319cd30ea81a26ab90cefaab57",
+      "bytes": 2379,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy8-validation.json",
+      "sha256": "2ef62a112429da09730db779eb073d998ac6b98cffcfb42d84c224803c5ed805",
+      "bytes": 2907,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy9-build-validation.json",
+      "sha256": "953e268e1d2894de1a4e978348fc7f1b336a802a3a4740cc597ed2a37d4795fa",
+      "bytes": 2270,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/policy5-pure-label-validation.json",
+      "sha256": "8c1d1a7ec8b02a0ab498e76888df2b765d69d92c5a956c3753861fecd94f53ff",
+      "bytes": 3751,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/pr26-policy6-review-validation-tests.json",
+      "sha256": "f4990c20a377a33ab043c88d770cfcb64c531c74c8a746e64372bc8716a4be41",
+      "bytes": 1152,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/issue32-operator-git-cleanup.json",
+      "sha256": "12acd08d9089cedf16f0e74705502295e497074c0a009a1d4f45e0884fc46b9d",
+      "bytes": 1447,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/conflict-human-gate-candidate-files.json",
+      "sha256": "81aea1f49e301203ac83b22331d01976993d85413f8c7ff6c799543713fb9db9",
+      "bytes": 1578,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-publication-fix-validation.json",
+      "sha256": "7756601d1ba32f8b956af53eb3732c87a2e6a6282cacc463d40b4790cdf003d4",
+      "bytes": 1328,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/pr33-publication-correction.json",
+      "sha256": "f9e3227d9e24a8abbcee5f095d51a51df839c94b895be5ef93c944f7cd7a3677",
+      "bytes": 663,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/indexing-before-budget-stop.json",
+      "sha256": "04c9fc4e6ed4dbfc982f5f2d4e2060e2f6709ea21990fe08b3b3820394faed89",
+      "bytes": 3035,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/indexing-outcome-events.json",
+      "sha256": "82c6d995d378c86e21e08cd4c570e54c27999adad7b75c09955d3cbda13af746",
+      "bytes": 3054,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy12-patch-validation.json",
+      "sha256": "0e788929820d4733627cecdea18838799ba4a4ea36b2b73b69b72515eaff32e0",
+      "bytes": 13334,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy12-deployment.json",
+      "sha256": "cc80a1b19658fee21fce9d317c354c56fabcf9b4d24ff23447dbc6bca6854ad0",
+      "bytes": 3607,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy13-patch-validation.json",
+      "sha256": "4764eb7cc496958c07ea0ba37f43283abf37c3f1242d3085c7417064054e6484",
+      "bytes": 15260,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy13-validation.json",
+      "sha256": "dee1da873244e322802fce9f40f5e62772f97d6af32fae705ec4015ea0685768",
+      "bytes": 4490,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-policy13-deployment.json",
+      "sha256": "517e37c46f24a9ae98b85f3148775e40761af7a0829c11c2211d8d0dc8587d84",
+      "bytes": 3407,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/policy13-independent-review.json",
+      "sha256": "d620d5f39d87e82da00c88c1cf0d8650c378de20439604bfa898b5d96a1c2ce1",
+      "bytes": 12575,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/policy13-independent-test-log-summary.json",
+      "sha256": "1090d44817471acdb925613755ba10c8de1c1f1bd9dc2758aad9b8176b285199",
+      "bytes": 2676,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/policy13-author-filter-independent.json",
+      "sha256": "2b89a2294637cc66773b1dd5e561291a92280aefcaba0365bf407b6858727849",
+      "bytes": 1000,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/policy13-queued-body-independent.json",
+      "sha256": "fbde45dcf14020e7604e6225eedc82beb9154c38c57a480b88e2e4fd2052bbc8",
+      "bytes": 605,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-conflict-fork-semantic-validation.json",
+      "sha256": "02fd3b0a16d17b22ca4e560bd6a87b95ad3080d0ac481d1413b92cf92476cd2d",
+      "bytes": 1937,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/unused-canvas-candidate-stopped.json",
+      "sha256": "783e206e03b1185ff1c00867f84c9d49d9cad2096bf0875da4b114776ffa7b45",
+      "bytes": 393,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/maintenance-delivery-independent-review.json",
+      "sha256": "10db16463241d4625d6493184d34bbf6fac4fa79f2c350e51e3d6b1d6ffde788",
+      "bytes": 3683,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/final-delivery-document-crosscheck.json",
+      "sha256": "f8a41eaa53f36af1a848ce30b727ce5b210a76b2117ffcb31a7495bc81826113",
+      "bytes": 8970,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/maintenance-propr-gitleaks-independent-triage.json",
+      "sha256": "2e4680d5e0c9e39a9cbb18c56063b15b7d99f9d3e5e062cec5b4938526c40a71",
+      "bytes": 9112,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/ac11-prequeue-stop-native.json",
+      "sha256": "078919481f811d1e2ac392b26904d4da0194bba137f0dfba929a9e8efc969c21",
+      "bytes": 6050,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/new-task-http-validation.json",
+      "sha256": "f5d84fe45680e89e69b9e3424b96eb7ce9304568ecb3d2d8cf6e8eeb9cda82b8",
+      "bytes": 3262,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/new-task-http-browser.json",
+      "sha256": "56426bcd9b64d66d2aebe63a1cb765cf792e94a8de5e52fb93d3bc9800657f22",
+      "bytes": 5747,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/propr-http-ui-deployment.json",
+      "sha256": "c61cec1b5835caf057770c5d6eabc235b0be7c2d1dbe5b8d345bc12aff050f49",
+      "bytes": 4330,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-input-contract-validation.json",
+      "sha256": "bb6d39b0e813dbb9a89d2d0bf3bfb29868149278d45db12d008bb76b91cc1aa3",
+      "bytes": 4076,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-native-schedule-validation.json",
+      "sha256": "99532462af668015805d0b194c9afba2c5c8ba463c6321c04f5109c1923d741d",
+      "bytes": 2607,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-native-ui-management.json",
+      "sha256": "7baba4d99b1cb99f33cefd36d17bf39281cd88b207e1d8218e0cd7f5c6614d5f",
+      "bytes": 1155,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-isolated-alias.json",
+      "sha256": "cb9b24584c51749f8d4ec7ca46d31709e6a618b0737efa4e227e6552fa36436e",
+      "bytes": 883,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-alias-registry-refresh.json",
+      "sha256": "9e4fc8fd334bd590210407fc397971bb2263fff218d1ca51fd0c7bd2ff7534f5",
+      "bytes": 222,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-native-facts-20261023/deployment.json",
+      "sha256": "fdf541a80c64714d42bc4c1c1d42bb2c4d30db0e601dc6e00c96b8cb59ee3f75",
+      "bytes": 674,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-result-state-validation.json",
+      "sha256": "e4b59b7afc914d23dd2fefa8101c3b2ff5fd7b6d4aff8a3dd0aeb0e40ffdcc84",
+      "bytes": 1217,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/report-collector-source-fix/local-validation.json",
+      "sha256": "49a8cfaeea8e54b508e42ebd52a06b4ea9de231789719fa8156e65e6e2aa5607",
+      "bytes": 268,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/report-collector-source-fix/native-facts-deployment.json",
+      "sha256": "16bfeb3658d738726bed42abe8c2d5c77f1c73ba7baa7f81a3b28a50b7481050",
+      "bytes": 470,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/report-collector-source-fix/full-list-deployment.json",
+      "sha256": "bd506618eef3a7df010a10f657241b18080b74d17d814046c2e59bc278926052",
+      "bytes": 339,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/report-collector-source-fix/auth-recovery-deployment.json",
+      "sha256": "e76eb394bbfefdd67d94a427a3018a0d5548d26993b01f9a056a9c08b77308c8",
+      "bytes": 339,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-main-historical-diff.json",
+      "sha256": "492b26e014ec36612c951ed6cf280e190cc0159df62f139bc6988785a6710cc8",
+      "bytes": 1825,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-main-refresh-native-red.json",
+      "sha256": "1c2d53f6916a9d4d2990f44a512cddaa873b4cf4c708b7c3b49d33764e7d350f",
+      "bytes": 12927,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-main-refresh-empty-file-red.json",
+      "sha256": "d6de91b0cebfc0a2ffbbe1238ae5c470211a8638aa0d3396ab1602706968bf15",
+      "bytes": 21841,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-main-refresh-native-green-v2.json",
+      "sha256": "404a838b2f0077dd665d1008232d9e000c4dfdb7355f8d1f17fb9c2265cb8c58",
+      "bytes": 52062,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-main-refresh-independent.json",
+      "sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41",
+      "bytes": 22569,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-source-pipeline-readonly.json",
+      "sha256": "c00bacadac3c95befe8ce75816dba232438fac24c22ddb26ec08b7c2a43e8a60",
+      "bytes": 1072,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-source-binding-exact.json",
+      "sha256": "fff27f0b0bc0932f9c7e9ae476770eb730964f08c24d4994a459ef07ca5da484",
+      "bytes": 1205,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-runtime-current.json",
+      "sha256": "867537dc9f36f7aba830892a2fd60c2cd09f94c629ce8a8bbc722c94762463b1",
+      "bytes": 1508,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-pdf-source-native.json",
+      "sha256": "118cbc13d8012f333d0dfa05fd60b605c4e59dac3c70fa8e8c91376c4c3a4d27",
+      "bytes": 1181,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-pdf-source-native-v2.json",
+      "sha256": "f72ce3d0ee6d83361a5c987fcfa250506d1aef62d62b45221e2435349171682e",
+      "bytes": 1225,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/knowledge-pdf-source-independent.json",
+      "sha256": "270adeb49f7a1d79c51ed42124c0078483d014ceb3c3c67b6e3b99bb797d549a",
+      "bytes": 612,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/versioned-knowledge-deployment.json",
+      "sha256": "4eb6ce91b6a944d545abd47381f1f80e2d2ae0271c0f6905df35b8ef8047d2ad",
+      "bytes": 1914,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/indexing-settle-after.json",
+      "sha256": "b2513cb2e984947b223e4acd2b00425c0ce7d9a1bd26b6e7dd756a9f8396d9c3",
+      "bytes": 505,
+      "group": "selected_safe_receipts",
+      "purpose": "Selected structured evidence only; test counts and hashes retain history without shipping raw runtime transcripts/logs",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/2026-10-22.json",
+      "sha256": "3a0793f6b6739e32f641e13015434973f434023738e0dcf32d4bf503fd7207ea",
+      "bytes": 44615,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/2026-10-22.md",
+      "sha256": "06b49fc1a688eb8795239222a76801a1d32a2b72603bc00637a882d33916cade",
+      "bytes": 18595,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/complete-input-review.json",
+      "sha256": "7f38ac379792ab55ef73e4bfac19e5a49ab5a23d6e7d8fb6b9ec4a6d5ff7c065",
+      "bytes": 2837,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/native-attempt3/native-report.md",
+      "sha256": "bffe18118e3f08728e38bb257ece0503e74eee830a1ea97750776ada23ace047",
+      "bytes": 10532,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/native-attempt3/native-execution.json",
+      "sha256": "ec72848737a274f6c18ddc1e76d20da4962afc01e3ab2be40d6e65acd8e8f441",
+      "bytes": 730,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/native-attempt3/independent-quality-review.json",
+      "sha256": "76c34a5ae0dc2a33511909437565c59d6a643b4e565bc8d4825bd87c3bf2e870",
+      "bytes": 5326,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/reviewed/2026-10-22-reviewed.md",
+      "sha256": "1a58f5a3bba7e48ebb02b571418a27081e14b41748db4d4abf288be9c9b1f094",
+      "bytes": 10849,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/reviewed/reviewed-changes.diff",
+      "sha256": "b57c00ce2a501d775319b08149c71039d4ec73e6eb6f2f2da0da6a81d64b7645",
+      "bytes": 5872,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/reviewed/revision.json",
+      "sha256": "a925c5901759a212cdcfd588389d1dacf2fb1e4acdcfe5e4d490e894afdd18b3",
+      "bytes": 648,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    },
+    {
+      "path": "evidence/daily-2026-10-22/reviewed/independent-quality-review.json",
+      "sha256": "a8829a6757821f28528d7cb50d14b34e80afd37dbf0663bfc2db81fb5877bb3d",
+      "bytes": 1340,
+      "group": "actual_daily_artifacts",
+      "purpose": "Public repository factual report and original/reviewed AI artifact with explicit failed-native provenance; not private execution transcripts",
+      "repository_target": null
+    }
+  ],
+  "file_count": 160,
+  "total_bytes": 1210397,
+  "scan": {
+    "existing_secret_shaped_value_checks": true,
+    "findings": [],
+    "passed": true,
+    "full_gitleaks_before_publication": "Parent final merged staging review"
+  },
+  "rebuild": {
+    "from_upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+    "full_patch": "deploy/propr-maintenance-policy13.patch",
+    "expected_tree": "0af2178f1461819a893d6705a0e23dcad6330595",
+    "requires_policy10_private_tar": false,
+    "verified_by": "evidence/propr-policy13-patch-validation.json"
+  },
+  "exclusions": [
+    "Private env/key/PEM/SQLite/Redis/runtime configuration",
+    "Private proxy configuration or provider credentials",
+    "Raw execution transcripts/traces/logs",
+    "Docker tarballs/build contexts/dependency source trees",
+    "Historical full patches/deltas and one-off live trigger/retry/cleanup scripts",
+    "Policy10/private archive-dependent source preparation scripts",
+    "Other agents own ordinary dialogue and persistent CI allowlists"
+  ],
+  "refresh_policy": "Rerun this explicit-list hashing script after root updates current docs; compare hashes before final staging. No copy/commit/publish is performed.",
+  "repository_documents_ready": {
+    "deploy/propr/knowledge-current-pr30/knowledge-runtime.md": "docs/maintenance/knowledge-runtime.md",
+    "deploy/propr/knowledge-current-pr30/knowledge-source-manifest.json": "docs/maintenance/knowledge-source-manifest.json"
+  }
+}

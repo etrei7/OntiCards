@@ -1,0 +1,24 @@
+{
+  "at": "20261022T175721Z",
+  "no_workflow_triggered": true,
+  "provider_calls": 0,
+  "tests": {
+    "kind": "offline mocked native account API",
+    "passed": 5,
+    "failed": 0,
+    "token_creation_calls": 0
+  },
+  "files": [
+    {
+      "file": "lease.mjs",
+      "before_sha256": "47cbac08e9cadca46f910f9da6676ddd7e4d8e035f9f8621c53acfc0412d6146",
+      "after_sha256": "2d5a2464a987186af9764161fcf3fc9b3d97a2e9923e94eaaf786e801111fff1"
+    },
+    {
+      "file": "dispatch_model.mjs",
+      "before_sha256": "22137aff67dd7d4978cdbdfd2203d36c02203f06b9dd3934f9b1e7c0f8f71d70",
+      "after_sha256": "421df09e20abb930ef86b7650a0677dbef5d8dd10a511d290b935a894e527e87"
+    }
+  ],
+  "backup": "/opt/onticards-maintenance/preview-ci/state/budget-admission-before-20261022T175721Z"
+}

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-22T18:21:09.463227+00:00",
+  "container": "onticards-openhands-canvas",
+  "image": "onticards-upstream/agent-canvas:1.30.0",
+  "before": "running",
+  "after": "exited",
+  "exit_code": 0,
+  "reason": "Evaluation-only candidate not selected; reuse current ProPR/OpenCode runtime",
+  "data_deleted": false,
+  "other_containers_changed": false,
+  "model_calls": 0
+}

@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-22T18:00:51.960278+00:00",
+  "ledger_writes": 0,
+  "model_calls": 0,
+  "github_posts": 0,
+  "actions": [
+    {
+      "id": "onticardsIssue29FinalRecoveryV1",
+      "active": false,
+      "manual_enabled": false
+    },
+    {
+      "id": "onticardsPersistentDraftsV1",
+      "active": true,
+      "manual_handoff_threads": [
+        29,
+        31
+      ],
+      "version_id": "c2f66e8d-dc27-40c3-b085-441fd03698be",
+      "checksum": "76c9e41f6949859cd9ea4cc8ab7f81194906d1bbfd313041fb0e03298593ccc7"
+    },
+    {
+      "id": "onticardsPersistentSemanticReviewV1",
+      "active": true,
+      "manual_handoff_threads": [
+        29,
+        31
+      ],
+      "version_id": "d14506b2-5abe-4cca-b539-04ad57f21a85",
+      "checksum": "f1c0433a6444738e7c0b5f2098b449c4ab940710e2f60ab8c464a618984287f8"
+    }
+  ],
+  "issue31_remains_inactive": true
+}

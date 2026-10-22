@@ -1,0 +1,78 @@
+[
+  {
+    "repository": "github/gh-aw",
+    "checked_at": "2026-10-22T14:32:41.6652716+08:00",
+    "branch": "main",
+    "head_sha": "f5092b615d369ee1869619ca7871fb583fd40d6c",
+    "license": "MIT",
+    "archived": false,
+    "pushed_at": "2026-10-22T06:14:09Z",
+    "latest_release": "v0.93.0",
+    "release_published": "2026-10-21T23:24:46Z"
+  },
+  {
+    "repository": "githubnext/agentics",
+    "checked_at": "2026-10-22T14:32:43.5470197+08:00",
+    "branch": "main",
+    "head_sha": "b4e175bab6674279e0fe158f7dc877b77bc9d92f",
+    "license": "MIT",
+    "archived": false,
+    "pushed_at": "2026-10-21T05:38:52Z",
+    "latest_release": null,
+    "release_published": null
+  },
+  {
+    "repository": "OpenHands/automation",
+    "checked_at": "2026-10-22T14:32:46.1185619+08:00",
+    "branch": "main",
+    "head_sha": "77dd60e53659c4daf27a9dbc20fa0f96cd135533",
+    "license": "MIT",
+    "archived": false,
+    "pushed_at": "2026-10-22T01:51:27Z",
+    "latest_release": "1.23.2",
+    "release_published": "2026-10-21T17:12:59Z"
+  },
+  {
+    "repository": "OpenHands/OpenHands",
+    "checked_at": "2026-10-22T14:32:49.0484613+08:00",
+    "branch": "main",
+    "head_sha": "fcc15b45b9dae3765c745a7647ff63fc26a4a14c",
+    "license": "MIT",
+    "archived": false,
+    "pushed_at": "2026-10-22T06:22:39Z",
+    "latest_release": "v1.30.0",
+    "release_published": "2026-10-22T01:08:52Z"
+  },
+  {
+    "repository": "integry/propr",
+    "checked_at": "2026-10-22T14:32:50.9176834+08:00",
+    "branch": "main",
+    "head_sha": "42931b1502eb03ac299f14e306811736fab51eb4",
+    "license": "Apache-2.0",
+    "archived": false,
+    "pushed_at": "2026-10-21T18:48:30Z",
+    "latest_release": "desktop-linux-preview-v0.9.0-e87f5cb9d34d-all-signed",
+    "release_published": "2026-10-21T18:43:02Z",
+    "deployment": {
+      "observed_at": "2026-10-22T19:45:28.993823+00:00",
+      "policy": "policy13",
+      "upstream_unchanged": "42931b1502eb03ac299f14e306811736fab51eb4",
+      "patched_tree": "0af2178f1461819a893d6705a0e23dcad6330595",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy13@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "test_executions_passed": 964,
+      "skipped": 0,
+      "evidence": "evidence/propr-policy13-deployment.json"
+    }
+  },
+  {
+    "repository": "The-PR-Agent/pr-agent",
+    "checked_at": "2026-10-22T14:32:53.7972136+08:00",
+    "branch": "main",
+    "head_sha": "6c6da246af071bade2a9c13ade03d84d78f0c065",
+    "license": "MIT",
+    "archived": false,
+    "pushed_at": "2026-10-21T23:12:34Z",
+    "latest_release": "v0.48.0",
+    "release_published": "2026-10-16T19:55:41Z"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "passed": 22,
+  "total": 22,
+  "model_calls": 0,
+  "native_expressions": true,
+  "at": "2026-10-22T19:37:58.859535+00:00",
+  "source_sha256": {
+    "build_review_admission.py": "1163f9710ab8764b31b1492e138bcb1a8e78c9fe11b490d11f27d3ce2bc458cc",
+    "review-admission.workflow.json": "c643597c4f26394e1060cf1c5a0217c9bfb3e8a075266d5996caf45c3a613f99",
+    "test_review_admission.mjs": "3f88776935cd41bea83667e0820b3cf5508b3a5a100cb902a56a209a1d3389bd"
+  }
+}

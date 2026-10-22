@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-22T14:01:32Z",
+  "taskId": "stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4",
+  "nativeStateBefore": [
+    "cancelled",
+    "2026-10-22T13:59:12.060Z"
+  ],
+  "operation": "operator cleanup after native cancellation; native Stop did not terminate Git preparation",
+  "workerPidExcluded": 1273573,
+  "workerNodePidExcluded": 1273597,
+  "processesBefore": [
+    {
+      "pid": 1585524,
+      "ppid": 1273597,
+      "comm": "git",
+      "state": "S",
+      "startTicks": 1824804936,
+      "cwd": "/usr/src/app"
+    },
+    {
+      "pid": 1585534,
+      "ppid": 1585524,
+      "comm": "git",
+      "state": "S",
+      "startTicks": 1824804938,
+      "cwd": "/usr/src/app"
+    },
+    {
+      "pid": 1585536,
+      "ppid": 1585534,
+      "comm": "git-remote-http",
+      "state": "S",
+      "startTicks": 1824804938,
+      "cwd": "/usr/src/app"
+    },
+    {
+      "pid": 1587126,
+      "ppid": 1585524,
+      "comm": "git",
+      "state": "S",
+      "startTicks": 1824805884,
+      "cwd": "/usr/src/app"
+    }
+  ],
+  "signals": [
+    {
+      "pid": 1585524,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1585534,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1585536,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 1587126,
+      "signal": "SIGTERM"
+    }
+  ],
+  "processesAfter": [],
+  "workerStillRunning": true,
+  "completedAt": "2026-10-22T14:01:35Z"
+}

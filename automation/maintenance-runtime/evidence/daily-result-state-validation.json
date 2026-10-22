@@ -1,0 +1,29 @@
+{
+  "captured_at": "2026-10-22T15:45:43.100569+00:00",
+  "build_host": "kol-stage2",
+  "base_image": "onticards-propr-policy7-tests",
+  "deployed": false,
+  "baseline": {
+    "tests": 3,
+    "passed": 2,
+    "failed": 1,
+    "skipped": 0
+  },
+  "candidate": {
+    "core_typescript": true,
+    "root_typescript": true,
+    "tests": 85,
+    "passed": 85,
+    "failed": 0,
+    "skipped": 0
+  },
+  "model_calls": 0,
+  "github_writes": 0,
+  "limits": "Native processor harness uses injected state and Agent; successful structure does not prove factual or semantic quality. No real schedule run triggered.",
+  "fixture_correction": "First candidate expected failed on duplicate settled delivery; upstream intentionally returns skipped. Now asserts skipped + persisted failed run/task + exactly one Agent call. Initial fixture failure retained.",
+  "files": {
+    "src/jobs/processAgentRunJob.ts": "d13fb01195f9ac0d75cf6027d670bf8215a0ba9187de21ef839260ef80a23563",
+    "src/jobs/agentRuns/dailyReportContract.ts": "287c91c061b196631ea02bbe4f076847d2e7eacb7661ae81dbb56e41670e9504",
+    "test/processAgentRunJob.test.ts": "db62830d5906d42a6b4dade9f273129572f0da3de02e6fe7f182768c2f62207b"
+  }
+}

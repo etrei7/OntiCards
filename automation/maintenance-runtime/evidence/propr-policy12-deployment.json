@@ -1,0 +1,80 @@
+{
+  "started_at": "2026-10-22T18:30:52.043572+00:00",
+  "old_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy11@sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+  "new_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "before": [
+    {
+      "name": "api",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy11@sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "image_id": "sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "state": "running",
+      "started_at": "2026-10-22T17:15:32.033057791Z"
+    },
+    {
+      "name": "worker",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy11@sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "image_id": "sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "state": "running",
+      "started_at": "2026-10-22T17:15:32.042037412Z"
+    },
+    {
+      "name": "daemon",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy11@sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "image_id": "sha256:d07dc0c1f50566ac6913206059faab112ce8c0db96e44bc24ba1786f921bf21d",
+      "state": "running",
+      "started_at": "2026-10-22T17:15:32.017817055Z"
+    }
+  ],
+  "build_on_test_host": false,
+  "queue_before": {
+    "wait": 0,
+    "active": 0,
+    "paused": 0,
+    "delayed": 0,
+    "prioritized": 0,
+    "waiting-children": 0
+  },
+  "runtime_change": {
+    "field": "MAX_PROVIDER_REPLACEMENTS",
+    "value": 0,
+    "other_lines_preserved": true,
+    "before_sha256": "8e5f52d23fbf335c0253b3b5b15b14033ed870c1586e565fc4b00c62053f0f23",
+    "after_sha256": "01385a67c6333abd1032c60e3e2a25f89bf271c149f65486c0a07b761c9420a9",
+    "private_backup_mode": "0600"
+  },
+  "after": [
+    {
+      "name": "api",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "image_id": "sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "state": "running",
+      "started_at": "2026-10-22T18:31:12.09213774Z"
+    },
+    {
+      "name": "worker",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "image_id": "sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "state": "running",
+      "started_at": "2026-10-22T18:31:12.08408865Z"
+    },
+    {
+      "name": "daemon",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "image_id": "sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+      "state": "running",
+      "started_at": "2026-10-22T18:31:12.066453697Z"
+    }
+  ],
+  "queue_after": {
+    "wait": 0,
+    "active": 0,
+    "paused": 0,
+    "delayed": 0,
+    "prioritized": 0,
+    "waiting-children": 0
+  },
+  "source_tree": "b3dd9a914e431b15b41febbf97211d736e6428fd",
+  "compose_sha256": "696bedcb98a88c3da11697e79b19f7d11885e8d3f106407863584c83bd1f6b79",
+  "completed_at": "2026-10-22T18:31:20.476891+00:00",
+  "success": true
+}

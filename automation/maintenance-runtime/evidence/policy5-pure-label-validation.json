@@ -1,0 +1,80 @@
+{
+  "captured_at": "2026-10-22T12:13:10.310530+00:00",
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "state": "source and isolated tests complete; production build/deployment owned by root",
+  "source_sha256": {
+    "src/jobs/issueJobDispatcher.ts": "814588276c6952b24688aaf22fe2f47ce4380e3d86f5ea9def98085b0e2f492e",
+    "src/jobs/errorHandlers.ts": "bd8a66b1c1d09fedc83a400d611cde962af2e3e382ca6fd01013f25a8d874871",
+    "test/maintenancePureLabelFailure.test.ts": "b9b6a1ea53371c84ce38948e30fd3fee92cf3ff735c1c677b9e64c670d8a813a"
+  },
+  "production_files": [
+    "src/jobs/issueJobDispatcher.ts",
+    "src/jobs/errorHandlers.ts"
+  ],
+  "test_environment": {
+    "host": "kol-stage2",
+    "reused_image": "onticards-propr-policy4-tests",
+    "working_directory": "/build",
+    "network": "dedicated Redis container namespace; no external network",
+    "credential_access": false,
+    "database": "temporary file-backed SQLite; fresh child Node process and client reopen",
+    "redis": "isolated ephemeral redis:7-alpine; native BullMQ and retry run receipts"
+  },
+  "red": {
+    "tests": 1,
+    "failed": 1,
+    "log": "policy5-pure-label-red.log",
+    "meaning": "unchanged pure-label poll dispatched again after native failed task and SQLite reopen"
+  },
+  "new_tests": {
+    "tests": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "log": "policy5-pure-label-green.log"
+  },
+  "regression": {
+    "tests": 145,
+    "passed": 145,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 23,
+    "log": "policy5-pure-label-regression-redis.log",
+    "files": [
+      "test/issueJobDispatcher.test.ts",
+      "test/issueJobDispatcher.handleDispatch.test.ts",
+      "test/issueUsageLimitRetry.test.ts",
+      "test/errorHandler.test.ts",
+      "test/providerReplacementOrigin.test.ts",
+      "packages/core/test/taskSubmissionService.test.ts",
+      "packages/core/test/taskSubmissionIntakeQueue.test.ts",
+      "packages/core/test/taskSubmissionIntake.test.ts",
+      "packages/core/test/issueRetryRunReceipt.test.ts"
+    ]
+  },
+  "historical_regression_without_redis": {
+    "passed": 143,
+    "failed": 0,
+    "skipped": 2,
+    "log": "policy5-pure-label-regression.log",
+    "note": "two native intake integration tests explicitly skipped because Redis unavailable, subsequently rerun with required Redis and all passed"
+  },
+  "guarantees": [
+    "maintenance mode only",
+    "failed latest native task history scoped by repository case-insensitive, issue number and issue task type",
+    "poll and changing model/base do not create another child after failed work",
+    "database read failure rejects admission",
+    "native authenticated Follow-up selection and accepted receipt retain exactly-once run acceptance after child removal and SQLite/queue reconnect",
+    "fresh Node process reads same persistent failure",
+    "stale trigger history defers and ordinary relabel cannot restore failure budget",
+    "current child retries and usage-limit recovery unmodified; existing regression passes",
+    "product failure text distinguishes attempt 1/3 from 3/3 and directs task details -> Follow Up"
+  ],
+  "limits": [
+    "requires a persisted native task and latest failed history; dispatcher failures before child task creation remain outside this gate",
+    "ordinary discovery may still enqueue a parent that returns skipped; no new child or model run is created by this gate",
+    "no new request, submission, scheduler, counter, queue-retention policy or GitHub write added",
+    "not production live Follow-up/Issue-to-PR end-to-end validation",
+    "native request authorization is reused, not recreated by these fixtures"
+  ]
+}

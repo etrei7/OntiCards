@@ -1,0 +1,113 @@
+{
+  "created_at": "2026-10-22T18:38:03.055645+00:00",
+  "repository": "stepll2026/OntiCards",
+  "observed_main": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "frozen_supplemental_document_commit": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+  "current_document_role": "Supplemental delivery runtime notes; does not replace task checkout or rewrite historical documents",
+  "source_reader": "n8n 2.42.7 onticardsRepositoryContextV1; native GitHub HTTP/Crypto/DataTable/Loop",
+  "incremental_verification": {
+    "checks": 69,
+    "passed": true,
+    "model_calls": 0,
+    "repository_writes": 0
+  },
+  "pdf_locator_verification": {
+    "checks": 7,
+    "passed": true,
+    "main_lines": [
+      871,
+      1012
+    ],
+    "model_calls": 0
+  },
+  "semantic_index": {
+    "optional": true,
+    "enabled": false,
+    "complete": false,
+    "historical_file_summaries": 60,
+    "historical_directory_summaries": 0
+  },
+  "evidence": [
+    {
+      "delivery_path": "evidence/knowledge-main-historical-diff.json",
+      "sha256": "492b26e014ec36612c951ed6cf280e190cc0159df62f139bc6988785a6710cc8"
+    },
+    {
+      "delivery_path": "evidence/knowledge-main-refresh-native-red.json",
+      "sha256": "1c2d53f6916a9d4d2990f44a512cddaa873b4cf4c708b7c3b49d33764e7d350f"
+    },
+    {
+      "delivery_path": "evidence/knowledge-main-refresh-empty-file-red.json",
+      "sha256": "d6de91b0cebfc0a2ffbbe1238ae5c470211a8638aa0d3396ab1602706968bf15"
+    },
+    {
+      "delivery_path": "evidence/knowledge-main-refresh-native-green-v2.json",
+      "sha256": "404a838b2f0077dd665d1008232d9e000c4dfdb7355f8d1f17fb9c2265cb8c58"
+    },
+    {
+      "delivery_path": "evidence/knowledge-main-refresh-independent.json",
+      "sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41"
+    },
+    {
+      "delivery_path": "evidence/knowledge-source-pipeline-readonly.json",
+      "sha256": "c00bacadac3c95befe8ce75816dba232438fac24c22ddb26ec08b7c2a43e8a60"
+    },
+    {
+      "delivery_path": "evidence/knowledge-source-binding-exact.json",
+      "sha256": "fff27f0b0bc0932f9c7e9ae476770eb730964f08c24d4994a459ef07ca5da484"
+    },
+    {
+      "delivery_path": "evidence/knowledge-runtime-current.json",
+      "sha256": "867537dc9f36f7aba830892a2fd60c2cd09f94c629ce8a8bbc722c94762463b1"
+    },
+    {
+      "delivery_path": "evidence/knowledge-pdf-source-native.json",
+      "sha256": "118cbc13d8012f333d0dfa05fd60b605c4e59dac3c70fa8e8c91376c4c3a4d27"
+    },
+    {
+      "delivery_path": "evidence/knowledge-pdf-source-native-v2.json",
+      "sha256": "f72ce3d0ee6d83361a5c987fcfa250506d1aef62d62b45221e2435349171682e"
+    },
+    {
+      "delivery_path": "evidence/knowledge-pdf-source-independent.json",
+      "sha256": "270adeb49f7a1d79c51ed42124c0078483d014ceb3c3c67b6e3b99bb797d549a"
+    },
+    {
+      "delivery_path": "evidence/versioned-knowledge-deployment.json",
+      "sha256": "4eb6ce91b6a944d545abd47381f1f80e2d2ae0271c0f6905df35b8ef8047d2ad"
+    },
+    {
+      "delivery_path": "evidence/propr-policy12-deployment.json",
+      "sha256": "cc80a1b19658fee21fce9d317c354c56fabcf9b4d24ff23447dbc6bca6854ad0"
+    },
+    {
+      "delivery_path": "evidence/indexing-settle-after.json",
+      "sha256": "b2513cb2e984947b223e4acd2b00425c0ce7d9a1bd26b6e7dd756a9f8396d9c3"
+    }
+  ],
+  "frozen_document_files": [
+    {
+      "source": "AGENTS.md",
+      "file": "AGENTS.md",
+      "sha256": "d4c46a442032728570fbaab9ea9dd1bd03491cc9d3b85fb9f8225a575828c38d",
+      "gitBlob": "5e627aa1880abb75fe8637e308a21066403a7062"
+    },
+    {
+      "source": "docs/maintenance/repository-context.md",
+      "file": "repository-context.md",
+      "sha256": "cd57d9aa8422aee14ad3eb0d761159d5ce2f76c992a8d45a6ff705160a0de1d0",
+      "gitBlob": "94905dffbc7db85c4c978fab76216b54bb9d2cb1"
+    },
+    {
+      "source": "docs/maintenance/response-policy.md",
+      "file": "response-policy.md",
+      "sha256": "73627ab4b7665081385b5ace156d0e6147a6553062c44c56af7cca3b6304aca8",
+      "gitBlob": "efcf346fd5f0bc4707323fad35941465856f5ff3"
+    }
+  ],
+  "limits": [
+    "Evidence paths are relative to the separate delivery package, not assumed to exist in the product repository.",
+    "The natural Issue29 source binding exists, but that historical answer was rejected; future answer quality is not established by this source test.",
+    "Main is freshly resolved per eligible event/task; no additional idle repository-index scheduler was created."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "login": "fixture",
+      "type": "User",
+      "nativeFilter": {
+        "shouldFilter": false,
+        "reason": null
+      },
+      "explicitExactWhitelist": true
+    },
+    {
+      "login": "fixture[bot]",
+      "type": "Bot",
+      "nativeFilter": {
+        "shouldFilter": false,
+        "reason": null
+      },
+      "explicitExactWhitelist": false
+    },
+    {
+      "login": "drive-by",
+      "type": "User",
+      "nativeFilter": {
+        "shouldFilter": true,
+        "reason": "not_in_whitelist"
+      },
+      "explicitExactWhitelist": false
+    }
+  ],
+  "nativeFilterSha256": "1fda9b4f8effe66bb49ad67928dd32f54c1347964018478ff47bbf94e6e95676",
+  "at": "2026-10-22T19:25:40.320693+00:00",
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "network": "none",
+  "model_calls": 0,
+  "github_requests": 0,
+  "credentials_mounted": false
+}

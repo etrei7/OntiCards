@@ -1,0 +1,33 @@
+{
+  "started_at": "2026-10-22T18:23:52.344509+00:00",
+  "workflow": "onticardsIntakeCiHandoffV1",
+  "before_execute_once": {
+    "Native complete intake handoff": false,
+    "Trusted CI handoff configuration": false,
+    "Read committed intake watermark": true,
+    "Read current intake threads for CI": true,
+    "Project complete public PR revisions": false,
+    "Complete revoked bounded snapshot only": false,
+    "Send snapshot to existing trusted CI": false,
+    "Safe CI handoff observation": false,
+    "CI handoff refused": false
+  },
+  "models": 0,
+  "github_writes": 0,
+  "manual_poll_triggers": 0,
+  "completed_at": "2026-10-22T18:23:53.084927+00:00",
+  "active": true,
+  "version_id": "a27b679b-8d08-4e27-8180-e58dfae6579e",
+  "source_sha256": "c158dd8574656a96089725d3d212a1c8b02bc0181aad9dd3803d0be718685735",
+  "after_execute_once": {
+    "Native complete intake handoff": false,
+    "Trusted CI handoff configuration": false,
+    "Read committed intake watermark": true,
+    "Read current intake threads for CI": true,
+    "Project complete public PR revisions": true,
+    "Complete revoked bounded snapshot only": false,
+    "Send snapshot to existing trusted CI": true,
+    "Safe CI handoff observation": true,
+    "CI handoff refused": true
+  }
+}

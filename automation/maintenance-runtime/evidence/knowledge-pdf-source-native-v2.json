@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-22T17:47:09.024480+00:00",
+  "duration_seconds": 83.853,
+  "complete": true,
+  "requested_ref": "main",
+  "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "tree_sha": "99f6c09c69ae8553c62fe223d3eaf6ed650e1955",
+  "required_paths": [
+    "OntiCards_Api/controllers/governance/libreoffice_exporter.py"
+  ],
+  "omitted_required_paths": [],
+  "token_revoked": true,
+  "model_calls": 0,
+  "repository_writes": 0,
+  "file": {
+    "path": "OntiCards_Api/controllers/governance/libreoffice_exporter.py",
+    "commit_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "blob_sha": "d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d",
+    "size": 43793,
+    "empty": false,
+    "line_start": 871,
+    "line_end": 1012,
+    "truncated": true,
+    "url": "https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L871",
+    "excerpt_characters": 6000,
+    "excerpt_sha256": "4d5ab99767d7226bf0caaa1a836e93699710c66cf7bb5eb28e2a543ebe00507b",
+    "first_line": "    def _build_and_convert_html(",
+    "contains_html_conversion": true,
+    "contains_no_pdf_fallback": true,
+    "contains_export_pdf_call": true
+  }
+}

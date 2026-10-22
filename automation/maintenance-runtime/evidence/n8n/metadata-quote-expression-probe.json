@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-22T17:42:08.557Z",
+  "kind": "actual review native Set expression frozen response replay",
+  "assertions": {
+    "actual_original_still_rejected": true,
+    "exact_bound_canonical_metadata_accepted": true,
+    "original_questions_failure_retained": true,
+    "approximate_metadata_quote_rejected": true,
+    "body_injection_not_a_metadata_surface": true,
+    "same_quote_wrong_source_id_rejected": true,
+    "original_wrong_sha_rejected_even_if_review_approves": true
+  },
+  "passed": true,
+  "checks": 7,
+  "model_calls": 0,
+  "github_posts": 0,
+  "original_records_changed": false,
+  "limitations": "The isolated all-true review and corrected SHA are synthetic gate fixtures, not new model judgments or approved publication."
+}

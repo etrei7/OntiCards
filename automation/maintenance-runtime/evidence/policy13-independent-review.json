@@ -1,0 +1,234 @@
+{
+  "reviewed_at": "2026-10-22T19:46:26.079973+00:00",
+  "method": "independent read-only review of current candidate and caller dependencies; native compiled upstream author-filter probe with network none",
+  "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "files": [
+    {
+      "path": "src/jobs/processPullRequestCommentJob.ts",
+      "sha256": "b8eee251d2c58cbd0fd4ec527031747446899c87fe9ccd50fb147a1bca8336f7",
+      "git_blob": "5ee6f070dd909f59fae0746ad3c878e5e5720723"
+    },
+    {
+      "path": "src/jobs/prCommentReviewJob.ts",
+      "sha256": "535f019327d9a25a23330e70069aad7d56568c8a82ec626f1129f4fa34fad888",
+      "git_blob": "a576cd1c3f0c7d599429f5060a3506cd3370f6df"
+    },
+    {
+      "path": "src/jobs/prReviewRunner.ts",
+      "sha256": "a1ff9b47442e2913810ef6bbcd0b5db321a5c8f06f2e1cc06b45aa08c653d8eb",
+      "git_blob": "0a0d33e36eb28bbc8eaa8aa901103c1d47d0ce9e"
+    },
+    {
+      "path": "src/jobs/reviewContextHelpers.ts",
+      "sha256": "91c3a68f58c4830e7c2627ffb878d58ae0287206a2a051c50746e12ee33714bf",
+      "git_blob": "5ec0c7583b7a40ea810a55ecc32230a0066a90a2"
+    },
+    {
+      "path": "src/jobs/reviewCommentFormatter.ts",
+      "sha256": "b530d45daff133c22999e544d0e9d86ea1370dcf820ac84e6e177caf980efe74",
+      "git_blob": "cc082b38b736acb05b3865134f99b005ecf195c4"
+    },
+    {
+      "path": "test/maintenanceReadOnlyReview.test.ts",
+      "sha256": "d02698699f43fe85b408352f8c5e6293a218608e66505cf521e895960b6d514e",
+      "git_blob": "ddcd51d88b5635cff603aa2b7b6e832366973697"
+    },
+    {
+      "path": "test/prReviewValidation.test.ts",
+      "sha256": "937288bebf3db47e4f4604e168291cec8b1503f436bbb63b4becefa88b3b3cca",
+      "git_blob": "bc9c53bd10cf34a35be5b22b3ab9c02236f72144"
+    },
+    {
+      "path": "test/prReviewRunnerBudget.test.ts",
+      "sha256": "5055174190a67ff00fb416fb114ec2d1023ad74d1c255f2e733fb25c5853a807",
+      "git_blob": "2cc11fa3641706db12c0c43e91876962dbb8549d"
+    },
+    {
+      "path": "test/reviewContextHelpers.test.ts",
+      "sha256": "973e89672de14cabd6d65a014fc9f2cf0edb74c4c38add3077039eae3e7cc236",
+      "git_blob": "bcf76e2c6e3b3a98cb9d7ac1871918d800f60c68"
+    },
+    {
+      "path": "test/prCommentReviewFollowupScope.test.ts",
+      "sha256": "fc8dd74b836f624a620f8d7e9bfbd3c59f58d0af26a86fe239504cc448c423e3",
+      "git_blob": "457af47aeb09c506eb3001eb1d55aa649cacf7d0"
+    }
+  ],
+  "status": "independent_read_only_review_passed_final_source_and_existing_full_build_logs_verified_deployment_separate",
+  "blocking_findings": [],
+  "verified_boundaries": [
+    "ReadOnlyReview is computed from trusted host maintenance mode + admitted native commandMode review + absent internal ultrafixMeta after pending-command resolution; untrusted body cannot set the flag.",
+    "Only plain maintenance review skips predecessor publication/handoff recovery, current publication recovery and stopping old continuation Ultrafix. Internally-owned Ultrafix and non-review fix keep original paths under the native PR lease.",
+    "Unlabelled exception requires nonempty exact whitelist, live same comment id/author, native review parser and original queued typed models/instructions/body, existing author filter and live assignment gate. Refreshed body and unrelated batch metadata cannot self-authorize; marker alone grants nothing.",
+    "Snapshot checks require both 40-character head and base after collecting mutable PR-number diff and immediately before publishing findings. Head/base movement, closed PR or unreadable snapshot cannot produce successful findings.",
+    "Runner preserves actual returned usage/session/elapsed/response on stale publication failure; caller records metrics and projects FAILED for failure or zero successes.",
+    "No new runtime package dependency. Existing @propr/core exports humanMergeOnly/parseSlashCommand/filterCommentByAuthor and wildcard followupAssignmentGate. assertReviewRevision uses existing helper module; reviewedBase is passed from actual PR through caller/context/formatter."
+  ],
+  "delivery_check": {
+    "guard_source_files": [
+      "src/jobs/processPullRequestCommentJob.ts",
+      "src/jobs/prCommentReviewJob.ts",
+      "src/jobs/prReviewRunner.ts",
+      "src/jobs/reviewContextHelpers.ts",
+      "src/jobs/reviewCommentFormatter.ts"
+    ],
+    "existing_core_exports_verified": true,
+    "final_patch_regeneration_required": false,
+    "reason": "Versioned final policy13 patch independently matches validation hash/tree and includes all ten changed source/test files, existing core export and policy dependencies. Added buildCommandMeta import is already exported by core. Historical unversioned patch remains historical; final delivery must use policy13 and matching tree.",
+    "stage_package_dependencies": "Three fixed component allowlists and six publication helpers included by stage. Post-commit MCP activation receipt is runtime evidence through package fixed add/scan; no self-referential source SHA claim."
+  },
+  "model_calls": 0,
+  "github_writes": 0,
+  "production_mutations_by_reviewer": 0,
+  "limitations": [
+    "Source and no-model native fixtures are not a new live GitHub review or paid model run.",
+    "964 counts test executions across suites, not unique requirements or total product acceptance.",
+    "Final runtime deployment evidence remains separate; this receipt verifies the built immutable image, not that it is running."
+  ],
+  "source_binding": {
+    "patch_path": "deploy/propr-maintenance-policy13.patch",
+    "patch_sha256": "91c2d151fd95ff6fcd634fc73d553a6fcc84674f481b3a7ce7b48eb11ea0273b",
+    "delta_sha256": "299294be6c456cad34703d88c2b5ef44b13f9ccfd7eed9e07652d454142a2fb7",
+    "applied_tree": "0af2178f1461819a893d6705a0e23dcad6330595",
+    "independent_file_checks": [
+      {
+        "path": "src/jobs/processPullRequestCommentJob.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "src/jobs/prCommentReviewJob.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "src/jobs/prReviewRunner.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "src/jobs/reviewContextHelpers.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "src/jobs/reviewCommentFormatter.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "test/maintenanceReadOnlyReview.test.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "test/prReviewValidation.test.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "test/prReviewRunnerBudget.test.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "test/reviewContextHelpers.test.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      },
+      {
+        "path": "test/prCommentReviewFollowupScope.test.ts",
+        "sha256_match": true,
+        "git_blob_match": true
+      }
+    ]
+  },
+  "resolved_findings": [
+    {
+      "id": "P13-EXACT-AUTHOR",
+      "condition": "GITHUB_USER_WHITELIST=fixture; live author fixture[bot], type Bot; native filter normalizes [bot] and allows. Nonempty whitelist plus that filter alone is not exact-owner authorization.",
+      "probe": "evidence/policy13-author-filter-independent.json",
+      "source_resolution_observed": true,
+      "resolution": "New unlabelled review exception additionally requires exact trimmed configured login before the existing filter and assignment gate. Explicitly configured bot remains authorized; no global native filter changes.",
+      "resolved_in_final_candidate": true
+    },
+    {
+      "id": "P13-NATIVE-STRIPPED-BODY",
+      "identified_by": "implementation agent follow-up native intake audit",
+      "condition": "Native handleSlashCommand strips command line before queueing; comparing full live body to stripped queued comment body rejects legitimate native review even if unchanged.",
+      "resolved_in_final_candidate": true,
+      "resolution": "Reuse native buildCommandMeta; compare normalized models and instructions against original queued typed command. Job-level metadata is bound to commandCommentId (explicit legacy single commentId fallback), not arbitrary batch items. Native-shaped comments array and edited-model/instruction cases pass."
+    },
+    {
+      "id": "P13-QUEUED-BODY",
+      "identified_by": "independent reviewer",
+      "condition": "Legacy raw queued comment with updated_at differs from live updated_at; native validateAndFilterComments replaces validated.body with current body. Comparing live against validated body cannot prove originally queued text unchanged.",
+      "probe": "evidence/policy13-queued-body-independent.json",
+      "resolved_in_final_candidate": true,
+      "resolution": "Find original commentsToProcess record by id and compare its original body/author/metadata, not the potentially refreshed validation projection. Updated-at legacy edit and wrong metadata comment id are rejected."
+    }
+  ],
+  "test_evidence": {
+    "path": "evidence/policy13-independent-test-log-summary.json",
+    "method": "Independent read of actual existing kol test logs, hashes and TAP summaries; did not rerun model or broad test suites",
+    "final_readonly_native_command": {
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0
+    },
+    "revision_runner_context": {
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0
+    },
+    "native_task_failure_projection": {
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    },
+    "historical_reds_retained": true,
+    "whole_build_and_deployment": "Independent read of existing kol source marker, six TAP log hashes/counts, both compilation log hashes, image ID and registry digest matches final validation. No tests rerun. Runtime deployment remains separate."
+  },
+  "final_incremental_review": {
+    "changed_files": [
+      "src/jobs/processPullRequestCommentJob.ts"
+    ],
+    "delta": "Replace !currentCommand with currentCommand?.mode !== review in the rejection condition. This explicitly narrows native CommandMeta union before instructions access and cannot broaden acceptance. Other nine source/test hashes unchanged.",
+    "compile": "Final build marker, both compilation log hashes and all six existing TAP logs independently read on kol-stage2; match the final validation source tree/patch. 964 passing executions, 0 fail/cancelled/skipped; no rerun.",
+    "findings": []
+  },
+  "full_build_binding": {
+    "validation_path": "evidence/propr-policy13-validation.json",
+    "validation_sha256": "dee1da873244e322802fce9f40f5e62772f97d6af32fae705ec4015ea0685768",
+    "method": "Independent read-only SSH of source-verified.json, both compilation SHA256 values, six TAP summary/hash logs, repo-digests.json and image-id.txt; compared with local final validation.",
+    "source": {
+      "verified_at": "2026-10-22T19:37:54.263195+00:00",
+      "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+      "tree": "0af2178f1461819a893d6705a0e23dcad6330595",
+      "patch_sha256": "91c2d151fd95ff6fcd634fc73d553a6fcc84674f481b3a7ce7b48eb11ea0273b",
+      "delta_sha256": "299294be6c456cad34703d88c2b5ef44b13f9ccfd7eed9e07652d454142a2fb7",
+      "exact_delta_files": 10,
+      "status": "verified",
+      "worktree_wide_copy": false,
+      "private_archive_required": false
+    },
+    "test_executions": 964,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "group_counts": {
+      "previous_regression": 467,
+      "index_queue_redis": 11,
+      "native_admission": 9,
+      "admission_related_regression": 192,
+      "readonly_authorization_redis_sqlite": 20,
+      "review_handoff_cancel_mcp_regression": 265
+    },
+    "build_tests_sha256": "b5b3fa9fd768f0a336d1d4aac777d05144c8b5366beb85ff11a056eacd560057",
+    "build_production_sha256": "2dd603acd70fb84b5d2a187ac53d95d9971f8db3d9d2d49e1f8a5d56b425d80b",
+    "registry_digest": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+    "image_id": "sha256:b65e81b54d8a528085f589046b2c3bb21df692234bc00e3ab831ec3f704be333",
+    "tests_rerun_by_reviewer": false,
+    "runtime_deployment_claimed": false
+  }
+}

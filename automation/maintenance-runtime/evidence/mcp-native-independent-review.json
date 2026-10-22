@@ -1,0 +1,74 @@
+{
+  "reviewed_at": "2026-10-22T19:08:29.908528+00:00",
+  "policy": "policy12",
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "tree": "b3dd9a914e431b15b41febbf97211d736e6428fd",
+  "model_calls": 0,
+  "github_writes": 0,
+  "grants_issued_by_independent_review": 0,
+  "native_tests": {
+    "image_id": "sha256:fe16b3604924a02b199abc710c4498aebc0f8f801efd5f92ca71e5b09827893f",
+    "files": [
+      "packages/api/test/mcpOAuth.test.ts",
+      "packages/api/test/mcpOperations.test.ts",
+      "packages/api/test/agentRunGrants.test.ts"
+    ],
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0,
+    "duration_ms": 8397.682981,
+    "network": "none",
+    "credentials_mounted": false,
+    "log_sha256": "9efa242c573fc8e2a7efe4679f43864855687413510f8860b316ca76c343517d"
+  },
+  "adapter_receipt_tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "duration_ms": 69.2548,
+    "checks": [
+      "nested native operation envelope",
+      "posted distinct from queued/completed",
+      "malformed receipt failclosed",
+      "lost response after mutation unknown",
+      "precondition proves no invocation",
+      "revocation unknown requires cleanup"
+    ]
+  },
+  "source_snapshot": [
+    {
+      "path": "deploy/propr/review-service/mcp_review.mjs",
+      "sha256": "4f299e8ae7d2f57a28ffde6a70022be86dd24e6816068df799df025f0c3f8ed1"
+    },
+    {
+      "path": "deploy/propr/review-service/receipt.mjs",
+      "sha256": "c73f743d58d84cdbbb5b2748e724ba375521c1f2aabf343b3fa4ed6e8e7bc622"
+    },
+    {
+      "path": "deploy/propr/review-service/receipt.test.mjs",
+      "sha256": "072ec63dd559d11b66307cb1f8bc26e99ba60a328c3a8f78da749c043d9de23d"
+    },
+    {
+      "path": "deploy/propr/review-service/ssh_gate.py",
+      "sha256": "bed41ef6f8a501b095e986c6029b434de3725467b92dfe1f6ebbf2e261ad0148"
+    },
+    {
+      "path": "deploy/propr/review-service/install_service.py",
+      "sha256": "558885a55d98a87245883fc82bc7051fde70f3c8776df9e516b3c6f89326ef95"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "blocking_for_readonly_guarantee",
+      "status": "reported_to_root_and_env",
+      "source": "src/jobs/processPullRequestCommentJob.ts:415,442 before review branch at452",
+      "detail": "gatePredecessorHandoff and recoverPendingPublication may publish a retained preceding implementation before the read-only review branch. Helper precheck alone cannot rule out a later queued-state race."
+    }
+  ],
+  "limits": [
+    "No adapter deployment or live SSH boundary test by this independent reviewer.",
+    "The 52 native tests mock GitHub/network where needed; no live credential was issued.",
+    "Native grant revocation does not cancel an already posted review comment or its later worker job.",
+    "Native expectedHead has no expectedBase counterpart; live revision checks are not atomic with GitHub POST."
+  ]
+}

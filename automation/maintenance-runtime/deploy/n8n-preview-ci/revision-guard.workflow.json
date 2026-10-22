@@ -1,0 +1,483 @@
+{
+  "id": "onticardsPreviewRevisionV1",
+  "name": "OntiCards exact PR revision - native App read only",
+  "active": false,
+  "nodes": [
+    {
+      "id": "4f8c4c06-b236-556e-bea1-b474a97e577c",
+      "name": "Native fixed revision request",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "0a37f5eb-74a1-558f-810f-9d246b734fc4",
+      "name": "Validate fixed revision input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$input.first().json;\nif(!Number.isSafeInteger(p.pr)||p.pr<1||p.pr>9999999||!/^[a-f0-9]{40}$/.test(p.head??'')||!/^[a-f0-9]{40}$/.test(p.base??''))throw new Error('Invalid fixed revision');\nreturn [{json:{pr:p.pr,head:p.head,base:p.base}}];"
+      }
+    },
+    {
+      "id": "fb43c05f-d478-53f0-8084-a3f0e777a7f1",
+      "name": "Sign preview App JWT",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "operation": "sign",
+        "useJson": true,
+        "claimsJson": "={{ JSON.stringify({iat:Math.floor(Date.now()/1000)-60,exp:Math.floor(Date.now()/1000)+540,iss:\"5422414\"}) }}",
+        "headerClaims": "{}",
+        "options": {
+          "algorithm": "RS256"
+        }
+      },
+      "credentials": {
+        "jwtAuth": {
+          "id": "onticardsPreviewAppJwt",
+          "name": "OntiCards preview revision App"
+        }
+      }
+    },
+    {
+      "id": "47eeab6f-f4ca-571e-a217-4c0ea4d62bc2",
+      "name": "Mint preview read token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/app/installations/174029282/access_tokens",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Sign preview App JWT\").first().json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"repositories\": [\"OntiCards\"], \"permissions\": {\"pull_requests\": \"read\", \"metadata\": \"read\"}}"
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "84153d3e-2fc2-597e-a0c0-6f2935551d48",
+      "name": "Verify preview token scope",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/installation/repositories?per_page=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint preview read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "dbd5f800-8bf7-595c-8731-0676c8082014",
+      "name": "Exact preview read scope",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "scope",
+              "leftValue": "={{ (()=>{const m=$(\"Mint preview read token\").first().json,p=m.body?.permissions||{},r=$json;return m.statusCode===201&&typeof m.body?.token===\"string\"&&Object.keys(p).length===2&&p.pull_requests===\"read\"&&p.metadata===\"read\"&&r.statusCode===200&&r.body?.total_count===1&&r.body.repositories?.[0]?.full_name===\"stepll2026/OntiCards\";})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "503b4719-537f-5895-89e0-6aa21221a4a8",
+      "name": "Read exact current PR",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.github.com/repos/stepll2026/OntiCards/pulls/{{ $(\"Validate fixed revision input\").first().json.pr }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint preview read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "49e0a5d3-3f82-5e7e-9d97-9d2e160223c3",
+      "name": "Public revision verdict",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Validate fixed revision input').first().json,res=$input.first().json,r=res.body;\nconst current=res.statusCode===200&&r?.state==='open'&&r.head?.repo?.full_name==='stepll2026/OntiCards'&&r.base?.repo?.full_name==='stepll2026/OntiCards'&&r.head?.ref?.startsWith('codex/')&&r.base.ref==='main'&&r.head.sha===p.head&&r.base.sha===p.base;\nreturn [{json:{...p,current,http_status:res.statusCode??null,observed_head:r?.head?.sha??null,observed_base:r?.base?.sha??null,reason:current?'exact_current_revision':'stale_or_remote_unverifiable',checked_at:new Date().toISOString()}}];"
+      }
+    },
+    {
+      "id": "990e8dbf-2659-5a69-82a3-e2d396e82836",
+      "name": "Scope rejected",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return [{json:{...$('Validate fixed revision input').first().json,current:false,reason:'installation_scope_unverified',checked_at:new Date().toISOString()}}];"
+      }
+    },
+    {
+      "id": "a055d734-342d-5d9c-9466-65df1199da07",
+      "name": "Preserve public revision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all();"
+      }
+    },
+    {
+      "id": "312d45af-9c11-5f2c-a767-1d83fb7fb39a",
+      "name": "Revoke preview read token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2200,
+        0
+      ],
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.github.com/installation/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint preview read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500
+    },
+    {
+      "id": "37f76b11-e301-581e-8c88-829fe91ea6fa",
+      "name": "Return public revision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const p=$('Preserve public revision').first().json,m=$('Mint preview read token').first().json,revoked=$input.first().json.statusCode===204;\nreturn [{json:{...p,current:p.current&&revoked,token_issued:m.statusCode===201,token_revoked:revoked,permissions:{pull_requests:'read',metadata:'read'},credentials_in_output:false}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Native fixed revision request": {
+      "main": [
+        [
+          {
+            "node": "Validate fixed revision input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate fixed revision input": {
+      "main": [
+        [
+          {
+            "node": "Sign preview App JWT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign preview App JWT": {
+      "main": [
+        [
+          {
+            "node": "Mint preview read token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mint preview read token": {
+      "main": [
+        [
+          {
+            "node": "Verify preview token scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify preview token scope": {
+      "main": [
+        [
+          {
+            "node": "Exact preview read scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exact preview read scope": {
+      "main": [
+        [
+          {
+            "node": "Read exact current PR",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Scope rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read exact current PR": {
+      "main": [
+        [
+          {
+            "node": "Public revision verdict",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Public revision verdict": {
+      "main": [
+        [
+          {
+            "node": "Preserve public revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve public revision": {
+      "main": [
+        [
+          {
+            "node": "Revoke preview read token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke preview read token": {
+      "main": [
+        [
+          {
+            "node": "Return public revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scope rejected": {
+      "main": [
+        [
+          {
+            "node": "Preserve public revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 180
+  },
+  "pinData": {}
+}

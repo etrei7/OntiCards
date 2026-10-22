@@ -1,0 +1,392 @@
+{
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "policy11_tree": "c5ace8247411ee8c33802a62169fd02e54d0378b",
+  "applied_tree": "b3dd9a914e431b15b41febbf97211d736e6428fd",
+  "policy11_patch_sha256": "bcf33d2adc53582de662aafa7da114c1a211ab3f0dd9064712630a446be3ac4f",
+  "patch_sha256": "6faa1328f318ceff10c018271222a5f3a7828c022f30417167246b9f111ca2a7",
+  "delta_sha256": "f88f80785914b0a0eae688c5634ced18e9a86f44d18616b55f344dfe6c7675ca",
+  "delta_files": [
+    {
+      "path": "src/jobs/issueJobDispatcher.ts",
+      "sha256": "e607fa2121a18afbdb53ca82d93ea510dbd21dcd95eea37a1a1d4670c45678e9",
+      "git_blob": "75bf4286b457901ba48337d7ed757fdc5ea7cffb"
+    },
+    {
+      "path": "packages/core/src/storage/taskHistoryControl.ts",
+      "sha256": "2718cb921c39e10da913f8dc5a2c34582253c509195b144e31000574655e7885",
+      "git_blob": "74aa265b1e209c0f0b74f069b978dce1ae57cefb"
+    },
+    {
+      "path": "test/maintenancePureLabelFailure.test.ts",
+      "sha256": "b4621aea29a570a1599825386ace11aa963015c3f411a12faa0b5df4e19efa90",
+      "git_blob": "e17e76dcd7cb959000080dfec6e6aa81621420f4"
+    },
+    {
+      "path": "test/maintenanceLabelAdmission.test.ts",
+      "sha256": "a8402c4e319f61454d814c4dfd303c1f39b4831e5a162d9ab7d402972639d367",
+      "git_blob": "40ff3941386336d4fb91a8164fb5ec30f2fcc80c"
+    }
+  ],
+  "matched_blobs": [
+    {
+      "path": "packages/api/auth.ts",
+      "git_blob": "3838d0e251a2cbee32311c8610f9eecca2fcadb1"
+    },
+    {
+      "path": "packages/api/authInternalHttp.ts",
+      "git_blob": "c023ee448f544e9d29bc89044b59cd65e892b821"
+    },
+    {
+      "path": "packages/api/authRedirect.ts",
+      "git_blob": "864b90857ef251aebad313d453916c6d805d0829"
+    },
+    {
+      "path": "packages/api/authSession.ts",
+      "git_blob": "24fe48f096f273cc76d591b0c3d5d3bfbdcfcdaa"
+    },
+    {
+      "path": "packages/api/authorization.ts",
+      "git_blob": "46859eff989d72f0ff9051ee1663e5c8f3f9f9b8"
+    },
+    {
+      "path": "packages/api/mcp/toolsPullRequests.ts",
+      "git_blob": "bafbb9f2474e6946d5df3613d430382bc566bafd"
+    },
+    {
+      "path": "packages/api/routes/indexingQueueHelpers.ts",
+      "git_blob": "dffdbc3e974f4b381fd8627911239b5c36d7c4c7"
+    },
+    {
+      "path": "packages/api/test/authInternalHttp.test.ts",
+      "git_blob": "594729c1bf98b72d19376da866a9f09a3ef9ae61"
+    },
+    {
+      "path": "packages/api/test/githubAuthCallback.test.ts",
+      "git_blob": "8a46ec610c11ddb7e66fd74fe563a26a26b4af8b"
+    },
+    {
+      "path": "packages/api/test/instanceAuthorization.test.ts",
+      "git_blob": "055d165f791e824f67eb231623b48a14724d064c"
+    },
+    {
+      "path": "packages/api/test/mcpMergePreconditions.test.ts",
+      "git_blob": "8af6d8326e15847698c6102ae94cf1ef2c3559cf"
+    },
+    {
+      "path": "packages/core/src/agents/agentGitAccess.ts",
+      "git_blob": "343f36accdce59219095f1c88374e1343e425da3"
+    },
+    {
+      "path": "packages/core/src/agents/impl/OpenCodeAgent.ts",
+      "git_blob": "50df578043bc9b8f7b729cc53bf497b9e62ea0c5"
+    },
+    {
+      "path": "packages/core/src/agents/impl/utils/liveOutputLog.ts",
+      "git_blob": "232bb41efe90d1b10a89b758b949f9496051f621"
+    },
+    {
+      "path": "packages/core/src/claude/docker/dockerAbortController.ts",
+      "git_blob": "f35bc35ed31a238834620215c229d9aee08346ed"
+    },
+    {
+      "path": "packages/core/src/claude/docker/dockerExecutor.ts",
+      "git_blob": "6c1cce781b422d9fa9ee2037117f6a3cec524f3c"
+    },
+    {
+      "path": "packages/core/src/git/conflictResolution.ts",
+      "git_blob": "d031e9ecaff2510a9af08b206a6fb81111b45371"
+    },
+    {
+      "path": "packages/core/src/git/hooklessGit.ts",
+      "git_blob": "f3e690c53d39d2726f2e360b5fae3d7e6018eea7"
+    },
+    {
+      "path": "packages/core/src/git/pushSalvage.ts",
+      "git_blob": "80005bd47f701c1120dba427233d6e43edd1d6bf"
+    },
+    {
+      "path": "packages/core/src/git/repoBranching.ts",
+      "git_blob": "98d2c040c865e32975cc6d3a06df87d62770eb1d"
+    },
+    {
+      "path": "packages/core/src/git/repoManager.ts",
+      "git_blob": "afcf575ff778f9843555b74366421706fc326dd1"
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "git_blob": "8d09ee48a8938fb85c24479627e53a121372b7f5"
+    },
+    {
+      "path": "packages/core/src/queue/taskQueue.ts",
+      "git_blob": "d3c881135e649f9a337ba0be6b7db3c466059884"
+    },
+    {
+      "path": "packages/core/src/services/autoMergeGate.ts",
+      "git_blob": "180d8a226cb06fad12424984e1ee35253bb98852"
+    },
+    {
+      "path": "packages/core/src/services/relevance/indexingCancellation.ts",
+      "git_blob": "647d2a5c86d43c6adef4fd7e2a87d81bc4ed1d4d"
+    },
+    {
+      "path": "packages/core/src/services/relevance/summaryFileFilter.ts",
+      "git_blob": "a2722e0313de06507fb850e2fc80f0f07c7d11bc"
+    },
+    {
+      "path": "packages/core/src/services/relevance/summaryMiner.ts",
+      "git_blob": "da1e4e2db3d642a40ac744db5b30581dee670171"
+    },
+    {
+      "path": "packages/core/src/services/relevance/summaryMinerBatch.ts",
+      "git_blob": "5d369549e1e2d3c4da4c5dde92906e1b89569874"
+    },
+    {
+      "path": "packages/core/src/services/relevance/summaryMinerDirectoryBatch.ts",
+      "git_blob": "a51d87cda16c6e3686da6ad4854992e246a0a3d0"
+    },
+    {
+      "path": "packages/core/src/storage/taskHistoryControl.ts",
+      "git_blob": "74aa265b1e209c0f0b74f069b978dce1ae57cefb"
+    },
+    {
+      "path": "packages/core/src/utils/github/logFiles.ts",
+      "git_blob": "04ed6a2d7322a55ca055c3bf482d601fdb6446c5"
+    },
+    {
+      "path": "packages/core/src/utils/llmMetrics.ts",
+      "git_blob": "8d6bf8025e5602445cbf3895f65b34807ed42b67"
+    },
+    {
+      "path": "packages/core/src/webhook/checkRunHelpers.ts",
+      "git_blob": "3c6b3d723011ea7ce0f42d815fbf2defcfad740b"
+    },
+    {
+      "path": "packages/core/src/workflow/maintenancePolicy.ts",
+      "git_blob": "6b5a8b341ff93afe2e5ad24a5a462bbd37b22fa3"
+    },
+    {
+      "path": "packages/core/src/workflow/prTemplate.ts",
+      "git_blob": "be9f3cd8089ac4568d8548231c812829817f48f7"
+    },
+    {
+      "path": "packages/core/test/autoMergeGate.test.ts",
+      "git_blob": "c9bb2cd3ecf26844b5edd730817211f296148139"
+    },
+    {
+      "path": "packages/core/test/conflictResolution.test.ts",
+      "git_blob": "bad805f25acaa04e17bc131a34eb509ed925e0f8"
+    },
+    {
+      "path": "packages/core/test/dockerAbortController.test.ts",
+      "git_blob": "1d13de076fe2e23fa6e19a941744348f47c623bc"
+    },
+    {
+      "path": "packages/core/test/maintenanceBranchPolicy.test.ts",
+      "git_blob": "46f8ff28d149feb5001b1d077b5861bdb26cca5e"
+    },
+    {
+      "path": "src/github/autoMergeOperations.ts",
+      "git_blob": "a5766c50bda17a8bdc40246d2a8f92a0b6645307"
+    },
+    {
+      "path": "src/github/prFormatters.ts",
+      "git_blob": "92832c2f587ed3286377de318ebf0f52de32d126"
+    },
+    {
+      "path": "src/indexing_worker.ts",
+      "git_blob": "62242a71b681549d29cc4dc4f4c3e1873bd39f97"
+    },
+    {
+      "path": "src/jobs/agentRuns/dailyReportContract.ts",
+      "git_blob": "350b7a73c6ba7f59522af50bc1dc64b9cd3841dc"
+    },
+    {
+      "path": "src/jobs/errorHandlers.ts",
+      "git_blob": "b20d6490af1a68ecddf58cb470b365ae79ac0a2f"
+    },
+    {
+      "path": "src/jobs/issueJob/types.ts",
+      "git_blob": "71feaa1944e910f0a72a47a76427f7f1ba5298b5"
+    },
+    {
+      "path": "src/jobs/issueJob/worktree.ts",
+      "git_blob": "27ac7a327e39a114b80e5d466a932fcfa8a99bd7"
+    },
+    {
+      "path": "src/jobs/issueJobDispatcher.ts",
+      "git_blob": "75bf4286b457901ba48337d7ed757fdc5ea7cffb"
+    },
+    {
+      "path": "src/jobs/issueJobHelpers.ts",
+      "git_blob": "3fdbb6739faffc32514d3c81d41cc77f53acb50a"
+    },
+    {
+      "path": "src/jobs/mergeConflictAgentRunner.ts",
+      "git_blob": "09da80a743dd08071b2d5eae51d4745ad42db8b1"
+    },
+    {
+      "path": "src/jobs/mergeConflictHelpers.ts",
+      "git_blob": "48c4fd28b86c79508fae392a1ce042d8acbba10a"
+    },
+    {
+      "path": "src/jobs/prCommentReviewJob.ts",
+      "git_blob": "8b0d47a673969198ac275205f86479ff4afd6690"
+    },
+    {
+      "path": "src/jobs/prContinuation.ts",
+      "git_blob": "fec8dfccd9783ac73cc0c384d9309e070c0298ea"
+    },
+    {
+      "path": "src/jobs/prPublication.ts",
+      "git_blob": "7a43314ea3f39b223d1f983bea057d6a8eab2e75"
+    },
+    {
+      "path": "src/jobs/prPublicationGit.ts",
+      "git_blob": "2cd6a95bdca81a5f39ae4fd0b35524d28b1d2af1"
+    },
+    {
+      "path": "src/jobs/prReviewRunner.ts",
+      "git_blob": "23ad36e1b7b6e9636794d3cdeeecfce05b5eb8f7"
+    },
+    {
+      "path": "src/jobs/processAgentRunJob.ts",
+      "git_blob": "262c7ec017620576da63dabba3905208c2f09f5f"
+    },
+    {
+      "path": "src/jobs/processGitHubIssueJob.ts",
+      "git_blob": "7bd06311dc4bf483776df23d5e712cbee933819c"
+    },
+    {
+      "path": "src/jobs/processSystemTaskJob.ts",
+      "git_blob": "46d938948e89c72102ea6789e7cdb76a1e4c180b"
+    },
+    {
+      "path": "src/jobs/reviewResultMetrics.ts",
+      "git_blob": "88e23f95e2770aaaa68f05a1287b1e4393a161ef"
+    },
+    {
+      "path": "test/agentGitAccess.test.ts",
+      "git_blob": "e8a3ff313be638843da7d4cd378320936c7de5bf"
+    },
+    {
+      "path": "test/analysisGitAccess.test.ts",
+      "git_blob": "c5b134972b8a1d52ba5cff8158230b8c9c643646"
+    },
+    {
+      "path": "test/autoMergeOperations.test.ts",
+      "git_blob": "39db49cfb0aee94d4c0c5944d2a1f987c9a4cfce"
+    },
+    {
+      "path": "test/checkRunHandler.test.ts",
+      "git_blob": "46adfd473dbb0d115da3c4fc2b72967001996a90"
+    },
+    {
+      "path": "test/fixtures/pr26-invalid-review.json",
+      "git_blob": "daa9d7d1b7695dfe69ddd48c15f8c187ce17689a"
+    },
+    {
+      "path": "test/indexingDeadlineProcess.test.ts",
+      "git_blob": "0b98c157ba237fe46df48517fa09e15e6dcf97cd"
+    },
+    {
+      "path": "test/indexingFreshFetch.test.ts",
+      "git_blob": "749ece1e7f810ab0a7fc08ab5c23d4e3bba0bbaf"
+    },
+    {
+      "path": "test/indexingPinnedRevision.test.ts",
+      "git_blob": "894b0ae527a7ab3dcf7f0f0ea66e3e50b909bd89"
+    },
+    {
+      "path": "test/indexingPreparationDeadline.test.ts",
+      "git_blob": "125d47c6ac1ddac4c320350bd01141e303e4c6dd"
+    },
+    {
+      "path": "test/indexingQueueBudgetIntegration.test.ts",
+      "git_blob": "6a950188ee03ca732588d600eb2573aecb1937d3"
+    },
+    {
+      "path": "test/indexingRunBudget.test.ts",
+      "git_blob": "d9c1f970f273f8086cc3f5c5963cfc3dc0ba7de0"
+    },
+    {
+      "path": "test/liveOutputLog.integration.test.ts",
+      "git_blob": "8639cb2875a2c55b7bc78b7fa211f17918d9373d"
+    },
+    {
+      "path": "test/liveOutputTtlConfiguration.test.ts",
+      "git_blob": "19a67404f1029c342476239281052b313de207e9"
+    },
+    {
+      "path": "test/llmMetricsRecording.test.ts",
+      "git_blob": "c9803450fa3da6a50c6c7e189268a46ac8ecaeb7"
+    },
+    {
+      "path": "test/maintenanceDockerBuildPolicy.test.ts",
+      "git_blob": "c31295d5697e66c2e278f69c124c2f6bb9d58c8e"
+    },
+    {
+      "path": "test/maintenanceLabelAdmission.test.ts",
+      "git_blob": "40ff3941386336d4fb91a8164fb5ec30f2fcc80c"
+    },
+    {
+      "path": "test/maintenancePublication.test.ts",
+      "git_blob": "ef3c682903b637b5dbfbf54a446949bdc634718e"
+    },
+    {
+      "path": "test/maintenancePureLabelFailure.test.ts",
+      "git_blob": "e17e76dcd7cb959000080dfec6e6aa81621420f4"
+    },
+    {
+      "path": "test/mergeConflictHelpers.test.ts",
+      "git_blob": "8f2392712367766ee8ddee5553b225b0b029dd6f"
+    },
+    {
+      "path": "test/nativeGitPreparation.test.ts",
+      "git_blob": "06f6641e5141ab8812643f2d6748bb1e6d9af047"
+    },
+    {
+      "path": "test/prCommentReviewFollowupScope.test.ts",
+      "git_blob": "48a5e3f263fe5456395e690aeebfffd8871d4d0c"
+    },
+    {
+      "path": "test/prContinuation.test.ts",
+      "git_blob": "819a9cbd9abf5fbadf382e3113a50f7ac78e4d1d"
+    },
+    {
+      "path": "test/prReviewRunnerBudget.test.ts",
+      "git_blob": "1afd19057bd351a971ae5d7ca9b9f6e6e903a1b4"
+    },
+    {
+      "path": "test/prReviewValidation.test.ts",
+      "git_blob": "e90e231d5cbfaf246f0cd879e90f98c6dbd2eef9"
+    },
+    {
+      "path": "test/processAgentRunJob.test.ts",
+      "git_blob": "857bc689d6e6b38dde4fa5533314a38248254d24"
+    },
+    {
+      "path": "test/processMergeConflictJob.test.ts",
+      "git_blob": "c87248cbc2cff509ca80f0316a18eed82ca970ee"
+    },
+    {
+      "path": "test/reviewResultMetrics.test.ts",
+      "git_blob": "88bd918fbee40b98cb03f66670a7255415d4602f"
+    },
+    {
+      "path": "test/summaryFileFilter.test.ts",
+      "git_blob": "570b96a4508149e6867347a94a2cf08442c48e42"
+    },
+    {
+      "path": "test/taskSubmissionLifecycle.test.ts",
+      "git_blob": "7f1b17613410d1c139ac17f2887d9e6d208a884c"
+    },
+    {
+      "path": "test/workflowPreviewPublication.test.ts",
+      "git_blob": "4f9eaed299cc762ec657ebb0c5ab3350b20d2800"
+    }
+  ],
+  "full_patch_reconstruction": true,
+  "new_tables": 0,
+  "model_calls": 0,
+  "deployed": false
+}

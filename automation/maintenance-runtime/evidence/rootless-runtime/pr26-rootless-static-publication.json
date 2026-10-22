@@ -1,0 +1,201 @@
+{
+  "published_at": "2026-10-22T17:45:35.745821+00:00",
+  "url": "http://10.66.66.5:18123/onticards-reports/acceptance/pr26-rootless-3105/",
+  "zip_sha256": "1d3f5a35ba1a3ddf6dfaaf01db559fd514257cb67cea5f11e10085c73d94842c",
+  "files": [
+    {
+      "path": "api.xml",
+      "status": 200,
+      "sha256": "3903bb3933b05420811be64638e01be3f5e198bce6e291a7a73cfe17d74b2739"
+    },
+    {
+      "path": "attempt-history.json",
+      "status": 200,
+      "sha256": "0f3967b7b0bec7f5723b42843b8d5f74fbec599949197a50e11cdb572fa86671"
+    },
+    {
+      "path": "boundary.json",
+      "status": 200,
+      "sha256": "d261ad3f838ec027e761fd15a4e43ddc3daf571292d33b11a7c16aa0d30bdaae"
+    },
+    {
+      "path": "browser/results.json",
+      "status": 200,
+      "sha256": "a3cf2173e63c28eba4706038eb41d21bb642e723e84604f4eb818a423a2096d0"
+    },
+    {
+      "path": "browser/results.xml",
+      "status": 200,
+      "sha256": "774a9e63e25bdd00ba2f299581b30e1d5a8b658924c0ff9f0d73b469154db5c2"
+    },
+    {
+      "path": "checks.json",
+      "status": 200,
+      "sha256": "6a5fb44bd75a3ece6299e4ff68afad727a11968f2473bc22832081d5b550fb62"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "8d169555293577db8e59e0fea773fb845c33c963b7a1e51f8b1e48a946badfef"
+    },
+    {
+      "path": "manifest.json",
+      "status": 200,
+      "sha256": "d5d2d5912c5f1816415426500a0b41c0f44e4b64376c46f51a05fe9f4753f1c3"
+    },
+    {
+      "path": "model-accounting.json",
+      "status": 200,
+      "sha256": "0f1ceef4244c2695d2058dcf65089f8ac9908a904a55f0ebff22cfbaeea4376d"
+    },
+    {
+      "path": "product/cards-after-edit.json",
+      "status": 200,
+      "sha256": "1ac7976f78441c5caf07d5e54dfc5a301912f7f438b93a714180435b25d8a44b"
+    },
+    {
+      "path": "product/cards.json",
+      "status": 200,
+      "sha256": "a1776c5be392d4f2279a0a6672333f56c8f05d057ec03d7bfc72cbe6c0c997fc"
+    },
+    {
+      "path": "product/datasources.json",
+      "status": 200,
+      "sha256": "39d13845cfd55fa29fe8ceda335ea6c62528b02882337e1aef1fc65145a337bb"
+    },
+    {
+      "path": "product/edit-card.json",
+      "status": 200,
+      "sha256": "9c3b5ed80442e2d88ba411292c84133aeca1641b05b8e610df06457905088082"
+    },
+    {
+      "path": "product/export-docx.json",
+      "status": 200,
+      "sha256": "1606182fabe1a64d098760b3a59174673840abe51db21aab80bda8378625dd0d"
+    },
+    {
+      "path": "product/export-md.json",
+      "status": 200,
+      "sha256": "f6c621149f2f36c3c1115a850aaf817d6fe9e0112da737545ce667f79b8eafac"
+    },
+    {
+      "path": "product/export-pdf.json",
+      "status": 200,
+      "sha256": "104a92213b205f21d6ead9c492e2dd3485bb096d8cd91a4723190900bb18e3f4"
+    },
+    {
+      "path": "product/export-xlsx.json",
+      "status": 200,
+      "sha256": "354a8d0cb2d10e2c0dc5a64a2819bfcbdc0fd2c707c666004d817ea2ac80b9e0"
+    },
+    {
+      "path": "product/extract-schema.json",
+      "status": 200,
+      "sha256": "f3daee12f46e507dd8d71efdf81d629b8d9b2507899e28bc45e2031fde77a675"
+    },
+    {
+      "path": "product/flow-summary.json",
+      "status": 200,
+      "sha256": "a4dbb22918a622f35d1d5711a857ba1e5a1d3b8199ebd21800bef5a697528bd7"
+    },
+    {
+      "path": "product/governance-execute.json",
+      "status": 200,
+      "sha256": "834a592d5a3d25ca09735bd1a2b562e7cef2367f018396681656732559b3c222"
+    },
+    {
+      "path": "product/quality-report.docx",
+      "status": 200,
+      "sha256": "6ef18a6347e6d247de76f8cff72d2040e8d632eb3c524a8dbc51d929e1ef8617"
+    },
+    {
+      "path": "product/quality-report.md",
+      "status": 200,
+      "sha256": "0d6440b677defe47234f97a1029c5d0df8db9aaa188d95789f5d76880c9ad100"
+    },
+    {
+      "path": "product/quality-report.pdf",
+      "status": 200,
+      "sha256": "b3de8dfd86291dec94ddf25e1ce296542a992148d4810312b858d3236091d563"
+    },
+    {
+      "path": "product/quality-report.xlsx",
+      "status": 200,
+      "sha256": "afd27223db1b567d3c28bf34ebd96f79dd5cf0d93681f951f107f7c55e285f19"
+    },
+    {
+      "path": "product/query-total.json",
+      "status": 200,
+      "sha256": "e24ea22bde2e01dd73ae799c18e6e1eaf7c347e10f4d80bcf598ea817362cd8c"
+    },
+    {
+      "path": "README.md",
+      "status": 200,
+      "sha256": "c7ad5afb5d655cabe609550051b17e35d16c539f3d5b132fe6ed4bb316fb9038"
+    },
+    {
+      "path": "result.json",
+      "status": 200,
+      "sha256": "aede18647cae15cfd344002d5ad8dcf59bbd0d29ccd60295cc766a9de58f68dd"
+    },
+    {
+      "path": "SAFETY-CHECK.json",
+      "status": 200,
+      "sha256": "efb5746ffd6317ea2e967af92a23ed71c0ff4203100477d6b3d71b78a820f2b3"
+    },
+    {
+      "path": "screenshots/generated-data-card.png",
+      "status": 200,
+      "sha256": "f5800680b820fc72efbfa4a4e5ad29bceafb457f142a04c02a0f27571355aea5"
+    },
+    {
+      "path": "screenshots/governance-real-report.png",
+      "status": 200,
+      "sha256": "720e0fa8e0bc80bc0fdb9ed21a03ddcd63bcf06cde646eef502d69b12cd6c1c0"
+    },
+    {
+      "path": "screenshots/governance-reports.png",
+      "status": 200,
+      "sha256": "84516a8b73ec22e8160c6756e8090e54371045f6a3a0429066ce8dbc7db01652"
+    },
+    {
+      "path": "screenshots/governance.png",
+      "status": 200,
+      "sha256": "df51984f42e2024564336f2bb9e44ba39ef27428dca622c309621c8a1a9d1bd0"
+    },
+    {
+      "path": "screenshots/login-success-path.png",
+      "status": 200,
+      "sha256": "e22bf6fc9c48f352ce3bda79f08d0946971cb4c3333eb3d53fc3c42e6c19cfdd"
+    },
+    {
+      "path": "screenshots/overview-after-login.png",
+      "status": 200,
+      "sha256": "3493ff89f8101a0e4e01401f29f4a5b85d69eab8362f017dd9a4a904e4bd7981"
+    },
+    {
+      "path": "screenshots/query-history.png",
+      "status": 200,
+      "sha256": "8d594044669bfd31fd6703c5355e6cd9a438765fccfe9dab6b48b26021257060"
+    },
+    {
+      "path": "screenshots/real-query-total-250.png",
+      "status": 200,
+      "sha256": "38871d2e79bbc1d58837e9fdc48c6898b52767a92c42197fef26be99032ef4d8"
+    },
+    {
+      "path": "screenshots/workspaces-success-path.png",
+      "status": 200,
+      "sha256": "4fffc527bf0e721ffd675825dc04c0f18683681fc0db5d616ee3ec7007106973"
+    }
+  ],
+  "readonly_post_status": 403,
+  "missing_file_status": 404,
+  "config_before_sha256": "365e8dcaabbf5c3cca5c46bc82f8f4aeeb838137483bfc97aaea69adf534fda7",
+  "config_after_sha256": "11c78f0446021e9afa928b9573684248cfd2eaadc8ab26498595107af69b472d",
+  "nginx_native_test": true,
+  "other_locations_preserved": true,
+  "file_count": 37,
+  "verification_only": false,
+  "initial_reload_first_probe_404": false
+}

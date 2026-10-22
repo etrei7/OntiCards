@@ -1,0 +1,216 @@
+{
+  "started_at": "2026-10-22T17:55:18.704930+00:00",
+  "model_calls": 0,
+  "github_posts": 0,
+  "ledger_writes": 0,
+  "cases": {
+    "valid": {
+      "eligible": true,
+      "errors": [],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "duplicate_intent": {
+      "eligible": false,
+      "errors": [
+        "recovery intent consumed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "budget5": {
+      "eligible": false,
+      "errors": [
+        "original budget or pending state changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "reply3": {
+      "eligible": false,
+      "errors": [
+        "original budget or pending state changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "app3": {
+      "eligible": false,
+      "errors": [
+        "thread or actual App count changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "ai_label": {
+      "eligible": false,
+      "errors": [
+        "native AI route",
+        "source changed: labels"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "changed_human": {
+      "eligible": false,
+      "errors": [
+        "source changed: discussion",
+        "human comment changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "changed_original_hash": {
+      "eligible": false,
+      "errors": [
+        "original draft changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "review_not_failed": {
+      "eligible": false,
+      "errors": [
+        "original review changed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "stale": {
+      "eligible": false,
+      "errors": [
+        "complete intake stale"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "wrong_human_id": {
+      "eligible": false,
+      "errors": [
+        "original human event mismatch"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "posting_unknown": {
+      "eligible": false,
+      "errors": [
+        "existing recovery or publication record: Read original publication"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "unknown_response_consumed": {
+      "eligible": false,
+      "errors": [
+        "original budget or pending state changed",
+        "recovery intent consumed"
+      ],
+      "source_complete": true,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "changed_commit": {
+      "eligible": true,
+      "errors": [],
+      "source_complete": false,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "incomplete_source": {
+      "eligible": true,
+      "errors": [],
+      "source_complete": false,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    },
+    "revoke_unknown": {
+      "eligible": true,
+      "errors": [],
+      "source_complete": false,
+      "projected_budget": 5,
+      "projected_pending": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "model_calls": 0,
+      "github_posts": 0,
+      "ledger_writes": 0,
+      "passed": true
+    }
+  },
+  "passed": true,
+  "checks": 16,
+  "limitations": "Actual native Set guards and projected budget only; state persistence/concurrency covered by prior native DataTable budget fixtures and independent recovery graph review, not claimed here.",
+  "probe_stopped": true,
+  "completed_at": "2026-10-22T17:56:47.609313+00:00"
+}

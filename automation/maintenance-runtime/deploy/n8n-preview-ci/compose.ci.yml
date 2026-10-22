@@ -1,0 +1,54 @@
+name: onticards-preview-ci
+services:
+  ci:
+    image: registry-intl.cn-hongkong.aliyuncs.com/shallopcr/n8n@sha256:b5b32a81eba912458faf4638b54641d249c959567519a2030a803711d7639663
+    pull_policy: never
+    container_name: onticards-preview-ci
+    restart: unless-stopped
+    network_mode: host
+    user: "1003:1003"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1g
+    pids_limit: 256
+    cpus: 1
+    tmpfs:
+      - /home/node/.cache:rw,uid=1003,gid=1003,mode=700,size=128m
+    volumes:
+      - ./database:/home/node/.n8n
+      - ./bundle:/opt/onticards-preview-ci/bundle:ro
+      - ./ssh:/opt/onticards-preview-ci/ssh:ro
+      - ./ssh/passwd:/etc/passwd:ro
+      - ./ssh/group:/etc/group:ro
+      - ./secrets:/opt/onticards-preview-ci/secrets:ro
+      - ./state:/opt/onticards-preview-ci/state
+    env_file: ./secrets/runtime.env
+    environment:
+      N8N_PORT: "18132"
+      N8N_LISTEN_ADDRESS: "127.0.0.1"
+      N8N_EDITOR_BASE_URL: "http://127.0.0.1:18132"
+      WEBHOOK_URL: "http://127.0.0.1:18132"
+      N8N_SECURE_COOKIE: "false"
+      N8N_CONCURRENCY_PRODUCTION_LIMIT: "1"
+      N8N_RUNNERS_BROKER_PORT: "18133"
+      N8N_RUNNERS_BROKER_LISTEN_ADDRESS: "127.0.0.1"
+      NODES_EXCLUDE: '["n8n-nodes-base.localFileTrigger"]'
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: "true"
+      N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES: "true"
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+      N8N_TEMPLATES_ENABLED: "false"
+      EXECUTIONS_DATA_SAVE_ON_SUCCESS: all
+      EXECUTIONS_DATA_SAVE_ON_ERROR: all
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: "720"
+      HTTP_PROXY: "http://127.0.0.1:17891"
+      HTTPS_PROXY: "http://127.0.0.1:17891"
+      NO_PROXY: "127.0.0.1,localhost"
+      GENERIC_TIMEZONE: Asia/Shanghai
+      TZ: Asia/Shanghai
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

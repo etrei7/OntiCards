@@ -1,0 +1,146 @@
+{
+  "at": "2026-10-22T19:57:33.944988+00:00",
+  "raw_scan": {
+    "exit_code": 1,
+    "findings": 30,
+    "redact": 100,
+    "exclusions": false,
+    "path": "evidence\\maintenance-propr-gitleaks-independent-raw.json",
+    "sha256": "097e34076444b5433fbf88aa3fa68b60e0fe7372e54ca00dec2c477e8294aef9"
+  },
+  "reviewed_findings": [
+    {
+      "field": "event.event_key",
+      "classification": "false_positive",
+      "meaning": "deterministic_public_event_revision_sha256",
+      "source_file_sha256": "fff27f0b0bc0932f9c7e9ae476770eb730964f08c24d4994a459ef07ca5da484",
+      "staged_file_sha256": "fff27f0b0bc0932f9c7e9ae476770eb730964f08c24d4994a459ef07ca5da484",
+      "value_sha256": "a059b8bb9cc8b9b6bceaa53ebc9f079da5903b8161824966acb99ec9ab0cf3f5",
+      "native_hash_node": "persistent-readonly-serial.workflow.json / Hash stable event revision / n8n-nodes-base.crypto / SHA256",
+      "hash_inputs": "thread_key + vertical-bar + event_id + vertical-bar + serialized public event payload",
+      "usage": "DataTable deduplication and source binding; not a credential or authentication input",
+      "matched_span_sha256": "b74563ed9a777db7bad5b13794f513f8a3eec96a0a69d61b8512052d5d4ee64a",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/knowledge-source-binding-exact.json",
+        "StartLine": 7,
+        "EndLine": 7,
+        "StartColumn": 7,
+        "EndColumn": 84,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/knowledge-source-binding-exact.json:generic-api-key:7"
+      }
+    },
+    {
+      "field": "natural_event.event_key",
+      "classification": "false_positive",
+      "meaning": "deterministic_public_event_revision_sha256",
+      "source_file_sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41",
+      "staged_file_sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41",
+      "value_sha256": "a059b8bb9cc8b9b6bceaa53ebc9f079da5903b8161824966acb99ec9ab0cf3f5",
+      "native_hash_node": "persistent-readonly-serial.workflow.json / Hash stable event revision / n8n-nodes-base.crypto / SHA256",
+      "hash_inputs": "thread_key + vertical-bar + event_id + vertical-bar + serialized public event payload",
+      "usage": "DataTable deduplication and source binding; not a credential or authentication input",
+      "matched_span_sha256": "b74563ed9a777db7bad5b13794f513f8a3eec96a0a69d61b8512052d5d4ee64a",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/knowledge-main-refresh-independent.json",
+        "StartLine": 453,
+        "EndLine": 453,
+        "StartColumn": 7,
+        "EndColumn": 84,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/knowledge-main-refresh-independent.json:generic-api-key:453"
+      }
+    },
+    {
+      "field": "packages/api/authInternalHttp.ts",
+      "classification": "false_positive",
+      "meaning": "source_file_content_sha256",
+      "source_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "staged_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "value_sha256": "27aa857ac7873c1ffb2b6d3780136a7d02f0ea85d6ab96363435768b50dcee09",
+      "verified_against_policy4_tree": "4c7600d867a56f794128f3b12af49611690fae13",
+      "matching_representation": [
+        "git_blob_bytes"
+      ],
+      "matched_span_sha256": "1543193524202dc8988ea4071e8d860ed83fbd4ae099ae1f4c250fdb5f5562e8",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+        "StartLine": 45,
+        "EndLine": 45,
+        "StartColumn": 20,
+        "EndColumn": 107,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json:generic-api-key:45"
+      }
+    },
+    {
+      "field": "packages/api/authSession.ts",
+      "classification": "false_positive",
+      "meaning": "source_file_content_sha256",
+      "source_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "staged_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "value_sha256": "82aaa92f6c4729bfa460c709a440a8609c6517fb1af98a30405a9018e2ddf028",
+      "verified_against_policy4_tree": "4c7600d867a56f794128f3b12af49611690fae13",
+      "matching_representation": [
+        "crlf_checkout_bytes"
+      ],
+      "matched_span_sha256": "58f2aa6a57533484591ae72e3445c402342b31de520a3519d0c8bc546ccbadf1",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+        "StartLine": 46,
+        "EndLine": 46,
+        "StartColumn": 20,
+        "EndColumn": 102,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json:generic-api-key:46"
+      }
+    },
+    {
+      "field": "packages/api/authRedirect.ts",
+      "classification": "false_positive",
+      "meaning": "source_file_content_sha256",
+      "source_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "staged_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "value_sha256": "e6bdcea9566168d485af338c4a2aa70a2e78c428937df3e0c27678d0619c174b",
+      "verified_against_policy4_tree": "4c7600d867a56f794128f3b12af49611690fae13",
+      "matching_representation": [
+        "crlf_checkout_bytes"
+      ],
+      "matched_span_sha256": "45b2d40f0fd14e90dd1aa408e7be3b3528dcf90657cce1fa53d46d5ad9f440d1",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+        "StartLine": 47,
+        "EndLine": 47,
+        "StartColumn": 20,
+        "EndColumn": 103,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json:generic-api-key:47"
+      }
+    },
+    {
+      "field": "packages/api/test/authInternalHttp.test.ts",
+      "classification": "false_positive",
+      "meaning": "source_file_content_sha256",
+      "source_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "staged_file_sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83",
+      "value_sha256": "463376ef59e0d23521ffa7446bcd425bbee4cbf57f82a8a7f717d426f3a3d224",
+      "verified_against_policy4_tree": "4c7600d867a56f794128f3b12af49611690fae13",
+      "matching_representation": [
+        "git_blob_bytes"
+      ],
+      "matched_span_sha256": "103e793ae085fff2c836da85da015e7387b7593093b08656077ec3ed209a6537",
+      "native_finding": {
+        "RuleID": "generic-api-key",
+        "File": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+        "StartLine": 48,
+        "EndLine": 48,
+        "StartColumn": 25,
+        "EndColumn": 117,
+        "Fingerprint": "C:/Users/BBBl/Documents/ChatGPT/\u670d\u52a1\u5668\u64cd\u63a7/outputs/onticards/deploy/maintenance-publication/final-stage-20261023-utf8/automation/maintenance-runtime/evidence/propr-policy4-validation.json:generic-api-key:48"
+      }
+    }
+  ],
+  "historical_evidence_modified": false,
+  "allowlist_modified": false,
+  "scope": "Only these six exact findings; no generic-api-key rule disable or file/path blanket exclusion approved."
+}

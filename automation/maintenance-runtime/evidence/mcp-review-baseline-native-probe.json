@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-22T19:33:50.987450+00:00",
+  "source_sha256": "ff9774c76423d165e822f7178f8b12b7fea5f29b94f0e188b0ceb00c60060896",
+  "fixture_table": "onticards_review_baseline_fixture_v1",
+  "synthetic": true,
+  "ssh_calls": 0,
+  "models": 0,
+  "github_writes": 0,
+  "assertions": [
+    {
+      "iteration": 1,
+      "pr": 900001,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 1,
+      "pr": 900002,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 1,
+      "pr": 900003,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 1,
+      "pr": 900004,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 1,
+      "pr": 900005,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 1,
+      "pr": 900006,
+      "state": "baseline",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900001,
+      "state": "already_consumed",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900002,
+      "state": "already_consumed",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900003,
+      "state": "already_consumed",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900004,
+      "state": "already_consumed",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900005,
+      "state": "already_consumed",
+      "passed": true
+    },
+    {
+      "iteration": 2,
+      "pr": 900006,
+      "state": "already_consumed",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

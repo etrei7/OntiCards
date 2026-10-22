@@ -1,0 +1,38 @@
+"""Explicit PR30 file list only; never copies secrets or database state."""
+import hashlib,json,re
+from pathlib import Path
+base=Path(__file__).resolve().parents[2]
+groups={
+ 'deploy/n8n/':{
+  'current workflow generator': ['build_delivery_allowlist.py','build_persistent_polling.py','build_bounded_get.py','build_repository_context.py','build_persistent_drafts.py','build_semantic_review.py','build_persistent_publication.py','native_response_audit.py','build_intake_ci_handoff.py'],
+  'compile-time reused node template, not a deployment entry': ['build_event_replay.py','triage-issue29-v1.workflow.json'],
+  'current workflow template; exports disabled by default': ['persistent-readonly.workflow.json','persistent-readonly-serial.workflow.json','bounded-get.workflow.json','repository-context.workflow.json','persistent-drafts.workflow.json','persistent-semantic-review.workflow.json','persistent-publication.workflow.json','intake-ci-handoff.workflow.json','persistent-readonly-ci.workflow.json'],
+  'deployment configuration and native update/readonly diagnostics': ['persistent-compose.yml','manage_ordinary_conversation_pipeline.py','update_intake_completeness.py','update_source_cache_loop.py','update_identity_gates.py','snapshot_ordinary_pipeline.py','snapshot_persistent_polling.py','snapshot_issue29_final.py','read_execution_errors_safe.py','install_intake_ci_handoff.py','update_intake_ci_handoff.py','update_native_command_route.py'],
+  'limited operational and review documentation': ['RUNBOOK-current.md','persistent-publication-review.md','issue29-final-pair-recovery-review.md'],
+  'current native behavior verification': ['capture_native_slash_formatter.py','build_conversation_budget_probe.py','run_conversation_budget_probe.py','conversation-budget-probe-provenance.json','build_semantic_native_probe.py','run_semantic_native_probe.py','build_publication_native_probe.py','run_publication_native_probe.py','build_policy_boundary_probe.py','run_policy_boundary_probe.py','build_bounded_get_probe.py','run_bounded_get_probe.py','build_serial_loop_probe.py','run_serial_loop_probe.py','build_source_cache_loop_probe.py','run_source_cache_loop_probe.py','build_issue29_final_recovery.py','build_issue29_recovery_guard_probe.py','run_issue29_recovery_guard_probe.py','validate_source_relevance.mjs','validate_source_identity.mjs','validate_metadata_quotes.mjs','validate_persistent_expressions.mjs'],
+  'sealed inactive workflow, parse-only validator dependency; never reactivate': ['issue31-manual-resume.workflow.json','issue29-final-recovery.workflow.json'],
+  'frozen historical published text used by semantic compatibility test': ['issue29-initial-draft.md','issue29-followup-reviewed.md'],
+  'explicit real-human acceptance input and expected boundary': ['issue29-persistent-final-followup.md','issue29-persistent-final-followup-boundary.md'],
+ },
+ 'deploy/n8n-preview-ci/':{'compile-time actual receiver/admission node dependencies, shared with CI allowlist':['intake-admission.workflow.json','intake-receiver.workflow.json']},
+ 'evidence/':{'independent actual source coverage receipts':['knowledge-main-refresh-independent.json','knowledge-pdf-source-independent.json']},
+ 'research/':{'reuse rationale and native source boundaries':['issue-triage-reuse.md','native-semantic-review-reuse.md','intake-ci-handoff-reuse.md','native-slash-routing-reuse.md']},
+ 'evidence/n8n/':{
+  'bounded public-source compile/test dependency; not execution data or credentials':['issue29-initial-source-snapshot.json','issue29-followup-source-snapshot.json','source-runtime-before-loop-fix.workflow.json','issue29-final-source-snapshot.json','issue29-final-draft-response.json','issue29-recovery-fixture-input.json','native-mcp-slash-body-fixture.json'],
+  'verified bounded native test receipt':['conversation-budget-native-probe.json','semantic-native-budget6-probe.json','publication-native-ai-gate-probe.json','policy-boundary-native-probe.json','bounded-get-native-probe.json','persistent-expression-validation.json','intake-completeness-native-probe.json','source-cache-loop-native-probe.json','source-relevance-expression-probe.json','source-identity-expression-probe.json','metadata-quote-expression-probe.json','issue29-recovery-guard-native-probe.json','issue29-recovery-guard-native-red.json','delivery-layout-smoke.json','intake-lifecycle-ci-native-probe.json','ordinary-concurrency-native-probe.json','native-slash-routing-probe.json'],
+  'actual deployment and preserved relevant failure receipt':['ordinary-pipeline-staged.json','ordinary-pipeline-enabled.json','ordinary-pipeline-runtime.json','issue29-final-intake-completeness-red.json','intake-completeness-deployment.json','source-cache-loop-deployment.json','source-relevance-deployment.json','knowledge-main-refresh-native-red.json','source-relevance-deployment-before-empty-file.json','issue29-final-native-rejected.json','issue29-final-original-draft.md','issue29-final-original-review.json','issue29-final-review-diagnostics.json','identity-gates-deployment.json','source-relevance-deployment-final.json','issue29-final-recovery-dispatch.json','issue29-final-recovery-sealed.json','issue29-final-recovery-result.json','issue29-final-recovery-original-response.json','issue29-final-recovery-source-snapshot.json','issue29-final-recovery-native-attempt.json','ordinary-pipeline-runtime-final.json','intake-ci-handoff-deployment.json','intake-ci-fanout-fix-deployment.json','intake-ci-dispatch-enabled.json','intake-ci-old-published-version-red.json','intake-ci-fixture-startup-red.json','native-slash-routing-deployment.json'],
+ }
+}
+files=[];missing=[]
+for folder,reasons in groups.items():
+ for reason,names in reasons.items():
+  for name in names:
+   relative=folder+name;path=base/relative
+   if not path.is_file():missing.append(relative);continue
+   raw=path.read_bytes();text=raw.decode('utf-8');findings=[]
+   for key,pattern in [('private_key',r'-----BEGIN (?:RSA )?PRIVATE KEY-----'),('long_literal_token',r'(?:ghp_|github_pat_|sk-)[A-Za-z0-9]{24,}'),('propr_mcp_token',r'propr_mcp_[A-Za-z0-9_-]{20,}')]:
+    if re.search(pattern,text):findings.append(key)
+   files.append({'source_relative':'outputs/onticards/'+relative,'source_absolute':str(path),'suggested_repo_path':'automation/maintenance-runtime/'+relative,'reason':reason,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'automated_secret_pattern_findings':findings})
+record={'status':'candidate_for_root_review_not_committed','paths':[x['source_absolute']for x in files],'files':files,'missing':missing,'explicitly_excluded':['private credentials, PEM, owner.json, runtime.env','all SQLite databases/backups and native execution_data','all manual Issue31 trigger/recovery scripts','one-off GitHub fixture publishers and direct public posting scripts','unbounded historical probe outputs and full latest polling ledger','raw model provider errors/request headers/token-bearing exports'],'limitations':['Pattern scan is preliminary; root must apply final secret review.','Input templates remain disabled; actual enabled state comes from the bounded deployment receipt.','Issue29 final recovery is rejected and sealed at 5 calls/2 replies; no new automatic semantic publication E2E is claimed. CI handoff is deployed dispatch; actual receiver/admission evidence is separate, and budget refusal is not a build pass.']}
+(base/'deploy/n8n/PR30_ALLOWLIST.json').write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'files':len(files),'bytes':sum(x['bytes']for x in files),'missing':missing,'findings':[x['source_relative']for x in files if x['automated_secret_pattern_findings']]}))

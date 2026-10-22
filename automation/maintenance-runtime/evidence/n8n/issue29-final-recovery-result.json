@@ -1,0 +1,40 @@
+{
+  "captured_at": "2026-10-22T17:58:40.256802+00:00",
+  "approval_id": "onticards-root-review-issue29-final-pair-20261023-v1",
+  "original_event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+  "recovery_key": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+  "same_human_comment_id": 6346376385,
+  "original_source_hash": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+  "recovery_source_hash": "7897dfa32cf1c8cdf45fa18e0e69f2cdf1f964ff787231449dc21190ebd54eb8",
+  "actual_source_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "source_verified_files": 7,
+  "pdf_excerpt_present": true,
+  "response_audit_key": "1220:draft",
+  "response_category": "assistant_content",
+  "usage": {
+    "completion_tokens": 895,
+    "prompt_tokens": 17549,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "text_tokens": 17549
+    },
+    "total_tokens": 18444
+  },
+  "status": "needs_structure_review",
+  "quality_errors": [
+    "untrusted commit or blob SHA in model text",
+    "semantic review required; no GitHub publication node"
+  ],
+  "unknown_sha_independently_recomputed": [
+    "c8e3dfee68d598a37842fc332f73af40a56f02a7"
+  ],
+  "model_calls_total": 5.0,
+  "reply_count_total": 2.0,
+  "recovery_model_calls": 1,
+  "recovery_review_calls": 0,
+  "recovery_github_posts": 0,
+  "original_draft_unchanged": true,
+  "original_source_unchanged": true,
+  "original_review_unchanged": true,
+  "result": "failed_structure_gate_and_sealed_no_further_retry"
+}

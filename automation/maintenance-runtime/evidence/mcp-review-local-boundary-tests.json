@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-22T19:35:22.662107+00:00",
+  "tests": [
+    {
+      "name": "receipt-envelope",
+      "exit_code": 0,
+      "assertions": 13,
+      "output": "TAP version 13\n# Subtest: native posted receipt remains posted and uses nested result\nok 1 - native posted receipt remains posted and uses nested result\n  ---\n  duration_ms: 3.613933\n  type: 'test'\n  ...\n# Subtest: failed remains distinct and never authorizes retry\nok 2 - failed remains distinct and never authorizes retry\n  ---\n  duration_ms: 3.584456\n  type: 'test'\n  ...\n# Subtest: unknown remains distinct and never authorizes retry\nok 3 - unknown remains distinct and never authorizes retry\n  ---\n  duration_ms: 0.481166\n  type: 'test'\n  ...\n# Subtest: accepted remains distinct and never authorizes retry\nok 4 - accepted remains distinct and never authorizes retry\n  ---\n  duration_ms: 0.272542\n  type: 'test'\n  ...\n# Subtest: running remains distinct and never authorizes retry\nok 5 - running remains distinct and never authorizes retry\n  ---\n  duration_ms: 0.452021\n  type: 'test'\n  ...\n# Subtest: completed remains distinct and never authorizes retry\nok 6 - completed remains distinct and never authorizes retry\n  ---\n  duration_ms: 0.220223\n  type: 'test'\n  ...\n# Subtest: cancelled remains distinct and never authorizes retry\nok 7 - cancelled remains distinct and never authorizes retry\n  ---\n  duration_ms: 0.427133\n  type: 'test'\n  ...\n# Subtest: malformed and confused posted identities fail closed\nok 8 - malformed and confused posted identities fail closed\n  ---\n  duration_ms: 2.429672\n  type: 'test'\n  ...\n# Subtest: top-level result fallback is refused\nok 9 - top-level result fallback is refused\n  ---\n  duration_ms: 1.059413\n  type: 'test'\n  ...\n# Subtest: MCP isError cannot project posted as success\nok 10 - MCP isError cannot project posted as success\n  ---\n  duration_ms: 1.362696\n  type: 'test'\n  ...\n# Subtest: transport or malformed response after mutation is unknown, never no model\nok 11 - transport or malformed response after mutation is unknown, never no model\n  ---\n  duration_ms: 0.598938\n  type: 'test'\n  ...\n# Subtest: precondition error proves no invocation\nok 12 - precondition error proves no invocation\n  ---\n  duration_ms: 0.266774\n  type: 'test'\n  ...\n# Subtest: unknown revoke requires credential cleanup even after posted\nok 13 - unknown revoke requires credential cleanup even after posted\n  ---\n  duration_ms: 0.31366\n  type: 'test'\n  ...\n1..13\n# tests 13\n# suites 0\n# pass 13\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 201.668764\n"
+    },
+    {
+      "name": "ssh-unknown-boundary",
+      "exit_code": 0,
+      "assertions": 5,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.004s\n\nOK\n"
+    },
+    {
+      "name": "cross-grant-native-sqlite",
+      "exit_code": 0,
+      "assertions": 16,
+      "output": "{\"passed\":16,\"total\":16,\"database\":\"isolated SQLite memory\",\"production_rows_written\":0,\"grant_changes\":0,\"github_writes\":0,\"model_calls\":0}\n"
+    }
+  ],
+  "all_passed": true,
+  "models": 0,
+  "github_writes": 0,
+  "production_mcp_rows_written": 0,
+  "source_hashes": {
+    "receipt.mjs": "5c1686c58039002a1e746289322871d0a3408f3e1d32400152a48bb25663dd8a",
+    "receipt.test.mjs": "072ec63dd559d11b66307cb1f8bc26e99ba60a328c3a8f78da749c043d9de23d",
+    "ssh_gate.py": "5e96d4d3b668ef8654fbd6dda420fb4ee44a7ee84a414a3010648db6adc9ed8f",
+    "test_ssh_gate.py": "bd4a89aac133ef223d692e4d6dac2dd6646d5e86f7263023d09b716d30a53080",
+    "cross_grant.test.mjs": "3fbd4474514d6aa52363f88a10e89bba438c5db16613a80b4bc16bb302ff4a84"
+  },
+  "initial_harness_attempt": {
+    "reason": "wrong container mount path; no tests or service mutations executed by those two calls",
+    "results": [
+      {
+        "name": "receipt-envelope",
+        "exit_code": 1
+      },
+      {
+        "name": "ssh-unknown-boundary",
+        "exit_code": 0
+      },
+      {
+        "name": "cross-grant-native-sqlite",
+        "exit_code": 1
+      }
+    ]
+  },
+  "wrapper_top_level_followup": {
+    "at": "2026-10-22T19:51:07.488672+00:00",
+    "assertions": 6,
+    "passed": true,
+    "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.004s\n\nOK\n",
+    "source_sha256": {
+      "ssh_gate.py": "282cdd10ebc052c3869be106cd1b3e7d39be6956e98618def132a754a03253a7",
+      "test_ssh_gate.py": "f9ada0597e270271bc9b722eca8ddea06d8ede3f45a5a4a584b5e4e6a18b6839"
+    },
+    "reason": "Outer lock/context cleanup failure after invoke must remain unknown, not false no-model"
+  }
+}

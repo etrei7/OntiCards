@@ -1,0 +1,145 @@
+{
+  "observed_at": "2026-10-22T19:12:50.139783+00:00",
+  "deployment": {
+    "started_at": "20261022T190814Z",
+    "model_calls": 0,
+    "github_posts": 0,
+    "quota_reset": false,
+    "credential_changes": false,
+    "workflows": [
+      {
+        "id": "onticardsPreviewAdmissionV1",
+        "version": "6e3f1d2c-ef8a-430d-8b7b-518f4070e013",
+        "nodes": 26,
+        "template_sha256": "ef7b82124abf3a2073c74293eca8923695153e172d4871924fa6408c8c139f78",
+        "active": true
+      },
+      {
+        "id": "onticardsPreviewIntakeV1",
+        "version": "b857184f-d2c1-4fd7-a643-77fd8a6764c9",
+        "nodes": 10,
+        "template_sha256": "2fe34fcc1c2a7692ffdbaedfb2c1ca5a9d9cd216ad4f56895b7e5ddb271b9177",
+        "active": true
+      }
+    ],
+    "native_fixture_assertions": {
+      "six_pr_items_read_balance_once_and_bind_all": true,
+      "consumed_batch_performs_no_balance_login": true,
+      "dry_run_batch_performs_no_balance_login": true,
+      "stale_batch_observation_rejected": true,
+      "cross_batch_observation_rejected": true
+    },
+    "completed_at": "2026-10-22T19:08:17.560234+00:00"
+  },
+  "source": "read-only native SQLite execution/receipt tables plus existing container log status projection",
+  "executions": [
+    {
+      "id": 381,
+      "workflowId": "onticardsPreviewIntakeV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:29.849",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:33.525"
+    },
+    {
+      "id": 382,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:31.030",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:31.638"
+    },
+    {
+      "id": 383,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:31.683",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:31.938"
+    },
+    {
+      "id": 384,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:32.026",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:32.545"
+    },
+    {
+      "id": 385,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:32.590",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:32.836"
+    },
+    {
+      "id": 386,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:32.877",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:33.139"
+    },
+    {
+      "id": 387,
+      "workflowId": "onticardsPreviewAdmissionV1",
+      "status": "running",
+      "startedAt": "2026-10-22 19:11:33.181",
+      "stoppedAt": null,
+      "deletedAt": "2026-10-22 18:11:33.444"
+    }
+  ],
+  "receipts": [
+    {
+      "pr": 26.0,
+      "state": "tests_passed_model_business",
+      "receipt_key": "stepll2026/OntiCards#26:3105b7b61469c6b2945357f2eefa8fcb2e3aaee5:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "detail_sha256": "86d43b219943e651657dbe9a69922b3062c7e5eee8c6d0673a60d4c1bf42abc8"
+    },
+    {
+      "pr": 30.0,
+      "state": "budget_exhausted",
+      "receipt_key": "admission:stepll2026/OntiCards#30:10c6862d4c7325c85618f86455aacf9d10c088b5:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "detail_sha256": "cb341e4d55701532ca1b8e4853e4538173c8867ba022b88d2982525699f9d48a"
+    },
+    {
+      "pr": 28.0,
+      "state": "manual_review_required",
+      "receipt_key": "admission:stepll2026/OntiCards#28:4ad21f17e97668d13ea52f44197749534092e74d:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "detail_sha256": "383ec1b940dee1d82e0b7e07f75b1c2799c9e4157632f2150a59b01c5bfc28d2"
+    },
+    {
+      "pr": 27.0,
+      "state": "manual_review_required",
+      "receipt_key": "admission:stepll2026/OntiCards#27:7f98741eb20f5a17665c949b0babb42b6b1d338d:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "detail_sha256": "a33d9dae80328430bfcb536527cc8d0d52b6d44b00617974bf3190d1707fd111"
+    },
+    {
+      "pr": 22.0,
+      "state": "manual_review_required",
+      "receipt_key": "admission:stepll2026/OntiCards#22:e8a55db0a6104905cc629f97ac8750e1392e4f44:b961c50758ac69f54f051a614fc2dc46b6900a30",
+      "detail_sha256": "06d09caa38f9ce78da22e8f44f89affce4b7769448e6c97d03a46bba007c7dd2"
+    },
+    {
+      "pr": 33.0,
+      "state": "budget_exhausted",
+      "receipt_key": "admission:stepll2026/OntiCards#33:fdd3f291e8d4a51c31610f13d87670ab3288a6e9:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+      "detail_sha256": "93940f0c546e870a888d40ce13754f3552ede6c04f8a65962511a5e1d15b0a4b"
+    }
+  ],
+  "new_api_auth_requests_after_deployment": [],
+  "reconciliation_originals_preserved": true,
+  "all_receipts_unchanged_since_reconciliation": true,
+  "note": "n8n saveData=none leaves soft-deleted execution shells status=running; deletedAt is a deletion marker, not a real completion timestamp. No manual trigger was sent.",
+  "assertions": {
+    "natural_receiver_observed": true,
+    "six_native_child_admissions_observed": true,
+    "no_ci_main_execution": true,
+    "no_unfinished_target_execution": true,
+    "all_sticky_receipts_unchanged": true,
+    "no_new_native_login_for_consumed_batch": true,
+    "both_prior_unknown_details_preserved": true
+  },
+  "passed": true
+}

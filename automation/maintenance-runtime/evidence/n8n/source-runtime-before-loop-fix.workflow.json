@@ -1,0 +1,1638 @@
+{
+  "id": "onticardsRepositoryContextV1",
+  "name": "OntiCards actual commit source context - read only",
+  "nodes": [
+    {
+      "id": "91e921e4-8b17-5d07-991b-459baff4d6fd",
+      "name": "Native source subworkflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    },
+    {
+      "id": "b350adef-9ccc-539e-ba68-11484f6388a6",
+      "name": "Local source read acceptance",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        190,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-repository-context-v1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "onticards-repository-context-v1"
+    },
+    {
+      "id": "dea27210-6ad7-585f-9e11-10b64d473d89",
+      "name": "Fixed repository source request",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const q=$json.body||$json,ref=q.ref||\"main\";if(ref!==\"main\"&&!/^[0-9a-f]{40}$/.test(ref))throw new Error(\"Invalid fixed-repository source ref\");return {repository:\"stepll2026/OntiCards\",ref,topic:String(q.topic||\"\").slice(0,8000),local_webhook:!!$json.body};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5dfb63b-87aa-510f-9655-4b1141b38747",
+      "name": "Ensure source cache",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        570,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_source_files_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "source_key",
+              "type": "string"
+            },
+            {
+              "name": "commit_sha",
+              "type": "string"
+            },
+            {
+              "name": "path",
+              "type": "string"
+            },
+            {
+              "name": "blob_sha",
+              "type": "string"
+            },
+            {
+              "name": "content",
+              "type": "string"
+            },
+            {
+              "name": "observed_at",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "cc558a7a-882b-5a02-92ef-703ca3dbe088",
+      "name": "Ensure tree cache",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_source_trees_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "commit_sha",
+              "type": "string"
+            },
+            {
+              "name": "tree_sha",
+              "type": "string"
+            },
+            {
+              "name": "tree_index",
+              "type": "string"
+            },
+            {
+              "name": "file_count",
+              "type": "number"
+            },
+            {
+              "name": "observed_at",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "89eec583-8857-577a-9a80-c4588ab4001e",
+      "name": "Sign source App JWT",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        950,
+        0
+      ],
+      "parameters": {
+        "operation": "sign",
+        "useJson": true,
+        "claimsJson": "={{ JSON.stringify({iat:Math.floor(Date.now()/1000)-60,exp:Math.floor(Date.now()/1000)+540,iss:\"5422414\"}) }}",
+        "headerClaims": "{}",
+        "options": {
+          "algorithm": "RS256"
+        }
+      },
+      "credentials": {
+        "jwtAuth": {
+          "id": "onticardsIntakeAppJwt",
+          "name": "OntiCards single-repository intake App"
+        }
+      }
+    },
+    {
+      "id": "419091be-9af4-5859-b2ee-3efc1e4b8f37",
+      "name": "Mint source read token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1140,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/app/installations/174029282/access_tokens",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Sign source App JWT\").first().json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"repositories\": [\"OntiCards\"], \"permissions\": {\"contents\": \"read\", \"metadata\": \"read\"}}"
+      },
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "d32ae39d-2e05-518a-9d52-7710ad2d287f",
+      "name": "Verify source installation scope",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1330,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/installation/repositories?per_page=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint source read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "666d5910-aa98-5afa-ba8e-09d54e0475e3",
+      "name": "Exact source read scope",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Exact source read scope",
+              "leftValue": "={{ (()=>{const p=$(\"Mint source read token\").first().json.body?.permissions||{};return Object.keys(p).length===2&&p.contents===\"read\"&&p.metadata===\"read\"&&$json.statusCode===200&&$json.body.total_count===1&&$json.body.repositories[0]?.full_name===\"stepll2026/OntiCards\";})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "ce52f246-0169-59fa-8784-21558c7097e0",
+      "name": "Resolve actual source commit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1710,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/commits/\"+$(\"Fixed repository source request\").first().json.ref }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint source read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "c04e362d-dab8-5d30-ab3a-f27d9258c030",
+      "name": "Commit resolved",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1900,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Commit resolved",
+              "leftValue": "={{ $json.statusCode===200 && /^[0-9a-f]{40}$/.test($json.body?.sha||\"\") && /^[0-9a-f]{40}$/.test($json.body?.commit?.tree?.sha||\"\") }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c227b26a-b411-5cf0-a1f9-b0a6467042fd",
+      "name": "Read complete repository tree",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2090,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/git/trees/\"+$(\"Resolve actual source commit\").first().json.body.commit.tree.sha+\"?recursive=1\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint source read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "26b2c2a7-c417-5316-b833-fbd87bf5310f",
+      "name": "Select existing bounded source paths",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2280,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{\n const sha=$('Resolve actual source commit').first().json.body.sha,body=$json.body,topic=$('Fixed repository source request').first().json.topic.toLowerCase();\n const complete=$json.statusCode===200&&body?.truncated===false&&Array.isArray(body.tree),tree=complete?body.tree:[];\n const safe=e=>e.type==='blob'&&Number(e.size)<=150000&&(/\\.(md|py|ts|tsx|js|json|yaml|yml|txt)$/.test(e.path)||e.path.endsWith('/Dockerfile'))&&!/(^|\\/)(\\.env|secrets?|credentials?|keys?)([./]|$)|lock\\.json$|(^|\\/)(package-lock|yarn\\.lock|pnpm-lock)/i.test(e.path);\n const all=tree.filter(safe),core=['README.md','docker-compose.yaml','OntiCards_Api/app.py','OntiCards_Api/requirements.txt','OntiCards_Api/Dockerfile','OntiCards_Web/package.json'];\n const wanted=[...core];\n for(const e of all)if(topic.includes(e.path.toLowerCase()))wanted.push(e.path);\n const patterns=[];\n if(/pdf|soffice|导出/.test(topic))patterns.push(/libreoffice_exporter\\.py$/);\n if(/sql|查询|问数/.test(topic))patterns.push(/sql.*\\.py$/i);\n if(/metadata|元数据/.test(topic))patterns.push(/metadata.*\\.py$/i);\n if(/card|卡片/.test(topic))patterns.push(/card.*\\.(py|ts|tsx)$/i);\n if(/auth|登录|权限/.test(topic))patterns.push(/auth.*\\.(py|ts|tsx)$/i);\n for(const pattern of patterns)for(const e of all)if(pattern.test(e.path))wanted.push(e.path);\n const paths=[...new Set(wanted)].map(path=>all.find(e=>e.path===path)).filter(Boolean).slice(0,12).map(e=>({path:e.path,sha:e.sha,size:e.size,commit_sha:sha}));\n return {complete:complete&&paths.length>=4,commit_sha:sha,tree_sha:body?.sha||null,tree_index:tree.map(e=>({path:e.path,type:e.type,sha:e.sha,size:e.size??null})),paths};\n})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "5e225f0d-fa10-54f2-bb1b-6f84f463b5d9",
+      "name": "Complete tree and selected files",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2470,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Complete tree and selected files",
+              "leftValue": "={{ $json.complete }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3af86060-2259-53ed-bb92-6eff1aa0d94d",
+      "name": "Split verified source paths",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "paths",
+        "options": {}
+      }
+    },
+    {
+      "id": "fd39fed9-dae4-560a-a429-9efb125c65e9",
+      "name": "Read file at immutable commit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2850,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/contents/\"+$json.path.split(\"/\").map(p=>encodeURIComponent(p)).join(\"/\")+\"?ref=\"+$json.commit_sha }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint source read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": false
+    },
+    {
+      "id": "18ea4318-9aa2-59e9-b28f-2fbfd60078f6",
+      "name": "Decode native source content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3040,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const expected=$(\"Split verified source paths\").item.json,r=$json.body;const complete=$json.statusCode===200&&r?.type===\"file\"&&r.path===expected.path&&r.sha===expected.sha&&r.encoding===\"base64\"&&r.size===expected.size;return {...expected,complete,content:complete?r.content.base64Decode():\"\",status:$json.statusCode||null};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "0bebfd34-ecab-5ac2-89b7-8251534a519d",
+      "name": "Verify native Git blob SHA",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        3230,
+        0
+      ],
+      "parameters": {
+        "action": "hash",
+        "type": "SHA1",
+        "binaryData": false,
+        "value": "={{ \"blob \"+$json.size+\"\u0000\"+$json.content }}",
+        "dataPropertyName": "calculated_blob_sha",
+        "encoding": "hex"
+      }
+    },
+    {
+      "id": "8284f555-2167-5581-90c5-d7118d560c9d",
+      "name": "Require all blob hashes",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3420,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const files=$input.all().map(x=>x.json),expected=$(\"Select existing bounded source paths\").first().json.paths;return {complete:files.length===expected.length&&files.every(f=>f.complete&&f.sha===f.calculated_blob_sha),files,diagnostics:files.map(f=>({path:f.path,status:f.status,complete:f.complete,blob_match:f.sha===f.calculated_blob_sha}))};})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "60e82543-efe3-56bb-98d6-6d8b62e7fd8b",
+      "name": "All immutable sources verified",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3610,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "All immutable sources verified",
+              "leftValue": "={{ $json.complete }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "0a95e00e-366c-5555-ac47-c6dc7780cacd",
+      "name": "Split verified source contents",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3800,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "files",
+        "options": {}
+      }
+    },
+    {
+      "id": "3e5b027f-1900-5df0-af3f-c6cc35d0cd1d",
+      "name": "Cache public source file",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3990,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {source_key:$json.commit_sha+\":\"+$json.path,commit_sha:$json.commit_sha,path:$json.path,blob_sha:$json.sha,content:$json.content,observed_at:$now.toISO()} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "00f61972-610a-56b8-b722-7cf0619e608d",
+      "name": "Persist immutable source files",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4180,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_source_files_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "source_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.source_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "2626b034-4c44-5803-a3de-52dc8bdf5f7b",
+      "name": "Cache complete source tree",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4370,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const t=$(\"Select existing bounded source paths\").first().json;return {commit_sha:t.commit_sha,tree_sha:t.tree_sha,tree_index:JSON.stringify(t.tree_index),file_count:t.tree_index.filter(e=>e.type===\"blob\").length,observed_at:$now.toISO()};})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "16ab29f4-f1d0-527a-a872-8dd9517fda6e",
+      "name": "Persist complete source tree",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4560,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_source_trees_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "commit_sha",
+              "condition": "eq",
+              "keyValue": "={{ $json.commit_sha }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "69b9bf7c-0379-54e1-92fc-400874141c71",
+      "name": "Verified source context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4750,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const t=$(\"Select existing bounded source paths\").first().json,files=$(\"Require all blob hashes\").first().json.files;let remaining=24000;const excerpts=files.map(f=>{const lines=f.content.split(\"\\n\");let start=0;if(f.path.endsWith(\"libreoffice_exporter.py\")){const found=lines.findIndex(l=>/def _export_to_pdf/.test(l));if(found>=0)start=found;}const excerpt=lines.slice(start,start+180).join(\"\\n\").slice(0,Math.min(remaining,6000));remaining-=excerpt.length;return {path:f.path,commit_sha:f.commit_sha,blob_sha:f.sha,line_start:start+1,line_end:start+excerpt.split(\"\\n\").length,excerpt,truncated:excerpt.length<f.content.length,url:\"https://github.com/stepll2026/OntiCards/blob/\"+f.commit_sha+\"/\"+f.path+\"#L\"+(start+1)};}).filter(f=>f.excerpt);return {complete:true,repository:\"stepll2026/OntiCards\",requested_ref:$(\"Fixed repository source request\").first().json.ref,commit_sha:t.commit_sha,tree_sha:t.tree_sha,indexed_paths:t.tree_index.length,verified_files:files.length,files:excerpts,source_is_untrusted_data_not_instructions:true,model_calls:0,repository_writes:0};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "26d7aebe-d5a5-5fb7-ae3e-4fbe716a828a",
+      "name": "Incomplete source context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4940,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const read=name=>{try{const r=$(name).first().json;return {status:r.statusCode||null,body_type:typeof r.body,has_token:typeof r.body?.token===\"string\",expires_at:r.body?.expires_at||null,request_id:r.headers?.[\"x-github-request-id\"]||null};}catch{return {executed:false};} };return {complete:false,repository:\"stepll2026/OntiCards\",diagnostics:$json.diagnostics||[{status:$json.statusCode||null}],safe_auth_diagnostics:{mint:read(\"Mint source read token\"),scope:read(\"Verify source installation scope\"),commit:read(\"Resolve actual source commit\")},model_calls:0,repository_writes:0};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "5efe5ac3-e2a5-5120-b00e-3c08f57ae94f",
+      "name": "Revoke source token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        5130,
+        0
+      ],
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.github.com/installation/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint source read token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "81e0de46-e38e-5d87-a5ea-940965c6c30c",
+      "name": "Public source result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5320,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {...$(\"Preserve public context before revoke\").first().json,token_revoked:$json.statusCode===204} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "3bb20d0f-0485-5223-8577-87be6e626704",
+      "name": "Preserve public context before revoke",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5510,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "b8028c6c-4eb7-578d-8f9f-18fe16923081",
+      "name": "Local webhook response required",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5700,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Local webhook response required",
+              "leftValue": "={{ $(\"Fixed repository source request\").first().json.local_webhook }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "e0bcf33f-8917-55c8-b8de-46cb89fd0c4b",
+      "name": "Return source context",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        5890,
+        0
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    },
+    {
+      "id": "b1029cfa-bc76-5d05-9d6d-d5eb29058347",
+      "name": "Return native subworkflow context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6080,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "49994562-d744-5118-9ecf-85d3dc7d8e12",
+      "name": "Read existing immutable tree",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6270,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_source_trees_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "commit_sha",
+              "condition": "eq",
+              "keyValue": "={{ $(\"Resolve actual source commit\").first().json.body.sha }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "780377b6-5d0b-5167-8bf9-511f93ad7be5",
+      "name": "Cached tree matches fresh commit",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6460,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Cached tree matches fresh commit",
+              "leftValue": "={{ $json.commit_sha===$(\"Resolve actual source commit\").first().json.body.sha && $json.tree_sha===$(\"Resolve actual source commit\").first().json.body.commit.tree.sha && typeof $json.tree_index===\"string\" && JSON.parse($json.tree_index).every(e=>e.type!==\"blob\"||(Number.isInteger(e.size)&&e.size>=0)) }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d8648852-22d3-505d-91a6-5a2617e6adca",
+      "name": "Use verified immutable tree cache",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6650,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {statusCode:200,body:{sha:$json.tree_sha,tree:JSON.parse($json.tree_index),truncated:false} } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "804e5c9f-a09f-56bc-86d1-ebb5cce90e79",
+      "name": "Read existing immutable source files",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6840,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_source_files_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "commit_sha",
+              "condition": "eq",
+              "keyValue": "={{ $(\"Resolve actual source commit\").first().json.body.sha }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "88f06f86-a0dc-5b8b-9e34-2d61646d7826",
+      "name": "Restore selected immutable paths",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7030,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $(\"Select existing bounded source paths\").first().json }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "5367dcd1-fb88-5d0b-ada6-b97f1fb43d43",
+      "name": "Select matching cached source",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7220,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const expected=$json,cache=$(\"Read existing immutable source files\").all().map(x=>x.json).find(x=>x.commit_sha===expected.commit_sha&&x.path===expected.path&&x.blob_sha===expected.sha&&typeof x.content===\"string\");return {...expected,cache:cache||null};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "680a1a4f-ad0d-53f8-a749-452cd2ea6531",
+      "name": "Matching immutable content exists",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        7410,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Matching immutable content exists",
+              "leftValue": "={{ !!$json.cache }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "cda2a20c-ab17-5aaa-9eab-a1e6a2e8e8f9",
+      "name": "Use cached source through existing hash verifier",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7600,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {statusCode:200,body:{type:\"file\",path:$json.path,sha:$json.sha,encoding:\"base64\",size:$json.size,content:$json.cache.content.base64Encode()} } }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Native source subworkflow": {
+      "main": [
+        [
+          {
+            "node": "Fixed repository source request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local source read acceptance": {
+      "main": [
+        [
+          {
+            "node": "Fixed repository source request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fixed repository source request": {
+      "main": [
+        [
+          {
+            "node": "Ensure source cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure source cache": {
+      "main": [
+        [
+          {
+            "node": "Ensure tree cache",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure tree cache": {
+      "main": [
+        [
+          {
+            "node": "Sign source App JWT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign source App JWT": {
+      "main": [
+        [
+          {
+            "node": "Mint source read token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mint source read token": {
+      "main": [
+        [
+          {
+            "node": "Verify source installation scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify source installation scope": {
+      "main": [
+        [
+          {
+            "node": "Exact source read scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exact source read scope": {
+      "main": [
+        [
+          {
+            "node": "Resolve actual source commit",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Incomplete source context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve actual source commit": {
+      "main": [
+        [
+          {
+            "node": "Commit resolved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit resolved": {
+      "main": [
+        [
+          {
+            "node": "Read existing immutable tree",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Incomplete source context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read complete repository tree": {
+      "main": [
+        [
+          {
+            "node": "Select existing bounded source paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select existing bounded source paths": {
+      "main": [
+        [
+          {
+            "node": "Complete tree and selected files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Complete tree and selected files": {
+      "main": [
+        [
+          {
+            "node": "Read existing immutable source files",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Incomplete source context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split verified source paths": {
+      "main": [
+        [
+          {
+            "node": "Select matching cached source",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read file at immutable commit": {
+      "main": [
+        [
+          {
+            "node": "Decode native source content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decode native source content": {
+      "main": [
+        [
+          {
+            "node": "Verify native Git blob SHA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify native Git blob SHA": {
+      "main": [
+        [
+          {
+            "node": "Require all blob hashes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Require all blob hashes": {
+      "main": [
+        [
+          {
+            "node": "All immutable sources verified",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All immutable sources verified": {
+      "main": [
+        [
+          {
+            "node": "Split verified source contents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Incomplete source context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split verified source contents": {
+      "main": [
+        [
+          {
+            "node": "Cache public source file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cache public source file": {
+      "main": [
+        [
+          {
+            "node": "Persist immutable source files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist immutable source files": {
+      "main": [
+        [
+          {
+            "node": "Cache complete source tree",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cache complete source tree": {
+      "main": [
+        [
+          {
+            "node": "Persist complete source tree",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist complete source tree": {
+      "main": [
+        [
+          {
+            "node": "Verified source context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verified source context": {
+      "main": [
+        [
+          {
+            "node": "Preserve public context before revoke",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve public context before revoke": {
+      "main": [
+        [
+          {
+            "node": "Revoke source token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke source token": {
+      "main": [
+        [
+          {
+            "node": "Public source result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Public source result": {
+      "main": [
+        [
+          {
+            "node": "Local webhook response required",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local webhook response required": {
+      "main": [
+        [
+          {
+            "node": "Return source context",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Return native subworkflow context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Incomplete source context": {
+      "main": [
+        [
+          {
+            "node": "Preserve public context before revoke",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read existing immutable tree": {
+      "main": [
+        [
+          {
+            "node": "Cached tree matches fresh commit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cached tree matches fresh commit": {
+      "main": [
+        [
+          {
+            "node": "Use verified immutable tree cache",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read complete repository tree",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use verified immutable tree cache": {
+      "main": [
+        [
+          {
+            "node": "Select existing bounded source paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read existing immutable source files": {
+      "main": [
+        [
+          {
+            "node": "Restore selected immutable paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore selected immutable paths": {
+      "main": [
+        [
+          {
+            "node": "Split verified source paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select matching cached source": {
+      "main": [
+        [
+          {
+            "node": "Matching immutable content exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Matching immutable content exists": {
+      "main": [
+        [
+          {
+            "node": "Use cached source through existing hash verifier",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read file at immutable commit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use cached source through existing hash verifier": {
+      "main": [
+        [
+          {
+            "node": "Decode native source content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 150
+  }
+}

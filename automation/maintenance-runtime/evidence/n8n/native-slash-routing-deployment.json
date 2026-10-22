@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-22T19:19:34.486322+00:00",
+  "workflow_id": "onticardsPersistentDraftsV1",
+  "version": "2b95ea32-3719-4cb5-8b5b-ca5ae7a6cf1f",
+  "active": true,
+  "changed_nodes": [
+    "Project deterministic routing observations"
+  ],
+  "connections_unchanged": true,
+  "live_configuration_unchanged": true,
+  "manual_handoff_threads": [
+    29,
+    31
+  ],
+  "model_limit": 6,
+  "reply_limit": 3,
+  "old_expression_sha256": "c935aa1442cb1a358fd8e835aa5d45ad8a405e657e60238054a6dbfe31305ee1",
+  "new_expression_sha256": "3329bb65649613dd54118e12b3708542d8ec41cbdda7f5908bed46f7e06fc3d8",
+  "native_fixture_passed": 9,
+  "model_calls_triggered_by_update": 0,
+  "public_posts": 0,
+  "data_table_mutations_by_update": 0
+}

@@ -1,0 +1,28 @@
+{
+  "observed_human_comment_id": "6346376385",
+  "poll": {
+    "id": 48,
+    "poll_id": "826",
+    "started_at": "2026-10-23T01:00:05.085+08:00",
+    "finished_at": "2026-10-23T01:02:14.893+08:00",
+    "status": "complete_readonly_dry_run",
+    "details": "{\"watermark\":\"2026-10-23T01:00:05.085+08:00\",\"event_count\":166,\"thread_count\":19,\"source_counts\":[0,50,0,19],\"timeline_pages\":19,\"review_pages\":19,\"model_calls\":0,\"repository_writes\":0,\"token_revoked\":true,\"token_permissions\":{\"issues\":\"read\",\"metadata\":\"read\",\"pull_requests\":\"read\"}}",
+    "createdAt": "2026-10-22 17:02:13.097",
+    "updatedAt": "2026-10-22 17:02:14.956"
+  },
+  "watermark": [
+    {
+      "id": 1,
+      "repository": "stepll2026/OntiCards",
+      "watermark": "2026-10-23T01:00:05.085+08:00",
+      "poll_id": "826",
+      "event_count": 166.0,
+      "thread_count": 19.0,
+      "createdAt": "2026-10-22 12:28:28.759",
+      "updatedAt": "2026-10-22 17:02:12.962"
+    }
+  ],
+  "cause_confirmed": "Thread targets only use current incremental issues plus pulls; complete repository discussion comments whose Issue is absent from those targets are dropped before event projection. Since endpoint empty root cause remains unknown.",
+  "generator_sha256": "b6dec7c0a21f2c31ea4d213ff4bd23cd9c999791136c07955c0f9a9f36cbd6c5",
+  "repair_plan": "Reuse complete state=all pagination without since, compare independent repository open_issues_count, union comment-referenced missing Issues with native single GET, preserve advanced watermark and prior evidence."
+}

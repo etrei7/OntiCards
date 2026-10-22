@@ -1,0 +1,2254 @@
+{
+  "id": "onticardsPersistentReadOnlyV1",
+  "name": "OntiCards native serial bounded intake - read only",
+  "active": false,
+  "nodes": [
+    {
+      "id": "57a53c74-ee2f-5428-9aa7-a9a50890c9a0",
+      "name": "Every five minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8d27fbd3-8ac1-51e4-9899-4bb9f7fd7944",
+      "name": "Local read-only poll",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        190,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-intake-readonly-v1",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "onticards-intake-readonly-v1"
+    },
+    {
+      "id": "8a01bf35-bfd6-5e2e-ab25-6ecc5c119c4d",
+      "name": "Begin fixed repository poll",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {repository:\"stepll2026/OntiCards\",poll_id:$execution.id,started_at:$now.toISO(),mode:\"persistent_read_only_dry_run\",model_calls:0,repository_writes:0} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "13d72db3-b211-5abb-9e40-db5c4901c442",
+      "name": "Ensure events",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        570,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_intake_events_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "event_key",
+              "type": "string"
+            },
+            {
+              "name": "thread_key",
+              "type": "string"
+            },
+            {
+              "name": "event_id",
+              "type": "string"
+            },
+            {
+              "name": "kind",
+              "type": "string"
+            },
+            {
+              "name": "actor",
+              "type": "string"
+            },
+            {
+              "name": "actor_type",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "name": "payload",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "46200ce4-330e-5d67-bb40-acb86114ea0e",
+      "name": "Ensure threads",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_intake_threads_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "thread_key",
+              "type": "string"
+            },
+            {
+              "name": "number",
+              "type": "number"
+            },
+            {
+              "name": "kind",
+              "type": "string"
+            },
+            {
+              "name": "snapshot",
+              "type": "string"
+            },
+            {
+              "name": "app_reply_count",
+              "type": "number"
+            },
+            {
+              "name": "observed_at",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "b94b3988-8ff1-5283-abb6-c5fb4f02ed17",
+      "name": "Ensure watermark",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        950,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_intake_watermark_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "repository",
+              "type": "string"
+            },
+            {
+              "name": "watermark",
+              "type": "string"
+            },
+            {
+              "name": "poll_id",
+              "type": "string"
+            },
+            {
+              "name": "event_count",
+              "type": "number"
+            },
+            {
+              "name": "thread_count",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "b165203e-7bee-5bbe-bd8a-6c5bf056f3c2",
+      "name": "Ensure polls",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_intake_polls_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "poll_id",
+              "type": "string"
+            },
+            {
+              "name": "started_at",
+              "type": "string"
+            },
+            {
+              "name": "finished_at",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "name": "details",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "4f21f48f-14db-5411-af4a-47444f615652",
+      "name": "Read successful watermark",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1330,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_watermark_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "repository",
+              "condition": "eq",
+              "keyValue": "stepll2026/OntiCards"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "6946f25d-f9e6-5b61-b092-61c63e7cc616",
+      "name": "Sign read-only App request",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        0
+      ],
+      "parameters": {
+        "operation": "sign",
+        "useJson": true,
+        "claimsJson": "={{ JSON.stringify({iat:Math.floor(Date.now()/1000)-60,exp:Math.floor(Date.now()/1000)+540,iss:\"5422414\"}) }}",
+        "headerClaims": "{}",
+        "options": {
+          "algorithm": "RS256"
+        }
+      },
+      "credentials": {
+        "jwtAuth": {
+          "id": "onticardsIntakeAppJwt",
+          "name": "OntiCards single-repository intake App"
+        }
+      }
+    },
+    {
+      "id": "02e6a25b-53ff-5685-9b91-31f56fd5b650",
+      "name": "Mint read-only token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1710,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/app/installations/174029282/access_tokens",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Sign read-only App request\").first().json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 1000
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"repositories\": [\"OntiCards\"], \"permissions\": {\"issues\": \"read\", \"pull_requests\": \"read\", \"metadata\": \"read\"}}"
+      },
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "ca469571-8028-5eb2-bbc1-5223beac2850",
+      "name": "Verify installation repository",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1900,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/installation/repositories?per_page=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint read-only token\").first().json.body.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 1000
+            }
+          }
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "2b0d14c8-2238-53f5-8e88-b30aa8a95512",
+      "name": "Exact read-only scope",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2090,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Exact read-only scope",
+              "leftValue": "={{ (()=>{const p=$(\"Mint read-only token\").first().json.body?.permissions||{};return $(\"Mint read-only token\").first().json.statusCode===201 && Object.keys(p).length===3 && p.issues===\"read\" && p.pull_requests===\"read\" && p.metadata===\"read\" && $json.statusCode===200 && $json.body.total_count===1 && $json.body.repositories[0]?.full_name===\"stepll2026/OntiCards\";})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "18e3f873-11de-5050-85e7-bd92fe2dfc9c",
+      "name": "List all Issue and PR records",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2280,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "4edc53f0-2819-5f59-a9fd-59604078a5a6",
+      "name": "List all discussion comments",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2470,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "8ed5ad8f-2aa6-5650-b9b9-4389983d3275",
+      "name": "List all inline comments",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2660,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "a1510e93-a479-5d2c-97dd-e6644e85c1ed",
+      "name": "List all PR heads",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2850,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "fb8095f9-23be-53b7-bcfd-61670dc3b24c",
+      "name": "Validate lists and project thread targets",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3040,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{\n const names=['List all Issue and PR records','List all discussion comments','List all inline comments','List all PR heads'];\n const pages=name=>$(name).all().flatMap(x=>x.json.complete?x.json.pages:[{statusCode:null,body:null,headers:{} }]);const groups=names.map(pages);\n let complete=groups.every(rows=>rows.length>0&&rows.every(r=>r.statusCode===200&&Array.isArray(r.body))&&!String(rows.at(-1).headers?.link||'').includes('rel=\"next\"'));\n const records=complete?groups[0].flatMap(r=>r.body):[],prs=complete?groups[3].flatMap(r=>r.body):[];\n const diagnostics=names.map(name=>({stage:name,pages:pages(name).map(x=>({status:x.statusCode||null,body_array:Array.isArray(x.body),count:Array.isArray(x.body)?x.body.length:null,first_number:x.body?.[0]?.number||null,first_id:x.body?.[0]?.id||null,request_id:x.headers?.[\"x-github-request-id\"]||null,has_next:String(x.headers?.link||'').includes('rel=\"next\"')}))}));\n const stored=$('Read persisted thread snapshots').all().map(x=>x.json);\n const expectedOpen=$('Verify installation repository').first().json.body?.repositories?.[0]?.open_issues_count;\n const observedOpen=records.filter(i=>i.state==='open').length;\n if(!Number.isInteger(expectedOpen)||observedOpen!==expectedOpen)complete=false;\n diagnostics.push({stage:'independent_repository_open_count',expected:expectedOpen??null,observed:observedOpen,matched:complete});\n const known=new Set([...records,...prs].map(i=>i.number));\n const commentNumbers=[...new Set(groups[1].flatMap(p=>Array.isArray(p.body)?p.body:[]).map(c=>String(c.issue_url||'').match(/^https:\\/\\/api\\.github\\.com\\/repos\\/stepll2026\\/OntiCards\\/issues\\/(\\d+)$/)?.[1]).filter(Boolean).map(Number))];\n const missing=commentNumbers.filter(n=>!known.has(n)).map(number=>({number,kind:'issue',issue:{number},pr:null,metadata_needed:true}));\n diagnostics.push({stage:'comment_thread_complement',numbers:missing.map(t=>t.number)});\n const targets=[...records.filter(i=>!i.pull_request).map(i=>({number:i.number,kind:'issue',issue:i,pr:null})),...prs.map(p=>({number:p.number,kind:'pull_request',issue:p,pr:p})),...missing].map(t=>{\n  const row=stored.find(r=>r.number===t.number),cached=row?JSON.parse(row.snapshot):null;\n  const priorAt=cached?.timeline_checked_at;\n  const changed=!cached||['title','body','state','updated_at'].some(k=>(t.issue[k]||'')!==(cached[k]||''))||JSON.stringify((t.issue.labels||[]).map(l=>l.name))!==JSON.stringify(cached.labels)||((t.pr?.head?.sha||null)!==cached.head)||((t.pr?.base?.sha||null)!==cached.base);\n  return {...t,cached,timeline_needed:changed||!Array.isArray(cached?.timeline)||!priorAt||Date.now()-Date.parse(priorAt)>=1800000};\n });\n return {complete,diagnostics,targets,counts:groups.map(rows=>rows.reduce((n,r)=>n+(Array.isArray(r.body)?r.body.length:0),0))};\n})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "1f19a9b0-fd8d-5c1f-b607-178cacb43788",
+      "name": "All list pages complete",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3230,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "All list pages complete",
+              "leftValue": "={{ $json.complete && $json.targets.length>0 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "45035fb6-af43-5777-a0ae-5fa58f4685a9",
+      "name": "Split thread targets",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3420,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "targets",
+        "options": {}
+      }
+    },
+    {
+      "id": "f50220e9-21a6-5dd9-9c90-f785133a4546",
+      "name": "Read complete thread timeline",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        3610,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "338dc92c-bee6-52d8-ba75-21abd5db7f5e",
+      "name": "Capture timeline with source thread",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3800,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {thread:$(\"Select verified current thread\").item.json,pages:$json.complete?$json.pages:[{statusCode:null,body:null,headers:{},bounded_get_failed:true}]} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "9a38b46a-0510-5bf4-beca-906c269d3a34",
+      "name": "Read reviews or issue discussion",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        3990,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsBoundedGetV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "7c552e3f-9364-5ad9-8ce4-1456145d44bb",
+      "name": "Capture review with source thread",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4180,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {thread:$(\"Capture timeline with source thread\").item.json.thread,timeline_pages:$(\"Capture timeline with source thread\").item.json.pages,review_pages:$json.complete?$json.pages:[{statusCode:null,body:null,headers:{},bounded_get_failed:true}]} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "6fc05aa7-13cb-5094-a8d4-c727ebcfa521",
+      "name": "Validate all pages and prepare public records",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4370,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{\n \n const combined=$input.all().map(x=>x.json),targets=combined.map(x=>x.thread);const timelines=combined.flatMap(x=>x.timeline_pages.map(page=>({thread:x.thread,page}))),reviews=combined.flatMap(x=>x.review_pages.map(page=>({thread:x.thread,page}))); \n const completeFor=(rows,n)=>{const pages=rows.filter(r=>r.thread.number===n).map(r=>r.page);return pages.length>0&&pages.every(p=>p.statusCode===200&&Array.isArray(p.body))&&!String(pages.at(-1).headers?.link||'').includes('rel=\"next\"');};\n const complete=targets.every(t=>completeFor(timelines,t.number)&&completeFor(reviews,t.number));\n const discussions=$('List all discussion comments').all().flatMap(x=>x.json.pages.flatMap(p=>p.body)),inline=$('List all inline comments').all().flatMap(x=>x.json.pages.flatMap(p=>p.body));\n const events=[],threads=[],seen=new Set();\n const bot=u=>u?.type==='Bot'||u?.id===346235449||String(u?.login||'').endsWith('[bot]');\n const add=(t,kind,id,payload,user)=>{const key=t.number+':'+kind+':'+String(id)+':'+JSON.stringify(payload);if(seen.has(key))return;seen.add(key);events.push({thread_key:'stepll2026/OntiCards#'+t.number,event_id:kind+':'+String(id),kind,actor:user?.login||'',actor_type:user?.type||'unknown',status:bot(user)?'ignored_machine_event':'pending_readonly_dry_run',payload:JSON.stringify(payload)});};\n if(complete)for(const t of targets){\n const discussion=discussions.filter(c=>c.issue_url==='https://api.github.com/repos/stepll2026/OntiCards/issues/'+t.number);\n const lines=inline.filter(c=>c.pull_request_url==='https://api.github.com/repos/stepll2026/OntiCards/pulls/'+t.number);\n const timeline=timelines.filter(r=>r.thread.number===t.number).flatMap(r=>r.page.body);\n const review=t.kind==='pull_request'?reviews.filter(r=>r.thread.number===t.number).flatMap(r=>r.page.body):[];\n const slim=c=>({id:c.id,author:c.user?.login,type:c.user?.type,body:c.body||'',updated_at:c.updated_at||c.submitted_at||c.created_at,state:c.state||null,url:c.html_url||null});\n const snapshot={id:t.issue.id,number:t.number,kind:t.kind,title:t.issue.title,body:t.issue.body||'',state:t.issue.state,created_at:t.issue.created_at,updated_at:t.issue.updated_at,labels:t.issue.labels.map(l=>l.name),head:t.pr?.head?.sha||null,base:t.pr?.base?.sha||null};\n add(t,t.kind+'_snapshot',t.issue.id,snapshot,t.issue.user);\n for(const c of discussion)add(t,'discussion_comment',c.id,slim(c),c.user);\n for(const c of lines)add(t,'inline_comment',c.id,{...slim(c),path:c.path,line:c.line,commit_id:c.commit_id},c.user);\n for(const c of review)add(t,'review',c.id,{...slim(c),commit_id:c.commit_id},c.user);\n for(const e of timeline)add(t,'timeline_'+e.event,e.id||e.sha||e.commit_id||JSON.stringify(e),{id:e.id||null,event:e.event,created_at:e.created_at||e.submitted_at||null,actor:e.actor?.login||e.user?.login||null,body:e.body||'',state:e.state||null,commit_id:e.commit_id||e.sha||null,label:e.label?.name||null},e.actor||e.user);\n threads.push({thread_key:'stepll2026/OntiCards#'+t.number,number:t.number,kind:t.kind,snapshot:JSON.stringify({...snapshot,discussion:discussion.map(slim),inline:lines.map(slim),reviews:review.map(slim),timeline,timeline_checked_at:t.timeline_needed?$(\"Begin fixed repository poll\").first().json.started_at:t.cached.timeline_checked_at}),app_reply_count:discussion.filter(c=>c.user?.id===346235449||c.user?.login==='onticards-maintainer-stepll2026[bot]').length,observed_at:$('Begin fixed repository poll').first().json.started_at});\n }\n const pageDiagnostic=(r,stage)=>({stage,number:r.thread.number,status:r.page.statusCode||null,body_array:Array.isArray(r.page.body),has_next:String(r.page.headers?.link||'').includes('rel=\"next\"'),...(!Array.isArray(r.page.body)?{capture:r.capture,body_type:typeof r.page.body,body_keys:r.page.body&&typeof r.page.body==='object'?Object.keys(r.page.body).slice(0,8):[],body_preview:r.page.statusCode===200?String(JSON.stringify(r.page.body)).slice(0,100):null}:{})});\n const diagnostics=[...timelines.map(r=>pageDiagnostic(r,'timeline')),...reviews.map(r=>pageDiagnostic(r,'review_or_discussion'))];\n return {complete,diagnostics,events,threads,source_counts:$('Validate lists and project thread targets').first().json.counts,timeline_pages:timelines.length,review_pages:reviews.length};\n})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "7e1d0dcf-786d-5a1b-ad40-ddb06152994a",
+      "name": "All thread pages complete",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4560,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "All thread pages complete",
+              "leftValue": "={{ $json.complete && $json.events.length>0 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3449b9fd-ca2b-5237-913c-5baff51a82de",
+      "name": "Split thread snapshots",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        4750,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "threads",
+        "options": {}
+      }
+    },
+    {
+      "id": "8b6af734-9b76-5e29-9e44-9722628961a5",
+      "name": "Persist current thread context",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4940,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_threads_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "thread_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.thread_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "29cda4dc-85e5-53f7-a9bd-1dab575bff6f",
+      "name": "Select stable event records",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5130,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {events:$(\"Validate all pages and prepare public records\").first().json.events} }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "9a99b99d-80dd-57a9-a2fd-b994ffc21448",
+      "name": "Split stable event records",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        5320,
+        0
+      ],
+      "parameters": {
+        "fieldToSplitOut": "events",
+        "options": {}
+      }
+    },
+    {
+      "id": "a0165377-c0be-5912-ad3e-79b00d3cb220",
+      "name": "Hash stable event revision",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        5510,
+        0
+      ],
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ $json.thread_key+\"|\"+$json.event_id+\"|\"+$json.payload }}",
+        "dataPropertyName": "event_key",
+        "encoding": "hex"
+      }
+    },
+    {
+      "id": "20080b06-e548-5b80-95e2-8092f904b551",
+      "name": "Persist event revisions",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        5700,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_events_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "event_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.event_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d6c1ebf3-0c0e-5948-973c-9505873c363c",
+      "name": "Prepare successful watermark",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5890,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {repository:\"stepll2026/OntiCards\",watermark:[$(\"Read successful watermark\").first().json.watermark||\"\",$(\"Begin fixed repository poll\").first().json.started_at].sort().at(-1),poll_id:$(\"Begin fixed repository poll\").first().json.poll_id,event_count:$(\"Validate all pages and prepare public records\").first().json.events.length,thread_count:$(\"Validate all pages and prepare public records\").first().json.threads.length} }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "f3c664b2-3eb6-5cc3-9f74-c9b1d7697cb0",
+      "name": "Commit complete watermark",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6080,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_watermark_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "repository",
+              "condition": "eq",
+              "keyValue": "stepll2026/OntiCards"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3870a6cc-5ea8-5373-a727-25fc042625cc",
+      "name": "Successful poll receipt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6270,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {poll_id:$(\"Begin fixed repository poll\").first().json.poll_id,started_at:$(\"Begin fixed repository poll\").first().json.started_at,finished_at:$now.toISO(),status:\"complete_readonly_dry_run\",details:JSON.stringify({watermark:$json.watermark,event_count:$json.event_count,thread_count:$json.thread_count,source_counts:$(\"Validate all pages and prepare public records\").first().json.source_counts,timeline_pages:$(\"Validate all pages and prepare public records\").first().json.timeline_pages,review_pages:$(\"Validate all pages and prepare public records\").first().json.review_pages,model_calls:0,repository_writes:0})} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "1f788f95-d05c-548c-9a48-5cdbff5be96d",
+      "name": "Failed poll preserves watermark",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6460,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {poll_id:$(\"Begin fixed repository poll\").first().json.poll_id,started_at:$(\"Begin fixed repository poll\").first().json.started_at,finished_at:$now.toISO(),status:\"incomplete_no_watermark_advance\",details:JSON.stringify({previous_watermark:$(\"Read successful watermark\").first().json.watermark||null,diagnostics:$json.diagnostics||[{stage:\"installation_scope\",status:$json.statusCode||null}],model_calls:0,repository_writes:0})} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "49aa3b98-1ee6-540b-a637-3014faea5994",
+      "name": "Persist poll receipt",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6650,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_polls_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "poll_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.poll_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "464a8016-5ef1-57a6-817f-5535e7e5d950",
+      "name": "Revoke read-only token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        6840,
+        0
+      ],
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.github.com/installation/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \" + $(\"Mint read-only token\").first().json.body.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 1000
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "maxTries": 2,
+      "waitBetweenTries": 1000,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "2860eb92-b3e0-5979-8fa2-2c29d6830e4f",
+      "name": "Safe execution result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7030,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const r=$(\"Persist poll receipt\").first().json;return {poll_id:r.poll_id,started_at:r.started_at,finished_at:$now.toISO(),status:r.status,details:JSON.stringify({...JSON.parse(r.details),token_revoked:$json.statusCode===204,token_permissions:$(\"Mint read-only token\").first().json.body?.permissions||null})};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "f71606a3-3857-5fb9-b644-41a0c61b8a44",
+      "name": "Persist authentication completion",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        7220,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_polls_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "poll_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.poll_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "2a27a760-16f5-52f8-a73b-32e43a9894ad",
+      "name": "Loop one repository thread",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "position": [
+        7410,
+        0
+      ]
+    },
+    {
+      "id": "9187c202-dda3-574c-93e1-fa2fe881a620",
+      "name": "Read persisted thread snapshots",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_intake_threads_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "position": [
+        7600,
+        0
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "5505f320-84f1-5949-9f33-f28b5da7d428",
+      "name": "Timeline needs fresh read",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "timeline-needed",
+              "leftValue": "={{ $json.timeline_needed }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        7790,
+        0
+      ]
+    },
+    {
+      "id": "3c1279b4-9257-5e1c-8560-65b3bf698299",
+      "name": "Reuse unchanged timeline snapshot",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {complete:true,pages:[{statusCode:200,headers:{},body:$json.cached.timeline}]} }}",
+        "options": {}
+      },
+      "position": [
+        7980,
+        0
+      ]
+    },
+    {
+      "id": "21c61573-49cf-5ab2-bc76-401334e6558f",
+      "name": "Only PR needs separate reviews",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "is-pr",
+              "leftValue": "={{ $json.thread.kind === \"pull_request\" }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        8170,
+        0
+      ]
+    },
+    {
+      "id": "0cb088ea-e223-5a32-8d27-dfb26d5df647",
+      "name": "Reuse complete issue discussion pages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {complete:true,pages:[{statusCode:200,headers:{},body:$(\"List all discussion comments\").first().json.pages.flatMap(p=>p.body).filter(c=>c.issue_url===\"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$json.thread.number)}]} }}",
+        "options": {}
+      },
+      "position": [
+        8360,
+        0
+      ]
+    },
+    {
+      "id": "13c89876-d36d-58ee-a028-de4182141a3c",
+      "name": "Prepare one timeline GET",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$json.number+\"/timeline?per_page=100\",deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        8550,
+        0
+      ]
+    },
+    {
+      "id": "6e4f4452-1b7b-5376-83ee-01221659e931",
+      "name": "Prepare one review GET",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards\"+($json.thread.kind===\"pull_request\"?\"/pulls/\":\"/issues/\")+$json.thread.number+($json.thread.kind===\"pull_request\"?\"/reviews?per_page=100\":\"/comments?per_page=100\"),deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        8740,
+        0
+      ]
+    },
+    {
+      "id": "06bec8a4-c9d5-5095-b49c-84507dc4298f",
+      "name": "Prepare List all Issue and PR records",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/issues?state=all&sort=updated&direction=desc&per_page=100\",deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        8930,
+        0
+      ]
+    },
+    {
+      "id": "21501ea7-ea62-5c83-9ffa-a68d0834af00",
+      "name": "Prepare List all discussion comments",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/issues/comments?sort=updated&direction=desc&per_page=100\",deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        9120,
+        0
+      ]
+    },
+    {
+      "id": "353c10e9-b777-59cd-a1b1-e098b4632f07",
+      "name": "Prepare List all inline comments",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/pulls/comments?sort=updated&direction=desc&per_page=100\",deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        9310,
+        0
+      ]
+    },
+    {
+      "id": "e052b6b8-dc3e-53ed-b07b-0a9e69f660fa",
+      "name": "Prepare List all PR heads",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/pulls?state=all&sort=updated&direction=desc&per_page=100\",deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        9500,
+        0
+      ]
+    },
+    {
+      "id": "2be24056-fc0d-5ef5-ada9-c479cf558025",
+      "name": "Issue metadata missing from full list",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "missing",
+              "leftValue": "={{ $json.metadata_needed===true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        9690,
+        0
+      ]
+    },
+    {
+      "id": "3ae1a5ab-fc42-5c65-bf02-464bb3d61f8e",
+      "name": "Prepare missing Issue metadata GET",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {url:\"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$json.number,deadline:Date.parse($(\"Begin fixed repository poll\").first().json.started_at)+240000,token:$(\"Mint read-only token\").first().json.body.token} }}",
+        "options": {}
+      },
+      "position": [
+        9880,
+        0
+      ]
+    },
+    {
+      "id": "6c731cbc-92a4-55e8-aa8d-7f5ac7f91fdb",
+      "name": "Read missing Issue metadata",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            }
+          ]
+        },
+        "options": {
+          "proxy": "http://127.0.0.1:17891",
+          "timeout": "={{ Math.max(1,Math.min(20000,$json.deadline-Date.now())) }}",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "position": [
+        10070,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 500,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "110b9bbf-cea9-5fe9-909c-5006d66d4195",
+      "name": "Bind fresh complementary Issue metadata",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const t=$(\"Loop one repository thread\").item.json,i=$json.body,ok=$json.statusCode===200&&i?.number===t.number&&Number.isInteger(i.id)&&!i.pull_request&&Array.isArray(i.labels);return {...t,issue:ok?i:t.issue,metadata_complete:ok,timeline_needed:true};})() }}",
+        "options": {}
+      },
+      "position": [
+        10260,
+        0
+      ]
+    },
+    {
+      "id": "bd5a7365-777b-5d3d-885f-e43b87d3d229",
+      "name": "Reuse listed Issue or PR metadata",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {...$json,metadata_complete:true} }}",
+        "options": {}
+      },
+      "position": [
+        10450,
+        0
+      ]
+    },
+    {
+      "id": "856fd234-2b40-5a9e-8c1d-e1b4c5681b6b",
+      "name": "Select verified current thread",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json }}",
+        "options": {}
+      },
+      "position": [
+        10640,
+        0
+      ]
+    },
+    {
+      "id": "7e6b3178-36ad-5b37-a5cf-aabcbbf33d7a",
+      "name": "Current thread metadata complete",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "complete",
+              "leftValue": "={{ $json.metadata_complete===true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        10830,
+        0
+      ]
+    },
+    {
+      "id": "5bb44a54-6ee5-59cf-af00-13324e60416c",
+      "name": "Preserve incomplete complementary thread",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {thread:$json,timeline_pages:[{statusCode:null,body:null,headers:{},metadata_failed:true}],review_pages:[{statusCode:null,body:null,headers:{},metadata_failed:true}]} }}",
+        "options": {}
+      },
+      "position": [
+        11020,
+        0
+      ]
+    },
+    {
+      "id": "d9d241e2-227e-59fd-8dfb-3d29b6809853",
+      "name": "CI handoff after authentication completion",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        12000,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsIntakeCiHandoffV1",
+          "mode": "id"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "executeOnce": true,
+      "retryOnFail": false,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Every five minutes": {
+      "main": [
+        [
+          {
+            "node": "Begin fixed repository poll",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local read-only poll": {
+      "main": [
+        [
+          {
+            "node": "Begin fixed repository poll",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Begin fixed repository poll": {
+      "main": [
+        [
+          {
+            "node": "Ensure events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure events": {
+      "main": [
+        [
+          {
+            "node": "Ensure threads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure threads": {
+      "main": [
+        [
+          {
+            "node": "Ensure watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure watermark": {
+      "main": [
+        [
+          {
+            "node": "Ensure polls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure polls": {
+      "main": [
+        [
+          {
+            "node": "Read successful watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read successful watermark": {
+      "main": [
+        [
+          {
+            "node": "Read persisted thread snapshots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign read-only App request": {
+      "main": [
+        [
+          {
+            "node": "Mint read-only token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mint read-only token": {
+      "main": [
+        [
+          {
+            "node": "Verify installation repository",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify installation repository": {
+      "main": [
+        [
+          {
+            "node": "Exact read-only scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exact read-only scope": {
+      "main": [
+        [
+          {
+            "node": "Prepare List all Issue and PR records",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Failed poll preserves watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List all Issue and PR records": {
+      "main": [
+        [
+          {
+            "node": "Prepare List all discussion comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List all discussion comments": {
+      "main": [
+        [
+          {
+            "node": "Prepare List all inline comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List all inline comments": {
+      "main": [
+        [
+          {
+            "node": "Prepare List all PR heads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List all PR heads": {
+      "main": [
+        [
+          {
+            "node": "Validate lists and project thread targets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate lists and project thread targets": {
+      "main": [
+        [
+          {
+            "node": "All list pages complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All list pages complete": {
+      "main": [
+        [
+          {
+            "node": "Split thread targets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Failed poll preserves watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split thread targets": {
+      "main": [
+        [
+          {
+            "node": "Loop one repository thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read complete thread timeline": {
+      "main": [
+        [
+          {
+            "node": "Capture timeline with source thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture timeline with source thread": {
+      "main": [
+        [
+          {
+            "node": "Only PR needs separate reviews",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read reviews or issue discussion": {
+      "main": [
+        [
+          {
+            "node": "Capture review with source thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture review with source thread": {
+      "main": [
+        [
+          {
+            "node": "Loop one repository thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate all pages and prepare public records": {
+      "main": [
+        [
+          {
+            "node": "All thread pages complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "All thread pages complete": {
+      "main": [
+        [
+          {
+            "node": "Split thread snapshots",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Failed poll preserves watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split thread snapshots": {
+      "main": [
+        [
+          {
+            "node": "Persist current thread context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist current thread context": {
+      "main": [
+        [
+          {
+            "node": "Select stable event records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select stable event records": {
+      "main": [
+        [
+          {
+            "node": "Split stable event records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split stable event records": {
+      "main": [
+        [
+          {
+            "node": "Hash stable event revision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hash stable event revision": {
+      "main": [
+        [
+          {
+            "node": "Persist event revisions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist event revisions": {
+      "main": [
+        [
+          {
+            "node": "Prepare successful watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare successful watermark": {
+      "main": [
+        [
+          {
+            "node": "Commit complete watermark",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit complete watermark": {
+      "main": [
+        [
+          {
+            "node": "Successful poll receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Successful poll receipt": {
+      "main": [
+        [
+          {
+            "node": "Persist poll receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist poll receipt": {
+      "main": [
+        [
+          {
+            "node": "Revoke read-only token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke read-only token": {
+      "main": [
+        [
+          {
+            "node": "Safe execution result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Safe execution result": {
+      "main": [
+        [
+          {
+            "node": "Persist authentication completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Failed poll preserves watermark": {
+      "main": [
+        [
+          {
+            "node": "Persist poll receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read persisted thread snapshots": {
+      "main": [
+        [
+          {
+            "node": "Sign read-only App request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop one repository thread": {
+      "main": [
+        [
+          {
+            "node": "Validate all pages and prepare public records",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Issue metadata missing from full list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Timeline needs fresh read": {
+      "main": [
+        [
+          {
+            "node": "Prepare one timeline GET",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reuse unchanged timeline snapshot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reuse unchanged timeline snapshot": {
+      "main": [
+        [
+          {
+            "node": "Capture timeline with source thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare one timeline GET": {
+      "main": [
+        [
+          {
+            "node": "Read complete thread timeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only PR needs separate reviews": {
+      "main": [
+        [
+          {
+            "node": "Prepare one review GET",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reuse complete issue discussion pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reuse complete issue discussion pages": {
+      "main": [
+        [
+          {
+            "node": "Capture review with source thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare one review GET": {
+      "main": [
+        [
+          {
+            "node": "Read reviews or issue discussion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare List all Issue and PR records": {
+      "main": [
+        [
+          {
+            "node": "List all Issue and PR records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare List all discussion comments": {
+      "main": [
+        [
+          {
+            "node": "List all discussion comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare List all inline comments": {
+      "main": [
+        [
+          {
+            "node": "List all inline comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare List all PR heads": {
+      "main": [
+        [
+          {
+            "node": "List all PR heads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Issue metadata missing from full list": {
+      "main": [
+        [
+          {
+            "node": "Prepare missing Issue metadata GET",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reuse listed Issue or PR metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare missing Issue metadata GET": {
+      "main": [
+        [
+          {
+            "node": "Read missing Issue metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read missing Issue metadata": {
+      "main": [
+        [
+          {
+            "node": "Bind fresh complementary Issue metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bind fresh complementary Issue metadata": {
+      "main": [
+        [
+          {
+            "node": "Select verified current thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reuse listed Issue or PR metadata": {
+      "main": [
+        [
+          {
+            "node": "Select verified current thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select verified current thread": {
+      "main": [
+        [
+          {
+            "node": "Current thread metadata complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current thread metadata complete": {
+      "main": [
+        [
+          {
+            "node": "Timeline needs fresh read",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Preserve incomplete complementary thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve incomplete complementary thread": {
+      "main": [
+        [
+          {
+            "node": "Loop one repository thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist authentication completion": {
+      "main": [
+        [
+          {
+            "node": "CI handoff after authentication completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 300
+  },
+  "pinData": {},
+  "tags": []
+}

@@ -1,0 +1,111 @@
+{
+  "reviewed_at": "2026-10-22T17:33:44.185515+00:00",
+  "review_type": "Independent A-F structured facts plus semantic review; no model",
+  "fact_run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "agent_run_id": "f879dedc-7a00-464f-8e94-6b0b7d234353",
+  "checks": {
+    "run_id": true,
+    "day": true,
+    "window_start": true,
+    "window_end": true,
+    "generated_at": true,
+    "head_sha": true,
+    "actual_agent_run_id": true,
+    "six_sections": true,
+    "issue_29_title_url": true,
+    "issue_32_title_url": true,
+    "issue_31_title_url": true,
+    "issue_25_title_url": true,
+    "issue_21_title_url": true,
+    "issue_20_title_url": true,
+    "pr_33_title_url": true,
+    "pr_33_head_base": true,
+    "check_119950685976_name_conclusion": true,
+    "pr_26_title_url": true,
+    "pr_26_head_base": true,
+    "check_119966580036_name_conclusion": true,
+    "check_119778059245_name_conclusion": true,
+    "pr_30_title_url": true,
+    "pr_30_head_base": true,
+    "pr_28_title_url": true,
+    "pr_28_head_base": true,
+    "pr_27_title_url": true,
+    "pr_27_head_base": true,
+    "pr_22_title_url": true,
+    "pr_22_head_base": true,
+    "native_task_stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c82d4cca-6f6d-4ec4-a853-89378951f0e6": true,
+    "native_task_stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c3f32dd0-5e0e-4925-8e33-2d70bc374aa9": true,
+    "native_task_stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-ec2303cb-0fe4-4bc5-9f02-f154f4ac354c": true,
+    "native_task_pr-comments-batch-stepll2026-OntiCards-26-6339444121-onticards-review-v1": true,
+    "native_task_pr-comments-batch-stepll2026-OntiCards-26-1792669098526-6339805875": true,
+    "native_task_pr-comments-batch-stepll2026-OntiCards-26-1792672304792-6340804900": true,
+    "native_task_pr-comments-batch-stepll2026-OntiCards-26-1792674184541-6341426679": true,
+    "native_task_stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4": true,
+    "native_task_pr-comments-batch-stepll2026-OntiCards-26-1792679081994-6343155248": true,
+    "native_task_stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4-33961689798": true,
+    "native_task_pr-comments-batch-stepll2026-onticards-33-1792682247164-6344295962": true,
+    "native_task_pr-comments-batch-stepll2026-onticards-33-1792682585239-6344425689": true,
+    "native_task_pr-comments-batch-stepll2026-onticards-33-1792683788035-6344864667": true,
+    "no_old_preview_address": true,
+    "star_fork_baseline_unknown": true,
+    "current_and_window_distinguished": true,
+    "status_checks_distinguished": true,
+    "unknown_cost_retained": true
+  },
+  "structured_facts_passed": true,
+  "quality_passed": false,
+  "confirmed_counts": {
+    "new_issues": 4,
+    "closed_issue_events": 1,
+    "new_prs": 5,
+    "merged_prs": 0,
+    "open_issues": 6,
+    "open_prs": 6,
+    "commits": 2,
+    "ai_comments": 33,
+    "native_tasks": 13
+  },
+  "sections": {
+    "A": "pass: source identity, HEAD, Star/Fork and unknown baseline retained",
+    "B": "pass: all six currently open Issues have exact title/link and cautious triage",
+    "C": "fail: successful empty Check lists mislabeled as not obtained on PRs 30/28/27/22",
+    "D": "pass: status/Checks distinguished and all thirteen native task links and source-recorded states reproduced; native completion is explicitly not acceptance",
+    "E": "fail: unsupported historical SQL R18 item imported from global knowledge; twelve actual open items otherwise have actionable next steps",
+    "F": "pass: collection-time/nontransactional and unknown-baseline limitations explicit"
+  },
+  "reasons": [
+    {
+      "code": "out_of_window_global_knowledge_contamination",
+      "location": "E.9",
+      "evidence": "SQL R18 仍未解决（全局知识记录）",
+      "source_check": "R18 is absent from this exact facts JSON; formal summary prompt excludes global historical facts"
+    },
+    {
+      "code": "successful_empty_checks_mislabeled_unknown",
+      "location": "C PRs #30/#28/#27/#22",
+      "evidence": "Checks 未获取（空数组） / Checks 未获取",
+      "source_check": "Complete collector with errors=[] has check_runs=[] for each; correct meaning is 0 observed Checks, not failure to obtain them"
+    }
+  ],
+  "limits": [
+    "Original model report remains unchanged.",
+    "No fourth acceptance model run is permitted or invoked.",
+    "This review verifies reported source facts, not the product or the semantic correctness of prior native tasks.",
+    "Unverified global history must not be silently removed from this evidence record."
+  ],
+  "usage": [
+    {
+      "log_id": 21,
+      "model_name": "opencode-bailian/qwen3.8-max-0902",
+      "input_tokens": 10243,
+      "output_tokens": 4329,
+      "cache_read_input_tokens": 22912,
+      "cost_usd": null,
+      "duration_ms": 63803,
+      "success": 1
+    }
+  ],
+  "provider_cost_usd": null,
+  "report_sha256": "bffe18118e3f08728e38bb257ece0503e74eee830a1ea97750776ada23ace047",
+  "facts_sha256": "3a0793f6b6739e32f641e13015434973f434023738e0dcf32d4bf503fd7207ea"
+}

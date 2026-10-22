@@ -1,0 +1,109 @@
+{
+  "started_at": "2026-10-22T17:46:43.428665+00:00",
+  "passed": true,
+  "repository": "stepll2026/OntiCards",
+  "pr": 26,
+  "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+  "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "check_name": "OntiCards rootless product acceptance",
+  "external_id": "pr26-3105-rootless-r4-19aa3bbf395b323dc3869bd6",
+  "details_url": "http://10.66.66.5:18123/onticards-reports/acceptance/pr26-rootless-3105/",
+  "stage": "published_and_watched",
+  "tokens": [
+    {
+      "permissions": {
+        "pull_requests": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    },
+    {
+      "permissions": {
+        "checks": "write",
+        "metadata": "read"
+      },
+      "revoked": true
+    },
+    {
+      "permissions": {
+        "pull_requests": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    },
+    {
+      "permissions": {
+        "checks": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    },
+    {
+      "permissions": {
+        "pull_requests": "read",
+        "metadata": "read"
+      },
+      "revoked": true
+    }
+  ],
+  "ref_writes": 0,
+  "pr_body_writes": 0,
+  "merge_performed": false,
+  "model_calls": 0,
+  "before": {
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "head_ref": "codex/fix-pdf-current-main",
+    "draft": true,
+    "state": "open"
+  },
+  "check_id": 119988255661,
+  "initial_readback": {
+    "id": 119988255661,
+    "name": "OntiCards rootless product acceptance",
+    "external_id": "pr26-3105-rootless-r4-19aa3bbf395b323dc3869bd6",
+    "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "conclusion": "success",
+    "html_url": "https://github.com/stepll2026/OntiCards/runs/119988255661",
+    "details_url": "http://10.66.66.5:18123/onticards-reports/acceptance/pr26-rootless-3105/"
+  },
+  "after": {
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "head_ref": "codex/fix-pdf-current-main",
+    "draft": true,
+    "state": "open"
+  },
+  "native_registration": {
+    "registration_key": "pr26:check119988255661",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "check_id": "119988255661",
+    "check_name": "OntiCards rootless product acceptance",
+    "external_id": "pr26-3105-rootless-r4-19aa3bbf395b323dc3869bd6",
+    "state": "watching",
+    "detail": "{\"checked_at\":\"2026-10-22T17:47:28.787Z\",\"revision\":{\"current\":true,\"observed_head\":\"3105b7b61469c6b2945357f2eefa8fcb2e3aaee5\",\"observed_base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"reason\":\"exact_current_revision\",\"checked_at\":\"2026-10-22T17:47:19.638Z\"},\"bound\":true,\"observed_conclusion\":\"success\",\"update_result\":\"not_required\",\"update_http_status\":null,\"update_error_category\":null,\"update_error_fields\":[],\"readback_http_status\":null,\"token_revoked\":true,\"checks_write_only_in_this_action\":true,\"model_calls\":0,\"test_runs\":0}",
+    "id": 3,
+    "createdAt": "2026-10-22T17:47:28.857Z",
+    "updatedAt": "2026-10-22T17:47:28.857Z"
+  },
+  "native_registration_http": 200,
+  "independent_readback": {
+    "id": 119988255661,
+    "name": "OntiCards rootless product acceptance",
+    "external_id": "pr26-3105-rootless-r4-19aa3bbf395b323dc3869bd6",
+    "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "conclusion": "success",
+    "html_url": "https://github.com/stepll2026/OntiCards/runs/119988255661",
+    "details_url": "http://10.66.66.5:18123/onticards-reports/acceptance/pr26-rootless-3105/"
+  },
+  "final_revision": {
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "head_ref": "codex/fix-pdf-current-main",
+    "draft": true,
+    "state": "open"
+  },
+  "completed_at": "2026-10-22T17:47:40.967868+00:00"
+}

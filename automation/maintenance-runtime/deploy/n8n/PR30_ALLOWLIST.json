@@ -1,0 +1,1261 @@
+{
+  "status": "candidate_for_root_review_not_committed",
+  "paths": [
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_delivery_allowlist.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_polling.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_bounded_get.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_repository_context.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_drafts.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_semantic_review.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_publication.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\native_response_audit.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_intake_ci_handoff.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_event_replay.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\triage-issue29-v1.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly-serial.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\bounded-get.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\repository-context.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-drafts.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-semantic-review.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-publication.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\intake-ci-handoff.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly-ci.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-compose.yml",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\manage_ordinary_conversation_pipeline.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_intake_completeness.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_source_cache_loop.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_identity_gates.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_ordinary_pipeline.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_persistent_polling.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_issue29_final.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\read_execution_errors_safe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\install_intake_ci_handoff.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_intake_ci_handoff.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_native_command_route.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\RUNBOOK-current.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-publication-review.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-final-pair-recovery-review.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\capture_native_slash_formatter.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_conversation_budget_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_conversation_budget_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\conversation-budget-probe-provenance.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_semantic_native_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_semantic_native_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_publication_native_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_publication_native_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_policy_boundary_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_policy_boundary_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_bounded_get_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_bounded_get_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_serial_loop_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_serial_loop_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_source_cache_loop_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_source_cache_loop_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_issue29_final_recovery.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_issue29_recovery_guard_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_issue29_recovery_guard_probe.py",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_source_relevance.mjs",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_source_identity.mjs",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_metadata_quotes.mjs",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_persistent_expressions.mjs",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue31-manual-resume.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-final-recovery.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-initial-draft.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-followup-reviewed.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-persistent-final-followup.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-persistent-final-followup-boundary.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n-preview-ci\\intake-admission.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n-preview-ci\\intake-receiver.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\knowledge-main-refresh-independent.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\knowledge-pdf-source-independent.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\issue-triage-reuse.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\native-semantic-review-reuse.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\intake-ci-handoff-reuse.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\native-slash-routing-reuse.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-initial-source-snapshot.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-followup-source-snapshot.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-runtime-before-loop-fix.workflow.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-source-snapshot.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-draft-response.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-fixture-input.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-mcp-slash-body-fixture.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\conversation-budget-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\semantic-native-budget6-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\publication-native-ai-gate-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\policy-boundary-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\bounded-get-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\persistent-expression-validation.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-completeness-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-cache-loop-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-expression-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-identity-expression-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\metadata-quote-expression-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-guard-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-guard-native-red.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\delivery-layout-smoke.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-lifecycle-ci-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-concurrency-native-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-slash-routing-probe.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-staged.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-enabled.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-runtime.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-intake-completeness-red.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-completeness-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-cache-loop-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\knowledge-main-refresh-native-red.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment-before-empty-file.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-native-rejected.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-original-draft.md",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-original-review.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-review-diagnostics.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\identity-gates-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment-final.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-dispatch.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-sealed.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-result.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-original-response.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-source-snapshot.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-native-attempt.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-runtime-final.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-handoff-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-fanout-fix-deployment.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-dispatch-enabled.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-old-published-version-red.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-fixture-startup-red.json",
+    "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-slash-routing-deployment.json"
+  ],
+  "files": [
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_delivery_allowlist.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_delivery_allowlist.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_delivery_allowlist.py",
+      "reason": "current workflow generator",
+      "sha256": "ca6bb0974fb6bccee46c97f628f9062bab8b9f61806ea0dce77ded20f3ab42a3",
+      "bytes": 7716,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_persistent_polling.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_polling.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_persistent_polling.py",
+      "reason": "current workflow generator",
+      "sha256": "c63e064bdbc8ab8797af926ebd687a197809806d9965e62830a7f94ac345196c",
+      "bytes": 17226,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_bounded_get.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_bounded_get.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_bounded_get.py",
+      "reason": "current workflow generator",
+      "sha256": "80ebfcf86e92879aecf2430ec11e58f6c662bc70e71dbef52da66c82914efb73",
+      "bytes": 18109,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_repository_context.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_repository_context.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_repository_context.py",
+      "reason": "current workflow generator",
+      "sha256": "59a5da71e90937c93a2b5948ca85b83bb7a5227733b1fbbf7f62a586a5c69cef",
+      "bytes": 16636,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_persistent_drafts.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_drafts.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_persistent_drafts.py",
+      "reason": "current workflow generator",
+      "sha256": "2316a7b2587596fd2ca46adee5c1cf780e9c421083e9a45b4cfd46aec118fb1d",
+      "bytes": 26101,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_semantic_review.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_semantic_review.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_semantic_review.py",
+      "reason": "current workflow generator",
+      "sha256": "d565be6c705165cf30900067152452a916d93ffe695e0ab19eb6684eb4750173",
+      "bytes": 16795,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_persistent_publication.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_persistent_publication.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_persistent_publication.py",
+      "reason": "current workflow generator",
+      "sha256": "041f765e7ba26078ae706a2857ff7243c8d31c4c7682506d80ccbb15057e5c18",
+      "bytes": 21337,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/native_response_audit.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\native_response_audit.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/native_response_audit.py",
+      "reason": "current workflow generator",
+      "sha256": "3491a49b668b4b1e49385567e56ef6408612a1990f0f18da84eba3b8f12543e4",
+      "bytes": 2275,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_intake_ci_handoff.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_intake_ci_handoff.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_intake_ci_handoff.py",
+      "reason": "current workflow generator",
+      "sha256": "38cd52fe28bdb57358feb28591fc49b00c77670d63be2d4845bd5c2116957e5e",
+      "bytes": 6474,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_event_replay.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_event_replay.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_event_replay.py",
+      "reason": "compile-time reused node template, not a deployment entry",
+      "sha256": "90866495d6e471bc50d11a198f73c409b2ff7cc89a99a393de2dbfb1e4508c43",
+      "bytes": 21024,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/triage-issue29-v1.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\triage-issue29-v1.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/triage-issue29-v1.workflow.json",
+      "reason": "compile-time reused node template, not a deployment entry",
+      "sha256": "786e3fdf80faaa7f2247bde88546d9877bb0adff4f36ced6f7db6b0b1a95c766",
+      "bytes": 34732,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-readonly.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-readonly.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "d13a028c59b8d45e72a0973f207b2beff5493d2846b7a2799b6744925f3b1f02",
+      "bytes": 55723,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-readonly-serial.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly-serial.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-readonly-serial.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "191cee8165e53ee1449daf5cc909adae91a58cc9359835d6bc3d025d45e27e69",
+      "bytes": 65687,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/bounded-get.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\bounded-get.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/bounded-get.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "4aa7ef424a810f7adaedfa440b7b247df0cfdcb71f3b0249417c53c946ace202",
+      "bytes": 4747,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/repository-context.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\repository-context.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/repository-context.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "29595c00cb8d5edde937dc9d7075749b922fb0b81c08079e2324d55cb3563762",
+      "bytes": 48262,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-drafts.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-drafts.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-drafts.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "a851387b6d008d8899015ff8a5ceb61960ccd49a6916b3b8574a2ca5c0e22791",
+      "bytes": 72081,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-semantic-review.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-semantic-review.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-semantic-review.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "aa94c2b4aa6e97edca72d6759838bd9abe824733c7e178620277f2878a92faf4",
+      "bytes": 44300,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-publication.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-publication.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-publication.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "acde4eff542a2a1e210e09a943383a33a73c6fef3ef509298ccd9a0aef1f73b6",
+      "bytes": 67504,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/intake-ci-handoff.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\intake-ci-handoff.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/intake-ci-handoff.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "c158dd8574656a96089725d3d212a1c8b02bc0181aad9dd3803d0be718685735",
+      "bytes": 9775,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-readonly-ci.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-readonly-ci.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-readonly-ci.workflow.json",
+      "reason": "current workflow template; exports disabled by default",
+      "sha256": "9c7c5437dc0d8d6d9f011b85ac9ace07401dfdcd9eee13ee213a40d15a36ec23",
+      "bytes": 66560,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-compose.yml",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-compose.yml",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-compose.yml",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "638391dd1b64bfc825be6cc6d1e9935dccb9e8b320019e2df426593456b49725",
+      "bytes": 1616,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/manage_ordinary_conversation_pipeline.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\manage_ordinary_conversation_pipeline.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/manage_ordinary_conversation_pipeline.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "c1dae44019d9ff7463b57a6179d105ba3683f9ecc29d373fbb364d203f04b5db",
+      "bytes": 6126,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/update_intake_completeness.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_intake_completeness.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/update_intake_completeness.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "0b5c18368ecaead111a14e6f50426ed7a4683e16538e55fb1601bdc1819ae195",
+      "bytes": 2798,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/update_source_cache_loop.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_source_cache_loop.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/update_source_cache_loop.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "eeb784a8c21151aef56720bf88bf68e80c132dee16dcdf99199c1e7d0eb91f1b",
+      "bytes": 2802,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/update_identity_gates.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_identity_gates.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/update_identity_gates.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "c5193e745d69faee1dd7c0fa181cec6639e2f4f609f707bc43ae075f527f7758",
+      "bytes": 3181,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/snapshot_ordinary_pipeline.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_ordinary_pipeline.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/snapshot_ordinary_pipeline.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "f3f3c7a0b0beeb75ce8010fd66b7ea528da0fcf2953cbedd55cacbcfa65a9b20",
+      "bytes": 2949,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/snapshot_persistent_polling.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_persistent_polling.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/snapshot_persistent_polling.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "47d38dceeae23a3a48757bbda41b3be3f062b09e045c4f0c0f2ee1618949459c",
+      "bytes": 2844,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/snapshot_issue29_final.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\snapshot_issue29_final.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/snapshot_issue29_final.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "5e7948a0ddd48205312451081e21c93cc6c4977c4b15705cc8e299fab22029a7",
+      "bytes": 2881,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/read_execution_errors_safe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\read_execution_errors_safe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/read_execution_errors_safe.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "a1d7a96492333776d9ef49a6ddf2eaa35a60e4dc048d451f64e1ba92d3889c97",
+      "bytes": 1618,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/install_intake_ci_handoff.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\install_intake_ci_handoff.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/install_intake_ci_handoff.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "a6a69588fb8af1562cef50c1e7c17603a2c944c92332aff887962063478c6074",
+      "bytes": 4366,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/update_intake_ci_handoff.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_intake_ci_handoff.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/update_intake_ci_handoff.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "98da3db50cc8e2ffd5c9f7c214646f5f7e163b06a9c9d94976610c88214a88cd",
+      "bytes": 3345,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/update_native_command_route.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\update_native_command_route.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/update_native_command_route.py",
+      "reason": "deployment configuration and native update/readonly diagnostics",
+      "sha256": "f06e4dacf32656485a211efafad26ae9064c7d29f73d17c2dca6ba7356c8bbc8",
+      "bytes": 3792,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/RUNBOOK-current.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\RUNBOOK-current.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/RUNBOOK-current.md",
+      "reason": "limited operational and review documentation",
+      "sha256": "6fafbffa2a1aa93da4716bf62ff3446eea40ead64931c83e8e56a467ffd83e48",
+      "bytes": 12012,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/persistent-publication-review.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\persistent-publication-review.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/persistent-publication-review.md",
+      "reason": "limited operational and review documentation",
+      "sha256": "70b6e7885d373dc6ce45b3a973acfb60879ab087ce095a8c5096dc1349c69294",
+      "bytes": 10317,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-final-pair-recovery-review.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-final-pair-recovery-review.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-final-pair-recovery-review.md",
+      "reason": "limited operational and review documentation",
+      "sha256": "c35a65e509eeab7edcf22e5ffce07ef72c5e954246ab3cf7023ce77bf51feb3a",
+      "bytes": 4909,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/capture_native_slash_formatter.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\capture_native_slash_formatter.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/capture_native_slash_formatter.py",
+      "reason": "current native behavior verification",
+      "sha256": "d444abff5fe123a63bb1bdb71ab79a87963c85466ff772406ad7665711a5e467",
+      "bytes": 3008,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_conversation_budget_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_conversation_budget_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_conversation_budget_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "3aaeebf0690a1302387324d612991b6319284b7fedc244386e91b5d0b0cae77f",
+      "bytes": 11976,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_conversation_budget_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_conversation_budget_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_conversation_budget_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "4aadd1507660926fd27e8dee71dde8e0c8507c28917ca51cb2ce906e0155cc6d",
+      "bytes": 10620,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/conversation-budget-probe-provenance.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\conversation-budget-probe-provenance.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/conversation-budget-probe-provenance.json",
+      "reason": "current native behavior verification",
+      "sha256": "e27dfa36328c3a79044ee1cb0280069b072beb80723a7dfbac12adf9850c1305",
+      "bytes": 642,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_semantic_native_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_semantic_native_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_semantic_native_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "30c839f401592afa7f8ad7437f9668ac996c294053ab1452e03ad77825b8bef0",
+      "bytes": 10844,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_semantic_native_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_semantic_native_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_semantic_native_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "7ad3fb02a8ba39c4902800aaeb00b8ec127521919cdd11eafe96457f80e6f9e4",
+      "bytes": 5249,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_publication_native_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_publication_native_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_publication_native_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "d2d0c02944092c9c968cce5362f0c3cfce703fbbce39fe5b1f48dce2326b8002",
+      "bytes": 11962,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_publication_native_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_publication_native_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_publication_native_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "fc5aea18e42f4692481266d528e9e343857b4d05555b2e55e7e23618e09ef125",
+      "bytes": 4508,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_policy_boundary_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_policy_boundary_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_policy_boundary_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "609797a8fc290d30b6f9f67d0943ac43b4661fce045778f2322764b3d376a74e",
+      "bytes": 5713,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_policy_boundary_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_policy_boundary_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_policy_boundary_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "ccde676455c6d9b59655ffc9046f8d84c154092ffdbc70b48b93e55668fcbbe4",
+      "bytes": 3402,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_bounded_get_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_bounded_get_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_bounded_get_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "35d3d750b0c17ff76099757757a830aad72e6145736434d70a3191d6d7ebb5f3",
+      "bytes": 4005,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_bounded_get_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_bounded_get_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_bounded_get_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "22cc8caa3aa3ca6d84686c2747004465daf58873a38ea23bc302b519b02ec072",
+      "bytes": 3418,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_serial_loop_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_serial_loop_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_serial_loop_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "e9614dfe74a8f05f91bf6f98b7525000d87f6f4a4eaa33de037624400b226471",
+      "bytes": 21111,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_serial_loop_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_serial_loop_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_serial_loop_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "dc1362517a7296433cc5babdae92a4cbf870a3a279b84d1c80420eefc8b768d7",
+      "bytes": 8338,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_source_cache_loop_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_source_cache_loop_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_source_cache_loop_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "25f3d547cdae7d71eaec7e4de101378d065db1f40a649458d09c9d25668a791d",
+      "bytes": 4339,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_source_cache_loop_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_source_cache_loop_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_source_cache_loop_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "c3b5f6b85a656dec617318f06f182a0637bb7108f55cb193d27553d10727c9f2",
+      "bytes": 2543,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_issue29_final_recovery.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_issue29_final_recovery.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_issue29_final_recovery.py",
+      "reason": "current native behavior verification",
+      "sha256": "541f5f52235d99bb8bd790e4596088a7934a3aba4128b2a33834175940ecf9fc",
+      "bytes": 12985,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/build_issue29_recovery_guard_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\build_issue29_recovery_guard_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/build_issue29_recovery_guard_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "809f3945087f8a76e51272d8d670efb808dd81af54e071a08a14ba6608220460",
+      "bytes": 5154,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/run_issue29_recovery_guard_probe.py",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\run_issue29_recovery_guard_probe.py",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/run_issue29_recovery_guard_probe.py",
+      "reason": "current native behavior verification",
+      "sha256": "af32766c651f2e1544923d38673aaf9607a3fb0ee5750210110da69efd97a6e6",
+      "bytes": 2639,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/validate_source_relevance.mjs",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_source_relevance.mjs",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/validate_source_relevance.mjs",
+      "reason": "current native behavior verification",
+      "sha256": "315baa9be2d2fef7a93f0996095ef6434e762680bd1bcb09cea54db269925354",
+      "bytes": 5742,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/validate_source_identity.mjs",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_source_identity.mjs",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/validate_source_identity.mjs",
+      "reason": "current native behavior verification",
+      "sha256": "d9483b86e27a35732dc99024048bdfa5c9d74c75906cf983a737248d36de2a96",
+      "bytes": 3011,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/validate_metadata_quotes.mjs",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_metadata_quotes.mjs",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/validate_metadata_quotes.mjs",
+      "reason": "current native behavior verification",
+      "sha256": "4ba274d8474b37ce0b0c85e2ecb05f3d4a9a64d1982c643f28c8b6e16b93bfa4",
+      "bytes": 3142,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/validate_persistent_expressions.mjs",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\validate_persistent_expressions.mjs",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/validate_persistent_expressions.mjs",
+      "reason": "current native behavior verification",
+      "sha256": "2f9de92d1acd8bd4a9e3145eca0c23c67a26aec6c268303e5389695fe16d929d",
+      "bytes": 1762,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue31-manual-resume.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue31-manual-resume.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue31-manual-resume.workflow.json",
+      "reason": "sealed inactive workflow, parse-only validator dependency; never reactivate",
+      "sha256": "a3d1b18049f8002e98f11a5313c43744dc2dc439176dc626850af8331bf15f0c",
+      "bytes": 44366,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-final-recovery.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-final-recovery.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "reason": "sealed inactive workflow, parse-only validator dependency; never reactivate",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35",
+      "bytes": 53501,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-initial-draft.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-initial-draft.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-initial-draft.md",
+      "reason": "frozen historical published text used by semantic compatibility test",
+      "sha256": "7420b34c4c4af80d9cfc774961564e8ab1173af489a04810f9cbb3d9a33c9707",
+      "bytes": 1579,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-followup-reviewed.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-followup-reviewed.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-followup-reviewed.md",
+      "reason": "frozen historical published text used by semantic compatibility test",
+      "sha256": "84b7403cd0bbbd6ac8c2cc2aae5bd4c9fca9f9ea2c56ace8d835c6fdf0c374b3",
+      "bytes": 2704,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-persistent-final-followup.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-persistent-final-followup.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-persistent-final-followup.md",
+      "reason": "explicit real-human acceptance input and expected boundary",
+      "sha256": "82c2a1ebeb55c2408ce71ee562ea6b6e5fcf3475c06f1f8b880f3314032b6219",
+      "bytes": 1547,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n/issue29-persistent-final-followup-boundary.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n\\issue29-persistent-final-followup-boundary.md",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n/issue29-persistent-final-followup-boundary.md",
+      "reason": "explicit real-human acceptance input and expected boundary",
+      "sha256": "ab3c5d293e1314143c0c483ac327c8cff29dc1f92a5d3eb67eb5123395cd52fb",
+      "bytes": 2011,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n-preview-ci/intake-admission.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n-preview-ci\\intake-admission.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n-preview-ci/intake-admission.workflow.json",
+      "reason": "compile-time actual receiver/admission node dependencies, shared with CI allowlist",
+      "sha256": "ef7b82124abf3a2073c74293eca8923695153e172d4871924fa6408c8c139f78",
+      "bytes": 24838,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/deploy/n8n-preview-ci/intake-receiver.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\deploy\\n8n-preview-ci\\intake-receiver.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/deploy/n8n-preview-ci/intake-receiver.workflow.json",
+      "reason": "compile-time actual receiver/admission node dependencies, shared with CI allowlist",
+      "sha256": "2fe34fcc1c2a7692ffdbaedfb2c1ca5a9d9cd216ad4f56895b7e5ddb271b9177",
+      "bytes": 9445,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/knowledge-main-refresh-independent.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\knowledge-main-refresh-independent.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/knowledge-main-refresh-independent.json",
+      "reason": "independent actual source coverage receipts",
+      "sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41",
+      "bytes": 22569,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/knowledge-pdf-source-independent.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\knowledge-pdf-source-independent.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/knowledge-pdf-source-independent.json",
+      "reason": "independent actual source coverage receipts",
+      "sha256": "270adeb49f7a1d79c51ed42124c0078483d014ceb3c3c67b6e3b99bb797d549a",
+      "bytes": 612,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/research/issue-triage-reuse.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\issue-triage-reuse.md",
+      "suggested_repo_path": "automation/maintenance-runtime/research/issue-triage-reuse.md",
+      "reason": "reuse rationale and native source boundaries",
+      "sha256": "f70aa79924cc59cf859ec446f3f402e41c30f1890634f26dd96484cbc705ce92",
+      "bytes": 12529,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/research/native-semantic-review-reuse.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\native-semantic-review-reuse.md",
+      "suggested_repo_path": "automation/maintenance-runtime/research/native-semantic-review-reuse.md",
+      "reason": "reuse rationale and native source boundaries",
+      "sha256": "d144f50db6882c1cd06ee16b7339a8431f70d6285857b715c148ed8074df01b4",
+      "bytes": 11610,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/research/intake-ci-handoff-reuse.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\intake-ci-handoff-reuse.md",
+      "suggested_repo_path": "automation/maintenance-runtime/research/intake-ci-handoff-reuse.md",
+      "reason": "reuse rationale and native source boundaries",
+      "sha256": "6ced4914f12448754f226527bbd3e1c67b7e53651b051d57bfcd160f5892d185",
+      "bytes": 3716,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/research/native-slash-routing-reuse.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\research\\native-slash-routing-reuse.md",
+      "suggested_repo_path": "automation/maintenance-runtime/research/native-slash-routing-reuse.md",
+      "reason": "reuse rationale and native source boundaries",
+      "sha256": "4b859a3f2fab22abe3429fe3271dc4393c2dd3a5e0b2fc4f96d1f5a387f8e635",
+      "bytes": 2363,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-initial-source-snapshot.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-initial-source-snapshot.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-initial-source-snapshot.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "6095fe7b503665acb1b3bed430a74337fb66f88cb510814b32df2cf4d99c5324",
+      "bytes": 12838,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-followup-source-snapshot.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-followup-source-snapshot.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-followup-source-snapshot.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "f4edf5a751e5bd9b79c7bfbce6ea211a0ba010db50158d37dfec2a4d5a5c26b4",
+      "bytes": 19475,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-runtime-before-loop-fix.workflow.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-runtime-before-loop-fix.workflow.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-runtime-before-loop-fix.workflow.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "466c9b93ae8d19e6386402b7c1de0fd10d9468bc28ac768ad19b61b3e87d69d7",
+      "bytes": 45076,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-source-snapshot.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-source-snapshot.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-source-snapshot.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "2405a60afc18032437e094d6cd9ce06480b6823bd9a93d1a5b299863b0959c58",
+      "bytes": 125713,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-draft-response.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-draft-response.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-draft-response.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "96ef4c8e2ad6bcd8d322ec0eacfe8e02fe3e70628abfab36c6115404a4c3de2a",
+      "bytes": 3839,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-recovery-fixture-input.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-fixture-input.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-recovery-fixture-input.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "fdf06a4f62d946e7de8b25eedd3d8d6c1fafabdc5249c376af078a7d7f23e3c0",
+      "bytes": 153754,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/native-mcp-slash-body-fixture.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-mcp-slash-body-fixture.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/native-mcp-slash-body-fixture.json",
+      "reason": "bounded public-source compile/test dependency; not execution data or credentials",
+      "sha256": "a29b8f98087b3656937957ad70fb339325c17a66d1ce1607ca74c9d5f241eced",
+      "bytes": 1290,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/conversation-budget-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\conversation-budget-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/conversation-budget-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "9bb0978753854d8d32499de136046283e4f1c2917d859ff684ee79ba9a12f0e6",
+      "bytes": 7265,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/semantic-native-budget6-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\semantic-native-budget6-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/semantic-native-budget6-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "74991f0a5d4e3a0225352640950602ed07c17cee563e0c6ba810276655fc6850",
+      "bytes": 7912,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/publication-native-ai-gate-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\publication-native-ai-gate-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/publication-native-ai-gate-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "b8fb96149093d9fad68c36da40f8f580896f8f1a481ed1ea3f22047965840cf1",
+      "bytes": 12771,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/policy-boundary-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\policy-boundary-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/policy-boundary-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "1b263c576d7e716c7203e495a2c506cd81293fb90490d27074a8566257cb77ff",
+      "bytes": 19674,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/bounded-get-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\bounded-get-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/bounded-get-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "40c44cd8eaa85095c218d34139f82e501bfb6109deb19fec4bbb94473884978d",
+      "bytes": 1494,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/persistent-expression-validation.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\persistent-expression-validation.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/persistent-expression-validation.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "f7a370afd671e6b26339c77b553fa5a0d0e6248ace872f972df707006333be3a",
+      "bytes": 147,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-completeness-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-completeness-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-completeness-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "397680a9c718fa6ff996887e2aa03bd41ff56255b5e7ea29ac4ce2ae4219b6ce",
+      "bytes": 9469,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-cache-loop-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-cache-loop-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-cache-loop-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "43884ec1d0fb80932b40cb9fca189d0001ca725047f63d8efed4f559810041d8",
+      "bytes": 2321,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-relevance-expression-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-expression-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-relevance-expression-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "338c237649f146de6eededeb1f801f5f9ce780583d39faf665675f8625aa0ff0",
+      "bytes": 961,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-identity-expression-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-identity-expression-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-identity-expression-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "16400a17905703fe431f2e881f201bfb636a0e79123c0d44179ccb0b9e7edaab",
+      "bytes": 721,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/metadata-quote-expression-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\metadata-quote-expression-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/metadata-quote-expression-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "0ac53324b951293d765073618a756d0dc95c2eb7b459a19ce1eaa6851db0038a",
+      "bytes": 748,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-recovery-guard-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-guard-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-recovery-guard-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "d6bb54bdc95b92ee608883047f513b7a5e8dfa03adf801cc066255fec457a5ff",
+      "bytes": 6363,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-recovery-guard-native-red.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-recovery-guard-native-red.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-recovery-guard-native-red.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "7b4e9ca0b68755efa45626ef125d55528218169319c14e282670504132236789",
+      "bytes": 11169,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/delivery-layout-smoke.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\delivery-layout-smoke.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/delivery-layout-smoke.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "a2ad83ffe5c68df088039d3fe5e8e4342e6aacce896a76a9d6b7ad4e650823e6",
+      "bytes": 7468,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-lifecycle-ci-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-lifecycle-ci-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-lifecycle-ci-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "9f0527391ba2d07d554d2f4b4eb365397d02796672b86ba72879c8a456487da3",
+      "bytes": 29758,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/ordinary-concurrency-native-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-concurrency-native-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/ordinary-concurrency-native-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "5142e2aae80416da9bdb7328908b8b55ea0991d29e4e382836164067e6ba11df",
+      "bytes": 6574,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/native-slash-routing-probe.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-slash-routing-probe.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/native-slash-routing-probe.json",
+      "reason": "verified bounded native test receipt",
+      "sha256": "6807f5a61e4c9bf06e009d2fcd95c7d6282804e5cbccc2b8abfba5aa0ca4c60e",
+      "bytes": 9233,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/ordinary-pipeline-staged.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-staged.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-staged.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "68756dfa2d6cdc29ef75bbb238afec3e4c17f1c17480dd1798bc50e887d4ee72",
+      "bytes": 2710,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/ordinary-pipeline-enabled.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-enabled.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-enabled.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "0cfeb957035bd2686ecd0d77d2dc2660b8029be6fdf00286335431e567747a6b",
+      "bytes": 2701,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/ordinary-pipeline-runtime.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-runtime.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-runtime.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "a0dc4dc53afb71b7c77dd0d0c3077fca1d5864cd73879142e016d50b5eba74f9",
+      "bytes": 6968,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-intake-completeness-red.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-intake-completeness-red.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-intake-completeness-red.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "fd7a357ff29c79c54ec81d8ca21c8d92fcf8868209b10f14e0004c6eb8c9994a",
+      "bytes": 1591,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-completeness-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-completeness-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-completeness-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "0cc1ea8e9d890592588b3d6e0b5a08dd1b3c269feaf8a550e0d4ac9f73ef1ac3",
+      "bytes": 564,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-cache-loop-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-cache-loop-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-cache-loop-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "9dbece6088bd0f16d6da679d1833196aa8909103e2038c48732d4f5150dabc9d",
+      "bytes": 551,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-relevance-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-relevance-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "c21dacaa28633a2001dd6ec9094859e4ddfc5c5d532dd1d0c5dc31da9024bb60",
+      "bytes": 551,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/knowledge-main-refresh-native-red.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\knowledge-main-refresh-native-red.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/knowledge-main-refresh-native-red.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "1c2d53f6916a9d4d2990f44a512cddaa873b4cf4c708b7c3b49d33764e7d350f",
+      "bytes": 12927,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-relevance-deployment-before-empty-file.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment-before-empty-file.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-relevance-deployment-before-empty-file.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "ca832c4429914c5712c8fb4de170ee41d4db2458410d312dbe8ab89acedeceb2",
+      "bytes": 551,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-native-rejected.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-native-rejected.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-native-rejected.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "a1a3236bf456f68b675642a7bc9369fe56450fe8e3b9d8f2d11612338d1ec2a3",
+      "bytes": 1433,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-original-draft.md",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-original-draft.md",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-original-draft.md",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "a2d226989f0678141ad10935f894b957b8e5b4ed031f9c5a121726d1338fda81",
+      "bytes": 4288,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-original-review.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-original-review.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-original-review.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "e85d25121270110a164f2e4649fe3b353425aa350b66b3ce9a4ee4c81ac7ac26",
+      "bytes": 6851,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-review-diagnostics.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-review-diagnostics.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-review-diagnostics.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "eb9e58b2660361aab053a2a7bc69584b99b3a57ee4ee13a7fcb815dd7490bb97",
+      "bytes": 2312,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/identity-gates-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\identity-gates-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/identity-gates-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "bae256c1a1d463fa0dfb99e3040906a9262b18c3552646f9c2a471b0d481a404",
+      "bytes": 1226,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/source-relevance-deployment-final.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\source-relevance-deployment-final.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/source-relevance-deployment-final.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "fb0ef873f3211516b04e38b954b7de407def7bb4caa3a8c42b1e3cdccfff44e7",
+      "bytes": 551,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-dispatch.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-dispatch.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-dispatch.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "4bc0c0987a0bc50d270e18d309a4b5a64465487e8a133e932b2d8c31ad50dfd2",
+      "bytes": 865,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-sealed.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-sealed.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-sealed.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "bd12cce168287d8d2cbaa20e7ecc45b125fcec4ddc86144382715ef8a9dcf2d2",
+      "bytes": 863,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-result.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-result.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-result.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "bab35aeb4d51cc86dd107abdc1e6535dfd3d56a36bf800f3c9df3a8ae15f7f66",
+      "bytes": 1565,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-original-response.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-original-response.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-original-response.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "2b6179e55cd0a17744807ec89a5aacfd254f5bb06a72f0a237a35188dda262eb",
+      "bytes": 3052,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-source-snapshot.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-source-snapshot.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-source-snapshot.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "7897dfa32cf1c8cdf45fa18e0e69f2cdf1f964ff787231449dc21190ebd54eb8",
+      "bytes": 126189,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/issue29-final-recovery-native-attempt.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\issue29-final-recovery-native-attempt.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-native-attempt.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "a7ac741e2ea6f9ab65ce6ad7900140a0f79691f7c2d195b9414d50e390e5da1d",
+      "bytes": 606,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/ordinary-pipeline-runtime-final.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\ordinary-pipeline-runtime-final.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-runtime-final.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "63c14af37d461db35a4007d504d0f11026061fd29d72e50db228248e75748d53",
+      "bytes": 8287,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-ci-handoff-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-handoff-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-ci-handoff-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "81bf50a88b6b5f1b1d5b012c7aea8771ee58233ee2633a10780c7d79b8ec38b8",
+      "bytes": 843,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-ci-fanout-fix-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-fanout-fix-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-ci-fanout-fix-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "cfe15505267b1e9541e57ebca8f1d3c2870410e161da1ab0118314d816dc9457",
+      "bytes": 1266,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-ci-dispatch-enabled.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-dispatch-enabled.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-ci-dispatch-enabled.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "6ce6dce857fa87ae7f79efe034d1ae6077c082c3a333af087300cf833da2f7b9",
+      "bytes": 1292,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-ci-old-published-version-red.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-old-published-version-red.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-ci-old-published-version-red.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "ff904aa49186a2587f74ecf99c6c21346fd1822668286ebaa4d83d593dcdb90f",
+      "bytes": 26323,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/intake-ci-fixture-startup-red.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\intake-ci-fixture-startup-red.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/intake-ci-fixture-startup-red.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "c618a317da671a409f9abd4869cc497a368ca6cabf8edd404a3cc7716da9b598",
+      "bytes": 195,
+      "automated_secret_pattern_findings": []
+    },
+    {
+      "source_relative": "outputs/onticards/evidence/n8n/native-slash-routing-deployment.json",
+      "source_absolute": "C:\\Users\\BBBl\\Documents\\ChatGPT\\服务器操控\\outputs\\onticards\\evidence\\n8n\\native-slash-routing-deployment.json",
+      "suggested_repo_path": "automation/maintenance-runtime/evidence/n8n/native-slash-routing-deployment.json",
+      "reason": "actual deployment and preserved relevant failure receipt",
+      "sha256": "973455575e701e61e5c769fd450734deafb47bddc01a5b2c19bd18a9f553955c",
+      "bytes": 724,
+      "automated_secret_pattern_findings": []
+    }
+  ],
+  "missing": [],
+  "explicitly_excluded": [
+    "private credentials, PEM, owner.json, runtime.env",
+    "all SQLite databases/backups and native execution_data",
+    "all manual Issue31 trigger/recovery scripts",
+    "one-off GitHub fixture publishers and direct public posting scripts",
+    "unbounded historical probe outputs and full latest polling ledger",
+    "raw model provider errors/request headers/token-bearing exports"
+  ],
+  "limitations": [
+    "Pattern scan is preliminary; root must apply final secret review.",
+    "Input templates remain disabled; actual enabled state comes from the bounded deployment receipt.",
+    "Issue29 final recovery is rejected and sealed at 5 calls/2 replies; no new automatic semantic publication E2E is claimed. CI handoff is deployed dispatch; actual receiver/admission evidence is separate, and budget refusal is not a build pass."
+  ]
+}

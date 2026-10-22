@@ -1,0 +1,1058 @@
+{
+  "prepared_at": "2026-10-22T19:51:51.780808+00:00",
+  "candidate": false,
+  "runtime_results_pending": [
+    "finalPR30head published -> full snapshot baseline -> explicit operator activation; external runtime receipt only, no source self-reference",
+    "future native semantic-review model result not yet observed; no paid validation authorized"
+  ],
+  "paths": [
+    "deploy/rootless-runtime/README.md",
+    "deploy/rootless-runtime/install_runtime.py",
+    "deploy/rootless-runtime/configure_namespace_dns.py",
+    "deploy/rootless-runtime/install_namespace_dns.py",
+    "deploy/rootless-runtime/probe_runtime.py",
+    "deploy/n8n-preview-ci/artifact_registry.py",
+    "deploy/n8n-preview-ci/bootstrap_trusted_images.py",
+    "deploy/n8n-preview-ci/build_check_watch.py",
+    "deploy/n8n-preview-ci/build_revision_guard.py",
+    "deploy/n8n-preview-ci/build_workflow.py",
+    "deploy/n8n-preview-ci/compose.ci.yml",
+    "deploy/n8n-preview-ci/configure_model_egress.py",
+    "deploy/n8n-preview-ci/configure_trusted_ssh_route.py",
+    "deploy/n8n-preview-ci/controller.py",
+    "deploy/n8n-preview-ci/dispatch_model.mjs",
+    "deploy/n8n-preview-ci/dispatch.mjs",
+    "deploy/n8n-preview-ci/export_existing_dependencies.py",
+    "deploy/n8n-preview-ci/export_trusted_runner.py",
+    "deploy/n8n-preview-ci/install_artifact_registry.py",
+    "deploy/n8n-preview-ci/install_check_watch.py",
+    "deploy/n8n-preview-ci/install_ci_instance.py",
+    "deploy/n8n-preview-ci/install_controller.py",
+    "deploy/n8n-preview-ci/install_revision_guard.py",
+    "deploy/n8n-preview-ci/observe_native_ci.py",
+    "deploy/n8n-preview-ci/host-identities.json",
+    "deploy/n8n-preview-ci/trusted-images.json",
+    "deploy/n8n-preview-ci/known_hosts",
+    "deploy/n8n-preview-ci/ssh_config.template",
+    "deploy/n8n-preview-ci/build-host.ed25519.pub",
+    "deploy/n8n-preview-ci/test-host.ed25519.pub",
+    "deploy/n8n-preview-ci/preview-command.pub",
+    "deploy/n8n-preview-ci/preview-transfer.pub",
+    "deploy/n8n-preview-ci/preview.workflow.json",
+    "deploy/n8n-preview-ci/revision-guard.workflow.json",
+    "deploy/n8n-preview-ci/check-observe.workflow.json",
+    "deploy/n8n-preview-ci/check-register.workflow.json",
+    "deploy/n8n-preview-ci/check-watch.workflow.json",
+    "deploy/n8n-preview-ci/Dockerfile.tests",
+    "deploy/n8n-preview-ci/requirements.tests.txt",
+    "deploy/n8n-preview-ci/package.json",
+    "deploy/n8n-preview-ci/package-lock.json",
+    "deploy/n8n-preview-ci/playwright.config.ts",
+    "deploy/n8n-preview-ci/playwright-seccomp.json",
+    "deploy/n8n-preview-ci/nginx.conf",
+    "deploy/n8n-preview-ci/seed-synthetic-source.py",
+    "deploy/n8n-preview-ci/exercise-product-flow.py",
+    "deploy/n8n-preview-ci/test_entry.py",
+    "deploy/n8n-preview-ci/test_preview_api.py",
+    "deploy/n8n-preview-ci/tests/preview.spec.ts",
+    "deploy/n8n-preview-ci/test_controller.py",
+    "deploy/n8n-preview-ci/test_artifact_registry.py",
+    "deploy/n8n-preview-ci/test_entry_session.py",
+    "deploy/n8n-preview-ci/test_check_watch.mjs",
+    "deploy/n8n-preview-ci/probe_build_timeout.py",
+    "deploy/n8n-preview-ci/probe_process_timeout.py",
+    "deploy/n8n-preview-ci/probe_model_egress.py",
+    "deploy/n8n-preview-ci/probe_restricted_ssh.py",
+    "deploy/n8n-preview-ci/auth_session_probe.py",
+    "deploy/newapi-preview/lease.mjs",
+    "deploy/n8n-preview-ci/README.md",
+    "research/n8n-rootless-preview-reuse.md",
+    "research/preview-registry-transport-reuse.md",
+    "research/preview-check-reuse.md",
+    "research/newapi-preview-token-reuse.md",
+    "deploy/newapi-preview/test_lease_budget.mjs",
+    "evidence/rootless-runtime/pr26-r4-native-workflow.json",
+    "evidence/rootless-runtime/pr26-model-r4-phase.json",
+    "evidence/rootless-runtime/pr26-model-r4-lease.json",
+    "evidence/rootless-runtime/pr26-rootless-check-publication.json",
+    "evidence/rootless-runtime/pr26-rootless-static-publication.json",
+    "evidence/rootless-runtime/check-invalidation-verified.json",
+    "evidence/rootless-runtime/ci-offline-layout-regeneration.json",
+    "evidence/rootless-runtime/budget-admission-deployment.json",
+    "evidence/rootless-runtime/pr26-model-r4/checks.json",
+    "evidence/rootless-runtime/pr26-rootless-3105-public/manifest.json",
+    "deploy/n8n-preview-ci/build_intake_admission.py",
+    "deploy/n8n-preview-ci/test_intake_admission.mjs",
+    "deploy/n8n-preview-ci/intake-admission.workflow.json",
+    "deploy/n8n-preview-ci/intake-receiver.workflow.json",
+    "deploy/n8n-preview-ci/budget_status.mjs",
+    "deploy/n8n-preview-ci/install_intake_admission.py",
+    "deploy/n8n-preview-ci/update_batch_budget.py",
+    "deploy/n8n-preview-ci/observe_batch_budget.py",
+    "deploy/n8n-preview-ci/reconcile_budget_observation_once.py",
+    "deploy/n8n-preview-ci/build_review_admission.py",
+    "deploy/n8n-preview-ci/review-admission.workflow.json",
+    "deploy/n8n-preview-ci/test_review_admission.mjs",
+    "deploy/n8n-preview-ci/dispatch_review.mjs",
+    "deploy/n8n-preview-ci/install_review_probe.py",
+    "deploy/n8n-preview-ci/connect_review_intake.py",
+    "deploy/n8n-preview-ci/read_review_baseline.py",
+    "deploy/n8n-preview-ci/activate_review_admission.py",
+    "deploy/n8n-preview-ci/observe_review_admission.py",
+    "deploy/n8n-preview-ci/probe_review_baseline.py",
+    "deploy/propr/review-service/mcp_review.mjs",
+    "deploy/propr/review-service/receipt.mjs",
+    "deploy/propr/review-service/receipt.test.mjs",
+    "deploy/propr/review-service/ssh_gate.py",
+    "deploy/propr/review-service/test_ssh_gate.py",
+    "deploy/propr/review-service/cross_grant.test.mjs",
+    "deploy/propr/review-service/configure_native.mjs",
+    "deploy/propr/review-service/install_service.py",
+    "deploy/propr/review-service/probe_service.py",
+    "deploy/propr/review-service/probe_poll_matcher.mjs",
+    "research/ci-batch-budget-reuse.md",
+    "research/automatic-review-trigger-reuse.md",
+    "research/mcp-review-machine-auth-reuse.md",
+    "evidence/rootless-runtime/budget-existing-log-status.json",
+    "evidence/rootless-runtime/budget-native-reconciliation.json",
+    "evidence/rootless-runtime/batch-budget-expression-tests.json",
+    "evidence/rootless-runtime/batch-budget-deployment.json",
+    "evidence/rootless-runtime/batch-budget-natural-poll.json",
+    "evidence/mcp-review-service-install.json",
+    "evidence/mcp-review-service-probe-red.json",
+    "evidence/mcp-review-service-probe.json",
+    "evidence/mcp-review-native-n8n-probe.json",
+    "evidence/mcp-review-natural-intake.json",
+    "evidence/mcp-review-natural-intake-metadata-correction.json",
+    "evidence/mcp-review-baseline-native-probe.json",
+    "evidence/mcp-review-local-boundary-tests.json",
+    "evidence/mcp-review-expression-tests.json",
+    "evidence/mcp-native-independent-review.json",
+    "deploy/n8n-preview-ci/observe_current_runtime.py",
+    "research/preview-intake-dispatch-reuse.md",
+    "evidence/rootless-runtime/ci-offline-layout-regeneration-final.json",
+    "evidence/mcp-review-policy13-service-probe.json",
+    "evidence/mcp-review-current-runtime.json",
+    "evidence/preview-ci-source-gitleaks-final.json"
+  ],
+  "files": [
+    {
+      "path": "deploy/rootless-runtime/README.md",
+      "destination": "automation/maintenance-runtime/deploy/rootless-runtime/README.md",
+      "purpose": "原生rootless安装、namespace DNS和边界验收",
+      "sha256": "fce51c577dfe6467c8c73e211a6a4112de77a07d138a306021f443dffefb25c1",
+      "bytes": 2730
+    },
+    {
+      "path": "deploy/rootless-runtime/install_runtime.py",
+      "destination": "automation/maintenance-runtime/deploy/rootless-runtime/install_runtime.py",
+      "purpose": "原生rootless安装、namespace DNS和边界验收",
+      "sha256": "13599c6ee66d16130824974968f2f82617d8ed6e11f1c1c1dcd39b20b31cd1e4",
+      "bytes": 7079
+    },
+    {
+      "path": "deploy/rootless-runtime/configure_namespace_dns.py",
+      "destination": "automation/maintenance-runtime/deploy/rootless-runtime/configure_namespace_dns.py",
+      "purpose": "原生rootless安装、namespace DNS和边界验收",
+      "sha256": "381e1fbd7ba543951269c49f8af38d286d428d39def86ec38c5d896896067114",
+      "bytes": 936
+    },
+    {
+      "path": "deploy/rootless-runtime/install_namespace_dns.py",
+      "destination": "automation/maintenance-runtime/deploy/rootless-runtime/install_namespace_dns.py",
+      "purpose": "原生rootless安装、namespace DNS和边界验收",
+      "sha256": "c79622fc5d9a813cf57a25a3de92fba838320682573d2df887df4abe74072e07",
+      "bytes": 3547
+    },
+    {
+      "path": "deploy/rootless-runtime/probe_runtime.py",
+      "destination": "automation/maintenance-runtime/deploy/rootless-runtime/probe_runtime.py",
+      "purpose": "原生rootless安装、namespace DNS和边界验收",
+      "sha256": "f013f70bdba79b969efa8fd3f53bb2d7aa377e906425474f8a7b14ce83217658",
+      "bytes": 6064
+    },
+    {
+      "path": "deploy/n8n-preview-ci/artifact_registry.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/artifact_registry.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "e597ca753467c713aa6629129aa7712da4d77eb2bf5e9e151cb05175ccfc5117",
+      "bytes": 8795
+    },
+    {
+      "path": "deploy/n8n-preview-ci/bootstrap_trusted_images.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/bootstrap_trusted_images.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "4e4fbecf6ae5423eb19abb9a1bb20be8deb521e30c5bb6a7ffa7633e1d963856",
+      "bytes": 4440
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build_check_watch.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build_check_watch.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "7863a3d0b6433f3fb54ad83ba3185928ffcda68ca930b1108dd22810b2a9a8c5",
+      "bytes": 13481
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build_revision_guard.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build_revision_guard.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "b8b95d1724bf614fdd621533a4d8794bdf54c9cae373a1487f3cd7ba2f2ec14d",
+      "bytes": 5739
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build_workflow.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build_workflow.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "a5f7f8378ea76f0977ffa201434a20b997508958151c3f26929875ef67b5f5bb",
+      "bytes": 8326
+    },
+    {
+      "path": "deploy/n8n-preview-ci/compose.ci.yml",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/compose.ci.yml",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "4141a39416083ca598ee4779d465c7313d678f6c8987ef29572df28382ebe968",
+      "bytes": 1923
+    },
+    {
+      "path": "deploy/n8n-preview-ci/configure_model_egress.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/configure_model_egress.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "3aaa93530461e05c7fdd7ec6c275c49a22b125f9a6413aa07185cb1f32e9ecb9",
+      "bytes": 3794
+    },
+    {
+      "path": "deploy/n8n-preview-ci/configure_trusted_ssh_route.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/configure_trusted_ssh_route.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "a0fb393855bf97db730d6cda46382aec3a739ae3279965693f20d0e81cd3b730",
+      "bytes": 3894
+    },
+    {
+      "path": "deploy/n8n-preview-ci/controller.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/controller.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "b01751f97d95aeaa1dc959c585b8718911e4f46853532ab958bd500eadd6aa0d",
+      "bytes": 34021
+    },
+    {
+      "path": "deploy/n8n-preview-ci/dispatch_model.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/dispatch_model.mjs",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "421df09e20abb930ef86b7650a0677dbef5d8dd10a511d290b935a894e527e87",
+      "bytes": 5147
+    },
+    {
+      "path": "deploy/n8n-preview-ci/dispatch.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/dispatch.mjs",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "3a1958121dc515c3bac62cd71fde18469d02904e859f0635cae8c30b2e87c755",
+      "bytes": 4283
+    },
+    {
+      "path": "deploy/n8n-preview-ci/export_existing_dependencies.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/export_existing_dependencies.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "07f42448001509e38de833d20e27a76d628d8b372787037b9a19a058521c9aa5",
+      "bytes": 1503
+    },
+    {
+      "path": "deploy/n8n-preview-ci/export_trusted_runner.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/export_trusted_runner.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "ec1599ec03ee2ee9b25eedab7b12cbe62f9d6c94d2cf13e6b0767b4dc9fb2fe7",
+      "bytes": 1185
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_artifact_registry.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_artifact_registry.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "91f400b7a81c5e64f65e7da8e1d12732afcfa8c3690805d8bae335ce69f594ce",
+      "bytes": 4443
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_check_watch.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_check_watch.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "d823a238e3e3d50c2915ba57296e3abe1f98d86f67983c606e58aa2e77ad0758",
+      "bytes": 2252
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_ci_instance.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_ci_instance.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "e4bc287e7577bd52df1dc509287f002414833deb84d4a64fd7b4a42d1003fedf",
+      "bytes": 4494
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_controller.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_controller.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "e3615c5024a99919f1842d7ccb23cc450c170bf386b6982d2404614a5cde0fa5",
+      "bytes": 5549
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_revision_guard.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_revision_guard.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "d8b7eafce04f251e5de09054f997e477a536ccbbcabd742a56ca5c9666eb2f2a",
+      "bytes": 2507
+    },
+    {
+      "path": "deploy/n8n-preview-ci/observe_native_ci.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/observe_native_ci.py",
+      "purpose": "原生CI生成器、固定边界和精确registry传输",
+      "sha256": "44175389ac6dbe56dc06ad3771379fa41896efff64d2bff9a3c76370be735ec9",
+      "bytes": 4081
+    },
+    {
+      "path": "deploy/n8n-preview-ci/host-identities.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/host-identities.json",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "9609b16984c5075ca7a15faac8858f3f5960f6bad0aea1156b60b71dfec7fed3",
+      "bytes": 160
+    },
+    {
+      "path": "deploy/n8n-preview-ci/trusted-images.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/trusted-images.json",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "d3f58405f779f420cecae632b454ac6108b6a889b4b19ee87f2fdf33e104d9ce",
+      "bytes": 4270
+    },
+    {
+      "path": "deploy/n8n-preview-ci/known_hosts",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/known_hosts",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "0a279879db340e28dd7672b8dba788aa7bf267aa4d1f8e6e58da60bd62e46023",
+      "bytes": 196
+    },
+    {
+      "path": "deploy/n8n-preview-ci/ssh_config.template",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/ssh_config.template",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "291a990fb7d2838a41579d3668a652af51904a44a687b544f639d72d3f2f5a8a",
+      "bytes": 877
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build-host.ed25519.pub",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build-host.ed25519.pub",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "efd0547a4dc9b52b7f6161d755038de1778c9fb5913e9bf1b7e8779d8cd3c2c9",
+      "bytes": 110
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test-host.ed25519.pub",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test-host.ed25519.pub",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "00c3aef119146a553ca7155841684f135df73c27ff9bf8e4b0c4c1b937852fb7",
+      "bytes": 103
+    },
+    {
+      "path": "deploy/n8n-preview-ci/preview-command.pub",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/preview-command.pub",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "74946e5cd67f6e33f8f5c4956fd187034febb7d4eedad61634446b7ed7c42520",
+      "bytes": 124
+    },
+    {
+      "path": "deploy/n8n-preview-ci/preview-transfer.pub",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/preview-transfer.pub",
+      "purpose": "锁定镜像、主机角色与SSH公钥pin配置（无私钥）",
+      "sha256": "7ba42f470238c85980becb0c5e943366ad8a124dcde7840987a3a8251e5735f5",
+      "bytes": 125
+    },
+    {
+      "path": "deploy/n8n-preview-ci/preview.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/preview.workflow.json",
+      "purpose": "原生workflow可审阅默认inactive模板",
+      "sha256": "e0da47c89bab3217bcbc718835b1f4b9dd0b8348f6ae237bf0be571f73b37289",
+      "bytes": 18990
+    },
+    {
+      "path": "deploy/n8n-preview-ci/revision-guard.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/revision-guard.workflow.json",
+      "purpose": "原生workflow可审阅默认inactive模板",
+      "sha256": "a44b27726542b0dab7a16232e897ba76fafde7773ce0abbafaf0526a4ee47050",
+      "bytes": 13788
+    },
+    {
+      "path": "deploy/n8n-preview-ci/check-observe.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/check-observe.workflow.json",
+      "purpose": "原生workflow可审阅默认inactive模板",
+      "sha256": "40e0e5f5086337b18bcb6935dfd6c01cc4455504aa4f37a27e697c51a19b1115",
+      "bytes": 22998
+    },
+    {
+      "path": "deploy/n8n-preview-ci/check-register.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/check-register.workflow.json",
+      "purpose": "原生workflow可审阅默认inactive模板",
+      "sha256": "b8c9de81cb4a804e3021fbb5db45e4e46e3b9374fa09e261202e902cd80d4c4f",
+      "bytes": 7665
+    },
+    {
+      "path": "deploy/n8n-preview-ci/check-watch.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/check-watch.workflow.json",
+      "purpose": "原生workflow可审阅默认inactive模板",
+      "sha256": "f494d742f89233f33c41367d52e60a95866706bf768fa57e79cb421e2d12a8df",
+      "bytes": 7803
+    },
+    {
+      "path": "deploy/n8n-preview-ci/Dockerfile.tests",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/Dockerfile.tests",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "7278ea6eea58d73384782549819890977952abc9db003906a58ae563d115ad0f",
+      "bytes": 757
+    },
+    {
+      "path": "deploy/n8n-preview-ci/requirements.tests.txt",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/requirements.tests.txt",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "aa0db66f9e8b58d4d69ec14873c31bda25466a45883bb744be680150a2408b85",
+      "bytes": 31
+    },
+    {
+      "path": "deploy/n8n-preview-ci/package.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/package.json",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "d94d7493cbc093bb0f836a15c1096e130a3804e3dccdd5b7894d33fc9057be12",
+      "bytes": 181
+    },
+    {
+      "path": "deploy/n8n-preview-ci/package-lock.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/package-lock.json",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "846c9a0a14e7712e77c2c6d2561e54d3f63b61637769f20d43bcec8e6747a6df",
+      "bytes": 1720
+    },
+    {
+      "path": "deploy/n8n-preview-ci/playwright.config.ts",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/playwright.config.ts",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "4a6330aff90d03657bf0ae503bf26c5eb73c4ba1bae4f93609e939028cd09ed2",
+      "bytes": 1684
+    },
+    {
+      "path": "deploy/n8n-preview-ci/playwright-seccomp.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/playwright-seccomp.json",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "cc3e61cabda6bbc1e53e54d27ba4d55a9d3be829b6dd1a596f4a7b31b1cc7849",
+      "bytes": 12997
+    },
+    {
+      "path": "deploy/n8n-preview-ci/nginx.conf",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/nginx.conf",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "d4372358e8f5cb478fd39307a128ba7e856b32d7ff3e21b93647d364a179298d",
+      "bytes": 3088
+    },
+    {
+      "path": "deploy/n8n-preview-ci/seed-synthetic-source.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/seed-synthetic-source.py",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "f0fe39891b44afe3259bbde6843d1da4ac965587cd6b2bf9d34c7c57dc30ff00",
+      "bytes": 800
+    },
+    {
+      "path": "deploy/n8n-preview-ci/exercise-product-flow.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/exercise-product-flow.py",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "9bfe997de6ca7f89e71e8176b6ef0c954f06398b923e9c43428263c25274666c",
+      "bytes": 4954
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_entry.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_entry.py",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "6b4440bef2808abd1fbfc2000ba924db27f8ff5995636be3500c9660bc749748",
+      "bytes": 4407
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_preview_api.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_preview_api.py",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "e7e728ed73a8bda6b0d4f35b53d66843e6807c5fe91ed26e937213d1bd8779c9",
+      "bytes": 3672
+    },
+    {
+      "path": "deploy/n8n-preview-ci/tests/preview.spec.ts",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/tests/preview.spec.ts",
+      "purpose": "复用项目API和真实业务Playwright测试及可信镜像",
+      "sha256": "1263b225386a2b981fca4c0864566a76c236aa97c92032800ecd9ad4b9e45bfd",
+      "bytes": 5954
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_controller.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_controller.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "ac0fee888a2ff6cbbeaf9b2b2bc49cabf2aec0324edf0ced020007372d737b8e",
+      "bytes": 11709
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_artifact_registry.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_artifact_registry.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "38a8ed4636fdb78af687590955a68f12de3f87bc49853873fa0eb15880130fce",
+      "bytes": 1114
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_entry_session.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_entry_session.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "67ec60266b4dd91f358d1088758cd96bc566d7758a3b95cd065f52d08c543e77",
+      "bytes": 2989
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_check_watch.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_check_watch.mjs",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "e9c9fff9c14454e3c543d5a2226e083f0dc94d8caa62e60c7924e13759b511eb",
+      "bytes": 4055
+    },
+    {
+      "path": "deploy/n8n-preview-ci/probe_build_timeout.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/probe_build_timeout.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "ea83ec6c0b7a3421f5f68028f2001ff048b88ed1b2df3fa92007b63f1fc37ba9",
+      "bytes": 1977
+    },
+    {
+      "path": "deploy/n8n-preview-ci/probe_process_timeout.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/probe_process_timeout.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "46f33b2af4124afe9bfff2ec45ee0ab833d7b59ed8223d0682ed018f77d77c52",
+      "bytes": 1409
+    },
+    {
+      "path": "deploy/n8n-preview-ci/probe_model_egress.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/probe_model_egress.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "a4b3ef62637a11307f505e227782471b39033bccfdcc74e904c8e43d93dbc0f8",
+      "bytes": 3198
+    },
+    {
+      "path": "deploy/n8n-preview-ci/probe_restricted_ssh.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/probe_restricted_ssh.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "2c84ed697d6ea48f4ef85d17cb36abfba047fc1052d475e267a41b215ec182cb",
+      "bytes": 2888
+    },
+    {
+      "path": "deploy/n8n-preview-ci/auth_session_probe.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/auth_session_probe.py",
+      "purpose": "有意义无网络/负向/超时验证",
+      "sha256": "fef4bf926763ae76a25f7be68a031e645c976d3b12ecadb3df7780f2788a7420",
+      "bytes": 1868
+    },
+    {
+      "path": "deploy/newapi-preview/lease.mjs",
+      "destination": "automation/maintenance-runtime/deploy/newapi-preview/lease.mjs",
+      "purpose": "原生NewAPI短租约受信适配",
+      "sha256": "21115d4a8ea16f1b650bae47368f3535ebde281ce85c6c8abe21953fe7282b26",
+      "bytes": 8512
+    },
+    {
+      "path": "deploy/n8n-preview-ci/README.md",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/README.md",
+      "purpose": "CI操作说明及先行复用研究",
+      "sha256": "e9efa7b5c91d0817c737ac4facd605699fab0656d6e73970467536015330c7ed",
+      "bytes": 18858
+    },
+    {
+      "path": "research/n8n-rootless-preview-reuse.md",
+      "destination": "automation/maintenance-runtime/research/n8n-rootless-preview-reuse.md",
+      "purpose": "CI操作说明及先行复用研究",
+      "sha256": "35bbabd08b6f19d2558044764bd03c5544172676364588d66f297273801d5f39",
+      "bytes": 13164
+    },
+    {
+      "path": "research/preview-registry-transport-reuse.md",
+      "destination": "automation/maintenance-runtime/research/preview-registry-transport-reuse.md",
+      "purpose": "CI操作说明及先行复用研究",
+      "sha256": "42ac564d83296b3d46728ac7bcc5b0828777935af09a824bccd4181f45e1ffd2",
+      "bytes": 4707
+    },
+    {
+      "path": "research/preview-check-reuse.md",
+      "destination": "automation/maintenance-runtime/research/preview-check-reuse.md",
+      "purpose": "CI操作说明及先行复用研究",
+      "sha256": "afdbd79b975198a2e57439c2cd405d4ae04bb50457d58af7554f7db60b7ddf33",
+      "bytes": 1738
+    },
+    {
+      "path": "research/newapi-preview-token-reuse.md",
+      "destination": "automation/maintenance-runtime/research/newapi-preview-token-reuse.md",
+      "purpose": "CI操作说明及先行复用研究",
+      "sha256": "023af1638c850dc2b1e2b694682131b62234d11a971cb12f153cda5d69f07453",
+      "bytes": 5632
+    },
+    {
+      "path": "deploy/newapi-preview/test_lease_budget.mjs",
+      "destination": "automation/maintenance-runtime/deploy/newapi-preview/test_lease_budget.mjs",
+      "purpose": "原生余额不足零token/零provider回归",
+      "sha256": "666b9f7741d265611880d46ba97395e1cd11dbec38f0fdafd242b1ee2ae2a4e7",
+      "bytes": 1968
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-r4-native-workflow.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-r4-native-workflow.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "c6115580f796da0b37b2b27cca07542f894c2c1d66e110cc17b4e9341a17bad7",
+      "bytes": 35374
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-model-r4-phase.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-model-r4-phase.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "e33fdee617996c28ef4b466e044b0c45b19d965a1ffd8e10c958ddff781d18b3",
+      "bytes": 541
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-model-r4-lease.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-model-r4-lease.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "f1f8f79787e1a75c38af5c333fcd90d66ea26ba25b6d485ddea2959c6f0a1e4d",
+      "bytes": 1057
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-rootless-check-publication.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-rootless-check-publication.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "71c5f85087d0348dff67a310008f5c90fa55b20ddecf933745c5384ba03293ab",
+      "bytes": 3961
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-rootless-static-publication.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-rootless-static-publication.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "635cae1e5fb9da84ddd1894fb14307477467cd6a4eee62cfb78be8bae38ad00f",
+      "bytes": 6521
+    },
+    {
+      "path": "evidence/rootless-runtime/check-invalidation-verified.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/check-invalidation-verified.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "8dedafd4fe8da4f603fc709d04d2ec477cc3606428fe42977738522a3b5e8a5e",
+      "bytes": 2401
+    },
+    {
+      "path": "evidence/rootless-runtime/ci-offline-layout-regeneration.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/ci-offline-layout-regeneration.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "1f30c384e7429a7977e324f5ec41c34dbdddf597a02182d6e23ebb0487eed50d",
+      "bytes": 1429
+    },
+    {
+      "path": "evidence/rootless-runtime/budget-admission-deployment.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/budget-admission-deployment.json",
+      "purpose": "真实固定业务/原生Check/预算与可复现脱敏证据",
+      "sha256": "07f524ea6032d2bafa5f45edbf5e2a046b162fae565c7b26b291bb3f3d58423d",
+      "bytes": 783
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-model-r4/checks.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-model-r4/checks.json",
+      "purpose": "本轮API7/PW3实际机器断言",
+      "sha256": "6a5fb44bd75a3ece6299e4ff68afad727a11968f2473bc22832081d5b550fb62",
+      "bytes": 250
+    },
+    {
+      "path": "evidence/rootless-runtime/pr26-rootless-3105-public/manifest.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/pr26-rootless-3105-public/manifest.json",
+      "purpose": "本轮精确head/base/业务范围/原生PNG哈希",
+      "sha256": "d5d2d5912c5f1816415426500a0b41c0f44e4b64376c46f51a05fe9f4753f1c3",
+      "bytes": 3585
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build_intake_admission.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build_intake_admission.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "8f5acdeee359f6d52bbc5fcc52b83ebd431b55fbfc487f44ce4901ce7b57fb7a",
+      "bytes": 13846
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_intake_admission.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_intake_admission.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "636aaef6df1944aaf74b825bbdd147fd16adb64705a80f3b936c5a772e106ac6",
+      "bytes": 6925
+    },
+    {
+      "path": "deploy/n8n-preview-ci/intake-admission.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/intake-admission.workflow.json",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "ef7b82124abf3a2073c74293eca8923695153e172d4871924fa6408c8c139f78",
+      "bytes": 24838
+    },
+    {
+      "path": "deploy/n8n-preview-ci/intake-receiver.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/intake-receiver.workflow.json",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "2fe34fcc1c2a7692ffdbaedfb2c1ca5a9d9cd216ad4f56895b7e5ddb271b9177",
+      "bytes": 9445
+    },
+    {
+      "path": "deploy/n8n-preview-ci/budget_status.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/budget_status.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "251d13f6133c387de7ccb3649e765b5765e88c76a6ca9b5831a835fb22ec820e",
+      "bytes": 836
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_intake_admission.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_intake_admission.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "8984118df920bfbb7cd921b917ca3d742660aadcdbb0632568645a014d470a12",
+      "bytes": 2897
+    },
+    {
+      "path": "deploy/n8n-preview-ci/update_batch_budget.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/update_batch_budget.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "61828534833a80a53c62af12dd94a5657026ead91e9ca501258aeef39a4a0520",
+      "bytes": 3713
+    },
+    {
+      "path": "deploy/n8n-preview-ci/observe_batch_budget.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/observe_batch_budget.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "de17c85ad64a00acf0b19da680c3e1d561e7c7ddcb0492dd3448374d3b655386",
+      "bytes": 3918
+    },
+    {
+      "path": "deploy/n8n-preview-ci/reconcile_budget_observation_once.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/reconcile_budget_observation_once.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "a557f2111792a358c69ba23d0666de2d53ca897c34b91b0cc097241f55a25f4a",
+      "bytes": 7975
+    },
+    {
+      "path": "deploy/n8n-preview-ci/build_review_admission.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/build_review_admission.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "1163f9710ab8764b31b1492e138bcb1a8e78c9fe11b490d11f27d3ce2bc458cc",
+      "bytes": 7329
+    },
+    {
+      "path": "deploy/n8n-preview-ci/review-admission.workflow.json",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/review-admission.workflow.json",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "c643597c4f26394e1060cf1c5a0217c9bfb3e8a075266d5996caf45c3a613f99",
+      "bytes": 18130
+    },
+    {
+      "path": "deploy/n8n-preview-ci/test_review_admission.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/test_review_admission.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "3f88776935cd41bea83667e0820b3cf5508b3a5a100cb902a56a209a1d3389bd",
+      "bytes": 3082
+    },
+    {
+      "path": "deploy/n8n-preview-ci/dispatch_review.mjs",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/dispatch_review.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "af333b678dd484c15bd82bd31287c9a5dd2ee320f961bd1aa30e152c3ae64c6c",
+      "bytes": 1752
+    },
+    {
+      "path": "deploy/n8n-preview-ci/install_review_probe.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/install_review_probe.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "579f866d1bf688180665ba029630a2c0c9af0e4aeff8ed07e2d2c9a914135612",
+      "bytes": 4646
+    },
+    {
+      "path": "deploy/n8n-preview-ci/connect_review_intake.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/connect_review_intake.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "99130e262cca6b22875884cc1457a9e8ff0084a4a5f1d8557ef11cb7c66e3b0e",
+      "bytes": 3479
+    },
+    {
+      "path": "deploy/n8n-preview-ci/read_review_baseline.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/read_review_baseline.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "5f803c635f3e3921aca8ab1d64ffbfd2572a41b4366ebaacabc0c9e129172774",
+      "bytes": 3685
+    },
+    {
+      "path": "deploy/n8n-preview-ci/activate_review_admission.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/activate_review_admission.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "9f55d990ed0286c686ad4c64250f5273e910e397c53136634efe93b49c668bdf",
+      "bytes": 10105
+    },
+    {
+      "path": "deploy/n8n-preview-ci/observe_review_admission.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/observe_review_admission.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "262f1cfc48e99dff728083c4466b2dec3b59dfd9f10a03e838b1c5427edd19d0",
+      "bytes": 2404
+    },
+    {
+      "path": "deploy/n8n-preview-ci/probe_review_baseline.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/probe_review_baseline.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "190c75cc03971d5a95b445ce90598b111191861eb9a591d6ab63eccbb3e582a7",
+      "bytes": 5659
+    },
+    {
+      "path": "deploy/propr/review-service/mcp_review.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/mcp_review.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "3b2f3fc5499d64436ccedc142ce7c3a4a3aa6a6d8ec7ba0084ee176f55dfec25",
+      "bytes": 8431
+    },
+    {
+      "path": "deploy/propr/review-service/receipt.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/receipt.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "5c1686c58039002a1e746289322871d0a3408f3e1d32400152a48bb25663dd8a",
+      "bytes": 2691
+    },
+    {
+      "path": "deploy/propr/review-service/receipt.test.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/receipt.test.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "072ec63dd559d11b66307cb1f8bc26e99ba60a328c3a8f78da749c043d9de23d",
+      "bytes": 2881
+    },
+    {
+      "path": "deploy/propr/review-service/ssh_gate.py",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/ssh_gate.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "282cdd10ebc052c3869be106cd1b3e7d39be6956e98618def132a754a03253a7",
+      "bytes": 4605
+    },
+    {
+      "path": "deploy/propr/review-service/test_ssh_gate.py",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/test_ssh_gate.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "f9ada0597e270271bc9b722eca8ddea06d8ede3f45a5a4a584b5e4e6a18b6839",
+      "bytes": 2669
+    },
+    {
+      "path": "deploy/propr/review-service/cross_grant.test.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/cross_grant.test.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "3fbd4474514d6aa52363f88a10e89bba438c5db16613a80b4bc16bb302ff4a84",
+      "bytes": 2244
+    },
+    {
+      "path": "deploy/propr/review-service/configure_native.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/configure_native.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "dad83adec763fc57f8fd0ee61080f73d4957064584ae9f04a75a5676cd5976f9",
+      "bytes": 903
+    },
+    {
+      "path": "deploy/propr/review-service/install_service.py",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/install_service.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "ddc52549eb6c5a6f1b259650924094f7eee092797a04c05a640277007637426d",
+      "bytes": 7313
+    },
+    {
+      "path": "deploy/propr/review-service/probe_service.py",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/probe_service.py",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "9caac51455978c7e24d734b4fa34624b742b21b94dfbd84a169f56638743e4f6",
+      "bytes": 3755
+    },
+    {
+      "path": "deploy/propr/review-service/probe_poll_matcher.mjs",
+      "destination": "automation/maintenance-runtime/deploy/propr/review-service/probe_poll_matcher.mjs",
+      "purpose": "原生CI批次预算及自动只读审查固定接线、配置/负向验证",
+      "sha256": "f52373a696bf8311f331f757d80c723a007c019c75105ea644702f757929dfd5",
+      "bytes": 1710
+    },
+    {
+      "path": "research/ci-batch-budget-reuse.md",
+      "destination": "automation/maintenance-runtime/research/ci-batch-budget-reuse.md",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "7a0512f238f74124a005373557dd14fa2af68f1882df74786923c13c413603b6",
+      "bytes": 3806
+    },
+    {
+      "path": "research/automatic-review-trigger-reuse.md",
+      "destination": "automation/maintenance-runtime/research/automatic-review-trigger-reuse.md",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "97160ea6424959c61fa3dfd909347bdd57f27171627581109c8f6c2f88e4a83d",
+      "bytes": 6328
+    },
+    {
+      "path": "research/mcp-review-machine-auth-reuse.md",
+      "destination": "automation/maintenance-runtime/research/mcp-review-machine-auth-reuse.md",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "2a62773bc27ba383da6596c853c2c89ebb862ff4f1bd1153ae472ffd6d057522",
+      "bytes": 12342
+    },
+    {
+      "path": "evidence/rootless-runtime/budget-existing-log-status.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/budget-existing-log-status.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "d7534d552cbb04054ab63ce0a5ecde6b18e333264eaedc0200c80ed5d77c5345",
+      "bytes": 1152
+    },
+    {
+      "path": "evidence/rootless-runtime/budget-native-reconciliation.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/budget-native-reconciliation.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "a515475e188fb4eb9d0463e828858503ffca1f1aecfcb8b3729071d979ebf2ea",
+      "bytes": 7496
+    },
+    {
+      "path": "evidence/rootless-runtime/batch-budget-expression-tests.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/batch-budget-expression-tests.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "e9b510a6f527ab1a54c10a6697a754ed5e4893c2a42d1bd35ab49709b49adac3",
+      "bytes": 138
+    },
+    {
+      "path": "evidence/rootless-runtime/batch-budget-deployment.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/batch-budget-deployment.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "017c763953e7d811763b75280950404b5d586b59f0acbfbc3da9c773f12358a9",
+      "bytes": 992
+    },
+    {
+      "path": "evidence/rootless-runtime/batch-budget-natural-poll.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/batch-budget-natural-poll.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "d947e106855bd35433978cb16ad6a6fedc56830711c3b3cc582dc9c7585c016a",
+      "bytes": 5315
+    },
+    {
+      "path": "evidence/mcp-review-service-install.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-service-install.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "bccde452f517782b110db9662364eaee1fe8a932b620c0bbbded81e4fb0ffab1",
+      "bytes": 913
+    },
+    {
+      "path": "evidence/mcp-review-service-probe-red.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-service-probe-red.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "2071a6010cca825f2c51b61f30ac502ed549c6c039f450b154a500ac959b9484",
+      "bytes": 1250
+    },
+    {
+      "path": "evidence/mcp-review-service-probe.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-service-probe.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "d278cd1e1e04e868a20dbb4d26998c2cbe57069bb552700bccbc2b0bd6b2391a",
+      "bytes": 1845
+    },
+    {
+      "path": "evidence/mcp-review-native-n8n-probe.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-native-n8n-probe.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "e8e56b451567ac5a4e00258488bb2a4319c56e24b99fe9c2b86dfa3c3a223a6f",
+      "bytes": 1477
+    },
+    {
+      "path": "evidence/mcp-review-natural-intake.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-natural-intake.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "5f309da02b9178dd25b4c6ee9cc652caf7f384b5a0482d1def4592496b2ee251",
+      "bytes": 7581
+    },
+    {
+      "path": "evidence/mcp-review-natural-intake-metadata-correction.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-natural-intake-metadata-correction.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "b700811511468a5397a0ec803f9f32f38b126a22315fdf678c82621ca4711acf",
+      "bytes": 5675
+    },
+    {
+      "path": "evidence/mcp-review-baseline-native-probe.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-baseline-native-probe.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "e41adcadc0d82266ef04ff461d416b95948755985416c95082c7ca5a6c1552a0",
+      "bytes": 1592
+    },
+    {
+      "path": "evidence/mcp-review-local-boundary-tests.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-local-boundary-tests.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "65b91d9db2332c0b4f0ce427029d23f8d028ed2e7046026be51b9293d3d1a5fb",
+      "bytes": 4704
+    },
+    {
+      "path": "evidence/mcp-review-expression-tests.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-expression-tests.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "962b5cccbd02de9bf58340df18bba261364d93e7e6499879c720d7a9e11c9ce4",
+      "bytes": 471
+    },
+    {
+      "path": "evidence/mcp-native-independent-review.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-native-independent-review.json",
+      "purpose": "复用缺口与真实安全/状态验证证据",
+      "sha256": "68fb18cc3471dd54d8ec913f3b18078e105dfe398c9fa47a149764c7e38a0a6d",
+      "bytes": 2929
+    },
+    {
+      "path": "deploy/n8n-preview-ci/observe_current_runtime.py",
+      "destination": "automation/maintenance-runtime/deploy/n8n-preview-ci/observe_current_runtime.py",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "37355f9a99e38972b8a18c89873364d64e8ecb3bca76935905546378e9d4a410",
+      "bytes": 3294
+    },
+    {
+      "path": "research/preview-intake-dispatch-reuse.md",
+      "destination": "automation/maintenance-runtime/research/preview-intake-dispatch-reuse.md",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "1ae7aac934b0e9c114783c3986d74a0c07bba241521f68bda3edab645de70f63",
+      "bytes": 2504
+    },
+    {
+      "path": "evidence/rootless-runtime/ci-offline-layout-regeneration-final.json",
+      "destination": "automation/maintenance-runtime/evidence/rootless-runtime/ci-offline-layout-regeneration-final.json",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "9f5467a9ac70ebaf83809217210b401a341c90e7b80567d1941ab93a4fc80c33",
+      "bytes": 3112
+    },
+    {
+      "path": "evidence/mcp-review-policy13-service-probe.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-policy13-service-probe.json",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "5f7ffa8bbba17532477b3749b690d2d88cd5f76f8d3f3020cb71a088f72c61d1",
+      "bytes": 1845
+    },
+    {
+      "path": "evidence/mcp-review-current-runtime.json",
+      "destination": "automation/maintenance-runtime/evidence/mcp-review-current-runtime.json",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "0fb67bdf73db70e527cb3ec204d45a099953bf6644d150cdfeb0f27840abb6a8",
+      "bytes": 3862
+    },
+    {
+      "path": "evidence/preview-ci-source-gitleaks-final.json",
+      "destination": "automation/maintenance-runtime/evidence/preview-ci-source-gitleaks-final.json",
+      "purpose": "原生接线/离线复现与policy13实际无模型验收",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    }
+  ],
+  "excluded": [
+    "private keys/token/password/provider URLs/runtime.env",
+    "raw SQLite/execution traces/private logs",
+    "image tar archives/build source caches",
+    "obsolete one-off failure/recovery probes except explicitly listed reviewed recovery configuration and safe evidence",
+    "obsolete anonymous check_revision.mjs"
+  ],
+  "generated_runtime_inputs": [
+    "preview-amd64-dependencies.json/.tar generated by export_existing_dependencies.py",
+    "test runner archive generated by export_trusted_runner.py",
+    "owner/encryption/trigger/SSH private credentials generated only on trusted host",
+    "bundle/lease.mjs copied from deploy/newapi-preview/lease.mjs"
+  ],
+  "frozen": true,
+  "runtime_limitations": [
+    "PR26 r4 business pass is fixed head/base and approved narrow contract; new versions need new verification",
+    "Current native model quota15445 below required45000; persistent budget_exhausted, no automatic new lease",
+    "Semantic review intake dry-run verified for six PRs, activation awaits policy13 and finalPR30 head baseline; posted never means review completed",
+    "Explicit operator recovery only; no real host reboot, disk hard quota or 30-day elapsed-duration acceptance"
+  ],
+  "total_bytes": 651847,
+  "offline_regeneration": "5 generators / 8 byte-identical inactive workflows in final mirror layout; Check20 + CI admission52 + review22 expression assertions; native baseline12 and production protocol12 separately recorded"
+}

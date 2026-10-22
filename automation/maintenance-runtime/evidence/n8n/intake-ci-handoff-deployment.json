@@ -1,0 +1,26 @@
+{
+  "started_at": "2026-10-22T18:19:25.230241+00:00",
+  "manual_poll_triggers": 0,
+  "models": 0,
+  "github_writes": 0,
+  "mode": "dry_run",
+  "workflows": [
+    {
+      "id": "onticardsIntakeCiHandoffV1",
+      "nodes": 9,
+      "active": true,
+      "version_id": "23ad90dd-e585-41c2-aff6-be8e43a71c52",
+      "source_sha256": "2c091e26be17068cf8c9274dad8a91d2c8f1512a509a448adca556fae5acf0e9"
+    },
+    {
+      "id": "onticardsPersistentReadOnlyV1",
+      "nodes": 60,
+      "active": true,
+      "version_id": "488e2c26-7e58-4b93-97a6-4794fdfa0235",
+      "source_sha256": "9c7c5437dc0d8d6d9f011b85ac9ace07401dfdcd9eee13ee213a40d15a36ec23"
+    }
+  ],
+  "completed_at": "2026-10-22T18:19:37.498577+00:00",
+  "backup": "/opt/onticards-maintenance/n8n/evidence/intake-before-ci-20261022T181925Z.json",
+  "credential_values_exported": false
+}

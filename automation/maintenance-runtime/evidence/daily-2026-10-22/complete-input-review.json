@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-22T17:12:25.718789+00:00",
+  "fact_run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "checks": {
+    "ready": true,
+    "complete": true,
+    "open_count_matches_metadata": true,
+    "issue_count": true,
+    "pr_count": true,
+    "checks_preserved": true,
+    "native_preserved": true,
+    "native_count": true,
+    "count_preserved": true,
+    "head_preserved": true,
+    "pr_33_check_sha": true,
+    "pr_26_check_sha": true,
+    "pr_30_check_sha": true,
+    "pr_28_check_sha": true,
+    "pr_27_check_sha": true,
+    "pr_22_check_sha": true
+  },
+  "all_passed": true,
+  "compact_characters": 13931,
+  "compact_utf8_bytes": 14625,
+  "sha256": "3a0793f6b6739e32f641e13015434973f434023738e0dcf32d4bf503fd7207ea",
+  "per_pr_counts": [
+    {
+      "number": 33,
+      "commit_status_count": 0,
+      "check_runs_count": 1,
+      "check_ids": [
+        119950685976
+      ]
+    },
+    {
+      "number": 26,
+      "commit_status_count": 0,
+      "check_runs_count": 2,
+      "check_ids": [
+        119966580036,
+        119778059245
+      ]
+    },
+    {
+      "number": 30,
+      "commit_status_count": 0,
+      "check_runs_count": 0,
+      "check_ids": []
+    },
+    {
+      "number": 28,
+      "commit_status_count": 0,
+      "check_runs_count": 0,
+      "check_ids": []
+    },
+    {
+      "number": 27,
+      "commit_status_count": 0,
+      "check_runs_count": 0,
+      "check_ids": []
+    },
+    {
+      "number": 22,
+      "commit_status_count": 0,
+      "check_runs_count": 0,
+      "check_ids": []
+    }
+  ],
+  "native_task_ids": [
+    "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c82d4cca-6f6d-4ec4-a853-89378951f0e6",
+    "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c3f32dd0-5e0e-4925-8e33-2d70bc374aa9",
+    "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-ec2303cb-0fe4-4bc5-9f02-f154f4ac354c",
+    "pr-comments-batch-stepll2026-OntiCards-26-6339444121-onticards-review-v1",
+    "pr-comments-batch-stepll2026-OntiCards-26-1792669098526-6339805875",
+    "pr-comments-batch-stepll2026-OntiCards-26-1792672304792-6340804900",
+    "pr-comments-batch-stepll2026-OntiCards-26-1792674184541-6341426679",
+    "stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4",
+    "pr-comments-batch-stepll2026-OntiCards-26-1792679081994-6343155248",
+    "stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4-33961689798",
+    "pr-comments-batch-stepll2026-onticards-33-1792682247164-6344295962",
+    "pr-comments-batch-stepll2026-onticards-33-1792682585239-6344425689",
+    "pr-comments-batch-stepll2026-onticards-33-1792683788035-6344864667"
+  ]
+}

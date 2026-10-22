@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-10-22T12:28:14.142667+00:00",
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "patch_sha256": "07f050f9ffe0f38b37e1b46a5a9df2e125f9e02578e9ebdaba8834a9e89a443f",
+  "applied_tree": "a11d7f3cb0df0f0b6254e3d1a8d05e9d3adacd96",
+  "build_host": "kol-stage2",
+  "test_host": "10.66.66.5",
+  "build_completed_at": "2026-10-22T12:24:47Z",
+  "typescript_compile_passed": true,
+  "tests": [
+    {
+      "log": "policy-and-review-tests.log",
+      "tests": 282,
+      "pass": 282,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "admission-tests.log",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "total_tests_passed": 287,
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy5@sha256:22b0e700b97ddf1c099f673747e26474e5b3c86f00b5850c384e1d8f363ddb83",
+  "deployed": true,
+  "production_model_validation": "pending",
+  "new_task_dispatch": "not yet attempted"
+}

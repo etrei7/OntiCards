@@ -1,0 +1,30 @@
+{
+  "captured_at": "2026-10-22T15:19:29.280176+00:00",
+  "build_host": "kol-stage2",
+  "baseline_image": "onticards-propr-policy7-tests",
+  "production_code_deployed": false,
+  "baseline": {
+    "tests": 3,
+    "passed": 1,
+    "failed": 2,
+    "skipped": 0,
+    "log": "publication-fix-baseline-red.log"
+  },
+  "patched": {
+    "core_typescript_build": true,
+    "root_typescript_build": true,
+    "tests": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "log": "publication-fix-tests.log"
+  },
+  "fixture_limits": "Direct production publication/format functions with native HTTP boundary mocked; no GitHub write/model call. Existing tests intentionally exercise missing template/config fallback, not production DB.",
+  "files": {
+    "src/jobs/issueJobHelpers.ts": "5e89da7ca72c46e175713209c32fa2e13e4f83db95b781693e012a1d6b99b675",
+    "packages/core/src/utils/github/logFiles.ts": "b39b0ce08d73403c40d14f432ee93df5528d28bd0d290566b2a06a3bc90ef90a",
+    "packages/core/src/workflow/prTemplate.ts": "f2802b436f0e92482d5950beb75250788c453a9ccce80dc779fec881f2de0f7c",
+    "src/github/prFormatters.ts": "516d8c996ac28d734a28639333779aca67b3dd816867126b60a1d8aaea28d16a",
+    "test/maintenancePublication.test.ts": "2ba71edf3ca9ff99eedad08676c96b1d985adbebf869f98a1acdd6ec26c08291"
+  }
+}

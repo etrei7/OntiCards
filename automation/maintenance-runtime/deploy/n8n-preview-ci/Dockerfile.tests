@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:bdfda2a8fdf48707c5e50a49bd3e06d8d0c759153dc8ee057d8a81c3450bb3e9
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends python3-venv && rm -rf /var/lib/apt/lists/* \
+ && python3 -m venv /opt/tests-venv
+COPY requirements.tests.txt /tmp/requirements.tests.txt
+RUN /opt/tests-venv/bin/pip install --no-cache-dir -r /tmp/requirements.tests.txt
+WORKDIR /trusted-tests
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
+COPY test_preview_api.py test_entry.py playwright.config.ts ./
+COPY tests ./tests
+RUN mkdir /results && chown pwuser:pwuser /results
+USER pwuser
+ENV PATH=/opt/tests-venv/bin:$PATH HOME=/home/pwuser
+ENTRYPOINT ["python", "/trusted-tests/test_entry.py"]

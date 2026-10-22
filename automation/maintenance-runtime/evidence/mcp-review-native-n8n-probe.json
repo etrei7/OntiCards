@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-22T19:14:16.875826+00:00",
+  "new_schedule_triggers": 0,
+  "automatic_review_enabled": false,
+  "models": 0,
+  "github_writes": 0,
+  "workflows": [
+    {
+      "id": "onticardsReviewAdmissionV1",
+      "version": "35400532-d800-45fa-bdd5-edcea4468d64",
+      "nodes": 17
+    },
+    {
+      "id": "onticardsReviewReadOnlyProbeV1",
+      "version": "f92e305e-7a4a-4d6b-9d90-d74c496f3896",
+      "nodes": 3
+    }
+  ],
+  "result": {
+    "review_key": "review-57ca1c8c352fd39ce8fdbf5d4b7c1ded4c3669e4067330a6d7ae8bbeb007b79c",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "state": "native_review_entry_verified_no_dispatch",
+    "detail": "{\"repository\":\"stepll2026/OntiCards\",\"pr\":26,\"head\":\"3105b7b61469c6b2945357f2eefa8fcb2e3aaee5\",\"base\":\"c8e3dfee68d398a37842fc332f73af40a56f02a7\",\"mode\":\"dry_run\",\"idempotency_key\":\"review-57ca1c8c352fd39ce8fdbf5d4b7c1ded4c3669e4067330a6d7ae8bbeb007b79c\",\"automatic_retry\":false,\"model_started\":false,\"checked_at\":\"2026-10-22T19:14:26.253Z\",\"grant_scopes\":[\"read\",\"review\"],\"grant_repository_count\":1,\"fresh_revision\":true,\"tls_verified\":true,\"review_tool_visible\":true,\"merge_tool_visible\":false,\"state\":\"native_review_entry_verified_no_dispatch\",\"grant_revocation\":\"revoked_verified\",\"observed_at\":\"2026-10-22T19:14:32.996Z\"}"
+  },
+  "passed": true,
+  "probe_deactivated": true
+}

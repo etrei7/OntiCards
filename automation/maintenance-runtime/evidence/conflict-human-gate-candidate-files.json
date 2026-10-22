@@ -1,0 +1,37 @@
+{
+  "basePolicy7Tree": "3df474a18c69018a47b1389506bad38c65e9abb8",
+  "candidateTreeExcludingConcurrentPublicationFix": "e7649e8b758bfd1bf7b35ca9d27f2fe3880ee6ee",
+  "patchSha256": "94e9f9ae26c6c6ad9c10f281c0b4911c63394ee7a3697603744add3c72cfaade",
+  "files": [
+    {
+      "path": "packages/core/src/git/conflictResolution.ts",
+      "sha256": "c82b233ad8cf36ea716327b1e8cf10d6f06f363026ad6c82e57a2d279d58d46f",
+      "gitBlob": "d031e9ecaff2510a9af08b206a6fb81111b45371"
+    },
+    {
+      "path": "src/jobs/mergeConflictAgentRunner.ts",
+      "sha256": "8f99603a342e7ba3f63e00202fa2e70d1f5b4654116505da297056523a964730",
+      "gitBlob": "09da80a743dd08071b2d5eae51d4745ad42db8b1"
+    },
+    {
+      "path": "src/jobs/mergeConflictHelpers.ts",
+      "sha256": "5905f44ac47f7bbd2de0c06494f0bc5467b7489df352d4a71db170c149a992ee",
+      "gitBlob": "48c4fd28b86c79508fae392a1ce042d8acbba10a"
+    },
+    {
+      "path": "packages/core/test/conflictResolution.test.ts",
+      "sha256": "cc7cb2f828c49b11bfc1f6501ee54ee86c38fc65de01d05968a3776229898dc3",
+      "gitBlob": "bad805f25acaa04e17bc131a34eb509ed925e0f8"
+    },
+    {
+      "path": "test/processMergeConflictJob.test.ts",
+      "sha256": "150d41daa1da4b902a7bfe5d2b4ac49687e7e1f109909eed941526bd5f58768d",
+      "gitBlob": "c87248cbc2cff509ca80f0316a18eed82ca970ee"
+    },
+    {
+      "path": "test/mergeConflictHelpers.test.ts",
+      "sha256": "210a26d622625c5847be1e6e21bf54fe7e510f9cd14804e1f98a248e37553af7",
+      "gitBlob": "8f2392712367766ee8ddee5553b225b0b029dd6f"
+    }
+  ]
+}

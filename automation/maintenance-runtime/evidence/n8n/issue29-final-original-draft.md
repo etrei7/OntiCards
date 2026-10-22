@@ -1,0 +1,23 @@
+【AI辅助｜维护咨询草稿】
+
+我是 OntiCards 维护者授权的 AI 咨询分类助手，仅生成待人类审阅草稿。以下逐项回答本次问题，严格区分当前 main、历史失败与 PR 候选：
+
+1. **当前 `_export_to_pdf` 是否有纯 Python 的 PDF 备用路径？**
+   - **当前 main（c8e3dfee68d598a37842fc332f73af40a56f02a7）**：没有。`_export_pdf` 直接调用 `_build_and_convert_html(..., 'pdf', ...)` [baseline_pdf_path]；当 `target_fmt == 'pdf'` 且 soffice Tier 1 未成功时，代码注释明确写明“不再有降级方案”，并抛出 `RuntimeError("PDF 导出失败（soffice 不可用），当前版本暂不支持 PDF 格式。")` [baseline_pdf_path]。DOCX 有 `python-docx` 兜底，但 PDF 分支无等效纯 Python 实现 [baseline_pdf_path]。
+   - **历史失败（8abe9e20d58df2605b8a66c3a4296d3dcfe325a2）**：该文件 blob 与 c8e 相同（均为 d4b02c9779aea5a016c4e1c202138e7bd8c1ec0d）[historical_exporter_identity]，因此历史运行镜像中的源码同样没有纯 Python PDF 备用路径。
+   - **PR 候选（3105b7b61469c6b2945357f2eefa8fcb2e3aaee5 / Draft PR #26）**：仍未引入纯 Python PDF 备用路径。候选改为先用既有 `_build_docx_with_python` 生成 DOCX，再调用既有 `_convert_via_local_soffice` 转 PDF；若 soffice 不可用则直接报错，不新建报告生成器 [candidate_pdf_path]。
+
+2. **“soffice 不可用”能否单独证明程序未安装，还是仍需区分未找到程序与转换失败？**
+   - **当前 main（c8e）**：不能单独证明。源码中 soffice 未找到（`_get_local_soffice_path()` 返回空）会打印“soffice 未找到，跳过”并进入 Tier 2 抛出该错误；而 soffice 存在但转换抛异常时，会捕获异常记录 `last_err`，同样进入 Tier 2 抛出完全相同的错误文本 [baseline_pdf_path]。两种不同原因最终产生同一句报错，因此仅凭该文案无法区分是缺程序还是转换失败。
+   - **历史失败（8abe）**：blob 一致 [historical_exporter_identity]，行为相同，历史统一报错同样不能单独证明容器内缺少 soffice。
+   - **PR 候选（3105）**：将两类情况拆分为不同错误信息——不可用时抛出“PDF 导出需要 LibreOffice Writer，请安装 libreoffice-writer。”，转换未产出文件时抛出“PDF 导出失败：LibreOffice 未生成 PDF 文件。” [candidate_pdf_path]。但这仅是候选代码，尚未合并到 main，不代表历史镜像已具备此区分能力。
+
+3. **尚未核实项**：用户明确要求“如果当前读取的源码片段不能证明某一项，请直接标为尚未核实”。本轮给定的受信源码片段已能完整证明上述两项问题，暂无需标记尚未核实的子项。
+
+4. **最少还缺的一项脱敏观测**：若要在现有材料之外继续区分历史失败究竟是“未找到程序”还是“转换失败”，最少还需要在对应运行环境内提供一次 **soffice 查找结果或转换子进程的退出码/脱敏错误摘要**（例如 `command -v soffice` 的输出，或子进程实际抛出的脱敏异常信息）。不需要重复提供部署方式、历史镜像标识或通用错误文案，也不索取密钥、完整环境变量或未脱敏日志。
+
+下一步：如维护者决定继续区分历史失败的具体原因，请在后续补充对应运行环境中 soffice 查找结果或转换子进程退出码/脱敏错误摘要中的一项。本条仅为只读咨询草稿，不授权修改代码、添加标签、启动修复 Agent、安装、构建、部署、合并或关闭 Issue。
+
+版本来源：[baseline_pdf_path](https://github.com/stepll2026/OntiCards/blob/c8e3dfee68d398a37842fc332f73af40a56f02a7/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L884)、[historical_exporter_identity](https://github.com/stepll2026/OntiCards/blob/8abe9e20d58df2605b8a66c3a4296d3dcfe325a2/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L884)、[candidate_pdf_path](https://github.com/stepll2026/OntiCards/blob/3105b7b61469c6b2945357f2eefa8fcb2e3aaee5/OntiCards_Api/controllers/governance/libreoffice_exporter.py#L991)
+
+本流程未执行修复、构建或部署；最终合并由维护者操作。

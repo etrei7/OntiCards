@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {writeFile} from 'node:fs/promises';
+import {closeConnection,db} from './packages/core/dist/db/connection.js';
+import {loadAgents,saveAgents} from './packages/core/dist/config/configManagerAgents.js';
+import {getAgentDefinition,updateAgentDefinition} from './packages/core/dist/services/agents/agentDefinitionStore.js';
+const id='e6a4ce1d-0068-4c3a-832c-ff911c791a1c',owner='318866723',alias='onticards-daily-qwen';
+try {
+ const before=await getAgentDefinition(id,owner),agents=await loadAgents();
+ assert.equal(before.revision,12);assert.equal(before.agentAlias,'onticards-qwen');
+ assert.equal(Number((await db('agent_runs').whereNotIn('state',['completed','failed','cancelled','skipped']).count({n:'*'}).first()).n),0);
+ assert.ok(!agents.some(a=>a.alias===alias));
+ const coding=agents.find(a=>a.alias===before.agentAlias);assert.ok(coding&&coding.type==='opencode');
+ await writeFile('/usr/src/app/data/daily-before-isolated-alias.json',JSON.stringify({definition:before,agents},null,2),{flag:'wx',mode:0o600});
+ const daily={...coding,id:randomUUID(),alias,configPath:'/opt/onticards-maintenance/propr/opencode/daily'};
+ await saveAgents([...agents,daily]);
+ const after=await updateAgentDefinition(id,owner,{agentAlias:alias},{expectedRevision:before.revision});
+ for(const field of ['enabled','modelName','scheduleEnabled','scheduleCron','scheduleTimezone','nextRunAt','autonomyMode','repositories','capabilities','includePreviousReports','prompt'])assert.deepEqual(after[field],before[field],field);
+ const readback=await loadAgents();for(const original of agents)assert.deepEqual(readback.find(a=>a.id===original.id),original);
+ assert.equal(after.revision,13);
+ const record={at:new Date().toISOString(),definition_id:id,revision:after.revision,agent_alias:alias,config_path:daily.configPath,model:after.modelName,schedule_enabled:after.scheduleEnabled,schedule_cron:after.scheduleCron,schedule_unchanged:true,original_agents_unchanged:true,model_calls:0};
+ await writeFile('/usr/src/app/data/daily-isolated-alias.json',JSON.stringify(record,null,2),{flag:'wx',mode:0o600});console.log(JSON.stringify(record));
+}finally{await closeConnection();}process.exit(0);

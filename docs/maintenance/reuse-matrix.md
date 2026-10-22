@@ -1,12 +1,14 @@
 # OntiCards 逐功能复用矩阵
 
-当前状态截至2026-10-22 18:57：API/worker/daemon运行policy4，仓库接单disabled；事实日报00:00/09:00定时启用，原生AI日报revision10 schedule on（下次10月23日09:05）且未触发，n8n inactive。第三次受控原生日报31.854秒完成、quality=true，输入14104/输出1650/缓存11264，USD未知；OAuth完整往返及受保护原生日报UI已实测。保留首次质量失败、第二次超时，不能把一次验收当长期运行。
+当前快照 **2026-10-23 03:50（上海）**。ProPR API/worker/daemon已于19:45:28Z部署policy13，digest `3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879`，964/964（679既有分组+20原生只读/版本/权限边界+265相关回归）0skip/编译通过；运行配置不变、队列前后0、health200。policy10未单独部署。知识主路径69/69、真实8abe→c8e→main、0模型；完整语义索引partial停、旧任务failed后模型20→20，未造完整索引成功。
 
-当前产品head3105/basec8e已在kol-stage2构建、5机18111验证：转换3/API7/PW3，9截图/6页PDF视觉；迁移5通过1跳过。[Draft PR26](https://github.com/stepll2026/OntiCards/pull/26)及[证据门户](http://10.66.66.5:18123/onticards-reports/acceptance/pdf-3105/)可读，原生Check119778059245为neutral、绑定精确head/base且main未改。HTML受同源sandbox限制，采用现有Nginx附件下载，本地原生详情/嵌入图验证通过；不放宽sandbox、不造localStorage shim。此PR是独立复用既有修复并受信发布，Issue25自动链仍未成功。
+[Draft PR33](https://github.com/stepll2026/OntiCards/pull/33)是Issue32原生自动修复及两次同PR反馈更新，fdd3/basec8e，9/9+真实并发PDF2/2+竞态10/10；Check119950685976仅并发范围。[PR26](https://github.com/stepll2026/OntiCards/pull/26)3105/basec8e最终rootless r4真实业务API7/PW3/9PNG/四格式与问数250通过；37文件门户和Check119988255661已发布，不能扩为lint/迁移全验或PR33并发修复。[Draft PR30](https://github.com/stepll2026/OntiCards/pull/30)由主流程统一追加，本地文档不冒充已发布提交。main未写、最终Merge人工。
 
-新提供Mihomo配置已复用原生file provider及任务专用17891/ONTICARDS-PROVIDED，delay/API200，共享selectors/DNS/rules保留；最新600.098秒完整clone探针已ETIMEDOUT，未记为通过。旧订阅403与其他失败保留。事实日报新增5行SQLite known partial候选恢复、tmpfiles原生ACL，11项测试及18:39锁下部署通过；最终合并仍由维护者操作。
+00:00真实487Stars/9Forks；10/22facts run5da38704 complete/errors[]，nativeTasks13、PR33Checks1/PR26Checks2（采集当时），Linux37。新三次原生AI质量均未通过，第三次两语义错误保留；显式复核修正版独立QA 10/10通过，不叫native通过。未来daily专用alias rev13/instructions空/helperREADY只读bind已无模型验证，同09:05Schedule保持，事实09:00。
 
-首版矩阵已先交付；后续每项状态按真实证据更新。R19的实施前复用候选最初写于测试报告，后归并本矩阵，不倒称该行先于记录。源码/文档核实、可启动、端到端通过是不同状态。未执行项目不会写成通过；功能目标保持任务书全部范围。早期connector创建Issue的403、缺App时后台拒绝启动、PDF500/五页破版及旧208项政策测试均保留为历史阶段证据。
+原生n8n2.42.7→OpenSSH pinned/ForceCommand→rootless→现有registry/Skopeo→5机测试已实际贯通。r2网关429、r3预扣不足保留；r4为第三次实际供应商验收，使用40406原生单位/短token12已禁用，总100k未重置/余15445，USD未知，无更多供应商调用。新PR/更新已复用完整intake→原生CI准入；03:11自然1receiver/6PR，旧成功/人工/预算不足均保持sticky，0新增SSH/模型，不将固定受控成功宣称所有PR持续通过。
+
+App版本检查与Checks写scope分离，PR26/33登记watch；native5min自然trigger17:45:36检查PR33 current，synthetic neutral119966580036已真实PATCH/回读action_required，不是产品tests。首次失败保留。普通intake966全量分页29线程/264事件成功；新Issue29真人事件两模型38313tokens被质量gate拒绝；最后有限恢复18444tokens仍错SHA，0POST，总5调用/2旧回复，29/31已封存人工。普通native slash命令排除咨询路由9/9已部署。全部AC目标保留，旧21:02/01:20快照在evidence/audit-history。
 
 ## 组件来源和版本
 
@@ -15,62 +17,79 @@
 |OC|[OntiCards](https://github.com/stepll2026/OntiCards/tree/8abe9e20d58df2605b8a66c3a4296d3dcfe325a2)|AGPL-3.0；现有Flask2.3.3、Next14.1.3、Yarn锁文件、Compose|已克隆、148个Python文件语法检查通过；扫描器4个探针2失败|
 |OH|[OpenHands Canvas v1.30.0](https://github.com/OpenHands/OpenHands/releases/tag/v1.30.0)，实际官方镜像内Automation1.22.0/SDK1.56.0；另查Automation1.23.2/SDK1.57.0源码|MIT；本地模式源码及镜像已核实|测试机真实模型+4次工具动作完成随机nonce/计算探针；显式配置OH_SESSION_API_KEYS_0后未认证401。高权限写凭据会进入Agent环境，未找到现成宿主发布边界，因此不作为自动修复主底座|
 |GA|[gh-aw v0.93.0](https://github.com/github/gh-aw/releases/tag/v0.93.0)、[agentics b4e175b](https://github.com/githubnext/agentics/tree/b4e175bab6674279e0fe158f7dc877b77bc9d92f)|MIT；近期维护|已查repo-status/repo-assist源文件；默认分支暂无workflow，不能宣称定时已生效|
-|PP|[ProPR 42931b1](https://github.com/integry/propr/tree/42931b1502eb03ac299f14e306811736fab51eb4)|Apache-2.0；源码0.9.0，npmCLI0.8.15|policy4 digest5c6342f9，完整TS/252政策/49认证/110日志通过；OAuth原生UI实测。日报第三次quality=true，revision10 schedule on（下次10月23日09:05）；Issue→PR未验|
+|PP|[ProPR 42931b1](https://github.com/integry/propr/tree/42931b1502eb03ac299f14e306811736fab51eb4)|Apache-2.0；源码0.9.0，npmCLI0.8.15|policy13已部署，digest3bef8bde；964/964无skip/编译通过；Issue32→PR33及反馈实证；新原生review门禁已部署，无新增模型审查验收|
 |PA|[PR-Agent v0.48.0](https://github.com/The-PR-Agent/pr-agent/releases/tag/v0.48.0)|MIT；2026-10-16发布|审查候选；不单独覆盖修复部署和日报，不与主底座重复消费相同PR|
-|N8|[n8n](https://github.com/n8n-io/n8n)、[Schedule Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/)|现有2.42.7；Sustainable Use License，非MIT/OSI开源；现有镜像有本地修改|新增原生HTTP/JWT/Data Table/条件节点配置补充未打AI标签咨询入口；全部inactive。CLI读取#19–24并调用真实模型6次/7302tokens，草稿quality=false；无网重放能拦截不合格输出。正常server Data Table/幂等、持久事件水位、长期代理及真实回复仍缺；不是已启用自动回复|
-|GH|[GitHub REST](https://docs.github.com/en/rest)、[Actions](https://docs.github.com/en/actions)、Issues/PR/Review/Merge|平台原生服务；REST版本2022-11-28|App5422414单仓六权限live验证通过；Git Data API原生发布精确PDF候选，8对象SHA与双回读一致；PR26一次neutral Check119778059245已发布，短期token撤销、main未改。早期connector create_issue403仍保留；真实Issue→PR未验|
-|PYGH|[PyGithub 2.10.0](https://github.com/PyGithub/PyGithub/releases/tag/v2.10.0)|LGPL-3.0；Python3.12.3|真实事实采集、11项统计恢复测试；跨lookback已知partial和原生ACL修复已部署，完整窗口record/文件哈希不变|
+|N8|[n8n](https://github.com/n8n-io/n8n)、[Schedule Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/)|现有2.42.7/Sustainable Use License，非MIT/OSI；镜像有已有本地修改|18128自然全分页已通过，新补充质量被拒；18132固定PR26完整模型CI执行70成功，5min Checks失效真证；同一完整intake已接动态PR准入，03:11自然六PR预算/旧状态保持，0新增模型|
+|GH|[GitHub REST](https://docs.github.com/en/rest)、[Actions](https://docs.github.com/en/actions)、Issues/PR/Review/Merge|平台原生服务；REST版本2022-11-28|App5422414单仓六权限live；PR26/30/33真实Draft，精确Git Data/双回读；PR33 Check119950685976仅并发success，App最小短token撤销；main未改，Merge人工|
+|PYGH|[PyGithub 2.10.0](https://github.com/PyGithub/PyGithub/releases/tag/v2.10.0)|LGPL-3.0；Python3.12.3|事实采集37项Linux测试与锁下部署；网络前pending、跨lookback补报、精确PR head、固定App bot身份识别，旧完整payload/文件不重写|
 |PW|[Playwright 1.64.1](https://github.com/microsoft/playwright/tree/cfe490d941f992655948eee8fd4fd94e1c4234bf)|Apache-2.0；Chromium1248|旧f553/Web8abe3/3及9截图；当前3105/basec8e真实3/3、0失败0跳过、截图manifest绑定新head/base，Draft PR26；未来SHA变化仍需新验|
 |PT|[pytest 9.1.1](https://github.com/pytest-dev/pytest/tree/cf470ec0bf7eb89cd97dd56df4859eae5db46447)|MIT|本机版本核实；采用JUnit/参数化断言，不写测试运行器|
 |ART|[upload-artifact 7.0.2](https://github.com/actions/upload-artifact/tree/cf430e030ddbb5b0abf93d22962f4752f3646cd9)|MIT；2026-10-07发布|Actions长期产物候选；本轮先私有报告目录，不能把本地目录称为已上传artifact|
 |DC|[Docker Compose](https://docs.docker.com/compose/)|Apache-2.0；采用打包机2.40.3/测试机5.0.0已有安装|Docker/Compose实测可用；不为追新升级|
 |SD|[systemd timer](https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html)|系统已有255；LGPL-2.1-or-later|已启用00:00快照/09:00补报，Asia/Shanghai、Persistent、flock、15分钟超时、低权限用户；受控timer和重启实测成功，tmpfiles清理31天样本成功|
 |QM|[百炼工具调用](https://help.aliyun.com/zh/model-studio/qwen-function-calling)、[代码模型](https://help.aliyun.com/zh/model-studio/qwen-coder)|用户提供现有API；非本项目开源组件|实际/models存在qwen3-coder-flash，两轮工具调用通过（455tokens）；产品问数、1024维qwen3.7-text-embedding-flash、qwen3.7-text-rerank请求均200。qwen3-coder-plus实际404未采用；金额未知|
-|MH|[Mihomo 1.19.23](https://github.com/MetaCubeX/mihomo)|已有部署，GPL-3.0|用户提供配置下载200，原生file provider/专用17891切ONTICARDS-PROVIDED，delay362ms/API200；共享selectors/DNS/rules保留；完整clone在600.098秒超时，旧403/150秒超时与探针错误分别保留|
+|MH|[Mihomo 1.19.23](https://github.com/MetaCubeX/mihomo)|已有部署，GPL-3.0|既有1.19.23 native fileprovider/专用17891成功API；公网完整clone600.098秒超时。本地浅mirror用原生ensureRepoCloned/worktree及后续真实origin fetch9.994秒成功；浅cache不登记清理，未伪造marker|
 
 ## 逐功能决策
 
 |ID与验收|现有实现及比较|采用模块和接入方式|覆盖与具体缺口|验证与新增范围|
 |---|---|---|---|---|
-|R01 仓库与权限 AC01/09|OC代码/远端、GH连接；服务器Codeup是另一版本|GH只读API、git SHA；配置固定repository，白名单分支codex/|App身份/精确权限/单仓live通过；宿主HTTP/1.1匿名clone小探针成功，但Issue25实际worker clone TLS EOF、后续ownership拒绝，保留不同环境结果|`evidence/github-app-live-verification.json`、`github-app-backend-configuration.json`；不新增GitHub客户端|
-|R02 定时/重试/恢复 AC03/11|N8、SD、GA、OH、PP原生调度均比较|事实SD，Agent PP polling/BullMQ；不另造调度|事实00:00/09:00启用；AI revision10 schedule on（下次10月23日09:05），cron原生计算09:05已验但未触发；Issue25跨poll停止仍缺|11统计恢复测试；known partial跨lookback修复、18:39锁下真实部署/不重采complete；不将此算Agent恢复|
-|R03 日报统计 AC02|GA repo-status、OH repo monitor、PYGH/GH|PYGH采集+SQLite持久快照+现成中文报告模板调整|模板未覆盖自然日边界、日界快照、closed/reopened事件、Issue/PR分离、初始未知值|G01确定性统计适配：API分页复用，事件ID去重，窗口唯一，失败写null；必须边界/失败/重复测试|
-|R04 日报交付 AC02/03|GH运营Issue、OH任务产物、PP原生报告|事实报告+PP原生run/report，revision10实时只读挂载|第三次run2957780b质量true、31.854s、14104输入/1650输出/11264缓存、USD未知，OAuth UI可读；正式schedule已配置启用、下次2026-10-23 09:05；daemon已运行；此前两失败保留|G02窗口唯一/动态输入合同；quality.json/production-provenance.json，禁止把受控验收冒充定时日更|
-|R05 询问/分类/回复 AC04|OC Issue表单；GA repo-assist；OH monitor/events；PP标签入口未覆盖普通咨询；已检索N8原生节点|N8 2.42.7 HTTP读取开放Issue/PR及讨论，现有模型中文草稿、条件校验、Data Table；JWT/安装token/评论节点只配置未连线|已读#19–24、模型6次，quality=false；#23缺AI标识、#20缺字段、无代码依据仍全判可修复。无公开回复；分类不构成修复授权|G03工作流配置；`research/issue-triage-reuse.md`、`evidence/n8n/quality-review.json`；校验重放全转人工核实，不另造Agent循环|
-|R06 事件/防循环 AC03/04|PP原生polling/BullMQ；N8原生Trigger/HTTP/Data Table/条件节点|PP 5分钟标签修复入口；N8补充一般咨询事件，inactive；不接托管relay或新增公网webhook|N8正常server Data Table未验（CLI旁路），关闭/重开持久水位、机器人防循环、每线程上限、POST不确定回读、人类续办、长期代理仍缺|G03复用配置；无网重放仅证明不合格输出被拦，不能计幂等/长期事件验收；未发GitHub消息或任务|
-|R07 PR审查 AC05/08|OH PR Review、PA、PP、GA|一个主审查组件，独立上下文读diff与测试结果|真实构建/浏览器不是LLM审查自带结果|模板G03与测试调用G04；按位置/依据评论；不得自动approve|
-|R08 修复/反馈/冲突 AC05/08|OH Issue-to-PR、GA repo-assist、PP ultrafix|PP+OpenCode+已有worktree/容器，单并发、最多3轮|Issue25原生接单后clone TLS失败及ownership重试拒绝，未进入Agent；daemon停。PDF复用不冒称首次生成；SQL3轮拒绝|G03配置；已有候选API发布不是Issue→PR成功；policy4未重新编写Agent/分支管理器|
-|R09 外部fork/权限 AC09/10|GH fork metadata、PP宿主finalization；OH写凭据进入Agent环境|PP只读Agent token与宿主发布；fork受控关联分支|G05实例禁止合并/codex前缀/测试机禁build，复用原生same-repo非codex continuation|policy4完整TS编译、252政策测试与生产dist验证通过；真实无权fork/提交归属和Agent边界仍待验|
-|R10 仓库知识 AC01/12|OC README/CONTRIBUTING/SECURITY与模块；OH contexts/GA memory|版本化知识文件，使用实际task SHA上下文|已有AGENTS/运维知识草稿与实际SHA事实档案；默认分支未合并，真实main变更后增量刷新仍待验|文档G06；已出repository.md；不建向量知识系统|
-|R11 隔离部署 AC06/09|OC原Dockerfile/Compose/healthcheck，DC|既有override/独立网络/卷，测试机pull --no-build；当前新预览18111|API3105/basec8e，Web复用相同tree；真实服务启动、迁移5通过1跳过；Draft PR26。旧18110与原服务隔离|G04仅打包机构建，`deploy/evidence-pdf-current-main/runtime/runtime-manifest.json`；不碰既有生产服务|
-|R12 前后端/API/迁移 AC06|OC yarn命令、Flask接口、Alembic、pytest|原命令及业务用例、独立合成数据|3105/basec8e API7/7、soffice3/3；原生migration5pass/1skip，缺three_way_check不计通过；旧lint/typecheck失败保留|G04项目spec与数据；当前main7路径blob原样保留，不把空库/升级迁移/完整schema校验混同|
-|R13 浏览器关键业务 AC06|PW原生runner、APIRequestContext、截图/trace|登录权限、元数据、卡片、真实模型问数、治理导出|3105/basec8e PW3/3、0skip，真实查询250及成功截图，Draft PR26；业务API各步200，截图manifest绑定新组合、6页PDF视觉完成|G04业务测试；公开发布清单排除全部trace，HTML内嵌步骤凭据已脱敏；旧f553证据保留，新head/base后仍须重新验|
-|R14 证据与版本 AC07|PW reporters、GH Checks/artifacts、PP Redis Lua/AOF、现有Nginx|原生HTML/JSON/JUnit/manifest；Nginx只读门户与HTML attachment；G05原生日志TTL配置|PR26门户GET200/PUT403/DB404，HTML实际下载SHA一致、本地详情/图正常；Check119778059245 neutral精确head/base。Redis2592000及刷新已验；长期30天/自动版本失效/Actions待验|G07薄关联/清单脱敏，G05 TTL；不造报告/存储/认证系统，不使用localStorage shim；raw trace不发布|
-|R15 状态/队列/预算 AC08/11|PP原生UI/BullMQ/ultrafix，Express session/Redis/OAuth|原生认证+精确HTTP opt-in和已有任务管理入口|49认证测试、OAuth完整往返及原生日报受保护UI通过；Activity Overview temporarily unavailable，取消/恢复/预算出口未验，USD未知|G03配置/G05局部扩展；API/worker/daemon运行，仓库接单disabled；不启用demo/development/免认证|
-|R16 人工合并 AC10|GH原生Review/Checks/Merge|仅提供真实PR与证据链接，由维护者操作GitHub Merge|PP合并入口由G05实例策略关闭，不变保护规则；当前head变化重新检查|没有新增执行合并代码；新增的是拒绝执行的策略检查|
-|R17 持续运行/升级 AC03/12|DC restart、SD服务、现有管理|固定版本、原生暂停恢复、备份状态|report.py/tmpfiles18:39锁下备份部署、apply2次、facts/portal200，PUT403、DB404，timer仍active/enabled；完整Agent升级恢复待验|G04现有配置；备份reporting-review-backups/20261022T103932Z，deployment.json；无不必要fork|
-|R18 SQL扫描缺陷（首个修复尝试） AC05/14|OC sql_from_guard；检索SQLGlot/sqlparse，实际探针sqlparse0.6.0 BSD-3-Clause|本轮不采用生产候选；保留共享接口及现有源码，未引入解析器|3次模型尝试后独立审查拒绝：数组/dollar字符串新增漏真实表；完整调用方及PG15.18只读实测证实风险。默认sqlparse也有跨方言歧义|G08未修复；`research/sql-candidate-review.md`保留13组scanner/8组调用方/14组lexer及PG证据；停止换循环重试，不能用安全退化换个例通过|
-|R19 治理PDF可用性 AC06/14|OC已有_build_docx_with_python、python-docx与soffice；实施前候选在testing-report，后归并矩阵|原3文件修复复用于main c8e，7个main变化blob保持一致|当前3105组合转换3/API7/PW3、9截图与6页视觉通过，migration5/1skip，受信创建[Draft PR26](https://github.com/stepll2026/OntiCards/pull/26)；非Issue25自动成功。旧f553完整证据保留|G09仅依赖和版式，`deploy/evidence-pdf-current-main/`与`evidence/pdf-current-main-pr.json`；主分支未写、未合并，soffice并发待验|
+|R01 仓库与权限 AC01/09|OC代码/远端、GH连接；服务器Codeup是另一版本|GH只读API、git SHA；配置固定repository，白名单分支codex/|App5422414单仓六权限live；PR26/33源、镜像、basec8e分别验证；原生Git准备abort/deadline已部署，旧网络失败保留|GH原生JWT/短token精确scope回读与撤销；无新GitHub客户端；真实外部fork仍未端到端|
+|R02 定时/重试/恢复 AC03/11|N8、SD、GA、OH、PP原生调度比较|事实SD，Agent PP/BullMQ，普通事件N8|事实00:00已真实运行487/9，09:00/AI09:05仍启用；N8两独立5min；policy12原子Task首投递阻父/child跨poll预算，CIreceipt不自动重跑|systemd/原生BullMQ/DataTable/flock；37项事实回归、9+192首投递相关；无Task父失败门禁已补，全任务reboot恢复仍未完整覆盖|
+|R03 日报统计 AC02|GA repo-status、OH monitor、PYGH/GH|PYGH API分页/SQLite/既有中文模板适配|10/22 facts run5da38704 complete/errors[]；nativeTasks13、Checks与commit statuses分列；未知基线不造0|G01新增复用GH Checks API与原生TaskDB只读快照，37项Linux/低权限LoadCredential；原生App自动短token无匿名fallback；旧完整payload不重写|
+|R04 日报交付 AC02/03|GH运营Issue、OH产物、PP原生run/report|事实报告+原生独立daily alias/只读挂载|10/22三次nativeAI质量均未过；显式审核修正版10/10通过，非原生生成质量通过；rev13 instructions空/helperREADY无模型证据，同09:05Schedule|G02复用原provider/definition；不把配置/任务completed当内容正确，不把费用NULL写0|
+|R05 询问/分类/回复 AC04|PP标签入口不足普通咨询；GA/OH/N8比较|N8 HTTP/DataTable/模型/原生App发布|Issue29既有两真实App回复；新真人已发现，draft998/review1022共38313tokens被gate拒绝/0POST，最后恢复18444tokens仍错SHA拒绝0POST，总5调用/2旧回复，29/31已人工封存|G03原生节点；3回复/6调用目标保留；Issue31未知封存，不以重试绕预算|
+|R06 事件/防循环 AC03/04|PP polling/BullMQ、N8原生Schedule/HTTP/DataTable|独立18128全量分页+open_count一致性门禁，原7workflow不动|自然poll966 complete，29线程264事件，29issues/50comments/0inline/19PR；短token撤销、sticky未知跨重启；原since漏评论已修并实证|原生close/reopen/全部PR评论投影/多线程15、预算批20、并发8fixture通过；不把fixture当所有真实模型事件E2E，新语义回复质量与发现成功分开|
+|R07 PR审查 AC05/08|PP原生MCP review_pull_request、OAuth短grant、既有review parser/formatter/publisher；N8原生子workflow/DataTable|复用同一完整intake，单仓read+review、明确编码alias、CA验证loopback TLS、固定受限SSH；同tuple持久准入及跨grant原生operation查重|TLS/SSH12、自然六PR真实只读链、baseline12、envelope13/SSH未知6/隔离SQLite16、上游OAuth52通过；0模型。policy13无标签可信owner worker/只读恢复/实际head+base检查已部署，20新+265相关fixture；最终baseline前disabled|新薄适配只接原生权限/入口/receipt，不新造Agent。普通分支/fork只读允许、不可读转人工；posted不等完成，unknown不重发，历史无效review仍失败|
+|R08 修复/反馈/冲突 AC05/08|PP ultrafix/worktree/宿主发布，比较OH/GA|PP+OpenCode单并发3轮，原生Follow Up与持久history|Issue32原生修复产生PR33，同PR真实反馈续办到fdd3，最终9/9+PDF2/2+竞态10/10；Issue25失败和SQL三轮拒绝仍保留|G03/G05原生worktree/host发布/Follow Up；真实fork/语义冲突出口未全验；policy12复用原生Task原子首投递先于child/模型，补父失败跨poll预算；9+192相关测试|
+|R09 外部fork/权限 AC09/10|GH metadata、PP只读Agent/宿主finalization|原生continuation+实例merge禁用/codex前缀/测试机禁build|PR33/PR26专属Agent边界，rootless实际镜像/UID/subUID/cgroup/网络/socket/caps负向；外部fork拒入此CI|App/privatekey/SSH/registry只可信host或CI，PR仅短模型token；原生fork continuation/作者归属/原PR不关闭端到端待验|
+|R10 仓库知识 AC01/12|OC文档、OHcontexts/GAmemory、PP原summary|版本化AGENTS/.propr/知识模板、原summary/git/AsyncLocalStorage/BullMQ|policy11知识主路径69/69，真实8abe→c8e→main、22上下文/29缓存/4改增文件、0模型；全语义索引partial停|G-K01至G-K04 pinning/deadline/6分析600秒/重入预算局部修复；不造新知识库、不把主路径通过当全仓语义索引成功|
+|R11 隔离部署 AC06/09|OC原Dockerfile/Compose/healthcheck，DC|既有override/独立网络/卷，测试机pull --no-build；当前新预览18111|现成Compose独立18111产品验证、5机rootless严格网络与cgroup；可信SSH/native registry固定digest已实接，PR26真kol构建/5机测试|G04：ForceCommand/source-IP/hostpin、SFTP证据、Skopeo1.13.3单entry可信publisher/fetch；PR不拿root socket/SSH，测试机不build|
+|R12 前后端/API/迁移 AC06|OC yarn/Flask/Alembic/pytest|原命令与业务用例，独立合成数据|PR26rootless r4 API7/7、真实四格式导出，PR33专项9+2+10；原migration5pass1skip|G04复用测试/Compose，three_way_check缺失与原lint/tsc基线仍未修，不以业务success覆盖它们|
+|R13 浏览器关键业务 AC06|PW原生runner/APIRequestContext/PNG/JSON/JUnit|登录权限、schema、卡片、真实chat/embedding问数、治理导出|PR26rootless r4 PW3/3零skip、9原生PNG，query250/基础空值治理；r2限流/r3预扣失败保留；无stub/跳过|G04复用原业务spec，固定trustedbundle；同秒JWT精度通过无模型红绿probe后fixture跨秒重登，未放松401断言|
+|R14 证据与版本 AC07|PW reporters、GH Checks、PP Redis Lua/AOF、现有Nginx|原生JSON/JUnit/PNG/manifest、Nginx只读allowlist、n8n5min失效|PR26rootless37文件HTTP哈希、POST403，Check119988255661；PR33专属Check；synthetic neutral→action_required独立回读，20边界fixture，真实schedule复查|G07复用JWT/HTTP/DataTable/Schedule；只读PRtoken与Checks写token分离撤销，保留旧证据/失效不重跑；30天持续与网络中断即时性未验|
+|R15 状态/队列/预算 AC08/11|PP UI/BullMQ/ultrafix/Express session/OAuth|原生认证/私网HTTP opt-in、已有Follow Up；GitHub官方name nullable，复用authBearer回退|OAuth空姓名和HTTP uuid原生fallback已部署、NewTask/PR33反馈真实；Git准备abort/deadline实际子进程停止；索引预算/重入policy11已部署|G05/G-K复用原状态/AbortController/simple-git/native预算；prequeue原生Stop/真实Redis/SQLite25/25及本地Git continuation/语义负例50/50已验；历史history_id缺失、CI人工重跑尚为受信操作流程|
+|R16 人工合并 AC10|GH原生Review/Checks/Merge|仅提供真实PR与证据链接，由维护者操作GitHub Merge|Draft PR26/30/33、真实报告和Check入口；机器人不merge/main写/autoapprove/弱化保护|采用GitHub原生Merge由维护者；当前Check必须精确SHA，专项success不扩成全仓可合并|
+|R17 持续运行/升级 AC03/12|DC restart、SD原生服务/备份|固定image digest，空队列升级，专用用户及原生ACL|policy13 API/worker/daemon已部署3bef8bde；事实timer跨日真实成功，Linux37；n8n独立持久/重启，rootlessuser daemon/ACL配置已实证|G04原生systemd/Compose；indexworker暂停/summary关；宿主真reboot、磁盘硬quota、30天持续留存仍未验|
+|R18 SQL扫描缺陷（首个修复尝试） AC05/14|OC sql_from_guard；检索SQLGlot/sqlparse，实际探针sqlparse0.6.0 BSD-3-Clause|本轮不采用生产候选；保留共享接口及现有源码，未引入解析器|3轮SQL候选独立拒绝，数组/dollar字符串漏真实表风险；生产未改、未发修复PR|G08明确未修，保留sqlparse/lexer/调用方/PG证据，不用安全退化换个例通过|
+|R19 治理PDF可用性 AC06/14|OC既有DOCX构建、python-docx与soffice；先研究后改|三文件修复复用于main c8e，保留7个main变更blob|PR26版式串行3/API7/PW3；其并发1/2失败由原生Issue32→独立PR33解决，最终fdd3的9/9、并发2/2、竞态10/10通过|G09复用LibreOffice独立UserInstallation临时profile、原PDF路径/测试；PR33专项证据单独，不回写PR26旧版本|
 
-## 新增代码边界
+## 当前新增代码边界与复用增量
 
-- G01：自然日统计与快照适配，源于R03模板口径不覆盖；使用PYGH，不实现HTTP客户端/分页库。
-- G02：repo/window唯一日报、补采、首次基线与到期元数据；SQLite原生事务/唯一约束。审查后5行合并已知未complete日期、不超过requested day、不回填未知历史；复用systemd255 a+恢复UID101/default ACL，保留既有1000但新环境不新增1000，父目录0700。11测试与18:39实机通过，来源research/report-recovery-acl-reuse.md；不实现数据库/调度/权限平台。
+- G-Review：上游无自动新PR/更新审查开关，HTTP入口又无法直接原生OAuth同源consent。复用OpenSSH固定服务能力、原生MCP短grant/operation/read+review、N8既有intake/DataTable；HTTP MCP关闭、18135仅loopback/CA验证。新代码精确对应跨grant幂等、严格原生回执投影、≤4KiB输入与状态未知边界、首次baseline，不造auth broker。policy13原生worker门禁已在真实Redis/SQLite fixture及964项镜像回归通过后部署；新接线尚无模型审查成功，等最终PR30后baseline启未来版本。
+- R14最终交付：依据`research/final-delivery-reuse.md`复用zipfile/Gitleaks/现有Nginx publisher/精确Git blob和公开产物hash；三allowlist映射与HTML索引只是薄适配，无新网站或认证服务。
+
+- G-CI intake：已部署复用18128完整分页/水位/DataTable→18132原生准入；自然03:11一批6PR、0login/SSH/model，同tuple永久消费。PR30/33原unknown保留并受控reconcile为budget_exhausted；余额15445<45000，不自动重置或重发。新head/base新增tuple，fork/非codex/main人工。52表达式+20原生预算批fixture通过；不新增Schedule/采集器/队列。依据`research/preview-intake-dispatch-reuse.md`、`research/ci-batch-budget-reuse.md`。
+
+- G01/G02：PyGithub原生分页/Checks API、SQLite既有reports事务主键、systemd LoadCredential/App installation自动短token、原生TaskDB只读投影；37项实机回归。完整旧payload/文件SHA保持，未造broker/scheduler。
+- G03：n8n原生Schedule/DataTable/HTTP/JWT/模型节点及有限表达式；普通咨询全分页已真实定时、slash命令排重9/9；最终语义补充失败人工封存，不新建事件队列或Agent。
+- G04：RootlessKit/Docker/systemd/UID firewall/OpenSSH pinned ForceCommand/SFTP/Skopeo/现成registry/Compose/pytest/PW的固定边界适配。官方SSH节点缺hostpin采用镜像已有OpenSSH；全部构建kol，5机load/test。现有registry凭据非repo最小，限定可信单entry不可给PR。
+- G05：截至policy13复用既有Task/history/continuation/mergegate/Redis Lua/Express/parser/metrics/AbortController/simple-git，保留非维护与原内部Ultrafix行为；964/964分组测试及精确patch/digest。首投递原子Task门禁已补无Task父失败，数据库不可写拒绝派发；不泛称所有外部隐含模型请求费用已封顶。
+- G06/G-K：版本化知识模板及原生summary pinning、fetch失败停止、准备deadline、6分析/600秒共享预算、BullMQattempt与HEAD/main去重复；首次真实索引失败保留，policy11知识主路径69/69无模型通过，未完整付费重验，不造新知识系统。
+- G07：原生Nginx/HTML/JSON/JUnit、SHA manifest、n8n原生App版本门禁与Checks注册/5min失效；Check写token与PR只读token分离。首次PATCH未知/Code格式失败保留；20 Code断言、真实neutral→action_required与自然5min当前版本复核已通过。
+- G08：SQL仍未修，三轮不安全候选不发布。G09：PR26已有DOCX/soffice版式复用；PR33进一步复用LibreOffice独立profile/临时目录，真实自动续办与专项并发通过。
+- G-CI模型：原生NewAPI普通私有group+短token（双alias/IP/900s/额度/撤销），专用Nginx exact chat/embedding端点；实际r2 429/r3预扣失败后仅显式调整既有rate/burst/原生额度，r4真实业务通过，之后停止，模型/公开DNS不扩大到其它内网。产品JWT同秒精度缺陷以真实无模型探针确认，fixture等待1.05秒再登录，仍保持401断言。
+
+## 历史新增代码边界（21:02原文，不作为当前部署状态）
+
+
+- G01：自然日统计、日界快照、精确PR head和固定App身份适配；复用PYGH客户端/分页，不实现HTTP库。20项测试覆盖失败/窗口/重复/伪造评论，不把unknown当0。
+- G02：复用SQLite原reports主键/事务，网络前登记pending、catch-up union已知pending/partial，完整payload保留，旧文件内容及mtime可恢复但不重写新口径；30天tmpfiles/原生ACL已实证。来源research/report-recovery-acl-reuse.md；不另建scheduler/queue。
 - G03：模板、仓库规则、现成Agent和事件配置；不实现新的Agent循环。
 - G04：OntiCards专有Compose覆盖、测试spec和部署命令；使用已有runner/构建器。
-- G05：复用 PP 只读 Agent token、宿主发布、原生 continuation；最小实例政策拒绝合并、非 codex 分支发布、测试机 Docker build。policy4 再复用现有 Redis Lua/AOF，仅将硬编码 TTL 扩展为 `PROPR_LIVE_OUTPUT_TTL_SECONDS`（整数60～31536000，默认3600，部署2592000），保留64MiB裁剪；真实 Redis 两键同TTL/写入刷新已验。复用原生 Express/OAuth/Redis session，仅补 `AUTH_INSECURE_SESSION_ORIGIN` 的精确 RFC1918 origin opt-in 与 redirect 收紧，保留认证/HttpOnly/Lax/原适用CSRF。完整补丁 `deploy/propr-maintenance-policy.patch` 共30文件，可应用固定上游并匹配全部源码；252政策/49认证/110日志测试0跳过，API/worker policy4实测。OAuth真实往返/原生日报UI已验；容量截断、全任务脱敏与长期访问仍待验；没有新日志系统/认证/沙箱/发布流程。
+- G05：复用PP原生只读Agent/宿主发布/continuation/merge gate；最小禁止merge、非codex发布及测试机build。policy4原Redis Lua/AOF TTL环境配置（默认3600、部署2592000、整数60～31536000）两key/刷新实测，保留64MiB；原Express/session仅RFC1918精确origin HTTP opt-in，认证/HttpOnly/Lax/CSRF保留。policy5复用task/history/原native请求阻已有failed child跨poll重预算，原config私有副本ownership、analyze时限、错误投影及未知usage修正，统一287测试。policy6复用authBearer显示名fallback（78认证/权限测试）及原严格parser发布前拒绝无效review（31分组测试）；最终49文件patch可精确应用上游，tree efa47fa828a5032ebcc6c67e7e3f75276ad34048。已部署digest91d40150；新实际有效审查/浏览器仍待验。没有新日志/认证/Agent/发布/任务系统。
 - G06：事实与运维文档。
 - G07：证据manifest/当前SHA核对/清单脱敏薄适配；复用Nginx attachment交付原生Playwright自包含HTML，保留sandbox，下载本地打开已验；原生GitHub Check一次neutral发布，不自研截图/HTML报告/认证或长期监控。
 - G08：已复现SQL缺陷；3次候选经独立审查拒绝，未修改生产源码、未发布修复PR。后续方言接口需要明确设计，本轮保持未修复。
 - G09：实际API与PDF渲染暴露的导出故障；复用项目已有DOCX构建及LibreOffice转换，仅补缺失依赖和版式设置，不新建导出器。
 
-## 尚未最终采用的理由
+## 原选型理由与历史状态（来源保留，当前状态以上表为准）
 
-GA安全输出有价值，但此仓库无默认分支workflow，用户保留最终合并，日程不能提前生效；模型引擎兼容也必须验证。PP因实际凭据边界成为主底座，不继续补造OH发布流程。PA仅负责审查，主底座覆盖后不重复启用。N8已采用原生模块补一般咨询入口，限inactive草稿/重放，质量与长期运行缺口未解决前不启用。OH已真实通过本地模型/工具探针，但缺所需现成写凭据隔离边界；仅保留测试记录。
+GA安全输出有价值，但此仓库无默认分支workflow，用户保留最终合并，日程不能提前生效；模型引擎兼容也必须验证。PP因实际凭据边界成为主底座，不继续补造OH发布流程。PA仅负责审查，主底座覆盖后不重复启用。N8复用正常server/DataTable实现Issue29受控双回复，并已启用独立只读5min采集；长期自动写尚未启用，旧草稿失败保留。OH已真实通过本地模型/工具探针，但缺所需现成写凭据隔离边界；仅保留测试记录。
 
-原始证据见 `research/environment.md`、`repository.md`、`testing.md`、`orchestration.md`、`independent-review.md`、组件版本JSON和 `baseline-results.json`；最新状态另见 `evidence/github-app-live-verification.json`、`pdf-branch-publication-api.json`、`propr-native-daily-quality.json`、`n8n/quality-review.json`、`propr-policy4-validation.json`、`propr-policy4-runtime-status.json` 与 `propr-policy4-patch-validation.json`。App、候选发布、policy4测试及API/worker运行有证；当前main组合已有PR26和3/7/3证据；OAuth已验；单次日报质量与PR26门户/HTML下载/neutral Check已验。正式AI schedule已配置启用且daemon已运行，30天持续访问、真实自动Issue→PR、全事件咨询与自动head/base失效仍待验。
+历史组件比较和原始失败仍见research/environment.md、repository.md、testing.md、orchestration.md及各阶段evidence；不将后来的修复/部署回写成历史通过。
 
-最新补充证据：`evidence/github-oauth-configuration.json`、`propr-oauth-native-daily.png`、`native-daily-attempt3-quality.json`、`daily-production-configuration.json`、`daily-production-provenance.json`、`mihomo-provided-config-validation.json`、`reporting-reviewed-deployment.json`、`pdf26-evidence-ui.json`、`pdf26-evidence-serving.json`、`pdf26-native-check-publication.json`。
+最新证据：`propr-policy6-deployment.json`、`propr-policy6-patch-validation.json`、`pr26-policy5-native-review.json`、`pr26-policy5-invalid-review-response.json`、`n8n/persistent-polling-first-schedule-summary.json`、`maintenance-draft-pr.json`、`rootless-runtime/summary.json`。完整未覆盖目标见`research/acceptance-gap-audit.md`；旧末段18:57陈述仅属历史阶段，不覆盖本页首段/逐功能表。
 
 ## 历史阶段记录（以下不作为当前状态）
 
@@ -95,3 +114,11 @@ G05新增TTL与精确内网HTTP的最小配置适配现已实现到候选源码�
 - AC04：Issue25原150字预期无附件依据、否定句regex两项误报，原红证据保留，逐句复核无实质事实错。已有10条本App评论，不再发第11条冒充限额验证；新明确咨询验收Issue29由已授权Edge人类账号创建（连接器创建403），尚待真实后台初答与补充续办。
 - AC05原生PR26审查：短token issue-write/PR-read添标签403，使用已有PR-write后成功，只发表comment6339444121一次。脚本缺原生依赖初始化导致dispatch前失败，核空队列/无task后恢复同评论；真实job随后因worker缺标签配置skipped/missing_required_label，0模型/0Agent。已用原生PRIMARY_PROCESSING_LABELS=AI修正并仅重建空闲worker，不声称审查已完成。
 - PDF并发：3105现有镜像同时导出2份，一份成功一份RuntimeError，串行3/API7/PW3仍为各自通过。仅探针加入LibreOffice原生UserInstallation临时profile参数后2/2成功；业务源码未改，不能冒称已修复。复用依据pdf-concurrency-reuse.md，原失败pdf-concurrency-probe.json与参数验证pdf-concurrency-native-parameter.json分别保留。
+
+### policy6 新缺口登记（实施前，AC09/11/14）
+
+原生OAuth及旧session响应直接传GitHub可为null的姓名，UI严格string guard使已认证admin误显示只读。官方GitHub public/private-user schema已实取核实nullable，现有authBearer已有name→login回退。G05最小复用该fallback到新OAuth和旧session响应；不放宽UI/权限schema、不改用户资料、不新增认证。拟两处字段映射及原生OAuth/session/权限测试，依据 `research/github-display-name-reuse.md`；policy6尚未部署。
+
+### G04/G07 原生执行环境补充（实施前）
+
+Actions缺隔离runner，保留原候选并比较现有n8n SSH节点：复用其命令/传文件能力，以及两机已有Docker rootless安装器、systemd/cgroup2/RootlessKit。缺口是uidmap与专用非root身份/UID网络隔离、固定head/base可信控制bundle和自动验收关联；先仅补运行时、拒绝宿主/内网/metadata负向探针，不创建SSH授权、不build或部署PR。来源和实际版本见`research/n8n-rootless-preview-reuse.md`；不新建调度/runner管理/代理，不扩大App权限。

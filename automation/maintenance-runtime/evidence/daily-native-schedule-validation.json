@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "from": "2026-10-22T01:04:59Z",
+      "expected": "2026-10-22T01:05:00.000Z",
+      "actual": "2026-10-22T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "from": "2026-10-22T01:05:00Z",
+      "expected": "2026-10-23T01:05:00.000Z",
+      "actual": "2026-10-23T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "from": "2026-10-31T01:05:00Z",
+      "expected": "2026-11-01T01:05:00.000Z",
+      "actual": "2026-11-01T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "from": "2026-12-31T01:05:00Z",
+      "expected": "2027-01-01T01:05:00.000Z",
+      "actual": "2027-01-01T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "from": "2024-02-28T01:05:00Z",
+      "expected": "2024-02-29T01:05:00.000Z",
+      "actual": "2024-02-29T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "from": "2024-02-29T01:05:00Z",
+      "expected": "2024-03-01T01:05:00.000Z",
+      "actual": "2024-03-01T01:05:00.000Z",
+      "shanghaiTime": "09:05",
+      "passed": true
+    },
+    {
+      "check": "native Task contains the real UTC createdAt and separate Run ID",
+      "passed": true
+    }
+  ],
+  "modelCalls": 0,
+  "triggeredRuns": 0,
+  "schedulerEnabled": false,
+  "nativePrompt": "# Role\n\nYou are running a ProPR Agent. Produce a report. Do not modify files, do not commit, do not open pull requests.\nThis run only investigates and reports. Any follow-up action happens later, in a separate step, if the user chooses it.\n\n# Capabilities\n\n- Repository code: not available. Do not claim to have read, searched or run any repository code.\n- Web access: not allowed. Do not browse or claim to have looked anything up online.\n- ProPR MCP: not available. Do not claim to have queried ProPR.\n\nIf the task needs something that is not available, say so in the report instead of guessing or inventing results.\n\n# Task\n\nAgent: Local calendar fixture\nRun: synthetic-calendar-check, triggered by schedule (schedule:5 1 * * *) at 2027-01-01T01:05:00.000Z.\n\n<agent-task>\nRead the native Task timestamp.\n</agent-task>\n\n# Input files\n\nNo input files were provided.\n\n# Output\n\nYour final message is the report. Write Markdown for a human reader. Start with a one-paragraph summary, then details, then recommended next steps in plain prose.\nDo not wrap the report in JSON or any other machine format, and do not describe the tools you used unless it matters to the reader.\n"
+}

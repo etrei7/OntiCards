@@ -1,0 +1,2144 @@
+{
+  "id": "onticardsPersistentPublicationV1",
+  "name": "OntiCards native reviewed publication - disabled",
+  "active": false,
+  "nodes": [
+    {
+      "id": "55f22f59-fd1e-5938-a50d-1faaef98a6de",
+      "name": "Every five minutes approved publication",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8a22470b-153e-5d2d-a0c5-5f283d565817",
+      "name": "Local approved publication reconciliation",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        190,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-persistent-publication-v1",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "onticards-persistent-publication-v1"
+    },
+    {
+      "id": "2f22b11c-7086-5d2f-8a13-3793b9feeac9",
+      "name": "Trusted reviewed approval",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "f1bf2ea5-c09a-53af-8f99-83c8a51ea519",
+      "name": "Explicit reviewed approval exists",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        570,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Explicit reviewed approval exists",
+              "leftValue": "={{ $json.publication_enabled===true && !!$json.approval && /^[0-9a-f]{64}$/.test($json.approval.event_key||\"\") }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "7b28e430-5e48-5b15-bb24-eb48e0158209",
+      "name": "No approved publication",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {status:\"publication_disabled_or_no_approval\",model_calls:0,github_posts:0} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "3a21fde1-01ee-5929-a240-24643db6828d",
+      "name": "Ensure native publication ledger",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        950,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_publication_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "event_key",
+              "type": "string"
+            },
+            {
+              "name": "thread_key",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "name": "source_hash",
+              "type": "string"
+            },
+            {
+              "name": "body_hash",
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "type": "string"
+            },
+            {
+              "name": "comment_id",
+              "type": "string"
+            },
+            {
+              "name": "comment_url",
+              "type": "string"
+            },
+            {
+              "name": "reply_count",
+              "type": "number"
+            },
+            {
+              "name": "should_post",
+              "type": "boolean"
+            },
+            {
+              "name": "reason",
+              "type": "string"
+            },
+            {
+              "name": "token_revoked",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "b7e2e51a-0677-574e-bfa3-4020243a1c4d",
+      "name": "Ensure publication run receipts",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_publication_runs_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "run_id",
+              "type": "string"
+            },
+            {
+              "name": "finished_at",
+              "type": "string"
+            },
+            {
+              "name": "token_revoked",
+              "type": "boolean"
+            },
+            {
+              "name": "details",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "d4e4634d-b70b-5efa-abf5-b319aaeb013e",
+      "name": "Read approved original draft",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1330,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_draft_events_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "event_key",
+              "condition": "eq",
+              "keyValue": "={{ $(\"Trusted reviewed approval\").first().json.approval.event_key }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "0effdbc1-9393-56cb-ab61-ff77188b89d1",
+      "name": "Read original conversation",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_conversation_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "thread_key",
+              "condition": "eq",
+              "keyValue": "={{ $(\"Read approved original draft\").first().json.thread_key }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "52a51a38-793b-5c63-af72-5353e58c8bc8",
+      "name": "Read sticky publication state",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1710,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_publication_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "event_key",
+              "condition": "eq",
+              "keyValue": "={{ $(\"Trusted reviewed approval\").first().json.approval.event_key }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "098f2a57-3132-560d-94fd-b026e81da6ed",
+      "name": "Bind approval and immutable draft",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const a=$(\"Trusted reviewed approval\").first().json.approval,d=$(\"Read approved original draft\").first().json;let s={};try{s=JSON.parse(d.source_snapshot||\"{}\")}catch(error){};return {approval:a,draft:d,source:s,body:a.body||\"\",source_snapshot:d.source_snapshot||\"\"};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "ad7bb8c9-ddd8-5f0a-8b5f-35189002148b",
+      "name": "Hash reviewed body",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        2090,
+        0
+      ],
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ $json.body }}",
+        "dataPropertyName": "calculated_body_hash",
+        "encoding": "hex"
+      }
+    },
+    {
+      "id": "8b5509a5-585f-566c-9ff2-c26492fd8534",
+      "name": "Hash original bound source",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        0
+      ],
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ $json.source_snapshot }}",
+        "dataPropertyName": "calculated_source_hash",
+        "encoding": "hex"
+      }
+    },
+    {
+      "id": "38146dba-884c-5201-bd19-add8a1812441",
+      "name": "Approval hashes and exact event match",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2470,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Approval hashes and exact event match",
+              "leftValue": "={{ (()=>{const a=$json.approval,d=$json.draft,s=$json.source,fields=[\"deployment_method\",\"api_image_identity\",\"source_version\",\"reproduction\",\"expected_behavior\",\"actual_behavior\",\"sanitized_error\"];return $json.calculated_body_hash===a.body_hash && $json.calculated_source_hash===a.source_hash && d.source_hash===a.source_hash && d.event_key===a.event_key && d.status===\"awaiting_semantic_review\" && s.repository===\"stepll2026/OntiCards\" && s.thread_key===d.thread_key && Number.isInteger(s.number) && s.number>0 && a.body.includes(\"<!-- onticards-triage:\"+a.event_key+\" -->\") && a.reviewed===true && a.asked_fields_reviewed===true && Array.isArray(a.observed_fields) && a.observed_fields.every(f=>fields.includes(f.field)&&typeof f.value===\"string\"&&f.value.trim()&&s.event.body.includes(f.value)&&f.source_event_id===String(s.event.id)) && Array.isArray(a.asked_fields) && new Set(a.asked_fields).size===a.asked_fields.length && a.asked_fields.every(f=>fields.includes(f)&&!Object.hasOwn(s.known_fields,f)&&!a.observed_fields.some(o=>o.field===f));})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "5c6e4eb6-1366-551c-9235-0f3eac344bd4",
+      "name": "Approval rejected no network",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2660,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {status:\"approval_rejected\",model_calls:0,github_posts:0} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "89869c45-28a1-5371-ac8a-2d149ca2e1de",
+      "name": "Sign publication App JWT",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        2850,
+        0
+      ],
+      "parameters": {
+        "operation": "sign",
+        "useJson": true,
+        "claimsJson": "={{ JSON.stringify({iat:Math.floor(Date.now()/1000)-60,exp:Math.floor(Date.now()/1000)+540,iss:\"5422414\"}) }}",
+        "headerClaims": "{}",
+        "options": {
+          "algorithm": "RS256"
+        }
+      },
+      "credentials": {
+        "jwtAuth": {
+          "id": "onticardsIntakeAppJwt",
+          "name": "OntiCards single-repository intake App"
+        }
+      }
+    },
+    {
+      "id": "e390aa13-d1c8-5ea7-9bd4-337047667fbf",
+      "name": "Mint bounded publication token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3040,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/app/installations/174029282/access_tokens",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Sign publication App JWT\").first().json.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"repositories\": [\"OntiCards\"], \"permissions\": {\"issues\": \"write\", \"pull_requests\": \"read\", \"contents\": \"read\", \"metadata\": \"read\"}}"
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "548c80de-305a-5350-9e2c-1bf5b57dcae6",
+      "name": "Verify publication repository scope",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3230,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/installation/repositories?per_page=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "d2736096-2e13-5ea1-85e2-b47ce7424d72",
+      "name": "Only expected repository and permissions",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3420,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Only expected repository and permissions",
+              "leftValue": "={{ (()=>{const p=$(\"Mint bounded publication token\").first().json.body?.permissions||{};return $(\"Mint bounded publication token\").first().json.statusCode===201 && Object.keys(p).length===4 && p.issues===\"write\"&&p.pull_requests===\"read\"&&p.contents===\"read\"&&p.metadata===\"read\"&&$json.statusCode===200&&$json.body?.total_count===1&&$json.body.repositories[0]?.full_name===\"stepll2026/OntiCards\";})() }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "03dfe166-5d82-525d-b52c-a12f725a6b4e",
+      "name": "Read fresh issue source",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3610,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$(\"Bind approval and immutable draft\").first().json.source.number }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "f987cf10-12bf-523e-9fd3-a1f69986df37",
+      "name": "Read complete fresh discussion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3800,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$(\"Bind approval and immutable draft\").first().json.source.number+\"/comments?per_page=100\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ (()=>{const u=($response.headers.link||'').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1]||'';if(u&&!u.startsWith('https://api.github.com/repos/stepll2026/OntiCards/'))throw new Error('Pagination left fixed repository');return u;})() }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link||\"\").includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 50,
+              "requestInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "2bd15370-874d-5e0c-bd8d-372d407f216e",
+      "name": "Read fresh PR or issue details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3990,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards\"+($(\"Bind approval and immutable draft\").first().json.source.kind===\"pull_request\"?\"/pulls/\":\"/issues/\")+$(\"Bind approval and immutable draft\").first().json.source.number }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "fb791a35-c3c8-5f74-9aef-4a315a68b755",
+      "name": "Read complete inline or issue discussion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        4180,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards\"+($(\"Bind approval and immutable draft\").first().json.source.kind===\"pull_request\"?\"/pulls/\":\"/issues/\")+$(\"Bind approval and immutable draft\").first().json.source.number+\"/comments?per_page=100\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ (()=>{const u=($response.headers.link||'').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1]||'';if(u&&!u.startsWith('https://api.github.com/repos/stepll2026/OntiCards/'))throw new Error('Pagination left fixed repository');return u;})() }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link||\"\").includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 50,
+              "requestInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "24e959b5-0a1d-5188-b404-99d65a90d511",
+      "name": "Read complete reviews or issue discussion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        4370,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards\"+($(\"Bind approval and immutable draft\").first().json.source.kind===\"pull_request\"?\"/pulls/\":\"/issues/\")+$(\"Bind approval and immutable draft\").first().json.source.number+($(\"Bind approval and immutable draft\").first().json.source.kind===\"pull_request\"?\"/reviews?per_page=100\":\"/comments?per_page=100\") }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ (()=>{const u=($response.headers.link||'').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1]||'';if(u&&!u.startsWith('https://api.github.com/repos/stepll2026/OntiCards/'))throw new Error('Pagination left fixed repository');return u;})() }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link||\"\").includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 50,
+              "requestInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "f6deb141-84b5-5a04-85d0-9e7fa526461e",
+      "name": "Verify current source commit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        4560,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/commits/\"+($(\"Bind approval and immutable draft\").first().json.source.kind===\"pull_request\"?$(\"Read fresh PR or issue details\").first().json.body?.head?.sha:\"main\") }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "0344b31c-d87c-5117-bd99-73ec1ce50ac4",
+      "name": "Evaluate sticky state and fresh source",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4750,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{\n const bound=$('Hash original bound source').first().json,a=bound.approval,s=bound.source,prev=$('Read sticky publication state').first().json,conv=$('Read original conversation').first().json;\n const pages=name=>$(name).all().map(i=>i.json),good=xs=>xs.length>0&&xs.every(x=>x.statusCode===200&&Array.isArray(x.body))&&!String(xs.at(-1).headers?.link||'').includes('rel=\"next\"');\n const cp=pages('Read complete fresh discussion'),ip=pages('Read complete inline or issue discussion'),rp=pages('Read complete reviews or issue discussion');\n const complete=good(cp)&&good(ip)&&good(rp),comments=complete?cp.flatMap(x=>x.body):[];\n const app=comments.filter(c=>c.user?.id===346235449||c.user?.login==='onticards-maintainer-stepll2026[bot]');\n const sticky=prev.status==='posting_unknown'||prev.status?.startsWith('published'),intent=sticky?prev:{body:a.body,body_hash:a.body_hash,source_hash:a.source_hash};\n const marker='<!-- onticards-triage:'+a.event_key+' -->',marked=comments.filter(c=>c.body?.includes(marker));\n const confirmed=marked.length===1&&marked[0].body===intent.body&&marked[0].user?.id===346235449&&marked[0].user?.login==='onticards-maintainer-stepll2026[bot]'&&marked[0].user?.type==='Bot'?marked[0]:null;\n const ir=$('Read fresh issue source').first().json,issue=ir.body,pr=$('Read fresh PR or issue details').first().json,commit=$('Verify current source commit').first().json;\n const same=(live,old)=>Array.isArray(old)&&live.length===old.length&&new Set(live.map(c=>c.id)).size===live.length&&live.every(c=>old.some(o=>o.id===c.id&&o.body===(c.body||'')&&o.updated_at===(c.updated_at||c.submitted_at||c.created_at)));\n let status=prev.status==='posting_unknown'||prev.status?.startsWith('published')?prev.status:'needs_human_review',reason='',should_post=false;\n if(!complete||ir.statusCode!==200||pr.statusCode!==200||commit.statusCode!==200)reason='fresh source read incomplete';\n else if(confirmed){status='published_reconciled';reason='GET verified exact approved App comment';}\n else if(marked.length)reason='marker collision';\n else if(prev.status==='posting_unknown')reason='previous POST uncertain; GET only';\n else if(prev.status?.startsWith('published'))reason='published comment absent; no automatic replacement';\n else if(prev.status==='native_repair_route'){status='native_repair_route';reason='prior native repair handoff; no automatic post';}\n else if((issue.labels||[]).some(l=>(typeof l==='string'?l:l.name)==='AI')){status='native_repair_route';reason='AI label now routes this thread to native repair; no consultation post';}\n else if(app.length>=3||Number(conv.reply_count||0)>=3){status='reply_cap_reached';reason='all previous App replies count';}\n else if(conv.pending_event!==a.event_key||conv.pending_state!=='model_request_started')reason='conversation reservation mismatch';\n else if((s.kind==='pull_request'?pr.body.id:issue.id)!==s.thread.id||issue.number!==s.number||issue.html_url!=='https://github.com/stepll2026/OntiCards/'+(s.kind==='pull_request'?'pull':'issues')+'/'+s.number)reason='thread scope mismatch';\n else if(issue.body!==s.thread.body||issue.title!==s.thread.title||issue.state!==s.thread.state||!same(comments,s.thread.discussion))reason='issue or discussion changed after draft';\n else if(s.kind==='pull_request'&&(pr.body.head?.sha!==s.thread.head||pr.body.base?.sha!==s.thread.base||!same(ip.flatMap(x=>x.body),s.thread.inline)||!same(rp.flatMap(x=>x.body),s.thread.reviews)))reason='PR version or review changed after draft';\n else if(commit.body?.sha!==s.repository_context?.commit_sha)reason='current source commit moved';\n else {status='approved_ready';reason='exact reviewed body and fresh bound source';should_post=true;}\n return {event_key:a.event_key,thread_key:s.thread_key,status,source_hash:intent.source_hash,body_hash:intent.body_hash,body:intent.body,comment_id:confirmed?String(confirmed.id):prev.comment_id||'',comment_url:confirmed?.html_url||prev.comment_url||'',reply_count:complete?app.length:prev.reply_count||0,should_post,reason,token_revoked:false};\n})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "8482ea0d-b20e-5dfe-b443-12a75066e0a8",
+      "name": "One approved POST permitted",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4940,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "One approved POST permitted",
+              "leftValue": "={{ $json.should_post===true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "789927c6-21cc-5cb3-ac77-c6a77e2fa0dd",
+      "name": "Durable uncertain POST intent",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5130,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ {...$json,status:\"posting_unknown\",should_post:false,reason:\"POST intent persisted before network request\"} }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "b9853330-3d1f-56ac-8388-d98d76b7cf07",
+      "name": "Persist uncertain intent",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        5320,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_publication_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "event_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.event_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c1829659-4d7d-5726-b801-0de8f8e7885e",
+      "name": "Publish reviewed body once",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        5510,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$(\"Bind approval and immutable draft\").first().json.source.number+\"/comments\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({body:$(\"Persist uncertain intent\").first().json.body}) }}"
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "044f9f0d-9f7f-5ef1-a858-379fa1657bda",
+      "name": "GET reconcile actual published comments",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        5700,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://api.github.com/repos/stepll2026/OntiCards/issues/\"+$(\"Bind approval and immutable draft\").first().json.source.number+\"/comments?per_page=100\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ (()=>{const u=($response.headers.link||'').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1]||'';if(u&&!u.startsWith('https://api.github.com/repos/stepll2026/OntiCards/'))throw new Error('Pagination left fixed repository');return u;})() }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link||\"\").includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 50,
+              "requestInterval": 100
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "331d87f1-7ef3-580b-b7e5-b15327f708ed",
+      "name": "Confirm exact App body after POST",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5890,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const r=$('Persist uncertain intent').first().json,pages=$input.all().map(i=>i.json),complete=pages.length>0&&pages.every(p=>p.statusCode===200&&Array.isArray(p.body))&&!String(pages.at(-1).headers?.link||'').includes('rel=\"next\"'),comments=complete?pages.flatMap(p=>p.body):[],app=comments.filter(c=>c.user?.id===346235449||c.user?.login==='onticards-maintainer-stepll2026[bot]'),matches=app.filter(c=>c.body===r.body&&c.user?.id===346235449&&c.user?.login==='onticards-maintainer-stepll2026[bot]'&&c.user?.type==='Bot');return {...r,status:matches.length===1?'published_confirmed':'posting_unknown',comment_id:matches.length===1?String(matches[0].id):r.comment_id,comment_url:matches.length===1?matches[0].html_url:r.comment_url,reply_count:complete?app.length:r.reply_count,reason:matches.length===1?'GET confirmed exact App body':'POST uncertain; later runs GET only'};})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "f70584af-c908-5d26-96a6-2899335dc279",
+      "name": "Persist publication observation",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6080,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_publication_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "event_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.event_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "14efce4a-56e6-5bd1-99be-1316e0b46d9b",
+      "name": "Remote publication confirmed",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6270,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Remote publication confirmed",
+              "leftValue": "={{ $json.status.startsWith(\"published\") && !!$json.comment_id && $json.body_hash===$(\"Trusted reviewed approval\").first().json.approval.body_hash && $json.source_hash===$(\"Trusted reviewed approval\").first().json.approval.source_hash && !JSON.parse($(\"Read original conversation\").first().json.publication_ids||\"[]\").includes($json.comment_id) }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "97fc0749-c8e4-5cb3-8838-da331b1a356a",
+      "name": "Apply reviewed conversation increment",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6460,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const r=$json,b=$('Bind approval and immutable draft').first().json,a=b.approval,s=b.source,c=$('Read original conversation').first().json,known=JSON.parse(c.known_fields||'{}');for(const f of a.observed_fields||[])if(f.source_event_id===String(s.event.id)&&s.event.body.includes(f.value))known[f.field]=f.value;const unique=xs=>[...new Set(xs)];return {thread_key:r.thread_key,model_calls:c.model_calls,reply_count:Math.max(Number(c.reply_count||0),r.reply_count),pending_event:c.pending_event===r.event_key?'':c.pending_event,pending_state:c.pending_event===r.event_key?'published_verified':c.pending_state,known_fields:JSON.stringify(known),asked_fields:JSON.stringify(unique([...JSON.parse(c.asked_fields||'[]'),...a.asked_fields])),answered_human_ids:JSON.stringify(unique([...JSON.parse(c.answered_human_ids||'[]'),String(s.event.id)])),publication_ids:JSON.stringify(unique([...JSON.parse(c.publication_ids||'[]'),r.comment_id]))};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "ead6a6b0-474c-5b3d-8c6c-8c62d074d361",
+      "name": "Persist reviewed conversation",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        6650,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_conversation_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "thread_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.thread_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "262f90e7-1fbf-5208-a630-ae51236a8b72",
+      "name": "Revoke bounded publication token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        6840,
+        0
+      ],
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://api.github.com/installation/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ \"Bearer \"+$(\"Mint bounded publication token\").first().json.body?.token }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2026-03-10"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 20000,
+          "proxy": "http://127.0.0.1:17891",
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json",
+              "neverError": true
+            }
+          }
+        }
+      },
+      "retryOnFail": false,
+      "onError": "continueRegularOutput",
+      "executeOnce": true
+    },
+    {
+      "id": "cee8f6b0-8097-5c5b-a3d6-34091ce10f4b",
+      "name": "Safe publication run receipt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7030,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{let state={status:\"scope_rejected\"};try{state=$(\"Persist publication observation\").first().json}catch(error){};return {run_id:$execution.id,finished_at:$now.toISO(),token_revoked:$json.statusCode===204,details:JSON.stringify({event_key:$(\"Trusted reviewed approval\").first().json.approval.event_key,status:state.status,comment_id:state.comment_id||\"\",comment_url:state.comment_url||\"\",reply_count:state.reply_count||0,reason:state.reason||\"scope rejected\",model_calls:0})};})() }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "f0101c4d-2fc7-5a86-be32-e0e9d16c343a",
+      "name": "Persist safe publication run receipt",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        7220,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_publication_runs_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "run_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.run_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "ecf6dc0b-2590-5fc2-811a-57381e7843d8",
+      "name": "Trusted publication policy",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7410,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\"repository\": \"stepll2026/OntiCards\", \"approval\": null, \"publication_enabled\": false, \"automatic_enabled\": false, \"semantic_policy_version\": \"normal-consultation-source-review-v1\"}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d8037354-3103-55a8-aee6-cc490305c53c",
+      "name": "Automatic ordinary publication enabled",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        7600,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "Automatic ordinary publication enabled",
+              "leftValue": "={{ $json.publication_enabled===true && $json.automatic_enabled===true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "e1826584-3a8f-5e44-8d86-3996a46d6d42",
+      "name": "Ensure automatic approval ledger",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        7790,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_reviewed_approvals_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "event_key",
+              "type": "string"
+            },
+            {
+              "name": "thread_key",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "name": "approval",
+              "type": "string"
+            },
+            {
+              "name": "observed_at",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "66664170-529c-5d1c-9b54-7c8d0d80e8c3",
+      "name": "Ensure publication ledger for selection",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        7980,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_publication_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "event_key",
+              "type": "string"
+            },
+            {
+              "name": "thread_key",
+              "type": "string"
+            },
+            {
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "name": "source_hash",
+              "type": "string"
+            },
+            {
+              "name": "body_hash",
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "type": "string"
+            },
+            {
+              "name": "comment_id",
+              "type": "string"
+            },
+            {
+              "name": "comment_url",
+              "type": "string"
+            },
+            {
+              "name": "reply_count",
+              "type": "number"
+            },
+            {
+              "name": "should_post",
+              "type": "boolean"
+            },
+            {
+              "name": "reason",
+              "type": "string"
+            },
+            {
+              "name": "token_revoked",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "795c7968-5144-5b24-ac77-bcdd0c657c80",
+      "name": "Read native approved ordinary replies",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        8170,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_reviewed_approvals_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "415d72a7-5928-5e40-8eef-cb170391cec4",
+      "name": "Read all sticky publication receipts",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        8360,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_publication_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "60214614-1d9f-52b3-ab92-422f3a11dfcf",
+      "name": "Read publication conversation states",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        8550,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_conversation_v1",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "id": "8175d8ae-fe96-5c37-8cba-f3f0954d70c3",
+      "name": "Select at most one native approved reply",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        8740,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ (()=>{const cfg=$('Trusted publication policy').first().json,states=$('Read all sticky publication receipts').all().map(x=>x.json),conversations=$('Read publication conversation states').all().map(x=>x.json),eligible=[];for(const row of $('Read native approved ordinary replies').all().map(x=>x.json)){if(row.status!=='approved'||!row.approval)continue;let a;try{a=JSON.parse(row.approval)}catch(error){continue;}if(a.approval_origin!=='independent_semantic_review'||a.policy_version!==cfg.semantic_policy_version||a.event_key!==row.event_key)continue;const state=states.find(s=>s.event_key===row.event_key),c=conversations.find(s=>s.thread_key===row.thread_key);if(state?.status?.startsWith('published')&&state.comment_id&&c&&JSON.parse(c.publication_ids||'[]').includes(state.comment_id))continue;eligible.push({approval:a,at:state?.updatedAt||row.createdAt||row.observed_at});}eligible.sort((a,b)=>Date.parse(a.at)-Date.parse(b.at));return {repository:cfg.repository,publication_enabled:cfg.publication_enabled,approval:eligible[0]?.approval||null};})() }}",
+        "options": {}
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "32dfec16-a2de-5fce-82b2-ae7a780e2d9c",
+      "name": "Use explicit reviewed publication policy",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        8930,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $(\"Trusted publication policy\").first().json }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Every five minutes approved publication": {
+      "main": [
+        [
+          {
+            "node": "Trusted publication policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local approved publication reconciliation": {
+      "main": [
+        [
+          {
+            "node": "Trusted publication policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trusted publication policy": {
+      "main": [
+        [
+          {
+            "node": "Automatic ordinary publication enabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Automatic ordinary publication enabled": {
+      "main": [
+        [
+          {
+            "node": "Ensure automatic approval ledger",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Use explicit reviewed publication policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure automatic approval ledger": {
+      "main": [
+        [
+          {
+            "node": "Ensure publication ledger for selection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure publication ledger for selection": {
+      "main": [
+        [
+          {
+            "node": "Read native approved ordinary replies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read native approved ordinary replies": {
+      "main": [
+        [
+          {
+            "node": "Read all sticky publication receipts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read all sticky publication receipts": {
+      "main": [
+        [
+          {
+            "node": "Read publication conversation states",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read publication conversation states": {
+      "main": [
+        [
+          {
+            "node": "Select at most one native approved reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select at most one native approved reply": {
+      "main": [
+        [
+          {
+            "node": "Trusted reviewed approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use explicit reviewed publication policy": {
+      "main": [
+        [
+          {
+            "node": "Trusted reviewed approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trusted reviewed approval": {
+      "main": [
+        [
+          {
+            "node": "Explicit reviewed approval exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Explicit reviewed approval exists": {
+      "main": [
+        [
+          {
+            "node": "Ensure native publication ledger",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No approved publication",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure native publication ledger": {
+      "main": [
+        [
+          {
+            "node": "Ensure publication run receipts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure publication run receipts": {
+      "main": [
+        [
+          {
+            "node": "Read approved original draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read approved original draft": {
+      "main": [
+        [
+          {
+            "node": "Read original conversation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read original conversation": {
+      "main": [
+        [
+          {
+            "node": "Read sticky publication state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read sticky publication state": {
+      "main": [
+        [
+          {
+            "node": "Bind approval and immutable draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bind approval and immutable draft": {
+      "main": [
+        [
+          {
+            "node": "Hash reviewed body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hash reviewed body": {
+      "main": [
+        [
+          {
+            "node": "Hash original bound source",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hash original bound source": {
+      "main": [
+        [
+          {
+            "node": "Approval hashes and exact event match",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approval hashes and exact event match": {
+      "main": [
+        [
+          {
+            "node": "Sign publication App JWT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Approval rejected no network",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign publication App JWT": {
+      "main": [
+        [
+          {
+            "node": "Mint bounded publication token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mint bounded publication token": {
+      "main": [
+        [
+          {
+            "node": "Verify publication repository scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify publication repository scope": {
+      "main": [
+        [
+          {
+            "node": "Only expected repository and permissions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only expected repository and permissions": {
+      "main": [
+        [
+          {
+            "node": "Read fresh issue source",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Revoke bounded publication token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read fresh issue source": {
+      "main": [
+        [
+          {
+            "node": "Read complete fresh discussion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read complete fresh discussion": {
+      "main": [
+        [
+          {
+            "node": "Read fresh PR or issue details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read fresh PR or issue details": {
+      "main": [
+        [
+          {
+            "node": "Read complete inline or issue discussion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read complete inline or issue discussion": {
+      "main": [
+        [
+          {
+            "node": "Read complete reviews or issue discussion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read complete reviews or issue discussion": {
+      "main": [
+        [
+          {
+            "node": "Verify current source commit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify current source commit": {
+      "main": [
+        [
+          {
+            "node": "Evaluate sticky state and fresh source",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate sticky state and fresh source": {
+      "main": [
+        [
+          {
+            "node": "One approved POST permitted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One approved POST permitted": {
+      "main": [
+        [
+          {
+            "node": "Durable uncertain POST intent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Persist publication observation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Durable uncertain POST intent": {
+      "main": [
+        [
+          {
+            "node": "Persist uncertain intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist uncertain intent": {
+      "main": [
+        [
+          {
+            "node": "Publish reviewed body once",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish reviewed body once": {
+      "main": [
+        [
+          {
+            "node": "GET reconcile actual published comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET reconcile actual published comments": {
+      "main": [
+        [
+          {
+            "node": "Confirm exact App body after POST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confirm exact App body after POST": {
+      "main": [
+        [
+          {
+            "node": "Persist publication observation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist publication observation": {
+      "main": [
+        [
+          {
+            "node": "Remote publication confirmed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remote publication confirmed": {
+      "main": [
+        [
+          {
+            "node": "Apply reviewed conversation increment",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Revoke bounded publication token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply reviewed conversation increment": {
+      "main": [
+        [
+          {
+            "node": "Persist reviewed conversation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist reviewed conversation": {
+      "main": [
+        [
+          {
+            "node": "Revoke bounded publication token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke bounded publication token": {
+      "main": [
+        [
+          {
+            "node": "Safe publication run receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Safe publication run receipt": {
+      "main": [
+        [
+          {
+            "node": "Persist safe publication run receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 240
+  },
+  "pinData": {},
+  "tags": []
+}

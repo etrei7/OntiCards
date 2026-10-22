@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-22T17:12:27.557041+00:00",
+  "previous_helper_sha256": "f684f858d0a3df057ffffa770577ff40d18f92213e7550a4312caf23e32ca41c",
+  "helper_sha256": "089bc43de74b9f87eefaade453ce4890a5922cbe5e699992d651d12cf2b0c5c5",
+  "mode": "0o444",
+  "owner_uid": 0,
+  "prompt_configuration": {
+    "at": "2026-10-22T17:12:27.490Z",
+    "definition_id": "e6a4ce1d-0068-4c3a-832c-ff911c791a1c",
+    "previous_revision": 11,
+    "revision": 12,
+    "prompt_sha256": "db25848108aa60ee2628688e15388e844ed8bcdfb8daea24d3433fadfc7dfe1f",
+    "schedule_enabled": true,
+    "schedule_cron": "5 1 * * *",
+    "schedule_unchanged": true,
+    "triggered": false
+  },
+  "passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-22T17:39:27.266227+00:00",
+  "native_event": {
+    "type": "config_update",
+    "subtype": "agents_update",
+    "timestamp": 1792690767133
+  },
+  "subscribers": 3,
+  "model_calls": 0,
+  "passed": true
+}

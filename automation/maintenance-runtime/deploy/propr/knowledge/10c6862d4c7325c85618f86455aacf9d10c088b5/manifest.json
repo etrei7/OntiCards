@@ -1,0 +1,26 @@
+{
+  "repository": "stepll2026/OntiCards",
+  "sourceCommit": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+  "sourceTree": "e9cf39eebb304da3f41f0bc3d399c1c6ad27ad44",
+  "purpose": "Versioned supplemental knowledge; actual task checkout remains authoritative",
+  "files": [
+    {
+      "source": "AGENTS.md",
+      "file": "AGENTS.md",
+      "sha256": "d4c46a442032728570fbaab9ea9dd1bd03491cc9d3b85fb9f8225a575828c38d",
+      "gitBlob": "5e627aa1880abb75fe8637e308a21066403a7062"
+    },
+    {
+      "source": "docs/maintenance/repository-context.md",
+      "file": "repository-context.md",
+      "sha256": "cd57d9aa8422aee14ad3eb0d761159d5ce2f76c992a8d45a6ff705160a0de1d0",
+      "gitBlob": "94905dffbc7db85c4c978fab76216b54bb9d2cb1"
+    },
+    {
+      "source": "docs/maintenance/response-policy.md",
+      "file": "response-policy.md",
+      "sha256": "73627ab4b7665081385b5ace156d0e6147a6553062c44c56af7cca3b6304aca8",
+      "gitBlob": "efcf346fd5f0bc4707323fad35941465856f5ff3"
+    }
+  ]
+}

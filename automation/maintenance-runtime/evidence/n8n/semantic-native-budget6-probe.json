@@ -1,0 +1,263 @@
+{
+  "started_at": "2026-10-22T16:42:42.938718+00:00",
+  "github_requests": 0,
+  "model_requests": 0,
+  "requests": [
+    {
+      "case": "approve",
+      "response": {
+        "result": {
+          "status": "approved",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "approve",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "approve",
+      "response": {
+        "result": {
+          "status": "semantic_review_disabled_or_no_eligible_candidate",
+          "eligible_count": 0,
+          "model_calls": 0,
+          "github_posts": 0
+        },
+        "case": "approve",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "bad_quote",
+      "response": {
+        "result": {
+          "status": "needs_human_review",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "bad_quote",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "runtime_confusion",
+      "response": {
+        "result": {
+          "status": "needs_human_review",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "runtime_confusion",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "known_field_conflict",
+      "response": {
+        "result": {
+          "status": "needs_human_review",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "known_field_conflict",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "invalid_json",
+      "response": {
+        "result": {
+          "status": "needs_human_review",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "invalid_json",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "budget_six",
+      "response": {
+        "result": {
+          "status": "semantic_review_disabled_or_no_eligible_candidate",
+          "eligible_count": 0,
+          "model_calls": 0,
+          "github_posts": 0
+        },
+        "case": "budget_six",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "manual31",
+      "response": {
+        "result": {
+          "status": "semantic_review_disabled_or_no_eligible_candidate",
+          "eligible_count": 0,
+          "model_calls": 0,
+          "github_posts": 0
+        },
+        "case": "manual31",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "changed_source",
+      "response": {
+        "result": {
+          "event_key": "261f1e18b8fb2045f108c335cad8c6e4e32869ba14e7d85fcd50d07a04f19cdc",
+          "thread_key": "fixture:semantic-v3:changed_source",
+          "status": "needs_human_review",
+          "source_hash": "573ccb5255a3cedbb5cad0cd8f3ae0e317e7807d7d567068d500b85c081835ed",
+          "body_hash": "",
+          "body": "参考配置的镜像为 example:reference；尚未核实运行环境。\n\n请提供部署方式。",
+          "result": "{\"reason\":\"source changed/incomplete or original source hash mismatch before review\",\"model_calls\":0}",
+          "usage": "{}",
+          "policy_version": "normal-consultation-source-review-v1",
+          "reserved_model_ordinal": 0,
+          "observed_at": "2026-10-23T00:44:11.625+08:00",
+          "id": 6,
+          "createdAt": "2026-10-22T16:44:11.698Z",
+          "updatedAt": "2026-10-22T16:44:11.698Z"
+        },
+        "case": "changed_source",
+        "compatibility": null,
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "issue29_initial",
+      "response": {
+        "result": {
+          "status": "approved",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "issue29_initial",
+        "compatibility": {
+          "historical_published_body_sha256": "352cef46778db720db65d431ab91ae86022db21b7b5b337fc9b0c83f898e109e",
+          "mode": "frozen prior human approval compatibility; not a new model semantic decision",
+          "comment_id": "6339994362"
+        },
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "issue29_initial",
+      "response": {
+        "result": {
+          "status": "semantic_review_disabled_or_no_eligible_candidate",
+          "eligible_count": 0,
+          "model_calls": 0,
+          "github_posts": 0
+        },
+        "case": "issue29_initial",
+        "compatibility": {
+          "historical_published_body_sha256": "352cef46778db720db65d431ab91ae86022db21b7b5b337fc9b0c83f898e109e",
+          "mode": "frozen prior human approval compatibility; not a new model semantic decision",
+          "comment_id": "6339994362"
+        },
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "issue29_followup",
+      "response": {
+        "result": {
+          "status": "approved",
+          "model_calls_reserved": 1,
+          "github_posts": 0
+        },
+        "case": "issue29_followup",
+        "compatibility": {
+          "historical_published_body_sha256": "037bad5d796fd13eecf257e9f7fb6de506aaed23db8e4f9dda8e5a33c7e24193",
+          "mode": "frozen prior human approval compatibility; not a new model semantic decision",
+          "comment_id": "6340579230"
+        },
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    },
+    {
+      "case": "issue29_followup",
+      "response": {
+        "result": {
+          "status": "semantic_review_disabled_or_no_eligible_candidate",
+          "eligible_count": 0,
+          "model_calls": 0,
+          "github_posts": 0
+        },
+        "case": "issue29_followup",
+        "compatibility": {
+          "historical_published_body_sha256": "037bad5d796fd13eecf257e9f7fb6de506aaed23db8e4f9dda8e5a33c7e24193",
+          "mode": "frozen prior human approval compatibility; not a new model semantic decision",
+          "comment_id": "6340579230"
+        },
+        "model_calls": 0,
+        "github_posts": 0
+      }
+    }
+  ],
+  "review_statuses": {
+    "approve": "semantic_approved",
+    "bad_quote": "needs_human_review",
+    "runtime_confusion": "needs_human_review",
+    "known_field_conflict": "needs_human_review",
+    "invalid_json": "needs_human_review",
+    "budget_six": null,
+    "manual31": null,
+    "changed_source": "needs_human_review",
+    "issue29_initial": "semantic_approved",
+    "issue29_followup": "semantic_approved"
+  },
+  "budgets": {
+    "approve": 2.0,
+    "bad_quote": 2.0,
+    "runtime_confusion": 2.0,
+    "known_field_conflict": 2.0,
+    "invalid_json": 2.0,
+    "budget_six": 6.0,
+    "manual31": 3.0,
+    "changed_source": 1.0,
+    "issue29_initial": 2.0,
+    "issue29_followup": 2.0
+  },
+  "assertions": {
+    "approved_once_with_one_review_budget": true,
+    "duplicate_review_no_new_reservation": true,
+    "bad_source_quote_requires_human": true,
+    "runtime_confusion_requires_human": true,
+    "known_field_conflict_requires_human": true,
+    "invalid_json_consumes_once_no_approval": true,
+    "budget_six_never_reviewed": true,
+    "sealed_issue31_never_reviewed": true,
+    "source_change_blocks_before_budget": true,
+    "issue29_initial_prior_text_compatible": true,
+    "issue29_followup_prior_text_compatible": true,
+    "issue29_duplicates_no_new_budget": true
+  },
+  "passed": true,
+  "semantic_quality_claim": "No new model call; frozen fixture reviewer decisions test gate/state compatibility, not general model accuracy.",
+  "probe_stopped": true,
+  "completed_at": "2026-10-22T16:44:14.903720+00:00"
+}

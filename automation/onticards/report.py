@@ -15,6 +15,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from github import Auth, Github
+from .native_activity import select_window
 
 UTC = timezone.utc
 TZ = ZoneInfo("Asia/Shanghai")
@@ -93,17 +94,48 @@ def item(issue):
     }
 
 
+def collector_auth():
+    """Reuse PyGithub token refresh and systemd's runtime credential mount."""
+    app_id = os.environ.get('REPORT_GITHUB_APP_ID')
+    installation = os.environ.get('REPORT_GITHUB_INSTALLATION_ID')
+    if app_id or installation:
+        if not app_id or not installation or not os.environ.get('CREDENTIALS_DIRECTORY'):
+            raise ValueError('Incomplete collector App configuration')
+        key = (Path(os.environ['CREDENTIALS_DIRECTORY']) / 'github-app.pem').read_text()
+        return Auth.AppAuth(int(app_id), key).get_installation_auth(int(installation), {
+            'contents':'read', 'issues':'read', 'pull_requests':'read',
+            'actions':'read', 'checks':'read', 'metadata':'read',
+        })
+    token = os.environ.get('GITHUB_TOKEN', '').strip()
+    return Auth.Token(token) if token else None
+
+
 def collect(repo, start, end, excluded):
     errors = []
     facts = {"errors": errors}
     facts["repository"] = safe(errors, "repository", lambda: {
         "full_name": repo.full_name, "stars": repo.stargazers_count,
         "forks": repo.forks_count, "default_branch": repo.default_branch,
-        "html_url": repo.html_url})
+        "html_url": repo.html_url, "open_issues_count": getattr(repo, 'open_issues_count', None)})
     facts["head_sha"] = safe(errors, "head", lambda: repo.get_branch(repo.default_branch).commit.sha)
-    open_objects = safe(errors, "current_open", lambda: list(repo.get_issues(state="open")))
-    facts["current_open"] = None if open_objects is None else [item(x) for x in open_objects if x.number not in excluded]
-    changed = safe(errors, "changed", lambda: list(repo.get_issues(state="all", since=start, sort="updated", direction="asc")))
+    # The live since response once omitted known current-day objects. Reuse
+    # native full pagination and select the window locally; never infer zero
+    # from inconsistent counts. One complete response supplies both current
+    # open objects and changed objects, avoiding contradictory separate lists.
+    changed = safe(errors, "changed", lambda: list(repo.get_issues(state="all", sort="updated", direction="desc")))
+    open_objects = None if changed is None else [x for x in changed if x.raw_data.get('state') == 'open']
+    if changed is not None and facts['repository'] is not None:
+        expected_open = facts['repository']['open_issues_count']
+        if isinstance(expected_open, int) and expected_open != len(open_objects):
+            errors.append({'section':'changed', 'error_type':'InconsistentIssueListing', 'http_status':None})
+            changed = None
+            open_objects = None
+    facts['current_open'] = None if open_objects is None else [item(x) for x in open_objects if x.number not in excluded]
+    if changed is not None:
+        changed = [x for x in changed if
+            not x.raw_data.get('updated_at') or
+            datetime.fromisoformat(x.raw_data['updated_at'].replace('Z', '+00:00')) >= start or
+            within(x.raw_data.get('created_at'), start, end)]
     facts["changed"] = None if changed is None else [item(x) for x in changed if x.number not in excluded]
     facts["events"] = [] if changed is not None else None
     facts["pull_requests"] = []
@@ -128,13 +160,18 @@ def collect(repo, start, end, excluded):
             pr = issue.as_pull_request()
             r = pr.raw_data
             # The PR commits endpoint is capped at 250 even with pagination.
-            checks = repo.get_commit(pr.head.sha).get_combined_status()
+            commit = repo.get_commit(pr.head.sha)
+            status = commit.get_combined_status()
+            check_runs = safe(errors, f"checks:{number}", lambda: [
+                {key: check.raw_data.get(key) for key in ('id','name','head_sha','status','conclusion','html_url','details_url','started_at','completed_at')}
+                for check in commit.get_check_runs()])
             return {k: r.get(k) for k in ("number", "html_url", "title", "state", "draft", "merged_at", "mergeable", "mergeable_state")} | {
                 "head_sha": pr.head.sha, "base_sha": pr.base.sha,
                 "head_repository": pr.head.repo.full_name if pr.head.repo else None,
-                "commit_status": checks.state if checks else None,
-                "commit_status_count": checks.total_count if checks else None,
-                "verification": "未执行本系统测试；GitHub状态不等于业务验证通过"}
+                "commit_status": status.state if status else None,
+                "commit_status_count": status.total_count if status else None,
+                "check_runs": check_runs,
+                "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"}
         result = safe(errors, f"pr:{number}", pr_data)
         if result is not None:
             facts["pull_requests"].append(result)
@@ -166,6 +203,10 @@ def collect(repo, start, end, excluded):
         {k: run.raw_data.get(k) for k in ("id", "html_url", "head_sha", "status", "conclusion", "created_at")}
         for run in repo.get_workflow_runs(created=f"{start.isoformat()}..{end.isoformat()}")
         if within(run.created_at, start, end)])
+    native_path = os.environ.get('REPORT_NATIVE_ACTIVITY_PATH')
+    facts['native_activity'] = safe(errors, 'native_activity', lambda:
+        select_window(json.loads(Path(native_path).read_text(encoding='utf-8')), start, end)) if native_path else None
+    facts['native_activity_source_status'] = 'configured' if native_path else 'not_configured'
     return facts
 
 
@@ -231,6 +272,10 @@ def markdown(report):
              f'新增 {show(c["prs"]["new"])}；合并 {show(c["prs"]["merged"])}；未合并关闭事件 {show(c["prs"]["closed_unmerged_events"])}；重开事件 {show(c["prs"]["reopened_events"])}。', '']
     for p in f.get("pull_requests", []):
         lines.append(f'- [PR #{p["number"]} {p["title"]}]({p["html_url"]})：{p["state"]}；冲突状态 {p["mergeable_state"] or "未获取"}；commit status {p["commit_status"] or "未获取"}（{p["commit_status_count"]}项）；head `{p["head_sha"]}`；{p["verification"]}。')
+        if 'check_runs' in p:
+            lines.append('  GitHub Checks：'+show(None if p['check_runs'] is None else len(p['check_runs']))+'项（与commit status不同）。')
+            for check in p['check_runs'] or []:
+                lines.append(f'  - [{check["name"]}]({check["html_url"]})：{check["status"]}/{check["conclusion"]}；[证据]({check["details_url"] or check["html_url"]})。')
     lines += ['', '## D AI工作与代码 CI', '']
     if f.get('ai_comment_identity'):
         lines.append(f'本系统App身份核实的讨论评论：{show(None if f["ai_comments"] is None else len(f["ai_comments"]))}；评论数量不代表执行成功，完整执行记录以对应底座run为准。')
@@ -245,6 +290,11 @@ def markdown(report):
         lines.append(f'- [{commit["sha"][:8]}]({commit["html_url"]}) {commit["message"]}')
     for run in f.get("ci_runs") or []:
         lines.append(f'- [CI {run["id"]}]({run["html_url"]})：{run["status"]}/{run["conclusion"]}，SHA `{run["head_sha"]}`')
+    if 'native_activity_source_status' in f:
+        native=f.get('native_activity')
+        lines.append('本窗口原生任务活动：'+show(len(native['tasks']) if native else None)+'项；原生状态不等于独立业务验收通过，旧版本错误投影需核对任务证据。')
+        for task in native['tasks'] if native else []:
+            lines.append(f'- [Task {task["task_id"]}]({task["url"]})：Issue/PR #{task["issue_number"]}；{task["task_type"]}；窗口末原生状态 `{task["native_state_at_window_end"]}`；事件时间 {task["last_event_at"]}。')
     lines += ['', '## E 维护者待办', '', '当前开放项（采集时状态，非昨日末快照）：']
     if f.get("current_open") is None:
         lines.append('- 未获取当前待办。')
@@ -329,9 +379,8 @@ def main():
     if args.recover_interrupted:
         repair_report_files(db, args.state / "reports")
     run_id = start_run(db, args.command, args.recover_interrupted)
-    token = os.environ.get("GITHUB_TOKEN", "").strip()
     excluded = {int(x) for x in os.environ.get("REPORT_ISSUES", "").split(",") if x.strip()}
-    client = Github(auth=Auth.Token(token) if token else None, per_page=100, timeout=30, retry=2)
+    client = None
     try:
         days = []
         if args.command != "snapshot":
@@ -351,6 +400,7 @@ def main():
             with db:
                 db.executemany("INSERT INTO reports VALUES(?,?,?,'pending',NULL,NULL) ON CONFLICT(repository,day) DO NOTHING",
                                [(REPOSITORY, day, run_id) for day in days])
+        client = Github(auth=collector_auth(), per_page=100, timeout=30, retry=2)
         repo = client.get_repo(REPOSITORY)
         with db:
             db.execute("INSERT INTO snapshots VALUES(?,?,?,?)", (REPOSITORY, stamp(), repo.stargazers_count, repo.forks_count))
@@ -371,7 +421,8 @@ def main():
         print(json.dumps({"run_id": run_id, "status": "infrastructure_failure", "detail": detail}))
         return 2
     finally:
-        client.close()
+        if client is not None:
+            client.close()
         db.close()
 
 

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-22T15:04:55.948Z",
+  "repository": "stepll2026/OntiCards",
+  "pr": 33,
+  "head": "86fda6805385a5bcfb9e09e3e0139a83aa184ac2",
+  "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+  "before_draft": false,
+  "before_body_sha256": "157aea5caa8830be8319cb260e5a0b9810822dec4d2c85a8ae6a7a4fb29abaf5",
+  "state": "verified",
+  "model_calls": 0,
+  "source": "existing authorized native App; connector mutation returned FORBIDDEN",
+  "after_draft": true,
+  "after_body_sha256": "b75656615f08e70498a678d56bd517a966b93a228837baee98192c0e872ab4fd",
+  "url": "https://github.com/stepll2026/OntiCards/pull/33",
+  "completed_at": "2026-10-22T15:05:05.239Z"
+}

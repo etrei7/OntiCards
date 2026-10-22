@@ -1,0 +1,123 @@
+{
+  "observed_at": "2026-10-22T19:45:59.598068+00:00",
+  "containers": [
+    {
+      "role": "api",
+      "configured_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy13@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "image_id": "sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "state": "running",
+      "started_at": "2026-10-22T19:45:20.623779031Z"
+    },
+    {
+      "role": "worker",
+      "configured_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy13@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "image_id": "sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "state": "running",
+      "started_at": "2026-10-22T19:45:20.599427787Z"
+    },
+    {
+      "role": "daemon",
+      "configured_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy13@sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "image_id": "sha256:3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879",
+      "state": "running",
+      "started_at": "2026-10-22T19:45:20.61757303Z"
+    },
+    {
+      "role": "web",
+      "configured_image": "nginx:1.27-alpine@sha256:91fc9c3924b93f76adc9cd36a0bb93e53885ff8e97df10233caa45bb432789a5",
+      "image_id": "sha256:91fc9c3924b93f76adc9cd36a0bb93e53885ff8e97df10233caa45bb432789a5",
+      "state": "running",
+      "started_at": "2026-10-22T19:08:50.588511824Z"
+    }
+  ],
+  "timers": [
+    {
+      "NextElapseUSecRealtime": "Sat 2026-10-24 00:00:00 CST",
+      "LastTriggerUSec": "Fri 2026-10-23 00:00:00 CST",
+      "Id": "onticards-snapshot.timer",
+      "ActiveState": "active",
+      "SubState": "waiting"
+    },
+    {
+      "NextElapseUSecRealtime": "Fri 2026-10-23 09:00:00 CST",
+      "LastTriggerUSec": "",
+      "Id": "onticards-report.timer",
+      "ActiveState": "active",
+      "SubState": "waiting"
+    }
+  ],
+  "workflows": [
+    {
+      "instance": "intake",
+      "id": "onticardsPersistentReadOnlyV1",
+      "found": true,
+      "active": true,
+      "active_version": "488e2c26-7e58-4b93-97a6-4794fdfa0235",
+      "node_count": 60
+    },
+    {
+      "instance": "intake",
+      "id": "onticardsIntakeCiHandoffV1",
+      "found": true,
+      "active": true,
+      "active_version": "3f0f3196-3334-4cbc-a9a4-eadffe201a30",
+      "node_count": 9
+    },
+    {
+      "instance": "ci",
+      "id": "onticardsPreviewIntakeV1",
+      "found": true,
+      "active": true,
+      "active_version": "9ac30a0a-cde5-4fc4-b9f6-2c3c287ea0c8",
+      "node_count": 11
+    },
+    {
+      "instance": "ci",
+      "id": "onticardsPreviewAdmissionV1",
+      "found": true,
+      "active": true,
+      "active_version": "6e3f1d2c-ef8a-430d-8b7b-518f4070e013",
+      "node_count": 26
+    },
+    {
+      "instance": "ci",
+      "id": "onticardsReviewAdmissionV1",
+      "found": true,
+      "active": true,
+      "active_version": "dd3c1899-b4f3-4d61-be95-fac76cd2fae4",
+      "node_count": 19,
+      "trusted_mode": "dry_run"
+    },
+    {
+      "instance": "ci",
+      "id": "onticardsReviewReadOnlyProbeV1",
+      "found": true,
+      "active": false,
+      "active_version": null,
+      "node_count": 3
+    },
+    {
+      "instance": "ci",
+      "id": "onticardsCheckWatchV1",
+      "found": true,
+      "active": true,
+      "active_version": "af56ce29-9b34-46a6-bc78-6f1d8ee53329",
+      "node_count": 8
+    }
+  ],
+  "review_host_policy": {
+    "enabled": false,
+    "repository": "stepll2026/OntiCards",
+    "baseline_version_count": 0
+  },
+  "mcp_listener_lines": [
+    "LISTEN 0      511    127.0.0.1:18135 0.0.0.0:*"
+  ],
+  "http_status": {
+    "/health": 200,
+    "/api/mcp": 404,
+    "/api/mcp/child": 404
+  },
+  "models": 0,
+  "mutations": 0
+}

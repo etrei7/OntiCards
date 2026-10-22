@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-22T17:40:04.812991+00:00",
+  "facts_run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "native_run_id": "f879dedc-7a00-464f-8e94-6b0b7d234353",
+  "native_quality_passed": false,
+  "native_report_unchanged": true,
+  "native_sha256": "bffe18118e3f08728e38bb257ece0503e74eee830a1ea97750776ada23ace047",
+  "reviewed_sha256": "1a58f5a3bba7e48ebb02b571418a27081e14b41748db4d4abf288be9c9b1f094",
+  "changes": [
+    "4 acquired empty Check arrays rendered as 0",
+    "remove unsupported global SQL R18 item",
+    "explicit reviewed-copy annotation"
+  ],
+  "new_native_model_calls": 0,
+  "independent_review": "pending"
+}

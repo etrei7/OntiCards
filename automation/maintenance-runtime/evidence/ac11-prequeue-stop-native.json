@@ -1,0 +1,216 @@
+{
+  "schema": "onticards-ac11-native-prequeue-stop-v1",
+  "started_at": "2026-10-22T18:49:11.047403+00:00",
+  "app_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy12@sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "redis_image": "redis:7-alpine@sha256:e7723ff73d963f5cc6d9c4643ea3d989527a402a319239054e9472a7fb9219a2",
+  "run_id": "a95f9e8ad85e",
+  "app_image_id": "sha256:ccb66ea8a0e6af41d277627d8ca04c445bcb28fe3efd2917ff02de7cf4566faa",
+  "redis_image_id": "sha256:e7723ff73d963f5cc6d9c4643ea3d989527a402a319239054e9472a7fb9219a2",
+  "exit_code": 0,
+  "passed": true,
+  "checks": [
+    {
+      "name": "isolated queue starts empty",
+      "passed": true
+    },
+    {
+      "name": "stop: native pending created",
+      "passed": true
+    },
+    {
+      "name": "stop: SQLite task exists before queue",
+      "passed": true
+    },
+    {
+      "name": "stop: no BullMQ job created",
+      "passed": true
+    },
+    {
+      "name": "stop: auth harness denies before mutation",
+      "passed": true
+    },
+    {
+      "name": "stop: native route succeeds without job/container",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "message": "Stop request sent to worker. The execution will be terminated shortly.",
+          "taskId": "ac11-prequeue-stop-a95f9e8ad85e",
+          "containerStopped": false
+        }
+      }
+    },
+    {
+      "name": "stop: actual Redis terminal state",
+      "passed": true
+    },
+    {
+      "name": "stop: abort signal retained with user and bounded TTL",
+      "passed": true,
+      "observed": {
+        "ttl_seconds": 3600,
+        "requestedBy": "ac11-test"
+      }
+    },
+    {
+      "name": "stop: SQLite terminal history persisted",
+      "passed": true,
+      "observed": {
+        "states": [
+          "pending",
+          "cancelled"
+        ],
+        "cancellationReason": "cancelled_by_user"
+      }
+    },
+    {
+      "name": "stop: late worker transition cannot revive cancelled task",
+      "passed": true
+    },
+    {
+      "name": "stop: repeated Stop is rejected without revival",
+      "passed": true,
+      "observed": {
+        "status": 400
+      }
+    },
+    {
+      "name": "stop: no queue entry or Agent created",
+      "passed": true
+    },
+    {
+      "name": "cancel: native pending created",
+      "passed": true
+    },
+    {
+      "name": "cancel: SQLite task exists before queue",
+      "passed": true
+    },
+    {
+      "name": "cancel: no BullMQ job created",
+      "passed": true
+    },
+    {
+      "name": "cancel: auth harness denies before mutation",
+      "passed": true
+    },
+    {
+      "name": "cancel: native route succeeds without job/container",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "message": "Stop request sent to worker. The execution will be terminated shortly.",
+          "taskId": "ac11-prequeue-cancel-a95f9e8ad85e",
+          "containerStopped": false
+        }
+      }
+    },
+    {
+      "name": "cancel: actual Redis terminal state",
+      "passed": true
+    },
+    {
+      "name": "cancel: abort signal retained with user and bounded TTL",
+      "passed": true,
+      "observed": {
+        "ttl_seconds": 3600,
+        "requestedBy": "ac11-test"
+      }
+    },
+    {
+      "name": "cancel: SQLite terminal history persisted",
+      "passed": true,
+      "observed": {
+        "states": [
+          "pending",
+          "cancelled"
+        ],
+        "cancellationReason": "cancelled_by_user"
+      }
+    },
+    {
+      "name": "cancel: late worker transition cannot revive cancelled task",
+      "passed": true
+    },
+    {
+      "name": "cancel: repeated Stop is rejected without revival",
+      "passed": true,
+      "observed": {
+        "status": 400
+      }
+    },
+    {
+      "name": "cancel: no queue entry or Agent created",
+      "passed": true
+    },
+    {
+      "name": "unknown task returns 404",
+      "passed": true
+    },
+    {
+      "name": "only two synthetic task records exist",
+      "passed": true
+    }
+  ],
+  "checks_passed": 25,
+  "tasks": [
+    {
+      "task_id": "ac11-prequeue-stop-a95f9e8ad85e",
+      "final_state": "cancelled",
+      "job_id": null,
+      "history": [
+        {
+          "state": "pending",
+          "reason": "Task created"
+        },
+        {
+          "state": "cancelled",
+          "reason": "Task cancelled by ac11-test"
+        }
+      ],
+      "abort_ttl_seconds": 3600
+    },
+    {
+      "task_id": "ac11-prequeue-cancel-a95f9e8ad85e",
+      "final_state": "cancelled",
+      "job_id": null,
+      "history": [
+        {
+          "state": "pending",
+          "reason": "Task created"
+        },
+        {
+          "state": "cancelled",
+          "reason": "Task cancelled by ac11-test"
+        }
+      ],
+      "abort_ttl_seconds": 3600
+    }
+  ],
+  "redis_version": "7.4.10",
+  "compiled_files": {
+    "packages/core/dist/services/taskCancellation.js": "1abc254663d00a665290f65f778037500e32f48018a60f1165e92da243c7a4c0",
+    "packages/core/dist/utils/workerStateManager.js": "e1bed332c2aeef9b5d947da531534e4c08306d7955d253765f1e23e85bb457f5",
+    "dist/packages/api/routes/dockerRoutes.js": "986c5c19bbbb3caf74c4dbf9c553118fdd55f5d29d7b1f828f6c020f7553c9fd"
+  },
+  "isolation": {
+    "redis_network": "none",
+    "network_mode": "container:85685ec84c4664717c7138c111ed9731196e15633f41070057fc5a1e54d79578",
+    "external_network": false,
+    "host_ports": {},
+    "bind_mounts": [],
+    "model_calls": 0,
+    "github_requests": 0,
+    "workers_started": 0,
+    "production_data_mounted": false,
+    "auth": "upstream test-style bounded actor middleware; no production OAuth bypass",
+    "native_demo_mode": "only isolated module fixture; no production configuration changed"
+  },
+  "completed_at": "2026-10-22T18:49:24.941042+00:00",
+  "probe_source_sha256": "97148fc768e3ff4dd825873eafaf1747cc0642752c8ad0348c95f6c7f0528ffc",
+  "ephemeral_containers_removed": true
+}

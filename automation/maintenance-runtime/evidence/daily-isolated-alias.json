@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-22T17:38:00.893719+00:00",
+  "native_configuration": {
+    "at": "2026-10-22T17:38:00.833Z",
+    "definition_id": "e6a4ce1d-0068-4c3a-832c-ff911c791a1c",
+    "revision": 13,
+    "agent_alias": "onticards-daily-qwen",
+    "config_path": "/opt/onticards-maintenance/propr/opencode/daily",
+    "model": "opencode-bailian/qwen3.8-max-0902",
+    "schedule_enabled": true,
+    "schedule_cron": "5 1 * * *",
+    "schedule_unchanged": true,
+    "original_agents_unchanged": true,
+    "model_calls": 0
+  },
+  "instructions": [],
+  "model": "bailian/qwen3.8-max-0902",
+  "provider_names": [
+    "bailian"
+  ],
+  "readonly_facts": true,
+  "native_helper_ready": true,
+  "new_model_calls": 0,
+  "helper_sha256": "089bc43de74b9f87eefaade453ce4890a5922cbe5e699992d651d12cf2b0c5c5",
+  "config_mount": "native writable config; independent fact mount readonly",
+  "passed": true
+}

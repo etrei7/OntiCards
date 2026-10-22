@@ -1,0 +1,10 @@
+{
+  "api_exit": 0,
+  "api_tests": 7,
+  "browser_exit": 0,
+  "browser_expected": 3,
+  "browser_unexpected": 0,
+  "browser_skipped": 0,
+  "model_business_test": "real_chat_embedding_flow",
+  "long_lived_model_or_github_or_ssh_secret_supplied": false
+}

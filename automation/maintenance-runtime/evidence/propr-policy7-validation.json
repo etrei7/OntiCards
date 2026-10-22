@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-22T14:38:39.927558+00:00",
+  "status": "built_pushed_not_deployed",
+  "build_host": "kol-stage2",
+  "build_started_at": "2026-10-22T14:35:02Z",
+  "build_completed_at": "2026-10-22T14:36:26Z",
+  "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy7",
+  "repo_digest": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app@sha256:ad6158b2364912dabacf60ac328facefd02ae09b020f1a742dba8981c2527ff6",
+  "local_image_id": "sha256:cea9b795f311bf87e93abe80c150cc989b65056bfedd5d7c5868b86e5a562ebf",
+  "test_image_id": "sha256:41d043db557562538db23c4df42b8bd4bfefc08f850cbc1885317e5cddb0e1ba",
+  "source_tree": "3df474a18c69018a47b1389506bad38c65e9abb8",
+  "patch_sha256": "79dac6d988109d0cf0e97d1cb1d7a5090f309689d94e0d3418165733520c5f70",
+  "upstream": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "source_validation": {
+    "frozen_policy6_verified": true,
+    "exact_delta_files": 10,
+    "all_final_blobs_matched": 58,
+    "unreviewed_worktree_files_copied": false
+  },
+  "validation": {
+    "full_typescript_compile": true,
+    "regression_tests": 51,
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "production_native_import_uid1000": true,
+    "native_git_version": "git version 2.54.0"
+  },
+  "deployment_performed": false,
+  "model_calls": 0,
+  "github_writes": false,
+  "test_isolation": {
+    "network": "none",
+    "production_credentials": false,
+    "production_redis": false
+  },
+  "logs": {
+    "build-completed-at.txt": "ed21272183af48e3a4d440d39334e96ec55224fa700e3c732b34cfabaf3e0774",
+    "build-production.log": "0179041007a77d9757e85a5449e99b332c4578844832e8ba2241b17519b41833",
+    "build-started-at.txt": "38b7e248d984f58e35182473ede13488a8d22207bc526ca9a573a892937ddff0",
+    "build-tests.log": "4099ba79d8ba8aa4cacd738aeedd18e935e43027dd5f49deb955f68fd63ceef5",
+    "git-preparation-tests.log": "10803bfd54ee5635a926a6ee02ca2379618022eea246bb57465f4da5f92994d3",
+    "image-id.txt": "d25d0c3622bf038235c449e0c35cf1e55996912e8794176d21753e0dddef4e75",
+    "push.log": "ed977f9938b834a19748123a54c03f81a5e74bd62bc33ed6d7c84880347ff131",
+    "repo-digests.json": "8e63c6e7a7439d2a51d1837dc1050b76a143996448be5be2a47421d60c1e560c",
+    "source-verified.json": "b57ca39d49d3224e5c789a10f70a14385a0416e066cda7ed87926dc74d3b7ef4"
+  }
+}

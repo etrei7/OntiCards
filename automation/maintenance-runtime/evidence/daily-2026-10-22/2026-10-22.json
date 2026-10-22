@@ -1,0 +1,1320 @@
+{
+  "repository": "stepll2026/OntiCards",
+  "day": "2026-10-22",
+  "run_id": "5da38704-a3ef-49b3-9c18-2bf3a88d28b1",
+  "window_start": "2026-10-22T00:00:00+08:00",
+  "window_end": "2026-10-23T00:00:00+08:00",
+  "generated_at": "2026-10-22T17:10:18.449946+00:00",
+  "expires_at": "2026-11-21T17:10:18.449946+00:00",
+  "status": "complete",
+  "facts": {
+    "errors": [],
+    "repository": {
+      "full_name": "stepll2026/OntiCards",
+      "stars": 487,
+      "forks": 9,
+      "default_branch": "main",
+      "html_url": "https://github.com/stepll2026/OntiCards",
+      "open_issues_count": 12
+    },
+    "head_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "current_open": [
+      {
+        "number": 29,
+        "title": "[AI维护系统验收 AC04] PDF 导出咨询与补充资料续办",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/29",
+        "state": "open",
+        "created_at": "2026-10-22T11:29:57Z",
+        "updated_at": "2026-10-22T16:57:08Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 4
+      },
+      {
+        "number": 33,
+        "title": "修复 LibreOffice 并发转换的用户配置目录冲突",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33",
+        "state": "open",
+        "created_at": "2026-10-22T14:57:45Z",
+        "updated_at": "2026-10-22T16:32:09Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [
+          "AI",
+          "llm-onticards-qwen~opencode-bailian-qwen3.8-brdnlb",
+          "propr"
+        ],
+        "comments_count": 5
+      },
+      {
+        "number": 32,
+        "title": "[AI维护系统验收] 修复并发 LibreOffice profile 冲突",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/32",
+        "state": "open",
+        "created_at": "2026-10-22T13:42:53Z",
+        "updated_at": "2026-10-22T14:58:00Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [
+          "AI",
+          "llm-onticards-qwen~opencode-bailian-qwen3.8-brdnlb",
+          "AI-done"
+        ],
+        "comments_count": 2
+      },
+      {
+        "number": 26,
+        "title": "修复治理 PDF 导出与宽表分页",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26",
+        "state": "open",
+        "created_at": "2026-10-22T10:00:15Z",
+        "updated_at": "2026-10-22T14:37:51Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [
+          "AI"
+        ],
+        "comments_count": 14
+      },
+      {
+        "number": 31,
+        "title": "[维护系统验收] 当前 main 服务结构与部署定位咨询（合成材料）",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/31",
+        "state": "open",
+        "created_at": "2026-10-22T13:25:34Z",
+        "updated_at": "2026-10-22T13:25:34Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 30,
+        "title": "Add repository maintenance knowledge and recoverable daily reporting",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/30",
+        "state": "open",
+        "created_at": "2026-10-22T11:51:59Z",
+        "updated_at": "2026-10-22T11:51:59Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 28,
+        "title": "feat(api): identify OntiCards to Weaviate via integration header",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/28",
+        "state": "open",
+        "created_at": "2026-10-22T10:47:27Z",
+        "updated_at": "2026-10-22T10:47:27Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 27,
+        "title": "chore(deploy): bump Weaviate to 1.39.13 (CVE-2026-111943)",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/27",
+        "state": "open",
+        "created_at": "2026-10-22T10:47:16Z",
+        "updated_at": "2026-10-22T10:47:16Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 25,
+        "title": "[AI维护系统验收] 复用已验证的治理 PDF 修复",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25",
+        "state": "open",
+        "created_at": "2026-10-22T09:13:00Z",
+        "updated_at": "2026-10-22T09:36:59Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 10
+      },
+      {
+        "number": 22,
+        "title": "feat: add first-class MariaDB data source support",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/22",
+        "state": "open",
+        "created_at": "2026-10-11T19:43:58Z",
+        "updated_at": "2026-10-11T19:43:58Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 21,
+        "title": "Query-string authentication exposes 30-day account JWTs through URLs and access logs",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/21",
+        "state": "open",
+        "created_at": "2026-10-11T19:16:02Z",
+        "updated_at": "2026-10-11T19:16:02Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 20,
+        "title": "Add MariaDB as a first-class supported data source (not just MySQL compatibility)",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/20",
+        "state": "open",
+        "created_at": "2026-10-10T07:06:46Z",
+        "updated_at": "2026-10-10T07:06:46Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 0
+      }
+    ],
+    "changed": [
+      {
+        "number": 29,
+        "title": "[AI维护系统验收 AC04] PDF 导出咨询与补充资料续办",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/29",
+        "state": "open",
+        "created_at": "2026-10-22T11:29:57Z",
+        "updated_at": "2026-10-22T16:57:08Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 4
+      },
+      {
+        "number": 33,
+        "title": "修复 LibreOffice 并发转换的用户配置目录冲突",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33",
+        "state": "open",
+        "created_at": "2026-10-22T14:57:45Z",
+        "updated_at": "2026-10-22T16:32:09Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [
+          "AI",
+          "llm-onticards-qwen~opencode-bailian-qwen3.8-brdnlb",
+          "propr"
+        ],
+        "comments_count": 5
+      },
+      {
+        "number": 32,
+        "title": "[AI维护系统验收] 修复并发 LibreOffice profile 冲突",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/32",
+        "state": "open",
+        "created_at": "2026-10-22T13:42:53Z",
+        "updated_at": "2026-10-22T14:58:00Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [
+          "AI",
+          "llm-onticards-qwen~opencode-bailian-qwen3.8-brdnlb",
+          "AI-done"
+        ],
+        "comments_count": 2
+      },
+      {
+        "number": 26,
+        "title": "修复治理 PDF 导出与宽表分页",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26",
+        "state": "open",
+        "created_at": "2026-10-22T10:00:15Z",
+        "updated_at": "2026-10-22T14:37:51Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [
+          "AI"
+        ],
+        "comments_count": 14
+      },
+      {
+        "number": 31,
+        "title": "[维护系统验收] 当前 main 服务结构与部署定位咨询（合成材料）",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/31",
+        "state": "open",
+        "created_at": "2026-10-22T13:25:34Z",
+        "updated_at": "2026-10-22T13:25:34Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 30,
+        "title": "Add repository maintenance knowledge and recoverable daily reporting",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/30",
+        "state": "open",
+        "created_at": "2026-10-22T11:51:59Z",
+        "updated_at": "2026-10-22T11:51:59Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 28,
+        "title": "feat(api): identify OntiCards to Weaviate via integration header",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/28",
+        "state": "open",
+        "created_at": "2026-10-22T10:47:27Z",
+        "updated_at": "2026-10-22T10:47:27Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 27,
+        "title": "chore(deploy): bump Weaviate to 1.39.13 (CVE-2026-111943)",
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/27",
+        "state": "open",
+        "created_at": "2026-10-22T10:47:16Z",
+        "updated_at": "2026-10-22T10:47:16Z",
+        "closed_at": null,
+        "is_pr": true,
+        "labels": [],
+        "comments_count": 0
+      },
+      {
+        "number": 25,
+        "title": "[AI维护系统验收] 复用已验证的治理 PDF 修复",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25",
+        "state": "open",
+        "created_at": "2026-10-22T09:13:00Z",
+        "updated_at": "2026-10-22T09:36:59Z",
+        "closed_at": null,
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 10
+      },
+      {
+        "number": 19,
+        "title": "Existing installations cannot receive schema updates because startup only initializes an empty database",
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/19",
+        "state": "closed",
+        "created_at": "2026-10-10T01:19:32Z",
+        "updated_at": "2026-10-22T08:54:15Z",
+        "closed_at": "2026-10-22T08:54:15Z",
+        "is_pr": false,
+        "labels": [],
+        "comments_count": 1
+      }
+    ],
+    "events": [
+      {
+        "id": 33962523248,
+        "number": 33,
+        "event": "labeled",
+        "created_at": "2026-10-22T14:57:53Z",
+        "is_pr": true
+      },
+      {
+        "id": 33962523348,
+        "number": 33,
+        "event": "labeled",
+        "created_at": "2026-10-22T14:57:53Z",
+        "is_pr": true
+      },
+      {
+        "id": 33963201168,
+        "number": 33,
+        "event": "convert_to_draft",
+        "created_at": "2026-10-22T15:04:59Z",
+        "is_pr": true
+      },
+      {
+        "id": 33963202872,
+        "number": 33,
+        "event": "renamed",
+        "created_at": "2026-10-22T15:05:00Z",
+        "is_pr": true
+      },
+      {
+        "id": 33964809551,
+        "number": 33,
+        "event": "labeled",
+        "created_at": "2026-10-22T15:21:16Z",
+        "is_pr": true
+      },
+      {
+        "id": 33965443459,
+        "number": 33,
+        "event": "referenced",
+        "created_at": "2026-10-22T15:27:25Z",
+        "is_pr": true
+      },
+      {
+        "id": 33967189457,
+        "number": 33,
+        "event": "referenced",
+        "created_at": "2026-10-22T15:45:34Z",
+        "is_pr": true
+      },
+      {
+        "id": 33955504724,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T13:42:55Z",
+        "is_pr": false
+      },
+      {
+        "id": 33955505030,
+        "number": 32,
+        "event": "mentioned",
+        "created_at": "2026-10-22T13:42:55Z",
+        "is_pr": false
+      },
+      {
+        "id": 33955505139,
+        "number": 32,
+        "event": "subscribed",
+        "created_at": "2026-10-22T13:42:55Z",
+        "is_pr": false
+      },
+      {
+        "id": 33955507952,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T13:42:57Z",
+        "is_pr": false
+      },
+      {
+        "id": 33955554808,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T13:43:27Z",
+        "is_pr": false
+      },
+      {
+        "id": 33957292060,
+        "number": 32,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T14:01:38Z",
+        "is_pr": false
+      },
+      {
+        "id": 33961685763,
+        "number": 32,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T14:48:55Z",
+        "is_pr": false
+      },
+      {
+        "id": 33961689798,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T14:48:57Z",
+        "is_pr": false
+      },
+      {
+        "id": 33961737400,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T14:49:28Z",
+        "is_pr": false
+      },
+      {
+        "id": 33962487487,
+        "number": 32,
+        "event": "referenced",
+        "created_at": "2026-10-22T14:57:29Z",
+        "is_pr": false
+      },
+      {
+        "id": 33962531445,
+        "number": 32,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T14:57:58Z",
+        "is_pr": false
+      },
+      {
+        "id": 33962534130,
+        "number": 32,
+        "event": "labeled",
+        "created_at": "2026-10-22T14:58:00Z",
+        "is_pr": false
+      },
+      {
+        "id": 33943073759,
+        "number": 26,
+        "event": "labeled",
+        "created_at": "2026-10-22T11:18:04Z",
+        "is_pr": true
+      },
+      {
+        "id": 33933706879,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:20:07Z",
+        "is_pr": false
+      },
+      {
+        "id": 33933956273,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:22:56Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934081277,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:24:29Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934089958,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:24:36Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934093356,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:24:38Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934104684,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:24:47Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934108292,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:24:49Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934356612,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:27:53Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934359788,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:27:56Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934372750,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:28:05Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934375842,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:28:08Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934386773,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:28:16Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934390112,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:28:18Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934794240,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:33:09Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934805291,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:33:17Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934813621,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:33:23Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934825670,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:33:31Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934836170,
+        "number": 25,
+        "event": "labeled",
+        "created_at": "2026-10-22T09:33:39Z",
+        "is_pr": false
+      },
+      {
+        "id": 33934846288,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:33:47Z",
+        "is_pr": false
+      },
+      {
+        "id": 33935096233,
+        "number": 25,
+        "event": "unlabeled",
+        "created_at": "2026-10-22T09:36:57Z",
+        "is_pr": false
+      },
+      {
+        "id": 33931520072,
+        "number": 19,
+        "event": "closed",
+        "created_at": "2026-10-22T08:54:15Z",
+        "is_pr": false
+      }
+    ],
+    "pull_requests": [
+      {
+        "number": 33,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33",
+        "title": "修复 LibreOffice 并发转换的用户配置目录冲突",
+        "state": "open",
+        "draft": true,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+        "base_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head_repository": "stepll2026/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [
+          {
+            "id": 119950685976,
+            "name": "OntiCards LibreOffice concurrency evidence",
+            "head_sha": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/stepll2026/OntiCards/runs/119950685976",
+            "details_url": "http://10.66.66.5:18123/onticards-reports/acceptance/pr33-fdd3/",
+            "started_at": "2026-10-22T16:32:14Z",
+            "completed_at": "2026-10-22T16:32:14Z"
+          }
+        ],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      },
+      {
+        "number": 26,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26",
+        "title": "修复治理 PDF 导出与宽表分页",
+        "state": "open",
+        "draft": true,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+        "base_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head_repository": "stepll2026/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [
+          {
+            "id": 119966580036,
+            "name": "OntiCards invalidation acceptance fixture (not tests)",
+            "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+            "status": "completed",
+            "conclusion": "neutral",
+            "html_url": "https://github.com/stepll2026/OntiCards/runs/119966580036",
+            "details_url": "https://github.com/stepll2026/OntiCards",
+            "started_at": "2026-10-22T17:04:29Z",
+            "completed_at": "2026-10-22T17:04:29Z"
+          },
+          {
+            "id": 119778059245,
+            "name": "OntiCards isolated PDF evidence (partial validation)",
+            "head_sha": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+            "status": "completed",
+            "conclusion": "neutral",
+            "html_url": "https://github.com/stepll2026/OntiCards/runs/119778059245",
+            "details_url": "http://10.66.66.5:18123/onticards-reports/acceptance/pdf-3105/",
+            "started_at": "2026-10-22T10:41:23Z",
+            "completed_at": "2026-10-22T10:41:23Z"
+          }
+        ],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      },
+      {
+        "number": 30,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/30",
+        "title": "Add repository maintenance knowledge and recoverable daily reporting",
+        "state": "open",
+        "draft": true,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+        "base_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head_repository": "stepll2026/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      },
+      {
+        "number": 28,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/28",
+        "title": "feat(api): identify OntiCards to Weaviate via integration header",
+        "state": "open",
+        "draft": false,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "4ad21f17e97668d13ea52f44197749534092e74d",
+        "base_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head_repository": "dudanogueira/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      },
+      {
+        "number": 27,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/27",
+        "title": "chore(deploy): bump Weaviate to 1.39.13 (CVE-2026-111943)",
+        "state": "open",
+        "draft": false,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "7f98741eb20f5a17665c949b0babb42b6b1d338d",
+        "base_sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head_repository": "dudanogueira/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      },
+      {
+        "number": 22,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/22",
+        "title": "feat: add first-class MariaDB data source support",
+        "state": "open",
+        "draft": false,
+        "merged_at": null,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "head_sha": "e8a55db0a6104905cc629f97ac8750e1392e4f44",
+        "base_sha": "b961c50758ac69f54f051a614fc2dc46b6900a30",
+        "head_repository": "mkstory/OntiCards",
+        "commit_status": "pending",
+        "commit_status_count": 0,
+        "check_runs": [],
+        "verification": "本采集器仅记录状态与证据链接，不执行测试；业务验收范围须查对应报告"
+      }
+    ],
+    "ai_comment_identity": {
+      "user_id": 346235449,
+      "type": "Bot",
+      "source": "GitHub comment.user"
+    },
+    "ai_comments": [
+      {
+        "id": 6337369937,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337369937",
+        "created_at": "2026-10-22T09:24:28+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337372794,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337372794",
+        "created_at": "2026-10-22T09:24:37+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337376076,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337376076",
+        "created_at": "2026-10-22T09:24:48+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337433469,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337433469",
+        "created_at": "2026-10-22T09:27:55+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337437126,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337437126",
+        "created_at": "2026-10-22T09:28:07+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337440483,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337440483",
+        "created_at": "2026-10-22T09:28:17+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337532257,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337532257",
+        "created_at": "2026-10-22T09:33:15+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337536715,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337536715",
+        "created_at": "2026-10-22T09:33:30+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337541452,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337541452",
+        "created_at": "2026-10-22T09:33:45+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6337600589,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/25#issuecomment-6337600589",
+        "created_at": "2026-10-22T09:36:59+00:00",
+        "issue_number": 25,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6339444121,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6339444121",
+        "created_at": "2026-10-22T11:18:07+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6339805875,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6339805875",
+        "created_at": "2026-10-22T11:38:10+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6339822212,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6339822212",
+        "created_at": "2026-10-22T11:39:05+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6339834575,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6339834575",
+        "created_at": "2026-10-22T11:39:45+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6339994362,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/29#issuecomment-6339994362",
+        "created_at": "2026-10-22T11:48:36+00:00",
+        "issue_number": 29,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6340579230,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/29#issuecomment-6340579230",
+        "created_at": "2026-10-22T12:20:03+00:00",
+        "issue_number": 29,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6340804900,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6340804900",
+        "created_at": "2026-10-22T12:31:36+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6340835951,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6340835951",
+        "created_at": "2026-10-22T12:33:10+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6340882455,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6340882455",
+        "created_at": "2026-10-22T12:35:31+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6341426679,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6341426679",
+        "created_at": "2026-10-22T13:03:01+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6341441393,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6341441393",
+        "created_at": "2026-10-22T13:03:45+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6341479762,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6341479762",
+        "created_at": "2026-10-22T13:05:35+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6342655263,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/32#issuecomment-6342655263",
+        "created_at": "2026-10-22T14:01:36+00:00",
+        "issue_number": 32,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6343155248,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6343155248",
+        "created_at": "2026-10-22T14:24:37+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6343181396,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6343181396",
+        "created_at": "2026-10-22T14:25:51+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6343299892,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6343299892",
+        "created_at": "2026-10-22T14:31:33+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6343435083,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/26#issuecomment-6343435083",
+        "created_at": "2026-10-22T14:37:51+00:00",
+        "issue_number": 26,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6343690818,
+        "html_url": "https://github.com/stepll2026/OntiCards/issues/32#issuecomment-6343690818",
+        "created_at": "2026-10-22T14:49:45+00:00",
+        "issue_number": 32,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6344295962,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33#issuecomment-6344295962",
+        "created_at": "2026-10-22T15:17:24+00:00",
+        "issue_number": 33,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6344425689,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33#issuecomment-6344425689",
+        "created_at": "2026-10-22T15:23:02+00:00",
+        "issue_number": 33,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6344444227,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33#issuecomment-6344444227",
+        "created_at": "2026-10-22T15:23:50+00:00",
+        "issue_number": 33,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6344864667,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33#issuecomment-6344864667",
+        "created_at": "2026-10-22T15:43:06+00:00",
+        "issue_number": 33,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      },
+      {
+        "id": 6344875023,
+        "html_url": "https://github.com/stepll2026/OntiCards/pull/33#issuecomment-6344875023",
+        "created_at": "2026-10-22T15:43:36+00:00",
+        "issue_number": 33,
+        "author": {
+          "id": 346235449,
+          "type": "Bot",
+          "login": "onticards-maintainer-stepll2026[bot]"
+        },
+        "marker_present": false
+      }
+    ],
+    "commits": [
+      {
+        "sha": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "html_url": "https://github.com/stepll2026/OntiCards/commit/c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "message": "*) 后端模块：项目启用Alembic数据库版本迁移管理工具 【SOP文档补充提交】",
+        "committed_at": "2026-10-22T08:37:00+00:00"
+      },
+      {
+        "sha": "b5ee9826e53d9b79c44eda23247fce61d6f00b34",
+        "html_url": "https://github.com/stepll2026/OntiCards/commit/b5ee9826e53d9b79c44eda23247fce61d6f00b34",
+        "message": "*) 后端模块：项目启用Alembic数据库版本迁移管理工具",
+        "committed_at": "2026-10-22T08:36:14+00:00"
+      }
+    ],
+    "ci_runs": [],
+    "native_activity": {
+      "source": "ProPR native tasks/task_history, selected metadata only",
+      "captured_at": "2026-10-22T17:07:49.105476+00:00",
+      "tasks": [
+        {
+          "task_id": "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c82d4cca-6f6d-4ec4-a853-89378951f0e6",
+          "issue_number": 25,
+          "task_type": "issue",
+          "model_name": "opencode-bailian/qwen3.8-max-0902",
+          "created_at": "2026-10-22T09:22:54.429Z",
+          "url": "http://10.66.66.5:18123/tasks/stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c82d4cca-6f6d-4ec4-a853-89378951f0e6",
+          "native_state_at_window_end": "failed",
+          "last_event_at": "2026-10-22T09:24:50.414Z"
+        },
+        {
+          "task_id": "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c3f32dd0-5e0e-4925-8e33-2d70bc374aa9",
+          "issue_number": 25,
+          "task_type": "issue",
+          "model_name": "opencode-bailian/qwen3.8-max-0902",
+          "created_at": "2026-10-22T09:27:52.316Z",
+          "url": "http://10.66.66.5:18123/tasks/stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-c3f32dd0-5e0e-4925-8e33-2d70bc374aa9",
+          "native_state_at_window_end": "failed",
+          "last_event_at": "2026-10-22T09:28:19.156Z"
+        },
+        {
+          "task_id": "stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-ec2303cb-0fe4-4bc5-9f02-f154f4ac354c",
+          "issue_number": 25,
+          "task_type": "issue",
+          "model_name": "opencode-bailian/qwen3.8-max-0902",
+          "created_at": "2026-10-22T09:33:07.527Z",
+          "url": "http://10.66.66.5:18123/tasks/stepll2026-OntiCards-25-onticards-qwen-opencode-bailian-qwen3.8-max-0902-ec2303cb-0fe4-4bc5-9f02-f154f4ac354c",
+          "native_state_at_window_end": "failed",
+          "last_event_at": "2026-10-22T09:33:47.738Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-OntiCards-26-6339444121-onticards-review-v1",
+          "issue_number": 26,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T11:28:03.018Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-OntiCards-26-6339444121-onticards-review-v1",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T11:28:20.115Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-OntiCards-26-1792669098526-6339805875",
+          "issue_number": 26,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T11:38:39.950Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-OntiCards-26-1792669098526-6339805875",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T11:39:48.310Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-OntiCards-26-1792672304792-6340804900",
+          "issue_number": 26,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T12:32:16.892Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-OntiCards-26-1792672304792-6340804900",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T12:35:37.139Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-OntiCards-26-1792674184541-6341426679",
+          "issue_number": 26,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T13:03:15.502Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-OntiCards-26-1792674184541-6341426679",
+          "native_state_at_window_end": "failed",
+          "last_event_at": "2026-10-22T13:05:37.608Z"
+        },
+        {
+          "task_id": "stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4",
+          "issue_number": 32,
+          "task_type": "issue",
+          "model_name": "opencode-bailian/qwen3.8-max-0902",
+          "created_at": "2026-10-22T13:43:13.884Z",
+          "url": "http://10.66.66.5:18123/tasks/stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4",
+          "native_state_at_window_end": "cancelled",
+          "last_event_at": "2026-10-22T13:59:12.060Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-OntiCards-26-1792679081994-6343155248",
+          "issue_number": 26,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T14:24:54.533Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-OntiCards-26-1792679081994-6343155248",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T14:31:38.385Z"
+        },
+        {
+          "task_id": "stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4-33961689798",
+          "issue_number": 32,
+          "task_type": "issue",
+          "model_name": "opencode-bailian/qwen3.8-max-0902",
+          "created_at": "2026-10-22T14:49:21.786Z",
+          "url": "http://10.66.66.5:18123/tasks/stepll2026-onticards-32-onticards-qwen-opencode-bailian-qwen3.8-max-0902-60bf7d5c-4ea9-405b-a083-52c27d7b0dd4-33961689798",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T14:58:03.482Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-onticards-33-1792682247164-6344295962",
+          "issue_number": 33,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T15:17:39.471Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-onticards-33-1792682247164-6344295962",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T15:17:58.220Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-onticards-33-1792682585239-6344425689",
+          "issue_number": 33,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T15:23:17.300Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-onticards-33-1792682585239-6344425689",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T15:27:31.015Z"
+        },
+        {
+          "task_id": "pr-comments-batch-stepll2026-onticards-33-1792683788035-6344864667",
+          "issue_number": 33,
+          "task_type": "pr-comment",
+          "model_name": null,
+          "created_at": "2026-10-22T15:43:13.670Z",
+          "url": "http://10.66.66.5:18123/tasks/pr-comments-batch-stepll2026-onticards-33-1792683788035-6344864667",
+          "native_state_at_window_end": "completed",
+          "last_event_at": "2026-10-22T15:45:36.489Z"
+        }
+      ],
+      "meaning": "Native state is not independent semantic review or business-test acceptance."
+    },
+    "native_activity_source_status": "configured"
+  },
+  "counts": {
+    "issues": {
+      "new": 4,
+      "closed_events": 1,
+      "reopened_events": 0
+    },
+    "prs": {
+      "new": 5,
+      "closed_events": 0,
+      "reopened_events": 0,
+      "merged": 0,
+      "closed_unmerged_events": 0
+    }
+  },
+  "snapshots": {
+    "status": "基线建立中",
+    "start_snapshot": null,
+    "end_snapshot": [
+      "2026-10-22T16:00:03.793319+00:00",
+      487,
+      9
+    ],
+    "tolerance_seconds": 120,
+    "stars_net": null,
+    "forks_net": null
+  }
+}

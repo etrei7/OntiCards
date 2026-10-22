@@ -1,0 +1,275 @@
+{
+  "raw_scanner_exit_code": 1,
+  "findings": [
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 11,
+      "EndLine": 11,
+      "StartColumn": 164,
+      "EndColumn": 208,
+      "path": "automation/maintenance-runtime/deploy/n8n/build_policy_boundary_probe.py",
+      "sha256": "609797a8fc290d30b6f9f67d0943ac43b4661fce045778f2322764b3d376a74e"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 11,
+      "EndLine": 11,
+      "StartColumn": 210,
+      "EndColumn": 236,
+      "path": "automation/maintenance-runtime/deploy/n8n/build_policy_boundary_probe.py",
+      "sha256": "609797a8fc290d30b6f9f67d0943ac43b4661fce045778f2322764b3d376a74e"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 139,
+      "EndLine": 139,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 171,
+      "EndLine": 171,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 299,
+      "EndLine": 299,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 331,
+      "EndLine": 331,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 363,
+      "EndLine": 363,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 395,
+      "EndLine": 395,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 427,
+      "EndLine": 427,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue29-final-recovery.workflow.json",
+      "sha256": "967ccce6a8dda8391d583f8ed75737bfbbcda7980aa050f932f667096c597e35"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 177,
+      "EndLine": 177,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue31-manual-resume.workflow.json",
+      "sha256": "a3d1b18049f8002e98f11a5313c43744dc2dc439176dc626850af8331bf15f0c"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 239,
+      "EndLine": 239,
+      "StartColumn": 17,
+      "EndColumn": 93,
+      "path": "automation/maintenance-runtime/deploy/n8n/issue31-manual-resume.workflow.json",
+      "sha256": "a3d1b18049f8002e98f11a5313c43744dc2dc439176dc626850af8331bf15f0c"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 7,
+      "EndLine": 7,
+      "StartColumn": 7,
+      "EndColumn": 84,
+      "path": "automation/maintenance-runtime/evidence/knowledge-source-binding-exact.json",
+      "sha256": "fff27f0b0bc0932f9c7e9ae476770eb730964f08c24d4994a459ef07ca5da484"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 5,
+      "EndLine": 5,
+      "StartColumn": 5,
+      "EndColumn": 85,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-dispatch.json",
+      "sha256": "4bc0c0987a0bc50d270e18d309a4b5a64465487e8a133e932b2d8c31ad50dfd2"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 6,
+      "EndLine": 6,
+      "StartColumn": 5,
+      "EndColumn": 91,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-dispatch.json",
+      "sha256": "4bc0c0987a0bc50d270e18d309a4b5a64465487e8a133e932b2d8c31ad50dfd2"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 125,
+      "EndLine": 125,
+      "StartColumn": 13,
+      "EndColumn": 90,
+      "path": "automation/maintenance-runtime/evidence/n8n/semantic-native-budget6-probe.json",
+      "sha256": "74991f0a5d4e3a0225352640950602ed07c17cee563e0c6ba810276655fc6850"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 128,
+      "EndLine": 128,
+      "StartColumn": 11,
+      "EndColumn": 88,
+      "path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-runtime-final.json",
+      "sha256": "63c14af37d461db35a4007d504d0f11026061fd29d72e50db228248e75748d53"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 256,
+      "EndLine": 256,
+      "StartColumn": 9,
+      "EndColumn": 86,
+      "path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-runtime-final.json",
+      "sha256": "63c14af37d461db35a4007d504d0f11026061fd29d72e50db228248e75748d53"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 3,
+      "EndLine": 3,
+      "StartColumn": 5,
+      "EndColumn": 82,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-native-attempt.json",
+      "sha256": "a7ac741e2ea6f9ab65ce6ad7900140a0f79691f7c2d195b9414d50e390e5da1d"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 5,
+      "EndLine": 5,
+      "StartColumn": 5,
+      "EndColumn": 82,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-native-rejected.json",
+      "sha256": "a1a3236bf456f68b675642a7bc9369fe56450fe8e3b9d8f2d11612338d1ec2a3"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 4,
+      "EndLine": 4,
+      "StartColumn": 5,
+      "EndColumn": 91,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-result.json",
+      "sha256": "bab35aeb4d51cc86dd107abdc1e6535dfd3d56a36bf800f3c9df3a8ae15f7f66"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 5,
+      "EndLine": 5,
+      "StartColumn": 5,
+      "EndColumn": 85,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-result.json",
+      "sha256": "bab35aeb4d51cc86dd107abdc1e6535dfd3d56a36bf800f3c9df3a8ae15f7f66"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 90,
+      "EndLine": 90,
+      "StartColumn": 11,
+      "EndColumn": 88,
+      "path": "automation/maintenance-runtime/evidence/n8n/ordinary-pipeline-runtime.json",
+      "sha256": "a0dc4dc53afb71b7c77dd0d0c3077fca1d5864cd73879142e016d50b5eba74f9"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 453,
+      "EndLine": 453,
+      "StartColumn": 7,
+      "EndColumn": 84,
+      "path": "automation/maintenance-runtime/evidence/knowledge-main-refresh-independent.json",
+      "sha256": "93ce483ed0c491739d251fdca2ffb2f1c4d0932e7a2ecf60089b4bec6a17cb41"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 45,
+      "EndLine": 45,
+      "StartColumn": 20,
+      "EndColumn": 107,
+      "path": "automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+      "sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 46,
+      "EndLine": 46,
+      "StartColumn": 20,
+      "EndColumn": 102,
+      "path": "automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+      "sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 47,
+      "EndLine": 47,
+      "StartColumn": 20,
+      "EndColumn": 103,
+      "path": "automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+      "sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 48,
+      "EndLine": 48,
+      "StartColumn": 25,
+      "EndColumn": 117,
+      "path": "automation/maintenance-runtime/evidence/propr-policy4-validation.json",
+      "sha256": "4bc794a484084869ad5cd3cf940be1598daeeb2471c162ab132b4099bd072f83"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 1,
+      "EndLine": 1,
+      "StartColumn": 822,
+      "EndColumn": 907,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-final-recovery-source-snapshot.json",
+      "sha256": "7897dfa32cf1c8cdf45fa18e0e69f2cdf1f964ff787231449dc21190ebd54eb8"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 5,
+      "EndLine": 5,
+      "StartColumn": 7,
+      "EndColumn": 84,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-recovery-fixture-input.json",
+      "sha256": "fdf06a4f62d946e7de8b25eedd3d8d6c1fafabdc5249c376af078a7d7f23e3c0"
+    },
+    {
+      "RuleID": "generic-api-key",
+      "StartLine": 22,
+      "EndLine": 22,
+      "StartColumn": 7,
+      "EndColumn": 84,
+      "path": "automation/maintenance-runtime/evidence/n8n/issue29-recovery-fixture-input.json",
+      "sha256": "fdf06a4f62d946e7de8b25eedd3d8d6c1fafabdc5249c376af078a7d7f23e3c0"
+    }
+  ]
+}

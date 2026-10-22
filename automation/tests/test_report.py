@@ -292,7 +292,7 @@ def test_status_uses_exact_pr_head_beyond_capped_commit_list(head_status_unavail
         looked_up.append(sha)
         if head_status_unavailable:
             raise GithubException(403, {'message': 'sensitive API body'})
-        return NS(get_combined_status=lambda: NS(state='failure', total_count=2))
+        return NS(get_combined_status=lambda: NS(state='failure', total_count=2), get_check_runs=lambda: [])
     repo = NS(full_name='stepll2026/OntiCards', stargazers_count=1, forks_count=1, default_branch='main',
               html_url='https://github.com/stepll2026/OntiCards', get_branch=lambda _: NS(commit=NS(sha='b' * 40)),
               get_issues=lambda **_: [issue], get_issues_comments=lambda **_: [], get_commits=lambda **_: [],

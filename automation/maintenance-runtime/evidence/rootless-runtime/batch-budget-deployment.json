@@ -1,0 +1,31 @@
+{
+  "started_at": "20261022T190814Z",
+  "model_calls": 0,
+  "github_posts": 0,
+  "quota_reset": false,
+  "credential_changes": false,
+  "workflows": [
+    {
+      "id": "onticardsPreviewAdmissionV1",
+      "version": "6e3f1d2c-ef8a-430d-8b7b-518f4070e013",
+      "nodes": 26,
+      "template_sha256": "ef7b82124abf3a2073c74293eca8923695153e172d4871924fa6408c8c139f78",
+      "active": true
+    },
+    {
+      "id": "onticardsPreviewIntakeV1",
+      "version": "b857184f-d2c1-4fd7-a643-77fd8a6764c9",
+      "nodes": 10,
+      "template_sha256": "2fe34fcc1c2a7692ffdbaedfb2c1ca5a9d9cd216ad4f56895b7e5ddb271b9177",
+      "active": true
+    }
+  ],
+  "native_fixture_assertions": {
+    "six_pr_items_read_balance_once_and_bind_all": true,
+    "consumed_batch_performs_no_balance_login": true,
+    "dry_run_batch_performs_no_balance_login": true,
+    "stale_batch_observation_rejected": true,
+    "cross_batch_observation_rejected": true
+  },
+  "completed_at": "2026-10-22T19:08:17.560234+00:00"
+}

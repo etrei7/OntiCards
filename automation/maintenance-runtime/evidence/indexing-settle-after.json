@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-22T17:19:03.349Z",
+  "job_id": "index-stepll2026-OntiCards-main-ba05240c-009e-432e-9228-46909580816d",
+  "state": "failed",
+  "attemptsMade": 2,
+  "attemptsStarted": 3,
+  "failedReason": "Indexing attempt already started; native manual resume with a new job is required",
+  "counts": {
+    "active": 0,
+    "waiting": 0,
+    "delayed": 0,
+    "prioritized": 0,
+    "paused": 0
+  },
+  "llm_log_count": 20,
+  "summarization_enabled": false,
+  "no_new_model_logs": true,
+  "passed": true
+}

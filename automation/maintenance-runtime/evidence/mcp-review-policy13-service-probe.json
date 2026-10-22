@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-22T19:46:29.971801+00:00",
+  "checks": [
+    {
+      "name": "invalid_fields",
+      "passed": true
+    },
+    {
+      "name": "oversize",
+      "passed": true
+    },
+    {
+      "name": "shell_as_json",
+      "passed": true
+    },
+    {
+      "name": "wrong_host_pin",
+      "passed": true
+    },
+    {
+      "name": "remote_forward_rejected",
+      "passed": true
+    },
+    {
+      "name": "pty_rejected",
+      "passed": true
+    },
+    {
+      "name": "no_eof_bounded",
+      "passed": true,
+      "elapsed_seconds": 5.639
+    },
+    {
+      "name": "http_mcp_closed",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "http_mcp_subpath_closed",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "https_mcp_unauthenticated",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "existing_ui",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "native_mcp_read_only_entry",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "native_receipt": {
+    "repository": "stepll2026/OntiCards",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "mode": "dry_run",
+    "idempotency_key": "review-57ca1c8c352fd39ce8fdbf5d4b7c1ded4c3669e4067330a6d7ae8bbeb007b79c",
+    "automatic_retry": false,
+    "model_started": false,
+    "checked_at": "2026-10-22T19:46:22.629Z",
+    "grant_scopes": [
+      "read",
+      "review"
+    ],
+    "grant_repository_count": 1,
+    "fresh_revision": true,
+    "tls_verified": true,
+    "review_tool_visible": true,
+    "merge_tool_visible": false,
+    "state": "native_review_entry_verified_no_dispatch",
+    "grant_revocation": "revoked_verified"
+  },
+  "tools_call_count": 0,
+  "model_calls": 0,
+  "github_writes": 0,
+  "review_enabled": false
+}

@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-10-22T18:53:04.440603+00:00",
+  "window_utc": [
+    "2026-10-22T18:35:00Z",
+    "2026-10-22T18:45:00Z"
+  ],
+  "source": "existing new-api container logs; only path/status/timestamp projected, no headers/body/identity",
+  "exit_code": 0,
+  "rows": [
+    {
+      "path": "/api/user/login",
+      "http_status": 429,
+      "docker_timestamp_utc": "2026-10-22T18:37:28.043818219Z"
+    },
+    {
+      "path": "/api/user/login",
+      "http_status": 429,
+      "docker_timestamp_utc": "2026-10-22T18:38:03.841876987Z"
+    },
+    {
+      "path": "/api/user/login",
+      "http_status": 200,
+      "docker_timestamp_utc": "2026-10-22T18:38:44.400784771Z"
+    },
+    {
+      "path": "/api/user/self",
+      "http_status": 200,
+      "docker_timestamp_utc": "2026-10-22T18:38:44.442638949Z"
+    },
+    {
+      "path": "/api/user/login",
+      "http_status": 200,
+      "docker_timestamp_utc": "2026-10-22T18:44:10.653638073Z"
+    },
+    {
+      "path": "/api/user/self",
+      "http_status": 200,
+      "docker_timestamp_utc": "2026-10-22T18:44:10.695303526Z"
+    }
+  ],
+  "raw_retained": false,
+  "model_calls": 0,
+  "new_requests": 0
+}

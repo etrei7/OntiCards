@@ -1,0 +1,1066 @@
+{
+  "started_at": "2026-10-22T19:06:48.876546+00:00",
+  "github_requests": 0,
+  "model_requests": 0,
+  "cases": {
+    "normal": {
+      "fixture": true,
+      "complete": true,
+      "thread_count": 2,
+      "event_count": 5,
+      "event_thread_keys": [
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002"
+      ],
+      "events": [
+        {
+          "id": "issue_snapshot:90001",
+          "kind": "issue_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "timeline_undefined:{\"fixture\":true}",
+          "kind": "timeline_undefined",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "pull_request_snapshot:90002",
+          "kind": "pull_request_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "review:undefined",
+          "kind": "review",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "timeline_undefined:{\"fixture\":true}",
+          "kind": "timeline_undefined",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        }
+      ],
+      "threads": [
+        {
+          "id": 90001,
+          "number": 90001,
+          "kind": "issue",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [],
+          "inline": [],
+          "reviews": [],
+          "timeline": [
+            {
+              "fixture": true
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:17.460+08:00"
+        },
+        {
+          "id": 90002,
+          "number": 90002,
+          "kind": "pull_request",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [],
+          "inline": [],
+          "reviews": [
+            {
+              "body": "",
+              "state": null,
+              "url": null
+            }
+          ],
+          "timeline": [
+            {
+              "fixture": true
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:17.460+08:00"
+        }
+      ],
+      "event_ids": [
+        "issue_snapshot:90001",
+        "timeline_undefined:{\"fixture\":true}",
+        "pull_request_snapshot:90002",
+        "review:undefined",
+        "timeline_undefined:{\"fixture\":true}"
+      ],
+      "diagnostics": [
+        {
+          "stage": "timeline",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        }
+      ],
+      "timeline_pages": 2,
+      "review_pages": 2,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "empty_issues": {
+      "fixture": true,
+      "complete": false,
+      "thread_count": 0,
+      "event_count": 0,
+      "event_thread_keys": [],
+      "events": [],
+      "threads": [],
+      "event_ids": [],
+      "diagnostics": [
+        {
+          "stage": "List all Issue and PR records",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 0,
+              "first_number": null,
+              "first_id": null,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all discussion comments",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 0,
+              "first_number": null,
+              "first_id": null,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all inline comments",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 0,
+              "first_number": null,
+              "first_id": null,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all PR heads",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 1,
+              "first_number": 90002,
+              "first_id": 90002,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "independent_repository_open_count",
+          "expected": 2,
+          "observed": 0,
+          "matched": false
+        },
+        {
+          "stage": "comment_thread_complement",
+          "numbers": []
+        }
+      ],
+      "timeline_pages": 0,
+      "review_pages": 0,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "missing_closed": {
+      "fixture": true,
+      "complete": true,
+      "thread_count": 3,
+      "event_count": 8,
+      "event_thread_keys": [
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90003",
+        "stepll2026/OntiCards#90003",
+        "stepll2026/OntiCards#90003"
+      ],
+      "events": [
+        {
+          "id": "issue_snapshot:90001",
+          "kind": "issue_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "timeline_undefined:{\"fixture\":true}",
+          "kind": "timeline_undefined",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "pull_request_snapshot:90002",
+          "kind": "pull_request_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "review:undefined",
+          "kind": "review",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "timeline_undefined:{\"fixture\":true}",
+          "kind": "timeline_undefined",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "issue_snapshot:90003",
+          "kind": "issue_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90003"
+        },
+        {
+          "id": "discussion_comment:50003",
+          "kind": "discussion_comment",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90003"
+        },
+        {
+          "id": "timeline_undefined:{\"fixture\":true}",
+          "kind": "timeline_undefined",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90003"
+        }
+      ],
+      "threads": [
+        {
+          "id": 90001,
+          "number": 90001,
+          "kind": "issue",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [],
+          "inline": [],
+          "reviews": [],
+          "timeline": [
+            {
+              "fixture": true
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:19.668+08:00"
+        },
+        {
+          "id": 90002,
+          "number": 90002,
+          "kind": "pull_request",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [],
+          "inline": [],
+          "reviews": [
+            {
+              "body": "",
+              "state": null,
+              "url": null
+            }
+          ],
+          "timeline": [
+            {
+              "fixture": true
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:19.668+08:00"
+        },
+        {
+          "id": 90003,
+          "number": 90003,
+          "kind": "issue",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "closed",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [
+            {
+              "id": 50003,
+              "author": "synthetic-user",
+              "type": "User",
+              "body": "explicit synthetic missing-thread human input",
+              "updated_at": "2026-10-22T12:30:00Z",
+              "state": null,
+              "url": null
+            }
+          ],
+          "inline": [],
+          "reviews": [],
+          "timeline": [
+            {
+              "fixture": true
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:19.668+08:00"
+        }
+      ],
+      "event_ids": [
+        "issue_snapshot:90001",
+        "timeline_undefined:{\"fixture\":true}",
+        "pull_request_snapshot:90002",
+        "review:undefined",
+        "timeline_undefined:{\"fixture\":true}",
+        "issue_snapshot:90003",
+        "discussion_comment:50003",
+        "timeline_undefined:{\"fixture\":true}"
+      ],
+      "diagnostics": [
+        {
+          "stage": "timeline",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90003,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90003,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        }
+      ],
+      "timeline_pages": 3,
+      "review_pages": 3,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "missing_failed": {
+      "fixture": true,
+      "complete": false,
+      "thread_count": 0,
+      "event_count": 0,
+      "event_thread_keys": [],
+      "events": [],
+      "threads": [],
+      "event_ids": [],
+      "diagnostics": [
+        {
+          "stage": "timeline",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90003,
+          "status": null,
+          "body_array": false,
+          "has_next": false,
+          "body_type": "object",
+          "body_keys": [],
+          "body_preview": null
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90003,
+          "status": null,
+          "body_array": false,
+          "has_next": false,
+          "body_type": "object",
+          "body_keys": [],
+          "body_preview": null
+        }
+      ],
+      "timeline_pages": 3,
+      "review_pages": 3,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "count_mismatch": {
+      "fixture": true,
+      "complete": false,
+      "thread_count": 0,
+      "event_count": 0,
+      "event_thread_keys": [],
+      "events": [],
+      "threads": [],
+      "event_ids": [],
+      "diagnostics": [
+        {
+          "stage": "List all Issue and PR records",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 2,
+              "first_number": 90001,
+              "first_id": 90001,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all discussion comments",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 0,
+              "first_number": null,
+              "first_id": null,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all inline comments",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 0,
+              "first_number": null,
+              "first_id": null,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "List all PR heads",
+          "pages": [
+            {
+              "status": 200,
+              "body_array": true,
+              "count": 1,
+              "first_number": 90002,
+              "first_id": 90002,
+              "request_id": null,
+              "has_next": false
+            }
+          ]
+        },
+        {
+          "stage": "independent_repository_open_count",
+          "expected": 3,
+          "observed": 2,
+          "matched": false
+        },
+        {
+          "stage": "comment_thread_complement",
+          "numbers": []
+        }
+      ],
+      "timeline_pages": 0,
+      "review_pages": 0,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "lifecycle": {
+      "fixture": true,
+      "complete": true,
+      "thread_count": 2,
+      "event_count": 10,
+      "event_thread_keys": [
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90001",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002",
+        "stepll2026/OntiCards#90002"
+      ],
+      "events": [
+        {
+          "id": "issue_snapshot:90001",
+          "kind": "issue_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "discussion_comment:60001",
+          "kind": "discussion_comment",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "timeline_closed:900011",
+          "kind": "timeline_closed",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "timeline_reopened:900012",
+          "kind": "timeline_reopened",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90001"
+        },
+        {
+          "id": "pull_request_snapshot:90002",
+          "kind": "pull_request_snapshot",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "discussion_comment:60002",
+          "kind": "discussion_comment",
+          "status": "ignored_machine_event",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "inline_comment:80001",
+          "kind": "inline_comment",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "review:70001",
+          "kind": "review",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "timeline_closed:900021",
+          "kind": "timeline_closed",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        },
+        {
+          "id": "timeline_reopened:900022",
+          "kind": "timeline_reopened",
+          "status": "pending_readonly_dry_run",
+          "thread_key": "stepll2026/OntiCards#90002"
+        }
+      ],
+      "threads": [
+        {
+          "id": 90001,
+          "number": 90001,
+          "kind": "issue",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [
+            {
+              "id": 60001,
+              "author": "fixture-human",
+              "type": "User",
+              "body": "synthetic human followup",
+              "updated_at": "2026-10-22T12:34:00Z",
+              "state": null,
+              "url": null
+            }
+          ],
+          "inline": [],
+          "reviews": [],
+          "timeline": [
+            {
+              "id": 900011,
+              "event": "closed",
+              "created_at": "2026-10-22T12:31:00Z",
+              "actor": {
+                "login": "fixture-human",
+                "type": "User"
+              }
+            },
+            {
+              "id": 900012,
+              "event": "reopened",
+              "created_at": "2026-10-22T12:32:00Z",
+              "actor": {
+                "login": "fixture-human",
+                "type": "User"
+              }
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:22.295+08:00"
+        },
+        {
+          "id": 90002,
+          "number": 90002,
+          "kind": "pull_request",
+          "title": "synthetic loop fixture",
+          "body": "synthetic",
+          "state": "open",
+          "created_at": "2026-10-22T12:30:00Z",
+          "updated_at": "2026-10-22T12:30:00Z",
+          "labels": [],
+          "head": null,
+          "base": null,
+          "discussion": [
+            {
+              "id": 60002,
+              "author": "onticards-maintainer-stepll2026[bot]",
+              "type": "Bot",
+              "body": "synthetic app response",
+              "updated_at": "2026-10-22T12:35:00Z",
+              "state": null,
+              "url": null
+            }
+          ],
+          "inline": [
+            {
+              "id": 80001,
+              "author": "fixture-reviewer",
+              "type": "User",
+              "body": "synthetic inline comment",
+              "updated_at": "2026-10-22T12:34:00Z",
+              "state": null,
+              "url": null
+            }
+          ],
+          "reviews": [
+            {
+              "id": 70001,
+              "author": "fixture-reviewer",
+              "type": "User",
+              "body": "synthetic review text",
+              "updated_at": "2026-10-22T12:33:00Z",
+              "state": "CHANGES_REQUESTED",
+              "url": null
+            }
+          ],
+          "timeline": [
+            {
+              "id": 900021,
+              "event": "closed",
+              "created_at": "2026-10-22T12:31:00Z",
+              "actor": {
+                "login": "fixture-human",
+                "type": "User"
+              }
+            },
+            {
+              "id": 900022,
+              "event": "reopened",
+              "created_at": "2026-10-22T12:32:00Z",
+              "actor": {
+                "login": "fixture-human",
+                "type": "User"
+              }
+            }
+          ],
+          "timeline_checked_at": "2026-10-23T03:07:22.295+08:00"
+        }
+      ],
+      "event_ids": [
+        "issue_snapshot:90001",
+        "discussion_comment:60001",
+        "timeline_closed:900011",
+        "timeline_reopened:900012",
+        "pull_request_snapshot:90002",
+        "discussion_comment:60002",
+        "inline_comment:80001",
+        "review:70001",
+        "timeline_closed:900021",
+        "timeline_reopened:900022"
+      ],
+      "diagnostics": [
+        {
+          "stage": "timeline",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "timeline",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90001,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        },
+        {
+          "stage": "review_or_discussion",
+          "number": 90002,
+          "status": 200,
+          "body_array": true,
+          "has_next": false
+        }
+      ],
+      "timeline_pages": 2,
+      "review_pages": 2,
+      "github_requests": 0,
+      "model_requests": 0
+    }
+  },
+  "native_published_version": {
+    "version_id": "dfabc6d4-4257-42da-b511-c52fa5ce6282",
+    "nodes": 63,
+    "file_sha256": "d0d1c3f92908109972b80c7b0c82dd0126641b9ad3407078d7e11ccfc87fb042",
+    "definition_exact": true
+  },
+  "assertions": {
+    "native_two_thread_loop_complete": true,
+    "native_per_thread_projection_retained": true,
+    "empty_issue_list_with_nonzero_metadata_rejected": true,
+    "comment_referenced_missing_closed_issue_fetched": true,
+    "complement_get_failure_blocks_complete": true,
+    "independent_open_count_mismatch_rejected": true,
+    "close_and_reopen_each_thread_preserved": true,
+    "all_pr_review_surfaces_preserved": true,
+    "app_comment_excluded_from_human_events": true,
+    "human_comment_stays_on_same_issue": true,
+    "ci_exact_public_fields_only": true,
+    "ci_rejects_incomplete_unrevoked_wrong_poll_count_and_sha": true,
+    "ci_skips_closed_pr_and_issue": true,
+    "ci_multiple_rows_project_and_post_exactly_once": true,
+    "ci_over_twenty_rejected_without_truncation": true,
+    "six_pr_items_read_balance_once_and_bind_all": true,
+    "consumed_batch_performs_no_balance_login": true,
+    "dry_run_batch_performs_no_balance_login": true,
+    "stale_batch_observation_rejected": true,
+    "cross_batch_observation_rejected": true
+  },
+  "ci_cases": {
+    "normal": {
+      "eligible": true,
+      "payload": {
+        "source": "onticards_intake_threads_v1",
+        "watermark": "2026-10-23T03:07:22.609+08:00",
+        "observed_at": "2026-10-23T03:07:22.609+08:00",
+        "complete": true,
+        "token_revoked": true,
+        "mode": "dry_run",
+        "threads": [
+          {
+            "pr": 90002,
+            "head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "state": "open"
+          }
+        ]
+      },
+      "project_items": 1,
+      "transport_items": 1,
+      "post_count": 1,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "incomplete": {
+      "eligible": false,
+      "reason": "incomplete_or_unrevoked_poll"
+    },
+    "unrevoked": {
+      "eligible": false,
+      "reason": "incomplete_or_unrevoked_poll"
+    },
+    "wrong_poll": {
+      "eligible": false,
+      "reason": "incomplete_or_unrevoked_poll"
+    },
+    "count_mismatch": {
+      "eligible": false,
+      "reason": "thread_count_mismatch"
+    },
+    "bad_sha": {
+      "eligible": false,
+      "reason": "invalid_pr_revision"
+    },
+    "closed": {
+      "eligible": true,
+      "payload": {
+        "source": "onticards_intake_threads_v1",
+        "watermark": "2026-10-23T03:07:24.882+08:00",
+        "observed_at": "2026-10-23T03:07:24.882+08:00",
+        "complete": true,
+        "token_revoked": true,
+        "mode": "dry_run",
+        "threads": []
+      },
+      "project_items": 1,
+      "transport_items": 1,
+      "post_count": 1,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "issue": {
+      "eligible": true,
+      "payload": {
+        "source": "onticards_intake_threads_v1",
+        "watermark": "2026-10-23T03:07:25.389+08:00",
+        "observed_at": "2026-10-23T03:07:25.389+08:00",
+        "complete": true,
+        "token_revoked": true,
+        "mode": "dry_run",
+        "threads": []
+      },
+      "project_items": 1,
+      "transport_items": 1,
+      "post_count": 1,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "multiple": {
+      "eligible": true,
+      "payload": {
+        "source": "onticards_intake_threads_v1",
+        "watermark": "2026-10-23T03:07:26.000+08:00",
+        "observed_at": "2026-10-23T03:07:26.000+08:00",
+        "complete": true,
+        "token_revoked": true,
+        "mode": "dry_run",
+        "threads": [
+          {
+            "pr": 90002,
+            "head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "state": "open"
+          },
+          {
+            "pr": 90003,
+            "head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "base": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "state": "open"
+          }
+        ]
+      },
+      "project_items": 1,
+      "transport_items": 1,
+      "post_count": 1,
+      "github_requests": 0,
+      "model_requests": 0
+    },
+    "oversize": {
+      "eligible": false,
+      "reason": "open_pr_bound_or_duplicate"
+    }
+  },
+  "batch_budget_cases": {
+    "six_unseen": {
+      "case": "six_unseen",
+      "candidate_items": 6,
+      "bound_items": 6,
+      "needed": true,
+      "transport_count": 1,
+      "post_count": 1,
+      "state": "budget_exhausted",
+      "allowed": false,
+      "budget": {
+        "state": "budget_exhausted",
+        "required_quota": 45000,
+        "remaining_quota": 15445,
+        "checked_at": "2026-10-22T19:07:27.543Z",
+        "provider_calls": 0,
+        "token_creation_calls": 0,
+        "account_quota_reset": false,
+        "reason_code": null,
+        "watermark": "2026-10-23T03:07:26.956+08:00",
+        "observed_at": "2026-10-23T03:07:26.956+08:00"
+      },
+      "models": 0,
+      "github_requests": 0
+    },
+    "consumed": {
+      "case": "consumed",
+      "candidate_items": 6,
+      "bound_items": 6,
+      "needed": false,
+      "transport_count": 0,
+      "post_count": 0,
+      "state": "budget_unverifiable",
+      "allowed": false,
+      "budget": {
+        "state": "budget_unverifiable",
+        "reason_code": "batch_observation_stale_missing_or_mismatched",
+        "provider_calls": 0,
+        "token_creation_calls": 0
+      },
+      "models": 0,
+      "github_requests": 0
+    },
+    "dry_run": {
+      "case": "dry_run",
+      "candidate_items": 6,
+      "bound_items": 6,
+      "needed": false,
+      "transport_count": 0,
+      "post_count": 0,
+      "state": "budget_unverifiable",
+      "allowed": false,
+      "budget": {
+        "state": "budget_unverifiable",
+        "reason_code": "batch_observation_stale_missing_or_mismatched",
+        "provider_calls": 0,
+        "token_creation_calls": 0
+      },
+      "models": 0,
+      "github_requests": 0
+    },
+    "stale": {
+      "case": "stale",
+      "candidate_items": 6,
+      "bound_items": 6,
+      "needed": true,
+      "transport_count": 1,
+      "post_count": 1,
+      "state": "budget_unverifiable",
+      "allowed": false,
+      "budget": {
+        "state": "budget_unverifiable",
+        "reason_code": "batch_observation_stale_missing_or_mismatched",
+        "provider_calls": 0,
+        "token_creation_calls": 0
+      },
+      "models": 0,
+      "github_requests": 0
+    },
+    "cross_batch": {
+      "case": "cross_batch",
+      "candidate_items": 6,
+      "bound_items": 6,
+      "needed": true,
+      "transport_count": 1,
+      "post_count": 1,
+      "state": "budget_unverifiable",
+      "allowed": false,
+      "budget": {
+        "state": "budget_unverifiable",
+        "reason_code": "batch_observation_stale_missing_or_mismatched",
+        "provider_calls": 0,
+        "token_creation_calls": 0
+      },
+      "models": 0,
+      "github_requests": 0
+    }
+  },
+  "passed": true,
+  "probe_stopped": true,
+  "completed_at": "2026-10-22T19:07:31.353921+00:00"
+}

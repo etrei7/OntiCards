@@ -1,0 +1,78 @@
+{
+  "started_at": "2026-10-22T13:41:06.248988+00:00",
+  "old_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:onticards-42931b1@sha256:cb1e383feff3f8347c8e2b354101cb88a584001136638f3cfbc0eb2216728a0c",
+  "new_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:policy6-http-ui@sha256:758a1db30bcaafd4901b0ea8f68f4705001e85628f1fd840b2432b8f2356eb72",
+  "before": {
+    "name": "ui",
+    "id": "3d9592548c8e225e6b39cf135304be6e65849d42416ae65ce0a5f9fb574c7510",
+    "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:onticards-42931b1@sha256:cb1e383feff3f8347c8e2b354101cb88a584001136638f3cfbc0eb2216728a0c",
+    "image_id": "sha256:cb1e383feff3f8347c8e2b354101cb88a584001136638f3cfbc0eb2216728a0c",
+    "status": "running",
+    "started_at": "2026-10-22T08:12:12.428417769Z"
+  },
+  "other_services_before": [
+    {
+      "name": "api",
+      "id": "26c8e3e69ae107ebfcc751d4db8c22ef48349f1c7bde9f560bea2eff131a8c56",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "running",
+      "started_at": "2026-10-22T13:01:54.48228633Z"
+    },
+    {
+      "name": "worker",
+      "id": "c0aae73e837d77516ba3958a97c18c4e410254da6355e95dcb7d0f7d01728afe",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "running",
+      "started_at": "2026-10-22T13:09:48.705562986Z"
+    },
+    {
+      "name": "daemon",
+      "id": "b99345cecdcab3ce03782df98c402a0b6daccde4261a8351d2af58cb5c9fad43",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "exited",
+      "started_at": "2026-10-22T13:01:54.474372504Z"
+    }
+  ],
+  "build_on_test_host": false,
+  "after": {
+    "name": "ui",
+    "id": "9ffad132c411682c57a41f88fd75593b50816b6223851d52b7281e05da156c18",
+    "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-ui:policy6-http-ui@sha256:758a1db30bcaafd4901b0ea8f68f4705001e85628f1fd840b2432b8f2356eb72",
+    "image_id": "sha256:758a1db30bcaafd4901b0ea8f68f4705001e85628f1fd840b2432b8f2356eb72",
+    "status": "running",
+    "started_at": "2026-10-22T13:41:54.217144576Z"
+  },
+  "other_services_after": [
+    {
+      "name": "api",
+      "id": "26c8e3e69ae107ebfcc751d4db8c22ef48349f1c7bde9f560bea2eff131a8c56",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "running",
+      "started_at": "2026-10-22T13:01:54.48228633Z"
+    },
+    {
+      "name": "worker",
+      "id": "c0aae73e837d77516ba3958a97c18c4e410254da6355e95dcb7d0f7d01728afe",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "running",
+      "started_at": "2026-10-22T13:09:48.705562986Z"
+    },
+    {
+      "name": "daemon",
+      "id": "b99345cecdcab3ce03782df98c402a0b6daccde4261a8351d2af58cb5c9fad43",
+      "image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy6@sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "image_id": "sha256:91d401508ec505b9874de4a540ebaf14f518539777bba75527f61efab8bcd9bf",
+      "status": "exited",
+      "started_at": "2026-10-22T13:01:54.474372504Z"
+    }
+  ],
+  "html_sha256": "9e2b26c3f96338b6a87d8574f869b012ef0257c05f82f0aa879c83796449ea96",
+  "http_status": 200,
+  "completed_at": "2026-10-22T13:41:55.753441+00:00",
+  "success": true
+}

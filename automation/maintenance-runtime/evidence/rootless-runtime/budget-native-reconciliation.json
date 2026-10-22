@@ -1,0 +1,71 @@
+{
+  "approval_id": "onticards-root-review-pr30-pr33-budget-observation-20261023-v1",
+  "started_at": "2026-10-22T19:00:34.034539+00:00",
+  "native_nodes": 7,
+  "original_receipt_source": "intake-dispatch-native-observation.json",
+  "original_receipt_sha256": "d6f9c041356739767a2c518ff0053d37f1d59cbf1950eb5dd395ca6b898ed7e1",
+  "published_version": "ddee1e7e-1133-4122-98f0-dbd0ec59c8f6",
+  "registered_webhooks": [
+    [
+      "onticards-budget-native-probe-v1",
+      "POST"
+    ]
+  ],
+  "result": {
+    "passed": true,
+    "before": [
+      {
+        "receipt_key": "admission:stepll2026/OntiCards#30:10c6862d4c7325c85618f86455aacf9d10c088b5:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "state": "budget_unverifiable",
+        "detail": "{\"policy\":\"preview-v1\",\"source\":\"onticards_intake_threads_v1\",\"watermark\":\"2026-10-23T02:35:05.092+08:00\",\"observed_at\":\"2026-10-23T02:37:18.770+08:00\",\"admitted_at\":\"2026-10-22T18:37:28.128Z\",\"budget\":{\"state\":\"budget_unverifiable\",\"checked_at\":\"2026-10-22T18:37:28.072Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"reason\":\"Native account scope or balance could not be verified; operator review required\"},\"revision_token_revoked\":true,\"reason\":null,\"automatic_retry\":false,\"model_calls\":0}",
+        "pr": 30,
+        "id": 2,
+        "createdAt": "2026-10-22T18:37:28.177Z",
+        "updatedAt": "2026-10-22T18:37:28.177Z"
+      },
+      {
+        "receipt_key": "admission:stepll2026/OntiCards#33:fdd3f291e8d4a51c31610f13d87670ab3288a6e9:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "state": "budget_unverifiable",
+        "detail": "{\"policy\":\"preview-v1\",\"source\":\"onticards_intake_threads_v1\",\"watermark\":\"2026-10-23T02:35:05.092+08:00\",\"observed_at\":\"2026-10-23T02:37:18.770+08:00\",\"admitted_at\":\"2026-10-22T18:38:03.923Z\",\"budget\":{\"state\":\"budget_unverifiable\",\"checked_at\":\"2026-10-22T18:38:03.868Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"reason\":\"Native account scope or balance could not be verified; operator review required\"},\"revision_token_revoked\":true,\"reason\":null,\"automatic_retry\":false,\"model_calls\":0}",
+        "pr": 33,
+        "id": 6,
+        "createdAt": "2026-10-22T18:38:03.960Z",
+        "updatedAt": "2026-10-22T18:38:03.960Z"
+      }
+    ],
+    "after": [
+      {
+        "receipt_key": "admission:stepll2026/OntiCards#30:10c6862d4c7325c85618f86455aacf9d10c088b5:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "state": "budget_exhausted",
+        "detail": "{\"policy\":\"preview-v1\",\"source\":\"onticards_intake_threads_v1\",\"watermark\":\"2026-10-23T02:35:05.092+08:00\",\"observed_at\":\"2026-10-23T02:37:18.770+08:00\",\"admitted_at\":\"2026-10-22T18:37:28.128Z\",\"budget\":{\"state\":\"budget_unverifiable\",\"checked_at\":\"2026-10-22T18:37:28.072Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"reason\":\"Native account scope or balance could not be verified; operator review required\"},\"revision_token_revoked\":true,\"reason\":null,\"automatic_retry\":false,\"model_calls\":0,\"original_receipt\":{\"state\":\"budget_unverifiable\",\"detail\":\"{\\\"policy\\\":\\\"preview-v1\\\",\\\"source\\\":\\\"onticards_intake_threads_v1\\\",\\\"watermark\\\":\\\"2026-10-23T02:35:05.092+08:00\\\",\\\"observed_at\\\":\\\"2026-10-23T02:37:18.770+08:00\\\",\\\"admitted_at\\\":\\\"2026-10-22T18:37:28.128Z\\\",\\\"budget\\\":{\\\"state\\\":\\\"budget_unverifiable\\\",\\\"checked_at\\\":\\\"2026-10-22T18:37:28.072Z\\\",\\\"token_creation_calls\\\":0,\\\"provider_calls\\\":0,\\\"reason\\\":\\\"Native account scope or balance could not be verified; operator review required\\\"},\\\"revision_token_revoked\\\":true,\\\"reason\\\":null,\\\"automatic_retry\\\":false,\\\"model_calls\\\":0}\",\"createdAt\":\"2026-10-22T18:37:28.177Z\",\"updatedAt\":\"2026-10-22T18:37:28.177Z\"},\"budget_reconciliation\":{\"approval_id\":\"onticards-root-review-pr30-pr33-budget-observation-20261023-v1\",\"actor\":\"AI maintenance operation under root task authorization; not a human UI click\",\"at\":\"2026-10-22T19:00:51.172Z\",\"observation\":{\"state\":\"budget_exhausted\",\"required_quota\":45000,\"remaining_quota\":15445,\"checked_at\":\"2026-10-22T19:00:51.037Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"account_quota_reset\":false},\"ci_dispatch\":false,\"model_calls\":0,\"token_mint_calls\":0,\"automatic_retry\":false}}",
+        "pr": 30,
+        "id": 2,
+        "createdAt": "2026-10-22T18:37:28.177Z",
+        "updatedAt": "2026-10-22T19:00:51.231Z"
+      },
+      {
+        "receipt_key": "admission:stepll2026/OntiCards#33:fdd3f291e8d4a51c31610f13d87670ab3288a6e9:c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "head": "fdd3f291e8d4a51c31610f13d87670ab3288a6e9",
+        "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+        "state": "budget_exhausted",
+        "detail": "{\"policy\":\"preview-v1\",\"source\":\"onticards_intake_threads_v1\",\"watermark\":\"2026-10-23T02:35:05.092+08:00\",\"observed_at\":\"2026-10-23T02:37:18.770+08:00\",\"admitted_at\":\"2026-10-22T18:38:03.923Z\",\"budget\":{\"state\":\"budget_unverifiable\",\"checked_at\":\"2026-10-22T18:38:03.868Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"reason\":\"Native account scope or balance could not be verified; operator review required\"},\"revision_token_revoked\":true,\"reason\":null,\"automatic_retry\":false,\"model_calls\":0,\"original_receipt\":{\"state\":\"budget_unverifiable\",\"detail\":\"{\\\"policy\\\":\\\"preview-v1\\\",\\\"source\\\":\\\"onticards_intake_threads_v1\\\",\\\"watermark\\\":\\\"2026-10-23T02:35:05.092+08:00\\\",\\\"observed_at\\\":\\\"2026-10-23T02:37:18.770+08:00\\\",\\\"admitted_at\\\":\\\"2026-10-22T18:38:03.923Z\\\",\\\"budget\\\":{\\\"state\\\":\\\"budget_unverifiable\\\",\\\"checked_at\\\":\\\"2026-10-22T18:38:03.868Z\\\",\\\"token_creation_calls\\\":0,\\\"provider_calls\\\":0,\\\"reason\\\":\\\"Native account scope or balance could not be verified; operator review required\\\"},\\\"revision_token_revoked\\\":true,\\\"reason\\\":null,\\\"automatic_retry\\\":false,\\\"model_calls\\\":0}\",\"createdAt\":\"2026-10-22T18:38:03.960Z\",\"updatedAt\":\"2026-10-22T18:38:03.960Z\"},\"budget_reconciliation\":{\"approval_id\":\"onticards-root-review-pr30-pr33-budget-observation-20261023-v1\",\"actor\":\"AI maintenance operation under root task authorization; not a human UI click\",\"at\":\"2026-10-22T19:00:51.172Z\",\"observation\":{\"state\":\"budget_exhausted\",\"required_quota\":45000,\"remaining_quota\":15445,\"checked_at\":\"2026-10-22T19:00:51.037Z\",\"token_creation_calls\":0,\"provider_calls\":0,\"account_quota_reset\":false},\"ci_dispatch\":false,\"model_calls\":0,\"token_mint_calls\":0,\"automatic_retry\":false}}",
+        "pr": 33,
+        "id": 6,
+        "createdAt": "2026-10-22T18:38:03.960Z",
+        "updatedAt": "2026-10-22T19:00:51.282Z"
+      }
+    ],
+    "ci_dispatch": 0,
+    "model_calls": 0,
+    "token_mint_calls": 0,
+    "quota_reset": false
+  },
+  "original_read_only_probe_restored_inactive": true,
+  "completed_at": "2026-10-22T19:00:51.831020+00:00"
+}

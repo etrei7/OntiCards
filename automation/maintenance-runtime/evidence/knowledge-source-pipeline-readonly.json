@@ -1,0 +1,37 @@
+{
+  "observed_at": "2026-10-22T17:36:32.597958+00:00",
+  "read_only": true,
+  "models_invoked": 0,
+  "workflow_mutations": 0,
+  "workflows": [
+    {
+      "id": "onticardsRepositoryContextV1",
+      "active": true,
+      "nodes": 42,
+      "definition_sha256": "96407d50f47838f52005602de451dd243c027fbf4d705c601882a4198558cab7"
+    },
+    {
+      "id": "onticardsPersistentDraftsV1",
+      "active": true,
+      "nodes": 45,
+      "definition_sha256": "46f9d4509d973f62f34689d38a4b5926f66b4c01ae2f1f9c01a398aeb91bfd56",
+      "source_read_enabled": true,
+      "schedule_intervals": [
+        [
+          {
+            "field": "minutes",
+            "minutesInterval": 5
+          }
+        ]
+      ],
+      "source_workflow": "onticardsRepositoryContextV1",
+      "issue_resolves_main_each_lookup": true,
+      "pr_uses_event_head": true,
+      "source_complete_and_token_revoked_gate": true,
+      "source_saved_in_existing_event_snapshot": true,
+      "source_ready_required_before_model": true,
+      "native_source_hash_node": true
+    }
+  ],
+  "bound_events": []
+}

@@ -1,0 +1,16 @@
+{
+  "identity": {
+    "repository": "stepll2026/OntiCards",
+    "pr": 26,
+    "head": "3105b7b61469c6b2945357f2eefa8fcb2e3aaee5",
+    "base": "c8e3dfee68d398a37842fc332f73af40a56f02a7",
+    "contract": "preview-v1",
+    "run_id": "19aa3bbf395b323dc3869bd6"
+  },
+  "state": "tests_passed_model_business",
+  "model_state": "tests_passed_model_business",
+  "lease": "disabled_verified",
+  "evidence_status": "downloaded_hash_verified",
+  "api_key_in_output": false,
+  "revision_validation": "native_authenticated_subworkflow_before_and_after"
+}

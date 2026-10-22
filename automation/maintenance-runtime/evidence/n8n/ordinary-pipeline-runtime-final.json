@@ -1,0 +1,265 @@
+{
+  "captured_at": "2026-10-22T18:02:02.947233+00:00",
+  "workflows": [
+    {
+      "id": "onticardsPersistentDraftsV1",
+      "name": "OntiCards persistent classification drafts - model disabled",
+      "active": 1,
+      "nodes": 45,
+      "policy": {
+        "repository": "stepll2026/OntiCards",
+        "mode": "persistent_draft_with_independent_review",
+        "model_enabled": true,
+        "source_read_enabled": true,
+        "allowed_model_threads": [],
+        "allowed_model_event_keys": [],
+        "scope_all_ordinary_events": true,
+        "max_model_calls_per_thread": 6,
+        "manual_handoff_threads": [
+          29,
+          31
+        ],
+        "max_app_comments_per_thread": 3,
+        "max_model_calls_per_execution": 1,
+        "admission_after": "2026-10-22T16:47:39.252594+00:00",
+        "freshness_seconds": 600,
+        "repository_writes": 0
+      },
+      "executions": [
+        {
+          "id": 1240,
+          "status": "running",
+          "startedAt": "2026-10-22 18:01:35.266",
+          "stoppedAt": null,
+          "deletedAt": null
+        },
+        {
+          "id": 1212,
+          "status": "running",
+          "startedAt": "2026-10-22 17:56:35.402",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 16:57:16.598"
+        },
+        {
+          "id": 1182,
+          "status": "running",
+          "startedAt": "2026-10-22 17:51:37.510",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 16:52:21.588"
+        }
+      ]
+    },
+    {
+      "id": "onticardsPersistentSemanticReviewV1",
+      "name": "OntiCards ordinary consultation independent semantic review - disabled",
+      "active": 1,
+      "nodes": 37,
+      "policy": {
+        "repository": "stepll2026/OntiCards",
+        "review_enabled": true,
+        "policy_version": "normal-consultation-source-review-v1",
+        "max_model_calls_per_thread": 6,
+        "manual_handoff_threads": [
+          29,
+          31
+        ],
+        "freshness_seconds": 900
+      },
+      "executions": [
+        {
+          "id": 1222,
+          "status": "running",
+          "startedAt": "2026-10-22 18:00:01.053",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 17:00:03.011"
+        },
+        {
+          "id": 1193,
+          "status": "running",
+          "startedAt": "2026-10-22 17:55:01.053",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 16:55:03.015"
+        }
+      ]
+    },
+    {
+      "id": "onticardsPersistentPublicationV1",
+      "name": "OntiCards native reviewed publication - active ordinary scope",
+      "active": 1,
+      "nodes": 48,
+      "policy": {
+        "repository": "stepll2026/OntiCards",
+        "publication_enabled": true,
+        "automatic_enabled": true,
+        "semantic_policy_version": "normal-consultation-source-review-v1"
+      },
+      "executions": [
+        {
+          "id": 1241,
+          "status": "new",
+          "startedAt": null,
+          "stoppedAt": null,
+          "deletedAt": null
+        },
+        {
+          "id": 1213,
+          "status": "running",
+          "startedAt": "2026-10-22 17:57:16.619",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 16:57:16.784"
+        },
+        {
+          "id": 1184,
+          "status": "running",
+          "startedAt": "2026-10-22 17:52:21.611",
+          "stoppedAt": null,
+          "deletedAt": "2026-10-22 16:52:21.794"
+        }
+      ]
+    },
+    {
+      "id": "onticardsIssue31ManualResumeV1",
+      "name": "OntiCards Issue31 approved final attempt3 - disabled",
+      "active": 0,
+      "nodes": 34,
+      "policy": {
+        "repository": "stepll2026/OntiCards",
+        "thread_key": "stepll2026/OntiCards#31",
+        "event_key": "5d22b9f1d33bc15546c389817462229bbc8cadc9f0a5a571808e667e19e4af4f",
+        "first_source_hash": "7ed56bf7452b9bd60d1e5016883aaed1425ebe6bd40b524da3355816a3a10082",
+        "prior_execution_id": "411",
+        "approval_id": "onticards-root-review-issue31-attempt3-20261022-v1",
+        "operator": "Codex parent /root acting under maintainer-authorized recovery",
+        "reason": "Explicit parent authorization for final third attempt after source-isolation template correction. Attempt1 remains unknown; attempt2 remains rejected. No automatic retry or fourth call.",
+        "approved_at": "2026-10-22 parent task message; exact timestamp unavailable",
+        "resume_id": "manual-final-20261022-v1",
+        "manual_enabled": false,
+        "max_model_calls_per_thread": 3,
+        "max_app_comments_per_thread": 3,
+        "freshness_seconds": 600
+      },
+      "executions": []
+    }
+  ],
+  "watermarks": [
+    {
+      "repository": "stepll2026/OntiCards",
+      "watermark": "2026-10-23T02:00:05.082+08:00",
+      "poll_id": "1223",
+      "event_count": 264.0,
+      "thread_count": 29.0
+    }
+  ],
+  "conversation_budgets": [
+    {
+      "thread_key": "stepll2026/OntiCards#29",
+      "model_calls": 5.0,
+      "reply_count": 2.0,
+      "pending_event": "e2abae29854c4b540793f0e10f7697f3c2e5ece48f14332760f7056ca67d1185",
+      "pending_state": "model_request_started"
+    },
+    {
+      "thread_key": "stepll2026/OntiCards#31",
+      "model_calls": 3.0,
+      "reply_count": 0.0,
+      "pending_event": "5d22b9f1d33bc15546c389817462229bbc8cadc9f0a5a571808e667e19e4af4f",
+      "pending_state": "model_request_started"
+    },
+    {
+      "thread_key": "fixture:migration-only",
+      "model_calls": 3.0,
+      "reply_count": 3.0,
+      "pending_event": "fixture-third-model",
+      "pending_state": "posting_unknown"
+    }
+  ],
+  "latest_draft_runs": [
+    {
+      "run_id": "1212",
+      "status": "dry_run_no_model",
+      "finished_at": "2026-10-23T01:57:16.259+08:00",
+      "watermark": "2026-10-23T01:55:05.095+08:00",
+      "fresh": true,
+      "counts": {
+        "context_only_unattributed_or_timeline": 254,
+        "ignored_machine_event": 145,
+        "already_answered_verified": 1,
+        "historical_context_only": 15,
+        "needs_structure_review": 1,
+        "awaiting_semantic_review": 1
+      },
+      "candidate": null,
+      "model_enabled": true,
+      "repository_writes": 0,
+      "model_calls_attempted": 0
+    },
+    {
+      "run_id": "1182",
+      "status": "dry_run_no_model",
+      "finished_at": "2026-10-23T01:52:20.770+08:00",
+      "watermark": "2026-10-23T01:50:05.078+08:00",
+      "fresh": true,
+      "counts": {
+        "context_only_unattributed_or_timeline": 254,
+        "ignored_machine_event": 145,
+        "already_answered_verified": 1,
+        "historical_context_only": 15,
+        "needs_structure_review": 1,
+        "awaiting_semantic_review": 1
+      },
+      "candidate": null,
+      "model_enabled": true,
+      "repository_writes": 0,
+      "model_calls_attempted": 0
+    },
+    {
+      "run_id": "1148",
+      "status": "dry_run_no_model",
+      "finished_at": "2026-10-23T01:47:49.180+08:00",
+      "watermark": "2026-10-23T01:45:05.085+08:00",
+      "fresh": true,
+      "counts": {
+        "context_only_unattributed_or_timeline": 254,
+        "ignored_machine_event": 145,
+        "already_answered_verified": 1,
+        "historical_context_only": 15,
+        "needs_structure_review": 1,
+        "awaiting_semantic_review": 1
+      },
+      "candidate": null,
+      "model_enabled": true,
+      "repository_writes": 0,
+      "model_calls_attempted": 0
+    },
+    {
+      "run_id": "1117",
+      "status": "dry_run_no_model",
+      "finished_at": "2026-10-23T01:42:25.391+08:00",
+      "watermark": "2026-10-23T01:40:05.082+08:00",
+      "fresh": true,
+      "counts": {
+        "context_only_unattributed_or_timeline": 254,
+        "ignored_machine_event": 145,
+        "already_answered_verified": 1,
+        "historical_context_only": 15,
+        "needs_structure_review": 1,
+        "awaiting_semantic_review": 1
+      },
+      "candidate": null,
+      "model_enabled": true,
+      "repository_writes": 0,
+      "model_calls_attempted": 0
+    }
+  ],
+  "review_statuses": [
+    {
+      "event_key": "d68c876a55aab27af14128dea27bfb65d683bc59d8a0311a690b2d0dfe4887f0",
+      "thread_key": "stepll2026/OntiCards#29",
+      "status": "needs_human_review",
+      "reserved_model_ordinal": 4.0
+    }
+  ],
+  "publication_statuses": [],
+  "direct_model_calls": 0,
+  "github_requests": 0
+}

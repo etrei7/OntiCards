@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-22T15:48:41.129235+00:00",
+  "source": {
+    "repository": "stepll2026/OntiCards",
+    "sourceCommit": "10c6862d4c7325c85618f86455aacf9d10c088b5",
+    "sourceTree": "e9cf39eebb304da3f41f0bc3d399c1c6ad27ad44",
+    "purpose": "Versioned supplemental knowledge; actual task checkout remains authoritative",
+    "files": [
+      {
+        "source": "AGENTS.md",
+        "file": "AGENTS.md",
+        "sha256": "d4c46a442032728570fbaab9ea9dd1bd03491cc9d3b85fb9f8225a575828c38d",
+        "gitBlob": "5e627aa1880abb75fe8637e308a21066403a7062"
+      },
+      {
+        "source": "docs/maintenance/repository-context.md",
+        "file": "repository-context.md",
+        "sha256": "cd57d9aa8422aee14ad3eb0d761159d5ce2f76c992a8d45a6ff705160a0de1d0",
+        "gitBlob": "94905dffbc7db85c4c978fab76216b54bb9d2cb1"
+      },
+      {
+        "source": "docs/maintenance/response-policy.md",
+        "file": "response-policy.md",
+        "sha256": "73627ab4b7665081385b5ace156d0e6147a6553062c44c56af7cca3b6304aca8",
+        "gitBlob": "efcf346fd5f0bc4707323fad35941465856f5ff3"
+      }
+    ]
+  },
+  "state": "configured_verified",
+  "before_instructions": [
+    "/home/node/.config/opencode/instructions/*.md"
+  ],
+  "after_instructions": [
+    "/home/node/.config/opencode/knowledge/10c6862d4c7325c85618f86455aacf9d10c088b5/*.md"
+  ],
+  "other_configuration_sha256": "36e5374e41c7951eef8f07d1ae7d909b4ed41ef51841891777efa8f60b6119fc",
+  "before_config_sha256": "2d679b4e163850160b65d4107a5cb9482b7b4783656a0851fbaa211ae8cb2d77",
+  "after_config_sha256": "2cca76d8861261d830b92cdfabd649a8a37f174456e9ab75dee2aa06d6e07896",
+  "old_files_preserved": true,
+  "model_calls": 0,
+  "github_writes": 0,
+  "native_indexing_enabled": false,
+  "note": "Versioned supplemental documents only; actual task checkout remains authoritative. Parent OpenCode config is agent-writable, so this is not a host security boundary."
+}

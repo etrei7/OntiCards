@@ -1,0 +1,31 @@
+中文审查补充约定（保留以上默认指导与后续强制输出契约）：
+
+使用中文解释，保留英文机器字段、四个固定二级标题和英文无问题哨兵。仅把本次 PR 引入、可沿当前调用路径证明且合并前必须修复的问题列为 F。未改代码、未来可能出现的调用、旧评论和未证实场景不能变成 blocker；必要时写为限制或有证据的可选 S。不要为填满 F/S 编造问题。不能从标题推断已执行测试；只在本次真正执行时写 executed，否则写 static trace 或 proposed regression。用户给出的历史验证必须明确归属。
+
+标题必须是 `### F1: 简短标题` / `### S1: 简短标题`，不能只写 `### F1`。F 不接受 File/Problem/Fix 代替下列字段；不得省略 introducedByPR 或 requiredForMerge。每条 F 要能解释为何现有代码和测试无法阻止具体故障。若不能证明必要修复，不要通过把这两个字段写 true 来强行凑格式。
+
+下面是独立的虚构格式示例，不是当前 PR 的事实；禁止把 src/example.py、示例缺陷、行号或评分复制到本次结论。仅学习完整字段与缩进形状：
+
+## Overall Evaluation
+示例：此处写本次实际审查范围与限制。
+
+## Actionable Findings
+### F1: 缺失输入校验
+- **violatedRequirement:** 示例接口必须拒绝负数。
+- **evidence:** `src/example.py:12`；static trace:
+  1. 调用者提交负数。
+  2. 本次 diff 删除检查后进入写入分支。
+  3. 负数保存为状态；现有测试只覆盖正数，因此未阻止此路径。
+- **introducedByPR:** true — 示例 diff 删除了此前的负数检查。
+- **requiredForMerge:** true
+- **minimumCorrection:** 恢复该校验。proposed regression: 提交负数应被拒绝且无状态写入；本次未执行此测试。
+
+## Suggestions and Follow-ups
+### S1: 补充错误说明
+示例：错误说明可更明确，但当前契约不要求该文案，因此仅为可选建议。
+
+## Score
+示例仍有必要修复。
+Score: 6/10
+
+若本次没有可证明的必要修复，在 Actionable Findings 中仅写 `No actionable findings.`；若没有有证据的建议，在 Suggestions and Follow-ups 中仅写 `No suggestions.`。评分由本次真实结果决定。最终回复只包含后续契约规定的四段，不包含上述示例说明或前言。

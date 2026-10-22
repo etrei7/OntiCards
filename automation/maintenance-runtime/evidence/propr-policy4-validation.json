@@ -1,0 +1,59 @@
+{
+  "upstream_commit": "42931b1502eb03ac299f14e306811736fab51eb4",
+  "production_image": "registry-intl.cn-hongkong.aliyuncs.com/shallopcr/propr-app:onticards-42931b1-policy4@sha256:5c6342f96ddaea6749d214f99ccca45c72a2953cf08893889f236272af6472ad",
+  "build_host": "kol-stage2",
+  "runtime_service_restarted_by_this_subtask": false,
+  "deployment_environment_changed_by_this_subtask": false,
+  "test_groups": {
+    "policy": {
+      "tests": 252,
+      "pass": 252,
+      "fail": 0,
+      "skipped": 0,
+      "log": "propr-policy4-policy-tests.log",
+      "sha256": "aaeb3c2fc6d4a9088ffda3496029b7e3643ee1133464c93736f75669ca5d5546"
+    },
+    "authentication": {
+      "tests": 49,
+      "pass": 49,
+      "fail": 0,
+      "skipped": 0,
+      "log": "propr-policy4-auth-tests.log",
+      "sha256": "ddae60cfe80958f676f3214d5e846b2b43d16f316b40a8aae2e5f1404b19fe98"
+    },
+    "live_output_30_days": {
+      "tests": 110,
+      "pass": 110,
+      "fail": 0,
+      "skipped": 0,
+      "log": "propr-policy4-live-output-tests.log",
+      "sha256": "f96bf852a6b1c75bbffb0071ae8b14074886f0f8fdfc22dea5167e2f35ac7d0c"
+    },
+    "live_output_default": {
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "log": "live-output-default-redis-tests.log",
+      "sha256": "587c8d59d66d100c965d6d18240f659a92205d3e600db05211bb4e3ccce4a9d5"
+    }
+  },
+  "source_sha256": {
+    "packages/core/src/agents/impl/utils/liveOutputLog.ts": "fbbcde383bc19696930dcaf0703d8287e62b40254aaae9954281f2c45b5418a3",
+    "test/liveOutputLog.integration.test.ts": "4fdc63a6beb4df496274bd2248a8e87aba37d38a9731652921bcde0a7eac7fe3",
+    "test/liveOutputTtlConfiguration.test.ts": "9cceac00ac395de665e6cb6b9a54038b9b9b48dde391911fb7d001227a41411b",
+    "packages/api/authInternalHttp.ts": "338e213f68d47af7acbcb293531055395d64e5b13c9a3add51fb13becf117860",
+    "packages/api/authSession.ts": "b558334ebb4dabd60fb5131516cd7045878ce356e70ace84d6c66746ef4f5e26",
+    "packages/api/authRedirect.ts": "58ada1a03186a4d201b065e7e01f6953ca71aa058e2dbb59b345e8d99fd455f0",
+    "packages/api/test/authInternalHttp.test.ts": "369edf4b0d29a2ca781b457ce6187e87f2b151a14dbf849ef57e0c3ba9e429dd"
+  },
+  "ttl_patch_sha256": "5f925fd6acfc531e91ffd70b5877bcf631532d0fdbfa6dde977a8dcbcd26a877",
+  "scope": "TTL local extension plus parent-owned private HTTP extension, on existing policy3; validation is not deployment acceptance",
+  "test_host_pull": {
+    "passed": true,
+    "host": "10.66.66.5",
+    "digest": "sha256:5c6342f96ddaea6749d214f99ccca45c72a2953cf08893889f236272af6472ad",
+    "log": "propr-policy4-pull.log",
+    "service_restarted": false
+  }
+}

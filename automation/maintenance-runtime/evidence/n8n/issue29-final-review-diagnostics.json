@@ -1,0 +1,77 @@
+{
+  "claims": [
+    {
+      "index": 0,
+      "source_id": "baseline_pdf_path",
+      "draft_quote_exact": true,
+      "source_quote_exact": true,
+      "source_has_real_newline": true,
+      "review_quote_has_real_newline": true,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 3637,
+      "quote_length": 349
+    },
+    {
+      "index": 1,
+      "source_id": "baseline_pdf_path",
+      "draft_quote_exact": true,
+      "source_quote_exact": true,
+      "source_has_real_newline": true,
+      "review_quote_has_real_newline": true,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 3637,
+      "quote_length": 258
+    },
+    {
+      "index": 2,
+      "source_id": "baseline_pdf_path",
+      "draft_quote_exact": true,
+      "source_quote_exact": true,
+      "source_has_real_newline": true,
+      "review_quote_has_real_newline": true,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 3637,
+      "quote_length": 824
+    },
+    {
+      "index": 3,
+      "source_id": "historical_exporter_identity",
+      "draft_quote_exact": true,
+      "source_quote_exact": false,
+      "source_has_real_newline": false,
+      "review_quote_has_real_newline": false,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 70,
+      "quote_length": 181
+    },
+    {
+      "index": 4,
+      "source_id": "candidate_pdf_path",
+      "draft_quote_exact": true,
+      "source_quote_exact": true,
+      "source_has_real_newline": true,
+      "review_quote_has_real_newline": true,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 896,
+      "quote_length": 895
+    },
+    {
+      "index": 5,
+      "source_id": "baseline_pdf_path",
+      "draft_quote_exact": true,
+      "source_quote_exact": true,
+      "source_has_real_newline": true,
+      "review_quote_has_real_newline": true,
+      "review_quote_has_literal_backslash_n": false,
+      "source_length": 3637,
+      "quote_length": 1682
+    }
+  ],
+  "review_original_decision": "approve",
+  "questions_minimal": false,
+  "gate_errors": [
+    "independent semantic approval absent",
+    "claim quote or source provenance mismatch"
+  ],
+  "no_normalization_applied": true
+}

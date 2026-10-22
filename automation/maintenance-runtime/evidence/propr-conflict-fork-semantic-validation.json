@@ -1,0 +1,34 @@
+{
+  "verified_at": "2026-10-22T18:36:10.399736+00:00",
+  "source_tree": "b3dd9a914e431b15b41febbf97211d736e6428fd",
+  "image": "onticards-propr-policy12-tests",
+  "execution_host": "kol-stage2",
+  "network": "none",
+  "model_calls": 0,
+  "external_repository_writes": 0,
+  "results": {
+    "tests": 50,
+    "pass": 50,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "semantic_negative_fixture": {
+    "git_merge": "clean",
+    "verification": "failed",
+    "external_writes": 0,
+    "model_calls": 0,
+    "resolver_calls": 0,
+    "main_unchanged": true,
+    "remaining_action": "human review or existing CI checks; clean Git is not semantic proof"
+  },
+  "native_tests": [
+    "test/prContinuation.test.ts (49 existing tests; real local Git and mocked GitHub transport)",
+    "test/maintenanceSemanticConflictFixture.test.ts (1 local real Git negative semantic example)"
+  ],
+  "text_conflicts": "Existing packages/core/test/conflictResolution.test.ts also ran in the 467 policy12 baseline checks: true text/binary conflicts stop before resolver/title/model callbacks, rollback and no push; deterministic independent changes integrate into PR branch with two parents and unchanged main.",
+  "fork_scope": "Real local bare fork/upstream Git fixtures; exact source SHA, original author, base, branch and continuation result are asserted. Permission denied/API responses are mocked. This is not a live external-fork GitHub E2E.",
+  "semantic_scope": "Both branches separately execute successfully. Git cleanly merges an API rename with a new caller; real Node execution of the new caller then fails for missing export. This proves the remaining semantic check requirement; it does not claim automatic semantic resolution.",
+  "log_sha256": "727b3af45b12fa95e420a347d64f84f84aa848a93f3e4618e88b958e23eabc1f",
+  "log_path": "/opt/onticards-build/evidence/policy12/conflict-fork-boundaries.log"
+}

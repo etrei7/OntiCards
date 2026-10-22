@@ -1,0 +1,312 @@
+{
+  "id": "onticardsCheckWatchV1",
+  "name": "OntiCards native Check head and base invalidation every five minutes",
+  "active": false,
+  "nodes": [
+    {
+      "id": "e44dd931-e910-542d-bc9d-ce7b710955dc",
+      "name": "Native five minute schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "eb593e61-8855-5508-81c3-8ab8a00707c3",
+      "name": "Trusted Check observation acceptance",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "onticards-check-watch-v1",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "onticardsPreviewTrigger",
+          "name": "onticards-preview-trigger"
+        }
+      },
+      "webhookId": "onticards-check-watch-v1"
+    },
+    {
+      "id": "3c1e6e42-fac3-598d-8bb1-512647a5264e",
+      "name": "Ensure native Check registrations",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "onticards_ci_checks_v1",
+        "columns": {
+          "column": [
+            {
+              "name": "registration_key",
+              "type": "string"
+            },
+            {
+              "name": "pr",
+              "type": "number"
+            },
+            {
+              "name": "head",
+              "type": "string"
+            },
+            {
+              "name": "base",
+              "type": "string"
+            },
+            {
+              "name": "check_id",
+              "type": "string"
+            },
+            {
+              "name": "check_name",
+              "type": "string"
+            },
+            {
+              "name": "external_id",
+              "type": "string"
+            },
+            {
+              "name": "state",
+              "type": "string"
+            },
+            {
+              "name": "detail",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "createIfNotExists": true
+        }
+      }
+    },
+    {
+      "id": "de375d29-16f7-5955-b139-4113c29fa0c3",
+      "name": "Read registered watching Checks",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_checks_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "state",
+              "condition": "eq",
+              "keyValue": "watching"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "id": "441da267-1c4c-5d40-8057-5dcddc1115e1",
+      "name": "Bounded native registered Checks",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const rows=$input.all().map(x=>x.json).filter(x=>x.registration_key&&x.state==='watching');if(rows.length>20)throw new Error('Native Check watch bound exceeded; operator review required');return rows.map(x=>({json:{...x,mode:'watch'}}));"
+      }
+    },
+    {
+      "id": "efacc209-1c2f-5548-ba7b-79e930bbe568",
+      "name": "Observe registered exact Check",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "onticardsCheckObserveV1",
+          "mode": "id"
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "c16ee723-d529-5f66-897d-c7f039397ee8",
+      "name": "Keep verified watch outcomes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().filter(x=>['watching','invalidated'].includes(x.json.state)&&x.json.registration_key).map(x=>({json:x.json}));"
+      }
+    },
+    {
+      "id": "26535e38-d823-5811-8ae8-f2cbd33b70d9",
+      "name": "Persist observed Check state",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "onticards_ci_checks_v1",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "registration_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.registration_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {}
+      },
+      "alwaysOutputData": false
+    }
+  ],
+  "connections": {
+    "Native five minute schedule": {
+      "main": [
+        [
+          {
+            "node": "Ensure native Check registrations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensure native Check registrations": {
+      "main": [
+        [
+          {
+            "node": "Read registered watching Checks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read registered watching Checks": {
+      "main": [
+        [
+          {
+            "node": "Bounded native registered Checks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bounded native registered Checks": {
+      "main": [
+        [
+          {
+            "node": "Observe registered exact Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Observe registered exact Check": {
+      "main": [
+        [
+          {
+            "node": "Keep verified watch outcomes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep verified watch outcomes": {
+      "main": [
+        [
+          {
+            "node": "Persist observed Check state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trusted Check observation acceptance": {
+      "main": [
+        [
+          {
+            "node": "Ensure native Check registrations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false,
+    "executionTimeout": 1200
+  },
+  "pinData": {}
+}
