@@ -26,6 +26,7 @@
 """
 
 import os
+import pathlib
 import re
 import subprocess
 import tempfile
@@ -116,6 +117,9 @@ _FILTER_MAP = {
 def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optional[str]:
     """调用本地 soffice 转换文件（优先方案）
 
+    为每次调用创建独立的临时用户配置目录，避免并发冲突。
+    使用 -env:UserInstallation=file:// URI 传递独立 profile 路径。
+
     Args:
         src_path: 源文件路径（支持 HTML, ODT 等）
         dst_dir: 输出目录
@@ -128,10 +132,15 @@ def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optio
     if not soffice:
         return None
 
+    profile_dir = None
     try:
+        profile_dir = tempfile.mkdtemp(prefix='onticards_lo_profile_')
+        profile_uri = pathlib.Path(profile_dir).as_uri()
+
         cmd = [
             soffice,
             '--headless',
+            '-env:UserInstallation=' + profile_uri,
             '--convert-to', target_format,
         ]
         infilter = _FILTER_MAP.get(target_format.lower())
@@ -162,6 +171,12 @@ def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optio
     except Exception as e:
         print(f"[WARN] Local soffice conversion failed: {e}")
         return None
+    finally:
+        if profile_dir:
+            try:
+                shutil.rmtree(profile_dir)
+            except Exception:
+                pass
 
 
 # ==================== HTML 模板引擎 ====================
