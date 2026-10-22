@@ -81,8 +81,10 @@ class TestConcurrentProfileIsolation:
         """并发调用必须使用不同的 profile 目录，且调用期间目录存在"""
         profile_dirs: List[str] = []
         dirs_during_call: List[List[str]] = []
+        results: List[Optional[str]] = []
         lock = threading.Lock()
-        barrier = threading.Barrier(3)
+        creation_barrier = threading.Barrier(3, timeout=10)
+        snapshot_barrier = threading.Barrier(3, timeout=10)
         original_mkdtemp = tempfile.mkdtemp
 
         def tracking_mkdtemp(*args, **kwargs):
@@ -92,40 +94,45 @@ class TestConcurrentProfileIsolation:
                     profile_dirs.append(d)
             return d
 
+        class FakeResult:
+            returncode = 0
+            stdout = ''
+            stderr = ''
+
+        def fake_run(cmd, *args, **kwargs):
+            creation_barrier.wait()
+            with lock:
+                snapshot = [d for d in profile_dirs if os.path.isdir(d)]
+                dirs_during_call.append(snapshot)
+            snapshot_barrier.wait()
+            return FakeResult()
+
         exceptions: List[Exception] = []
 
         def run_conversion():
             try:
-                class FakeResult:
-                    returncode = 0
-                    stdout = ''
-                    stderr = ''
-
-                def fake_run(cmd, *args, **kwargs):
-                    barrier.wait(timeout=5)
-                    with lock:
-                        snapshot = [d for d in profile_dirs if os.path.isdir(d)]
-                        dirs_during_call.append(snapshot)
-                    return FakeResult()
-
-                with mock.patch('controllers.governance.libreoffice_exporter.tempfile.mkdtemp', side_effect=tracking_mkdtemp):
-                    with mock.patch('controllers.governance.libreoffice_exporter._get_local_soffice_path', return_value='/usr/bin/soffice'):
-                        with mock.patch('controllers.governance.libreoffice_exporter.subprocess.run', side_effect=fake_run):
-                            with mock.patch('os.path.isfile', return_value=True):
-                                with mock.patch('os.listdir', return_value=['fake.pdf']):
-                                    _run_local_soffice('/tmp/fake.html', '/tmp/out', 'pdf')
+                result = _run_local_soffice('/tmp/fake.html', '/tmp/out', 'pdf')
+                with lock:
+                    results.append(result)
             except Exception as e:
                 with lock:
                     exceptions.append(e)
 
-        threads = [threading.Thread(target=run_conversion) for _ in range(3)]
-        for t in threads:
-            t.start()
-        for t in threads:
-            t.join(timeout=30)
+        with mock.patch('controllers.governance.libreoffice_exporter.tempfile.mkdtemp', side_effect=tracking_mkdtemp):
+            with mock.patch('controllers.governance.libreoffice_exporter._get_local_soffice_path', return_value='/usr/bin/soffice'):
+                with mock.patch('controllers.governance.libreoffice_exporter.subprocess.run', side_effect=fake_run):
+                    with mock.patch('os.path.isfile', return_value=True):
+                        with mock.patch('os.listdir', return_value=['fake.pdf']):
+                            threads = [threading.Thread(target=run_conversion) for _ in range(3)]
+                            for t in threads:
+                                t.start()
+                            for t in threads:
+                                t.join(timeout=30)
 
         assert not exceptions, f"线程异常: {exceptions}"
         assert all(not t.is_alive() for t in threads), "所有线程应结束"
+        assert len(results) == 3, "三次调用均应返回结果"
+        assert all(r is not None for r in results), "三次转换均应成功返回非 None"
         assert len(profile_dirs) == 3
         assert len(set(profile_dirs)) == 3, "每个并发调用必须使用独立的 profile 目录"
         for snapshot in dirs_during_call:
