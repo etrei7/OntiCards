@@ -1,5 +1,7 @@
 # OntiCards 仓库事实档案
 
+2026-10-23运行目标更新：以OpenHands普通任务/会话/设置页面、Automation Server和官方GitHub extensions作为后续实施主方案，ACP/OpenCode进入后续编码闭环验证，不使用无限画布。主流程目标不依赖n8n；旧ProPR/n8n仍处于迁移前状态，历史任务/预算/回执必须保留。新链尚未完成真实修复与自动合并验收，不把下文历史测试拼成当前整合版本通过证明。最近远端main已观察为`4f740be1dac181ae020d2c8e297f399b48b639f5`，每次仍须fresh读取。
+
 核对日期：2026-10-22；repository：`stepll2026/OntiCards`；初始 main：`8abe9e20d58df2605b8a66c3a4296d3dcfe325a2`；2026-10-22 18:00 发布前后回读的 main：`c8e3dfee68d398a37842fc332f73af40a56f02a7`；已验证 PDF PR #26 head：`3105b7b61469c6b2945357f2eefa8fcb2e3aaee5`。本档案只描述已检查的结构；执行任务时必须读取实际checkout，不能把此处基线当作最新提交。
 
 ## 已有产品与模块
@@ -35,7 +37,7 @@ SQL扫描器最小复现：SQLite `orders(amount)` 中一条7，`SELECT amount A
 
 维护日报位于`/opt/onticards-maintenance/reporting`，状态由专用低权限用户保存到`/var/lib/onticards-report`；原生systemd在北京时间00:00采快照、09:00补报，flock排他、15分钟超时、30天文件保留。SQLite payload为日报事实源，中断后重建文件，已完成窗口不重复采集。App私钥不进入日报进程；若匿名额度不足，使用独立只读短期令牌。
 
-自动修复主底座选ProPR锁定源码`42931b1502eb03ac299f14e306811736fab51eb4`，复用OpenCode和其原生队列、任务、Git工作区与发布流程。部署策略补丁仅补实例级禁止最终合并、受控分支、禁止Agent可写令牌及测试机禁止build。该策略从受信宿主环境读取，不接受Issue/PR文本覆盖。
+旧链路使用ProPR锁定源码`42931b1502eb03ac299f14e306811736fab51eb4`，复用OpenCode及原生队列、任务、Git工作区与发布流程；其policy13补丁还包含认证、取消、知识读取、发布等多项历史修复，并非只有禁止合并。旧永久人工合并语义已经被后台可配置ON/OFF取代，但不能直接关闭同时控制分支、凭据和隔离的全局旧开关。实际切换须逐入口替换，并先完成真实取消/重启/合并验证；新设置不受Issue/PR文本控制。
 
 ## 当前 main 组合的实测边界
 
@@ -43,7 +45,7 @@ SQL扫描器最小复现：SQLite `orders(amount)` 中一条7，`SELECT amount A
 
 API镜像 digest 为 `sha256:793385f53e61fc8b753d1c41055ed5d96894f76f0dffc3d8509c9faa952e7996`，在打包机构建、5机 `--no-build` 启动；Web复用8abe镜像，因完整Web tree与c8e/3105完全一致。新的启动入口使用容器环境并监听内部9103，运行迁移后数据库为 `0001_baseline`、28表。原生 `deploy_check.py` 5通过1跳过：缺少 `scripts/three_way_check.py`，不能称三线schema验证完成。未测试并发LibreOffice或全部数据库方言。
 
-[草稿修复PR #26](https://github.com/stepll2026/OntiCards/pull/26) 是独立复用已有修复并验证的结果，不是 Issue #25 原生后台成功；后者在克隆基础设施阶段失败、未执行编码Agent。完整版本绑定证据在交付包 `deploy/evidence-pdf-current-main/manifest.json`、README及截图目录。最终合并由维护者操作。
+[草稿修复PR #26](https://github.com/stepll2026/OntiCards/pull/26) 是独立复用已有修复并验证的结果，不是 Issue #25 原生后台成功；后者在克隆基础设施阶段失败、未执行编码Agent。完整版本绑定证据在交付包 `deploy/evidence-pdf-current-main/manifest.json`、README及截图目录。其历史人工合并说明不再决定当前模式；是否合并须服从最新后台设置和当前版本证据，不能凭上述旧报告直接合并。
 
 ## 更新方式
 

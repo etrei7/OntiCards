@@ -1,5 +1,30 @@
 # OntiCards 逐功能复用矩阵
 
+## 2026-10-23 新目标实施选择与边界
+
+本节取代下方旧阶段的“优先使用已装ProPR/n8n”和“最终Merge人工”选型约定。旧记录作为历史证据原样保留，不能套用旧AC编号或拼成新整合版本通过。先采用现成普通后台、官方自动化和模块；不使用无限画布、不自建调度/队列/鉴权平台。
+
+|功能|采用的上游、固定版本与接法|实测及必要缺口|
+|---|---|---|
+|普通后台/会话/任务|[OpenHands Canvas1.31.0](https://github.com/OpenHands/OpenHands/tree/v1.31.0)，commit c69d5291bfcb709087b1f9955d29982793adcac3；MIT；现成列表/聊天/设置及官方Apps页面|5机18140真实浏览器通过；合并页0.2.0已安装，后端404时显示未知，无独立新后台|
+|调度/运行/持久状态|[Automation1.23.2](https://github.com/OpenHands/automation/tree/1.23.2)，77dd60e53659c4daf27a9dbc20fa0f96cd135533；MIT；原生cron/events/runs/KV/CAS/auth|原生run与停止、同会话续办已试跑；旧n8n水位、在途任务和回执迁移尚未完成|
+|Agent隔离|[SDK/AgentServer1.57.0](https://github.com/OpenHands/software-agent-sdk/tree/v1.57.0)，9cb22f553b6cf0de2475563916eead4089b8a6c0；MIT；原生Docker conversation|实际child无父管理凭据、PEM或socket，child key访问controller被拒；不能把local受信worker当不可信代码容器|
+|编码执行器|[OpenCode1.18.31](https://github.com/anomalyco/opencode/tree/v1.18.31)，通过官方ACP接入；MIT；沿用百炼qwen3.8-max-0902|两问同会话7次真实调用，避免内置Agent的参数/行号错误；仍有证据过度推断，不能直接发布。kol构建、5机拉取固定镜像6a31b462…da5586，真实工具19/19与ACP启动3/3通过，0新模型；这不等于新的内容质量或编码闭环通过|
+|分类/修复/审查|[extensions0.33.0](https://github.com/OpenHands/extensions/tree/v0.33.0)，91953d8fcf9c42dd160170a8443f7d522d645a33；MIT；issue-triage/issue-to-pr/structured reviewer|固定官方源码已核；当前新修复→PR→真实测试→独立审查尚未完整通过。编码凭据不能绕过后台合并设置|
+|咨询后续评论|[extensions0.35.0](https://github.com/OpenHands/extensions/tree/v0.35.0)，a9056dbaa98aae1033d98466049cb057e343e1a0；monitor接同仓dispatcher与发布协调|上游monitor枚举全部secret、旧Finish误发布、失败水位问题有实证；2文件必要候选补丁efd0ddd…，151本地测试和现成Canvas镜像17项真实SDK兼容通过；尚未部署，结构兼容不证明事实质量|
+|App授权|既有单仓App及[PyGithub2.10.0](https://github.com/PyGithub/PyGithub/releases/tag/v2.10.0) AppInstallationAuth|installation token的/user原生403需小型Bot身份适配；18离线+14真实Linux只读验证。读取分支保护另缺Administration read，已获操作者明确授权并在GitHub接受更新，单仓范围保留；API后验、长任务续期与发布接线待验|
+|日报/知识|保留PyGithub事实窗口/Star历史；复用原生cron及官方摘要模板；精确checkout与版本化AGENTS|事实采集保留；新日报归纳质量未过。11文件咨询样本不能冒充全仓知识初始化；不建立新向量服务|
+|构建/测试/证据|既有rootless Compose、pytest9.1.1、Playwright1.64.1、LibreOffice、GitHub Checks/Actions能力与两机执行入口|构建仅kol、5机只拉固定digest；历史PR26/33各自通过不能组合成当前main通过。n8n调用层须迁入所选原生执行能力|
+|仓库自动合并|官方Apps页面+Automation原生KV/run/auth+[GitHub Auto-merge](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository)|原生automation toggle不取消GitHub请求，需仓库设置和动作适配。后端候选ad58cfe…128本地测试含35新增，仍FakeGateway未部署；真实ON/OFF/重启/取消/merge commit均未验|
+
+新增代码分别对应App installation身份、monitor续办/发布、水位与版本证据、两机接入及仓库合并开关缺口；不是提交到GitHub就称为上游复用。合并后端候选实际修改9个已有生产文件、新增3模块和1测试文件，另有官方Apps中的本项目页面；不宣称零fork或全部只是配置。
+
+gh-aw/agentics保留为Actions工作流候选，ProPR保留原生受信发布/Auto-merge能力作为比较来源。没有进行相同模型的gh-aw完整实跑，不以供应商品牌排除兼容性；也不因ProPR已安装优先选择。若OpenHands关键闭环无法以必要局部适配完成，须按相同能力/质量/维护成本重新比较，不能继续把缺失全部自研。
+
+当前新系统未验收完成。真实模型/工具探针、本地fixture、接口接线、正式镜像和完整业务验收分别记录。2026-10-23打包机短暂故障期间，两个旧CI webhook已暂停且无在途任务，配置/预算/回执未清；用户确认恢复后仅恢复受控构建，旧入口未自动开启。测试账号原生add_quota已追加450000单位，保留旧84555消费记录。
+
+## 旧阶段历史记录（以下“当前”均指当时）
+
 当前快照 **2026-10-23 03:50（上海）**。ProPR API/worker/daemon已于19:45:28Z部署policy13，digest `3bef8bdeac0024fd513a85e1951329d8c955c3f9ef292908ed6d409cc84ef879`，964/964（679既有分组+20原生只读/版本/权限边界+265相关回归）0skip/编译通过；运行配置不变、队列前后0、health200。policy10未单独部署。知识主路径69/69、真实8abe→c8e→main、0模型；完整语义索引partial停、旧任务failed后模型20→20，未造完整索引成功。
 
 [Draft PR33](https://github.com/stepll2026/OntiCards/pull/33)是Issue32原生自动修复及两次同PR反馈更新，fdd3/basec8e，9/9+真实并发PDF2/2+竞态10/10；Check119950685976仅并发范围。[PR26](https://github.com/stepll2026/OntiCards/pull/26)3105/basec8e最终rootless r4真实业务API7/PW3/9PNG/四格式与问数250通过；37文件门户和Check119988255661已发布，不能扩为lint/迁移全验或PR33并发修复。[Draft PR30](https://github.com/stepll2026/OntiCards/pull/30)由主流程统一追加，本地文档不冒充已发布提交。main未写、最终Merge人工。

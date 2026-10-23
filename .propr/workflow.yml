@@ -1,5 +1,7 @@
 # Schema and loader are provided by ProPR, pinned in docs/maintenance/reuse-matrix.md.
-# This base-branch policy becomes active only after a maintainer merges it.
+# Legacy ProPR input. Keep disabled until the replacement service-side repository
+# setting and real cancellation/merge checks are verified; this file is not the
+# new operator switch and must not override a previously saved backend setting.
 instructions: AGENTS.md
 auto_merge:
   enabled: false

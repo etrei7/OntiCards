@@ -1,5 +1,7 @@
 # GitHub App 接入与权限
 
+以下权限与policy13记录描述旧部署的实际基线。新目标采用仓库级持久AI自动合并设置，替代永久人工最终合并；当前新Gateway尚未上线。任何新权限必须先核已有安装与具体接口需要，不把本文权限表当授权扩大范围。OpenHands普通设置页已经存在，但读取接口未接入时显示“状态未知”，不代表GitHub端请求已取消。
+
 2026-10-23：后台 App 与管理 UI OAuth 均已真实接通。App 5422414、installation 174029282、slug `onticards-maintainer-stepll2026`、bot ID 346235449；selected 仅 `stepll2026/OntiCards`。当前 policy13（964项回归通过）运行 API/worker/daemon，仓库监控已启用。日报独立 alias 只读事实，Schedule 为上海 09:05。详细版本见交付目录 `automation/maintenance-runtime/deploy/propr/manifest.json` 及 RUNBOOK；早期暂停快照不是当前状态。
 
 |仓库权限|级别|用途|
@@ -19,7 +21,7 @@
 
 原生 Issue32→PR33 及同 PR 反馈更新已运行，PR26/30/33 均为 Draft；Checks 仅描述各自实际覆盖范围。五分钟 n8n Check watch 按 head/base 验证旧证据，真实 synthetic base 失配探针已变 action_required，真实 PR 未被修改。
 
-最终合并只由维护者操作。Contents 写权限本身不能限制合并，因此实例策略另外拒绝自动合并、MCP 合并、回退合并和 main 发布；既有仓库保护规则未削弱。已知模型错误、预算停止、索引 partial 和历史失败在验收审计中明确列出，不因 API 成功或 Task completed 而认定业务合格。
+Contents写权限本身不能限制合并。旧policy13仍拒绝自动合并、MCP合并、回退合并和main发布；迁移必须逐入口接入新的服务端设置和版本门禁，不能简单关掉全局策略。新模式OFF继续AI工作并撤销本系统未完成Auto-merge；ON仅允许受信入口在真实测试、独立审查和仓库规则满足后合并。编码或测试进程不得借其他凭据绕过该设置。已知模型错误、预算停止、索引partial和历史失败继续保留，不因API成功或Task completed而认定业务合格。
 
 自动语义评审复用原生MCP review_pull_request。用户管理入口仍为HTTP；MCP仅在127.0.0.1:18135通过现有可信CA提供TLS，HTTP入口返回404。可信n8n通过专用受限OpenSSH固定命令调用宿主：读取已有active用户授权，签发仅read/review、仅OntiCards、5分钟的原生委托，操作后撤销并核验；不把用户令牌、DB密钥、PEM或Docker socket交给n8n/PR/Agent。受限命令仍属于可信root边界，不称无特权服务。
 
