@@ -69,6 +69,8 @@ RUN apt-get update \
         fonts-dejavu \
         fonts-wqy-zenhei \
         fonts-wqy-microhei \
+        # Existing governance PDF exporter uses the LibreOffice Writer CLI.
+        libreoffice-writer \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

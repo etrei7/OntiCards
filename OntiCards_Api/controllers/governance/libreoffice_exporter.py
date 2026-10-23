@@ -17,7 +17,7 @@
 
 导出格式：
 - docx: Word 2007+ 文档
-- pdf: PDF 文档（通过 soffice 转换 HTML 生成）
+- pdf: PDF 文档（复用 python-docx 报告，再通过 soffice 转换）
 - xlsx: Excel 2007+ 文档
 
 已移除：
@@ -26,6 +26,7 @@
 """
 
 import os
+import pathlib
 import re
 import subprocess
 import tempfile
@@ -116,6 +117,9 @@ _FILTER_MAP = {
 def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optional[str]:
     """调用本地 soffice 转换文件（优先方案）
 
+    为每次调用创建独立的临时用户配置目录，避免并发冲突。
+    使用 -env:UserInstallation=file:// URI 传递独立 profile 路径。
+
     Args:
         src_path: 源文件路径（支持 HTML, ODT 等）
         dst_dir: 输出目录
@@ -128,10 +132,15 @@ def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optio
     if not soffice:
         return None
 
+    profile_dir = None
     try:
+        profile_dir = tempfile.mkdtemp(prefix='onticards_lo_profile_')
+        profile_uri = pathlib.Path(profile_dir).as_uri()
+
         cmd = [
             soffice,
             '--headless',
+            '-env:UserInstallation=' + profile_uri,
             '--convert-to', target_format,
         ]
         infilter = _FILTER_MAP.get(target_format.lower())
@@ -162,6 +171,12 @@ def _run_local_soffice(src_path: str, dst_dir: str, target_format: str) -> Optio
     except Exception as e:
         print(f"[WARN] Local soffice conversion failed: {e}")
         return None
+    finally:
+        if profile_dir:
+            try:
+                shutil.rmtree(profile_dir)
+            except Exception:
+                pass
 
 
 # ==================== HTML 模板引擎 ====================
@@ -531,24 +546,37 @@ def _build_docx_with_python(report: GovernanceReport,
     """使用 python-docx 生成 Word 文档（不依赖 LibreOffice）"""
     try:
         from docx import Document
-        from docx.shared import Pt, RGBColor
+        from docx.shared import Cm, Pt
         from docx.enum.text import WD_ALIGN_PARAGRAPH
+        from docx.enum.section import WD_ORIENT
+        from docx.oxml import OxmlElement
+        from lxml import html
     except ImportError:
         raise ImportError("请安装 python-docx: pip install python-docx")
 
     doc = Document()
+    # Eight detail columns need a print layout; HTML/CSS grid and flex styles
+    # are not preserved by the Writer HTML importer.
+    section = doc.sections[0]
+    section.orientation = WD_ORIENT.LANDSCAPE
+    section.page_width, section.page_height = Cm(29.7), Cm(21)
+    section.left_margin = section.right_margin = Cm(1.5)
+    section.top_margin = section.bottom_margin = Cm(1.5)
+    doc.styles['Normal'].font.size = Pt(10)
     title = doc.add_heading(report.report_name or '数据治理质量报告', level=0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     doc.add_paragraph(f'执行时间: {report.execution_time.strftime("%Y-%m-%d %H:%M:%S") if report.execution_time else "N/A"}')
     doc.add_paragraph(f'生成时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
     doc.add_paragraph(f'数据源: {report.datasource_id}')
+    doc.add_paragraph(f'涉及表: {", ".join(report.scope_tables) if getattr(report, "scope_tables", None) else "全部"}')
 
     doc.add_heading('质量概览', level=1)
     score = float(report.quality_score) if report.quality_score else 0
     grade = report.grade or '一般'
     doc.add_paragraph(f'质量评分: {score:.1f}  分    评级: {grade}')
     doc.add_paragraph(f'执行规则: {len(results)} 条    通过: {sum(1 for r in results if r.status=="passed")}    失败: {sum(1 for r in results if r.status=="failed")}')
+    doc.add_paragraph(f'影响行数: {sum(r.failed_count or 0 for r in results if r.status == "failed")}')
 
     # 关系发现章节
     relation_discovery = None
@@ -572,7 +600,12 @@ def _build_docx_with_python(report: GovernanceReport,
     doc.add_heading('执行明细', level=1)
     table = doc.add_table(rows=1, cols=8)
     table.style = 'Table Grid'
+    table.autofit = False
+    widths = [Cm(value) for value in (6.0, 5.2, 3.0, 4.0, 2.0, 1.6, 2.1, 2.8)]
+    for column, width in zip(table.columns, widths):
+        column.width = width
     hdr_cells = table.rows[0].cells
+    table.rows[0]._tr.get_or_add_trPr().append(OxmlElement('w:tblHeader'))
     headers = ['规则名称', '目标表', '目标列', '规则类型', '严重级别', '状态', '失败率', '失败/总数']
     for i, h in enumerate(headers):
         hdr_cells[i].text = h
@@ -585,6 +618,8 @@ def _build_docx_with_python(report: GovernanceReport,
         'length_check': '长度检测', 'range_check': '范围检测',
         'date_check': '日期检测', 'consistency_check': '一致性检测',
         'freshness_check': '新鲜度检测', 'value_distribution': '值分布检测',
+        'basic_null_check': '基础空值检测', 'composite': '复合条件检测',
+        'table_stats': '表级统计',
     }
     severity_names = {'critical': '严重', 'warning': '警告', 'info': '信息'}
     status_names = {'passed': '通过', 'failed': '失败', 'error': '错误'}
@@ -600,6 +635,13 @@ def _build_docx_with_python(report: GovernanceReport,
         row_cells[6].text = f"{float(r.failed_rate or 0):.2f}%" if r.failed_rate is not None else 'N/A'
         row_cells[7].text = f"{r.failed_count or 0}/{r.total_count or 0}"
 
+    for row in table.rows:
+        row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
+        for cell, width in zip(row.cells, widths):
+            cell.width = width
+            for paragraph in cell.paragraphs:
+                paragraph.paragraph_format.space_after = Pt(3)
+
     failed_results = [r for r in results if r.status == 'failed' and r.failed_samples]
     if failed_results:
         doc.add_heading('失败样本', level=1)
@@ -612,8 +654,17 @@ def _build_docx_with_python(report: GovernanceReport,
                         samples = json.loads(samples)
                     except Exception:
                         samples = []
-                for s in samples[:3]:
+                for s in samples[:3] if isinstance(samples, list) else []:
                     doc.add_paragraph(f"  样本: {s}", style='Intense Quote')
+
+    # Preserve the existing report's advice instead of introducing a second
+    # recommendation implementation for native documents.
+    doc.add_heading('改进建议', level=1)
+    recommendations = html.fragment_fromstring(
+        _generate_recommendations(results, rule_type_names), create_parent=True)
+    for recommendation in recommendations:
+        doc.add_paragraph(recommendation.text_content())
+    doc.add_paragraph('本报告由 OntiCards AI数据中枢 自动生成')
 
     doc.save(output_path)
     return True
@@ -827,14 +878,14 @@ class LibreOfficeExporter:
 
     def _convert_via_local_soffice(
         self,
-        tmp_html: str,
+        source_path: str,
         target_fmt: str,
         file_name: str,
     ) -> Optional[Dict[str, Any]]:
         """通过本地 soffice 转换文件（优先方案）
 
         Args:
-            tmp_html: 源 HTML 文件路径
+            source_path: 源文档路径（HTML 或 DOCX）
             target_fmt: 目标格式（docx, pdf, xlsx）
             file_name: 最终输出文件名
 
@@ -843,7 +894,7 @@ class LibreOfficeExporter:
         """
         tmp_dir = tempfile.mkdtemp(prefix='onticards_lo_')
         try:
-            output_path = _run_local_soffice(tmp_html, tmp_dir, target_fmt)
+            output_path = _run_local_soffice(source_path, tmp_dir, target_fmt)
             if not output_path:
                 return None
             final_path = os.path.join(self.export_path, file_name).replace('\\', '/')
@@ -956,8 +1007,17 @@ class LibreOfficeExporter:
                     report: GovernanceReport,
                     results: List[RuleExecutionResult],
                     custom_file_name: str = None) -> Dict[str, Any]:
-        """导出 PDF 文档（soffice 优先，weasyprint 降级）"""
-        return self._build_and_convert_html(report, results, 'pdf', custom_file_name=custom_file_name)
+        """复用原生 DOCX 报告，再由 LibreOffice 保留分页和表格布局转为 PDF。"""
+        if not self._check_soffice_available():
+            raise RuntimeError("PDF 导出需要 LibreOffice Writer，请安装 libreoffice-writer。")
+        file_name = self._make_filename(report, 'pdf', custom_file_name=custom_file_name)
+        with tempfile.TemporaryDirectory(prefix='onticards_pdf_') as tmp_dir:
+            source_path = os.path.join(tmp_dir, 'report.docx')
+            _build_docx_with_python(report, results, source_path)
+            converted = self._convert_via_local_soffice(source_path, 'pdf', file_name)
+            if converted:
+                return converted
+        raise RuntimeError("PDF 导出失败：LibreOffice 未生成 PDF 文件。")
 
     def _export_xlsx(self,
                      report: GovernanceReport,
